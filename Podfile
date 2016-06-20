@@ -2,6 +2,5 @@
 
 use_frameworks!
 
-target PupCare' do
-pod 'Parse'
-end
+target 'PupCare' 
+pod 'Parse', '~> 1.13' 
