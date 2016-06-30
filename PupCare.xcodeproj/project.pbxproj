@@ -25,6 +25,10 @@
 		A475E34E1D18548900FB66C3 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E34D1D18548900FB66C3 /* OrdersViewController.swift */; };
 		A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */; };
 		A475E3521D18569B00FB66C3 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E3511D18569B00FB66C3 /* MainTabViewController.swift */; };
+		A4869DC91D2595090076EC37 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4869DC81D2595090076EC37 /* Products.storyboard */; };
+		A4869DCB1D25953F0076EC37 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCA1D25953F0076EC37 /* ProductsViewController.swift */; };
+		A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */; };
+		A4869DCF1D259DB60076EC37 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCE1D259DB60076EC37 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		A475E34D1D18548900FB66C3 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrdersViewController.swift; path = Controller/OrdersViewController.swift; sourceTree = "<group>"; };
 		A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionsViewController.swift; path = Controller/PromotionsViewController.swift; sourceTree = "<group>"; };
 		A475E3511D18569B00FB66C3 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabViewController.swift; path = Controller/MainTabViewController.swift; sourceTree = "<group>"; };
+		A4869DC81D2595090076EC37 /* Products.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Products.storyboard; path = View/Products.storyboard; sourceTree = "<group>"; };
+		A4869DCA1D25953F0076EC37 /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductsViewController.swift; path = Controller/ProductsViewController.swift; sourceTree = "<group>"; };
+		A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductTableViewCell.swift; path = Controller/ProductTableViewCell.swift; sourceTree = "<group>"; };
+		A4869DCE1D259DB60076EC37 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Model/Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +163,7 @@
 		A475E33A1D148F1600FB66C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A4869DCE1D259DB60076EC37 /* Product.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -167,6 +176,7 @@
 				A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */,
 				A475E3431D14906500FB66C3 /* Orders.storyboard */,
 				A475E33D1D148FEB00FB66C3 /* Petshops.storyboard */,
+				A4869DC81D2595090076EC37 /* Products.storyboard */,
 				A475E33F1D14902400FB66C3 /* Promotions.storyboard */,
 			);
 			name = View;
@@ -182,6 +192,8 @@
 				A475E34D1D18548900FB66C3 /* OrdersViewController.swift */,
 				A475E3491D18545D00FB66C3 /* PetShopsViewController.swift */,
 				A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */,
+				A4869DCA1D25953F0076EC37 /* ProductsViewController.swift */,
+				A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -316,6 +328,7 @@
 				A475E3401D14902400FB66C3 /* Promotions.storyboard in Resources */,
 				A475E3441D14906500FB66C3 /* Orders.storyboard in Resources */,
 				A475E3421D14905200FB66C3 /* Cart.storyboard in Resources */,
+				A4869DC91D2595090076EC37 /* Products.storyboard in Resources */,
 				A475E33E1D148FEB00FB66C3 /* Petshops.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +407,10 @@
 				A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */,
 				A475E34E1D18548900FB66C3 /* OrdersViewController.swift in Sources */,
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,
+				A4869DCF1D259DB60076EC37 /* Product.swift in Sources */,
 				A475E34C1D18547100FB66C3 /* CartViewController.swift in Sources */,
+				A4869DCB1D25953F0076EC37 /* ProductsViewController.swift in Sources */,
+				A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */,
 				A475E3461D1490AA00FB66C3 /* AppDelegate.swift in Sources */,
 				A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */,
 			);
