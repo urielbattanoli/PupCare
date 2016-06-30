@@ -2,5 +2,7 @@
 
 use_frameworks!
 
-target 'PupCare' 
-pod 'Parse', '~> 1.13' 
+target 'PupCare'
+pod 'Parse', '~> 1.13'
+pod 'FBSDKCoreKit', '~> 4.13'
+pod 'ParseFacebookUtils'
