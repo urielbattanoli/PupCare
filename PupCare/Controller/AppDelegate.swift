@@ -8,8 +8,7 @@
 
 import UIKit
 import CoreData
-import FBSDKCoreKit
-import ParseFacebookUtilsV4
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,9 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        Parse.setApplicationId("PupCare", clientKey:"")
-        
-        PFFacebookUtils.ini
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "pupCare"
+            $0.clientKey = "pupCareClientKey"
+            $0.server = "http://ec2-54-191-28-37.us-west-2.compute.amazonaws.com:1337/pupCare"
+            $0.localDatastoreEnabled = true
+        }
+        Parse.initializeWithConfiguration(configuration)
         
         return true
     }
@@ -43,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {
