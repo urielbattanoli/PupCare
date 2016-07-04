@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XVJ-ha-5t3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G4d-vM-CpQ">
     <dependencies>
         <deployment identifier="iOS"/>
+        <development version="7000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Pet Shops View Controller-->
+        <!--Pet Shops-->
         <scene sceneID="ztB-if-dqI">
             <objects>
                 <viewController id="XVJ-ha-5t3" customClass="PetShopsViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,12 +18,98 @@
                     <view key="view" contentMode="scaleToFill" id="lqb-hA-YAJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Zd-C8-zIJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PetShopCell" rowHeight="90" id="sbS-cO-ctE" customClass="PetShopsTableViewCell" customModule="PupCare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbS-cO-ctE" id="7uU-n7-Fk9">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Paws" translatesAutoresizingMaskIntoConstraints="NO" id="Hrf-yq-YN9">
+                                                    <rect key="frame" x="15" y="10" width="70" height="70"/>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="t3K-Ol-IKC">
+                                                    <rect key="frame" x="93" y="14" width="71" height="62"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlI-sg-RdC">
+                                                            <rect key="frame" x="0.0" y="0.0" width="46" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Distância" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucE-tY-IyB">
+                                                            <rect key="frame" x="0.0" y="21" width="71" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuA-bZ-okL">
+                                                            <rect key="frame" x="0.0" y="41" width="49" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="petShopAddressLabel" destination="ucE-tY-IyB" id="3jK-xf-LZj"/>
+                                            <outlet property="petShopImageView" destination="7uU-n7-Fk9" id="hgp-3t-Zpj"/>
+                                            <outlet property="petShopNameLabel" destination="t3K-Ol-IKC" id="mns-e3-5gL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Zd-C8-zIJ" firstAttribute="leading" secondItem="lqb-hA-YAJ" secondAttribute="leadingMargin" constant="-20" id="3kR-W3-zAm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Zd-C8-zIJ" secondAttribute="trailing" constant="-20" id="FQk-Uj-76z"/>
+                            <constraint firstItem="0Yf-cr-gsv" firstAttribute="top" secondItem="6Zd-C8-zIJ" secondAttribute="bottom" id="QVp-Hx-UkT"/>
+                            <constraint firstItem="6Zd-C8-zIJ" firstAttribute="top" secondItem="j5t-Eq-tmd" secondAttribute="bottom" constant="-64" id="y1l-yT-Xyr"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Pet Shops" id="Zyr-rH-FXw">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="WBE-rh-lt7">
+                            <connections>
+                                <action selector="filterButton:" destination="XVJ-ha-5t3" id="HJS-XC-Z2h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="petShopsTableView" destination="6Zd-C8-zIJ" id="mUA-2e-KxT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hp-M5-xif" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1254" y="314"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZBb-H6-yb6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G4d-vM-CpQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PoK-H7-Zl9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XVJ-ha-5t3" kind="relationship" relationship="rootViewController" id="Ams-Ey-UVN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8hh-l8-zJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="442" y="314"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Paws" width="33" height="26"/>
+    </resources>
 </document>

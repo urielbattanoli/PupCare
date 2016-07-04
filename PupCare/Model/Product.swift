@@ -22,7 +22,7 @@ class Product: PFObject, PFSubclassing{
         return "Product"
     }
     
-    func productImage() -> UIImageView{
-        let imageView = 
-    }
+//    func productImage() -> UIImageView{
+////        let imageView = 
+//    }
 }
