@@ -14,9 +14,13 @@ class ProductsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var productsTableView: UITableView!
     
     //MARK: Variables
+    var products: [Product]?{
+        didSet{
+            self.productsTableView.reloadData()
+        }
+    }
     
     //MARK: Life cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,12 +34,13 @@ class ProductsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: TableView DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.products?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let productCell = tableView.dequeueReusableCellWithIdentifier("productCell") as! ProductTableViewCell
         
+        productCell.product = self.products![indexPath.row]
         return productCell
     }
     

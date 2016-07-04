@@ -7,22 +7,22 @@
 //
 
 import UIKit
-import Parse
 
-class Product: PFObject, PFSubclassing{
+class Product: NSObject{
     
-    @NSManaged var name: String
-    @NSManaged var imageFile: PFFile
-    @NSManaged var price: NSNumber
-    @NSManaged var descript: String
-    @NSManaged var brand: String
+    let name: String
+    let imageFile: UIImage
+    let descript: String
+    let brand: String
+    let price: NSNumber
+    let stock: NSNumber
     
-
-    static func parseClassName() -> String {
-        return "Product"
-    }
-    
-    func productImage() -> UIImageView{
-        let imageView = 
+    init(data: [String : AnyObject]) {
+        self.name = data["name"] as! String
+        self.imageFile = data["photo"] as! UIImage
+        self.descript = data["description"] as! String
+        self.brand = data["brand"] as! String
+        self.price = data["price"] as! NSNumber
+        self.stock = data["stock"] as! NSNumber
     }
 }
