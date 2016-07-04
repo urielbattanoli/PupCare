@@ -4,11 +4,11 @@
 Parse.Cloud.define("getPetshopList", function(request, response) {
   Parse.Cloud.useMasterKey();
 
-  query = new Parse.Query("PetShop");
+  var query = new Parse.Query("PetShop");
 
   query.find({
       success: function(results) {
-        Console.log(results.length)
+        Console.log(results.length);
         response.success(results);
       },
       error: function() {
