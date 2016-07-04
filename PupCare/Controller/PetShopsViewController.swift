@@ -8,11 +8,19 @@
 
 import UIKit
 
-class PetShopsViewController: UIViewController {
+class PetShopsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var petShopsTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        petShopsTableView.dataSource = self
+        petShopsTableView.delegate = self
 
+        self.reloadPetShops()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -22,6 +30,35 @@ class PetShopsViewController: UIViewController {
     }
     
 
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("PetShopCell", forIndexPath: indexPath) as! PetShopsTableViewCell
+        
+        
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    @IBAction func filterButton(sender: AnyObject) {
+    
+    
+    }
+    
+    func reloadPetShops () {
+        PetShop.getNearbyPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
+            
+        })
+    }
+    
+    
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
