@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		569E4878009CE5DDF43F544E /* Pods_PupCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */; };
+		717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717247711D2C1BC600BD694D /* PetShopParseExtension.swift */; };
 		71BBC2561D25A89200194861 /* PetShopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */; };
 		71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9C101D26D42000DA14DA /* PetShop.swift */; };
 		A475E30F1D0A9B3A00FB66C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		0493F2875AEB302E7CCF3B2B /* Pods-PupCare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.release.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.release.xcconfig"; sourceTree = "<group>"; };
 		3AB0AC7D08F3CCBE82BDDF13 /* Pods-PupCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.debug.xcconfig"; sourceTree = "<group>"; };
+		717247711D2C1BC600BD694D /* PetShopParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopParseExtension.swift; path = Model/PetShopParseExtension.swift; sourceTree = "<group>"; };
 		71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopsTableViewCell.swift; path = Controller/PetShopsTableViewCell.swift; sourceTree = "<group>"; };
 		71ED9C101D26D42000DA14DA /* PetShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShop.swift; path = Model/PetShop.swift; sourceTree = "<group>"; };
 		97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 			children = (
 				A4869DCE1D259DB60076EC37 /* Product.swift */,
 				71ED9C101D26D42000DA14DA /* PetShop.swift */,
+				717247711D2C1BC600BD694D /* PetShopParseExtension.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A475E34A1D18545D00FB66C3 /* PetShopsViewController.swift in Sources */,
+				717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */,
 				71BBC2561D25A89200194861 /* PetShopsTableViewCell.swift in Sources */,
 				A475E3521D18569B00FB66C3 /* MainTabViewController.swift in Sources */,
 				A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */,

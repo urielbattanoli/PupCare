@@ -73,7 +73,9 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         self.reloadPetShops()
         
         
-        petShopsTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+//        petShopsTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+        
+        self.petShopsTableView.contentOffset = CGPointMake(0, self.searchController.searchBar.frame.size.height)
         
         // Do any additional setup after loading the view.
     }
@@ -84,7 +86,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         petShopsTableView.reloadData()
-        petShopsTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+        
     }
     
     

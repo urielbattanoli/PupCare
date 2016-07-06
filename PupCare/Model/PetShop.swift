@@ -54,36 +54,3 @@ class PetShop: NSObject {
         }
     }
 }
-
-
-
-
-
-
-
-
-//        let petShopsQuery = PFQuery(className: "PetShop")
-//
-//        petShopsQuery.whereKey("location", nearGeoPoint: PFGeoPoint(latitude: 10, longitude: 10), withinKilometers: 10)
-//
-//        petShopsQuery.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-//
-//            if results != nil {
-//                print(results!)
-//
-//                for result in results! {
-//
-//                    let pet = PetShop()
-//                    pet.name = result.objectForKey("name") as! String
-//
-////                    pet.price = result.objectForKey("price") as! NSNumber
-//                    pet.location = result.objectForKey("location") as! PFGeoPoint
-//
-//                    PetShop.sharedInstance.allPetShops.append(pet)
-//                }
-//
-//
-//                response(petshops: PetShop.sharedInstance.allPetShops, error: error)
-//            }
-////            response(petshops: nil, error: error)
-//        }
