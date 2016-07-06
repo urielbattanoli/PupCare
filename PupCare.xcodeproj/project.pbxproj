@@ -234,7 +234,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3311D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCare" */;
 			buildPhases = (
-				3F249DE335038DD01C322263 /* 📦 Check Pods Manifest.lock */,
+				3F249DE335038DD01C322263 /* [CP] Check Pods Manifest.lock */,
 				E55CB90DA334C769AB2F41A3 /* [CP] Check Pods Manifest.lock */,
 				A475E3021D0A9B3A00FB66C3 /* Sources */,
 				A475E3031D0A9B3A00FB66C3 /* Frameworks */,
@@ -395,14 +395,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCare/Pods-PupCare-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3F249DE335038DD01C322263 /* 📦 Check Pods Manifest.lock */ = {
+		3F249DE335038DD01C322263 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
