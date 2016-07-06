@@ -11,9 +11,10 @@ import UIKit
 class PetShopsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var petShopImageView: UIView!
-    @IBOutlet weak var petShopNameLabel: UIStackView!
+    @IBOutlet weak var petShopNameLabel: UILabel!
     @IBOutlet weak var petShopAddressLabel: UILabel!
     
+    var ranking: Int = 0
     
     
     override func awakeFromNib() {
@@ -22,6 +23,11 @@ class PetShopsTableViewCell: UITableViewCell {
         
         petShopImageView.layer.masksToBounds = true
         petShopImageView.layer.cornerRadius = 10
+        
+        
+        for index in 0...ranking {
+            self.viewWithTag(index)?.alpha = 1
+        }
         
     }
 
