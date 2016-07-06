@@ -15,7 +15,6 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
-    @IBOutlet weak var lblBrand: UILabel!
     
     //MARK: Variables
     var product: Product?{
@@ -25,7 +24,6 @@ class ProductTableViewCell: UITableViewCell {
                 self.lblName.text = product.name
                 self.lblDescription.text = product.descript
                 self.lblPrice.text = "\(product.price)"
-                self.lblBrand.text = product.brand
             }
         }
     }
