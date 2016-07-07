@@ -65,15 +65,16 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         petShopsTableView.addSubview(refreshControl)
         
         searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchBar.scopeButtonTitles = Array()
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         petShopsTableView.tableHeaderView = searchController.searchBar
         
+        
+        searchController.searchBar.sizeToFit()
+        
         self.reloadPetShops()
-        
-        
-//        petShopsTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
         
         self.petShopsTableView.contentOffset = CGPointMake(0, self.searchController.searchBar.frame.size.height)
         
@@ -84,10 +85,11 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         filteredPetShops = allPetShops.filter { petShop in
             return petShop.name.lowercaseString.containsString(searchText.lowercaseString)
         }
-        
+
         petShopsTableView.reloadData()
         
     }
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -95,7 +97,9 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    
+//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 44;
+//    }
     
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
