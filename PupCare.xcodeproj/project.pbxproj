@@ -12,6 +12,8 @@
 		71BBC2561D25A89200194861 /* PetShopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */; };
 		71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9C101D26D42000DA14DA /* PetShop.swift */; };
 		A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */; };
+		A40B341D1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */; };
+		A40B341F1D30270F00BCC240 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341E1D30270F00BCC240 /* Extensions.swift */; };
 		A42331C01D2ACE5400CFF8DA /* ProductParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */; };
 		A440AF9B1D2AF2EC005B6CBC /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */; };
 		A475E30F1D0A9B3A00FB66C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		71ED9C101D26D42000DA14DA /* PetShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShop.swift; path = Model/PetShop.swift; sourceTree = "<group>"; };
 		97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductTableViewController.swift; path = Controller/ProductTableViewController.swift; sourceTree = "<group>"; };
+		A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductHeaderTableViewCell.swift; path = Controller/ProductHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		A40B341E1D30270F00BCC240 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Model/Extensions.swift; sourceTree = "<group>"; };
 		A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductParseExtension.swift; path = Model/ProductParseExtension.swift; sourceTree = "<group>"; };
 		A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductManager.swift; path = Model/ProductManager.swift; sourceTree = "<group>"; };
 		A475E3061D0A9B3A00FB66C3 /* PupCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PupCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,8 +180,9 @@
 				A4869DCE1D259DB60076EC37 /* Product.swift */,
 				A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */,
 				A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */,
-                71ED9C101D26D42000DA14DA /* PetShop.swift */,
+				71ED9C101D26D42000DA14DA /* PetShop.swift */,
 				717247711D2C1BC600BD694D /* PetShopParseExtension.swift */,
+				A40B341E1D30270F00BCC240 /* Extensions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */,
 				A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */,
 				A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */,
+				A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A475E34A1D18545D00FB66C3 /* PetShopsViewController.swift in Sources */,
+				A40B341F1D30270F00BCC240 /* Extensions.swift in Sources */,
 				A440AF9B1D2AF2EC005B6CBC /* ProductManager.swift in Sources */,
 				717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */,
 				71BBC2561D25A89200194861 /* PetShopsTableViewCell.swift in Sources */,
@@ -473,6 +480,7 @@
 				A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */,
 				A42331C01D2ACE5400CFF8DA /* ProductParseExtension.swift in Sources */,
 				A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */,
+				A40B341D1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift in Sources */,
 				A475E34E1D18548900FB66C3 /* OrdersViewController.swift in Sources */,
 				71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */,
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,

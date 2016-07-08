@@ -14,15 +14,15 @@ class Product: NSObject{
     let imageFile: UIImage
     let descript: String
     let brand: String
-    let price: NSNumber
+    let price: String
     let stock: NSNumber
     
     init(data: [String : AnyObject]) {
         self.name = data["name"] as! String
-        self.imageFile = data["photo"] as! UIImage
+        self.imageFile = UIImage()//data["photo"] as! UIImage
         self.descript = data["description"] as! String
         self.brand = data["brand"] as! String
-        self.price = data["price"] as! NSNumber
+        self.price = (data["price"] as! NSNumber).stringPreco()
         self.stock = data["stock"] as! NSNumber
     }
 }

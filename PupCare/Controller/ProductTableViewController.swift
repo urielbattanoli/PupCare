@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ProductTableViewController: UITableViewController {
+class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: outlets
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var petShopImage: UIImageView!
     @IBOutlet weak var petShopName: UILabel!
     @IBOutlet weak var petShopAdress: UILabel!
@@ -20,7 +22,14 @@ class ProductTableViewController: UITableViewController {
     // MARK: Variables
     var petShop: PetShop?{
         didSet{
-            
+            if let petshop = self.petShop{
+                self.petShopName.text = petshop.name
+                self.petShopAdress.text = petshop.address
+                self.petShopImage.image = petshop.imageFile
+                self.petShopDistance.text = "calcular"
+                self.petShopDistrict.text = "faltou"
+                //self.products = petshop.products
+            }
         }
     }
     var products: [Product]?{
@@ -29,73 +38,110 @@ class ProductTableViewController: UITableViewController {
         }
     }
     
+    var filteredProducts: [Product] = []
+    
+    var searchController: UISearchController?{
+        didSet{
+            self.searchController?.hidesNavigationBarDuringPresentation = false
+            self.searchController?.searchResultsUpdater = self
+            self.searchController?.dimsBackgroundDuringPresentation = false
+            definesPresentationContext = true
+            self.tableView.tableHeaderView = searchController!.searchBar
+        }
+    }
+    
+    var refreshControl: UIRefreshControl?{
+        didSet{
+            self.refreshControl?.attributedTitle = NSAttributedString(string: "Puxe para Atualizar")
+            self.refreshControl?.addTarget(self, action: #selector(ProductTableViewController.reloadProducts), forControlEvents: .ValueChanged)
+            self.tableView.addSubview(self.refreshControl!)
+        }
+    }
+    
+    func reloadProducts() {
+        ProductManager().getProductList("petShopId") { (products) in
+            self.products = products
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    // MARK: Table view data source
+        
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.refreshControl = UIRefreshControl()
+        self.tableView.tableFooterView = UIView()
+        
+        var product = Product(data: ["name":"Osso Grande" , "description":"osso de catioro azul ou branco com cheirinho de delicia e ppk tbm, escolha o cheirinho que vc quer muito bem para o bem da sua mulher" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        var vetor = [product]
+        
+        product = Product(data: ["name":"Osso Pequeno" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        vetor.append(product)
+        
+        product = Product(data: ["name":"bolinha" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        vetor.append(product)
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        product = Product(data: ["name":"racao Grande" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        vetor.append(product)
+
+        product = Product(data: ["name":"racao pequena" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        vetor.append(product)
+        
+        self.products = vetor
+    }
+    
+    // MARK: Table view data source
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.products?.count ?? 0
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.searchController!.active && searchController!.searchBar.text != "" {
+            return self.filteredProducts.count ?? 0
+        }
+        else{
+            return self.products?.count ?? 0
+        }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellProduct", forIndexPath: indexPath) as! ProductTableViewCell
-        cell.product = self.products![indexPath.row]
-
+        
+        if searchController!.active && searchController!.searchBar.text != "" {
+            cell.product = self.filteredProducts[indexPath.row]
+        } else {
+            cell.product = self.products![indexPath.row]
+        }
+        
         return cell
     }
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableCellWithIdentifier("cellHeader")
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableCellWithIdentifier("cellHeader") as! ProductHeaderTableViewCell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // MARK: Table view delegate
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 90
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
+    // MARK: Functions
+    func filterProductsForSearchText(searchText: String, scope: String = "All") {
+        self.filteredProducts = products!.filter { product in
+            return product.name.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        
+        self.tableView.reloadData()
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+}
+
+extension ProductTableViewController: UISearchResultsUpdating{
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filterProductsForSearchText(searchController.searchBar.text!)
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
