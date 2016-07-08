@@ -7,7 +7,19 @@
 //
 
 import UIKit
+import Parse
 
-class PromotionParseExtension: NSObject {
-
+extension Promotion {
+    convenience init (parseObject: PFObject) {
+        
+        var data = [String: AnyObject]()
+        let promotion = parseObject["Promotion"] as! PFObject
+        
+        data["lastPrice"] = promotion["lastPrice"] as! Float
+        data["newPrice"] = promotion["newPrice"] as! Float
+        data["initialDate"] = promotion["initialDate"] as! String
+        data["finalDate"] = promotion["finalDate"] as! String
+        
+        self.init(data: data)
+    }
 }
