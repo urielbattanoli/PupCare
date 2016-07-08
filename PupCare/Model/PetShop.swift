@@ -13,14 +13,14 @@ class PetShop: NSObject {
 
     var name: String = ""
     var imageFile: UIImage = UIImage()
-//    var price: NSNumber = 0
     var location = PFGeoPoint()
     var address: String = ""
+    var neighboarhood: String = ""
+    var distance: Float = 0
+    var products: [Product] = []
     var ranking: Float = 0
     
-    
     static let sharedInstance = PetShop()
-//
     var allPetShops: [PetShop] = []
     
     init(data: [String: AnyObject]) {
@@ -28,6 +28,8 @@ class PetShop: NSObject {
         self.imageFile = data["photo"] as! UIImage
         self.location = data["location"] as! PFGeoPoint
         self.address = data["address"] as! String
+        self.neighboarhood = data["neighboarhood"] as! String
+        self.distance = data["distance"] as! Float
         self.ranking = data["ranking"] as! Float
     }
     
@@ -35,22 +37,4 @@ class PetShop: NSObject {
         
     }
     
-    static func getNearbyPetShops(latitude: Float, longitude: Float, withinKilometers: Float, response: (petshops: [PetShop]?, error: NSError?) -> ()) {
-        
-        var currentLocation = PFGeoPoint(latitude: 10, longitude: 10)
-        
-        PFCloud.callFunctionInBackground("getPetshopList", withParameters: ["currentLocation": currentLocation]) { (petshops, error) in
-            
-            if let petshops = petshops as? [PFObject] {
-                
-                for petshop in petshops {
-                    let object = PetShop(parseObject:petshop)
-                    PetShop.sharedInstance.allPetShops.append(object)
-                }
-            }
-            
-//            response(petshops: PetShop.sharedInstance.allPetShops, error: error)
-            
-        }
-    }
 }
