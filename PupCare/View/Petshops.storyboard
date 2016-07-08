@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbS-cO-ctE" id="7uU-n7-Fk9">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="ksT-fP-cA1">
@@ -96,6 +96,7 @@
                                             <outlet property="petShopAddressLabel" destination="ucE-tY-IyB" id="3jK-xf-LZj"/>
                                             <outlet property="petShopImageView" destination="7uU-n7-Fk9" id="hgp-3t-Zpj"/>
                                             <outlet property="petShopNameLabel" destination="VlI-sg-RdC" id="owa-wd-5p2"/>
+                                            <segue destination="OiA-xe-TCP" kind="show" identifier="Products" id="tHO-3h-Ghs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -123,6 +124,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hp-M5-xif" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1254" y="314"/>
+        </scene>
+        <!--Products-->
+        <scene sceneID="sqt-DI-m6C">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Products" id="OiA-xe-TCP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pP5-9g-TYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1785.5" y="321"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZBb-H6-yb6">
