@@ -73,6 +73,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         searchController.searchBar.sizeToFit()
+        searchController.hidesNavigationBarDuringPresentation = false
         
         self.reloadPetShops()
         
@@ -136,30 +137,40 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func reloadPetShops () {
-        PetShop.getNearbyPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
-            self.allPetShops = petshops!
+        PetShopManager.getNearbyPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
+//            self.allPetShops = petshops!
+            // Descomentar quando arrumar cloud
             self.refreshControl.endRefreshing()
         })
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        performSegueWithIdentifier(<#T##identifier: String##String#>, sender: <#T##AnyObject?#>)
+        
+        
         
     }
     
     
     
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "Products" {
+            let productsViewController = segue.destinationViewController as! ProductTableViewController
+            
+            let indexPath = self.petShopsTableView.indexPathForSelectedRow!
+            
+            print(allPetShops)
+            
+            productsViewController.petShop = self.allPetShops[indexPath.row]
+            
+            
+//            productsViewController.petShop =
+        }
+        
     }
-    */
+ 
 
 }
 

@@ -19,7 +19,7 @@ class ProductTableViewController: UITableViewController {
     
     // MARK: Variables
     var petShop: PetShop?{
-        didSet{
+        didSet {
             
         }
     }
@@ -31,6 +31,8 @@ class ProductTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(petShop)
     }
     // MARK: Table view data source
 

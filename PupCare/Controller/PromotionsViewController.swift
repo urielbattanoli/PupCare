@@ -8,11 +8,18 @@
 
 import UIKit
 
-class PromotionsViewController: UIViewController {
+class PromotionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
 
+    @IBOutlet weak var promotionsTableView: UITableView!
+
+    var allPromotions: [Promotion] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +28,20 @@ class PromotionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("PromotionsCell", forIndexPath: indexPath) as! PromotionsTableViewCell
+        
+        cell.priceLabel.text = allPromotions[indexPath.row].promotionName
+        cell.petShopLabel.text = allPromotions[indexPath.row].petshop.name
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allPromotions.count
+    }
+    
+    
     /*
     // MARK: - Navigation
 
