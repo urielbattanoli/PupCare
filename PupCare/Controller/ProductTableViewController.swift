@@ -20,18 +20,8 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var petShopDistance: UILabel!
     
     // MARK: Variables
-    var petShop: PetShop?{
-        didSet{
-            if let petshop = self.petShop{
-                self.petShopName.text = petshop.name
-                self.petShopAdress.text = petshop.address
-                self.petShopImage.image = petshop.imageFile
-                self.petShopDistance.text = "calcular"
-                self.petShopDistrict.text = "faltou"
-                //self.products = petshop.products
-            }
-        }
-    }
+    var petShop: PetShop?
+    
     var products: [Product]?{
         didSet{
             self.tableView.reloadData()
@@ -59,11 +49,13 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func reloadProducts() {
-        ProductManager().getProductList("petShopId") { (products) in
+        self.productManager.getProductList("petShopId") { (products) in
             self.products = products
             self.refreshControl?.endRefreshing()
         }
     }
+    
+    let productManager = ProductManager()
     
     //MARK: Life cycle
     override func viewDidLoad() {
@@ -72,6 +64,23 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         self.searchController = UISearchController(searchResultsController: nil)
         self.refreshControl = UIRefreshControl()
         self.tableView.tableFooterView = UIView()
+        
+        if let petshop = self.petShop{
+            self.petShopName.text = petshop.name
+            self.petShopAdress.text = petshop.address
+            self.petShopImage.image = petshop.imageFile
+            self.petShopDistance.text = "calcular"
+            self.petShopDistrict.text = "faltou"
+            if petshop.products.count > 0{
+                self.products = petshop.products
+            }
+            else{
+                self.productManager.getProductList("petShopId", block: { (products) in
+                    petshop.products = products
+                    self.products = products
+                })
+            }
+        }
         
         var product = Product(data: ["name":"Osso Grande" , "description":"osso de catioro azul ou branco com cheirinho de delicia e ppk tbm, escolha o cheirinho que vc quer muito bem para o bem da sua mulher" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
         var vetor = [product]

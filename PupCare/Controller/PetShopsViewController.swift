@@ -65,15 +65,17 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         petShopsTableView.addSubview(refreshControl)
         
         searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchBar.scopeButtonTitles = Array()
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         petShopsTableView.tableHeaderView = searchController.searchBar
         
+        
+        searchController.searchBar.sizeToFit()
+        searchController.hidesNavigationBarDuringPresentation = false
+        
         self.reloadPetShops()
-        
-        
-//        petShopsTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
         
         self.petShopsTableView.contentOffset = CGPointMake(0, self.searchController.searchBar.frame.size.height)
         
@@ -84,10 +86,11 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         filteredPetShops = allPetShops.filter { petShop in
             return petShop.name.lowercaseString.containsString(searchText.lowercaseString)
         }
-        
+
         petShopsTableView.reloadData()
         
     }
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -95,7 +98,9 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    
+//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 44;
+//    }
     
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -132,30 +137,40 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func reloadPetShops () {
-        PetShop.getNearbyPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
-            self.allPetShops = petshops!
+        PetShopManager.getNearbyPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
+//            self.allPetShops = petshops!
+            // Descomentar quando arrumar cloud
             self.refreshControl.endRefreshing()
         })
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        performSegueWithIdentifier(<#T##identifier: String##String#>, sender: <#T##AnyObject?#>)
+        
+        
         
     }
     
     
     
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "Products" {
+            let productsViewController = segue.destinationViewController as! ProductTableViewController
+            
+            let indexPath = self.petShopsTableView.indexPathForSelectedRow!
+            
+            print(allPetShops)
+            
+            productsViewController.petShop = self.allPetShops[indexPath.row]
+            
+            
+//            productsViewController.petShop =
+        }
+        
     }
-    */
+ 
 
 }
 
