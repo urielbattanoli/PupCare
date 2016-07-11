@@ -16,7 +16,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var petShopImage: UIImageView!
     @IBOutlet weak var petShopName: UILabel!
     @IBOutlet weak var petShopAdress: UILabel!
-    @IBOutlet weak var petShopDistrict: UILabel!
+    @IBOutlet weak var petShopNeighboarhood: UILabel!
     @IBOutlet weak var petShopDistance: UILabel!
     
     // MARK: Variables
@@ -29,6 +29,8 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     var filteredProducts: [Product] = []
+    
+    let productManager = ProductManager()
     
     var searchController: UISearchController?{
         didSet{
@@ -48,15 +50,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    func reloadProducts() {
-        self.productManager.getProductList("petShopId") { (products) in
-            self.products = products
-            self.refreshControl?.endRefreshing()
-        }
-    }
-    
-    let productManager = ProductManager()
-    
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,31 +63,31 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             self.petShopAdress.text = petshop.address
             self.petShopImage.image = petshop.imageFile
             self.petShopDistance.text = "calcular"
-            self.petShopDistrict.text = "faltou"
+            self.petShopNeighboarhood.text = petshop.neighboarhood
             if petshop.products.count > 0{
                 self.products = petshop.products
             }
             else{
                 self.productManager.getProductList("petShopId", block: { (products) in
-                    petshop.products = products
-                    self.products = products
+                    //                    petshop.products = products
+                    //                    self.products = products
                 })
             }
         }
         
-        var product = Product(data: ["name":"Osso Grande" , "description":"osso de catioro azul ou branco com cheirinho de delicia e ppk tbm, escolha o cheirinho que vc quer muito bem para o bem da sua mulher" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        var product = Product(data: ["name":"Osso Grande" , "description":"osso de catioro azul ou branco com cheirinho de delicia e ppk tbm, escolha o cheirinho que vc quer muito bem para o bem da sua mulher" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://barkpost.com.br/wp-content/uploads/2014/11/whatthepup.png"])
         var vetor = [product]
         
-        product = Product(data: ["name":"Osso Pequeno" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        product = Product(data: ["name":"Osso Pequeno" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://wallpaper.ultradownloads.com.br/45586_Papel-de-Parede-Filhote-de-Cachorro_1024x768.jpg"])
         vetor.append(product)
         
-        product = Product(data: ["name":"bolinha" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        product = Product(data: ["name":"bolinha" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://www.adimaxpet.com.br/assets/photo_dica2.png"])
         vetor.append(product)
-
-        product = Product(data: ["name":"racao Grande" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        
+        product = Product(data: ["name":"racao Grande" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://cdn3.tudosobrecachorros.com.br/wp-content/uploads/so-quem-tem-cachorro-entende-2.jpg"])
         vetor.append(product)
-
-        product = Product(data: ["name":"racao pequena" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson"])
+        
+        product = Product(data: ["name":"racao pequena" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://image.cachorrogato.com.br/textimages/alimentacao-filhotes-cachorro.jpg"])
         vetor.append(product)
         
         self.products = vetor
@@ -104,7 +97,11 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableCellWithIdentifier("cellHeader") as! ProductHeaderTableViewCell
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searchController!.active && searchController!.searchBar.text != "" {
             return self.filteredProducts.count ?? 0
@@ -125,10 +122,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         
         return cell
     }
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableCellWithIdentifier("cellHeader") as! ProductHeaderTableViewCell
-    }
-
+    
     // MARK: Table view delegate
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
@@ -146,7 +140,14 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         
         self.tableView.reloadData()
     }
-
+    
+    
+    func reloadProducts() {
+        self.productManager.getProductList("petShopId") { (products) in
+            self.products = products
+            self.refreshControl?.endRefreshing()
+        }
+    }
 }
 
 extension ProductTableViewController: UISearchResultsUpdating{

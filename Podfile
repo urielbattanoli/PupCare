@@ -8,6 +8,7 @@ pod 'FBSDKCoreKit', '~> 4.11.0'
 pod 'FBSDKLoginKit', '~> 4.11.0'
 pod 'FBSDKShareKit', '~> 4.11.0'
 pod 'ParseFacebookUtilsV4', '~> 1.11.1'
+pod 'Kingfisher', '~> 2.4'
 end
 
 target 'PupCareTests' do
@@ -16,4 +17,5 @@ target 'PupCareTests' do
     pod 'FBSDKLoginKit', '~> 4.11.0'
     pod 'FBSDKShareKit', '~> 4.11.0'
     pod 'ParseFacebookUtilsV4', '~> 1.11.1'
+    pod 'Kingfisher', '~> 2.4'
 end

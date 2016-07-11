@@ -11,7 +11,7 @@ import UIKit
 class Product: NSObject{
     
     let name: String
-    let imageFile: UIImage
+    let imageUrl: String
     let descript: String
     let brand: String
     let price: String
@@ -19,7 +19,7 @@ class Product: NSObject{
     
     init(data: [String : AnyObject]) {
         self.name = data["name"] as! String
-        self.imageFile = UIImage()//data["photo"] as! UIImage
+        self.imageUrl = data["imageUrl"] as! String
         self.descript = data["description"] as! String
         self.brand = data["brand"] as! String
         self.price = (data["price"] as! NSNumber).stringPreco()

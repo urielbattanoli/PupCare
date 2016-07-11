@@ -22,7 +22,7 @@ extension Product{
         let product = parseObject["product"] as! PFObject
         
         data["name"] = product["name"] as! String
-        data["photo"] = product["photo"] as! PFFile//MUDAR PRA UIIMAGE
+        data["imageUrl"] = (product["photo"] as! PFFile).url
         data["description"] = product["description"] as! String
         data["brand"] = product["brand"] as! String
         
