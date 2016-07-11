@@ -10,7 +10,7 @@ import UIKit
 
 class PetShopsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var petShopImageView: UIView!
+    @IBOutlet weak var petShopImageView: UIImageView!
     @IBOutlet weak var petShopNameLabel: UILabel!
     @IBOutlet weak var petShopAddressLabel: UILabel!
     

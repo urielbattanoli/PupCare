@@ -94,7 +94,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="petShopAddressLabel" destination="ucE-tY-IyB" id="3jK-xf-LZj"/>
-                                            <outlet property="petShopImageView" destination="7uU-n7-Fk9" id="hgp-3t-Zpj"/>
+                                            <outlet property="petShopImageView" destination="Hrf-yq-YN9" id="H6Q-yS-1XN"/>
                                             <outlet property="petShopNameLabel" destination="VlI-sg-RdC" id="owa-wd-5p2"/>
                                             <segue destination="OiA-xe-TCP" kind="show" identifier="Products" id="tHO-3h-Ghs"/>
                                         </connections>
