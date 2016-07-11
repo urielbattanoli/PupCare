@@ -7,12 +7,16 @@
 //
 
 import XCTest
+
 @testable import PupCare
 
 class PupCareTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
+        ParseManager.InitParse()
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
