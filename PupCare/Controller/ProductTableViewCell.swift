@@ -9,7 +9,25 @@
 import UIKit
 
 class ProductTableViewCell: UITableViewCell {
-
+    
+    //MARK: Outlets
+    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblPrice: UILabel!
+    
+    //MARK: Variables
+    var product: Product?{
+        didSet{
+            if let product = self.product{
+//                self.photoImageView.image = 
+                self.lblName.text = product.name
+                self.lblDescription.text = product.descript
+                self.lblPrice.text = product.price
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
