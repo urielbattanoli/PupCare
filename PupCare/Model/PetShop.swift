@@ -12,7 +12,7 @@ import Parse
 class PetShop: NSObject {
 
     var name: String = ""
-    var imageFile: UIImage = UIImage()
+    var imageUrl: String = ""
     var location = PFGeoPoint()
     var address: String = ""
     var neighbourhood: String = ""
@@ -25,7 +25,7 @@ class PetShop: NSObject {
     
     init(data: [String: AnyObject]) {
         self.name = data["name"] as! String
-//        self.imageFile = data["photo"] as! UIImage
+        self.imageUrl = data["photo"] as! String
         self.location = data["location"] as! PFGeoPoint
         self.address = data["address"] as! String
         self.neighbourhood = data["neighbourhood"] as! String

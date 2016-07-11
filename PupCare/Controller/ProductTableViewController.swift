@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -61,9 +62,10 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         if let petshop = self.petShop{
             self.petShopName.text = petshop.name
             self.petShopAdress.text = petshop.address
-            self.petShopImage.image = petshop.imageFile
+            self.petShopImage.kf_showIndicatorWhenLoading = true
+            self.petShopImage.kf_setImageWithURL(NSURL(string: petshop.imageUrl)!, placeholderImage: nil)
             self.petShopDistance.text = "calcular"
-            self.petShopNeighboarhood.text = petshop.neighboarhood
+            self.petShopNeighboarhood.text = petshop.neighbourhood
             if petshop.products.count > 0{
                 self.products = petshop.products
             }
