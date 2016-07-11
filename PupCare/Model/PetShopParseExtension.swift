@@ -17,7 +17,7 @@ extension PetShop {
         print(parseObject["name"] as! String)
         data["objectId"] = parseObject.objectId
         data["name"] = parseObject["name"] as! String
-        data["photo"] = (parseObject["photo"] as! PFFile).url
+        data["photo"] = (parseObject["image"] as! PFFile).url
         data["location"] = parseObject["location"] as! PFGeoPoint
         data["address"] = parseObject["address"] as! String
         data["neighbourhood"] = parseObject["neighbourhood"] as! String
