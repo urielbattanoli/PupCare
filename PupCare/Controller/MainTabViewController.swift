@@ -29,7 +29,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         vcOrders.tabBarItem = UITabBarItem(title: "Pedidos", image: UIImage(named: "ordersIcon"), selectedImage: nil)
         
         //Cart ViewController
-        let vcCart = UIStoryboard(name: "Cart", bundle: nil).instantiateInitialViewController()!
+        let vcCart = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()!
         vcCart.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
         
         self.viewControllers = [vcPetShops,vcPromotions,vcOrders,vcCart]

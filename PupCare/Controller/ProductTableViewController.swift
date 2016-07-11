@@ -75,23 +75,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
                 })
             }
         }
-//        
-//        var product = Product(data: ["name":"Osso Grande" , "description":"osso de catioro azul ou branco com cheirinho de delicia e ppk tbm, escolha o cheirinho que vc quer muito bem para o bem da sua mulher" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://barkpost.com.br/wp-content/uploads/2014/11/whatthepup.png"])
-//        var vetor = [product]
-//        
-//        product = Product(data: ["name":"Osso Pequeno" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://wallpaper.ultradownloads.com.br/45586_Papel-de-Parede-Filhote-de-Cachorro_1024x768.jpg"])
-//        vetor.append(product)
-//        
-//        product = Product(data: ["name":"bolinha" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://www.adimaxpet.com.br/assets/photo_dica2.png"])
-//        vetor.append(product)
-//        
-//        product = Product(data: ["name":"racao Grande" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://cdn3.tudosobrecachorros.com.br/wp-content/uploads/so-quem-tem-cachorro-entende-2.jpg"])
-//        vetor.append(product)
-//        
-//        product = Product(data: ["name":"racao pequena" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://image.cachorrogato.com.br/textimages/alimentacao-filhotes-cachorro.jpg"])
-//        vetor.append(product)
-//        
-//        self.products = vetor
     }
     
     // MARK: Table view data source
@@ -133,7 +116,21 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         return 90
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("goToDetail", sender: self.products![indexPath.row])
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
     // MARK: Functions
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToDetail"{
+            let productDetail = segue.destinationViewController as! ProductDetailViewController
+            
+            productDetail.product = sender as? Product
+        }
+    }
+    
     func filterProductsForSearchText(searchText: String, scope: String = "All") {
         self.filteredProducts = products!.filter { product in
             return product.name.lowercaseString.containsString(searchText.lowercaseString)
