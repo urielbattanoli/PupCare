@@ -1,15 +1,18 @@
 PODS:
   - Bolts/Tasks (1.6.0)
+  - Kingfisher (2.4.1)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
 
 DEPENDENCIES:
+  - Kingfisher (~> 2.4)
   - Parse
 
 SPEC CHECKSUMS:
   Bolts: f52a250053bb517ca874523c3913776359ab3def
+  Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
 
-PODFILE CHECKSUM: 56a0948cd2275cdd4ebe4d1610fc658ee6e9534a
+PODFILE CHECKSUM: e617deff43dad66d7bd34d67fe5e139c49bef826
 
 COCOAPODS: 1.0.0

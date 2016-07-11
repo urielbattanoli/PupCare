@@ -19,11 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gC4-MF-ZnG">
-                                <rect key="frame" x="10" y="74" width="580" height="70"/>
+                                <rect key="frame" x="10" y="30" width="580" height="70"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yi1-i7-jfJ">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yi1-i7-jfJ">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
-                                        <color key="backgroundColor" red="0.0" green="0.46274509800000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="DW5-XW-E2I"/>
                                             <constraint firstAttribute="width" constant="70" id="XCj-Pi-oQZ"/>
@@ -68,10 +67,10 @@
                                                                 <rect key="frame" x="21" y="0.0" width="17" height="20"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tBJ-mi-cAj">
-                                                                <rect key="frame" x="42" y="0.0" width="17" height="20"/>
+                                                                <rect key="frame" x="41" y="0.0" width="17" height="20"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICX-cH-0Ps">
-                                                                <rect key="frame" x="63" y="0.0" width="16" height="20"/>
+                                                                <rect key="frame" x="62" y="0.0" width="17" height="20"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Eq-k5-TDq">
                                                                 <rect key="frame" x="83" y="0.0" width="17" height="20"/>
@@ -104,7 +103,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nzr-gK-hS4">
-                                <rect key="frame" x="0.0" y="154" width="600" height="446"/>
+                                <rect key="frame" x="0.0" y="110" width="600" height="490"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellHeader" rowHeight="50" id="PFP-Km-trO" customClass="ProductHeaderTableViewCell" customModule="PupCare" customModuleProvider="target">
@@ -176,9 +175,8 @@
                                                     <color key="textColor" red="0.0" green="0.46274509803921571" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vCE-vO-Rqa">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vCE-vO-Rqa">
                                                     <rect key="frame" x="15" y="10" width="70" height="70"/>
-                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.87450980389999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="9RY-U5-uqc"/>
                                                         <constraint firstAttribute="width" constant="70" id="oYc-Zd-sgs"/>
@@ -233,9 +231,9 @@
                     <connections>
                         <outlet property="petShopAdress" destination="tIL-Sa-D8Y" id="TTt-6y-yWI"/>
                         <outlet property="petShopDistance" destination="PIg-iY-iaw" id="zSH-Ut-6fN"/>
-                        <outlet property="petShopDistrict" destination="rkh-rk-Qfb" id="UOk-24-sbj"/>
                         <outlet property="petShopImage" destination="yi1-i7-jfJ" id="yQn-sq-Ukf"/>
                         <outlet property="petShopName" destination="OJt-Cs-TMc" id="sXt-aJ-tK1"/>
+                        <outlet property="petShopNeighboarhood" destination="rkh-rk-Qfb" id="zZF-BK-Ers"/>
                         <outlet property="tableView" destination="Nzr-gK-hS4" id="Sjr-j3-WzR"/>
                     </connections>
                 </viewController>
