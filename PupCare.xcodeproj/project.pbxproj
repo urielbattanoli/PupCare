@@ -131,6 +131,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A31925E1D34012F004096A0 /* PetShop */ = {
+			isa = PBXGroup;
+			children = (
+				71ED9C101D26D42000DA14DA /* PetShop.swift */,
+				71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */,
+				717247711D2C1BC600BD694D /* PetShopParseExtension.swift */,
+			);
+			name = PetShop;
+			sourceTree = "<group>";
+		};
+		7A31925F1D340139004096A0 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				A4869DCE1D259DB60076EC37 /* Product.swift */,
+				A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */,
+				A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */,
+			);
+			name = Product;
+			sourceTree = "<group>";
+		};
+		7A3192601D34013F004096A0 /* Promotion */ = {
+			isa = PBXGroup;
+			children = (
+				71C1B4431D2EB8A300CDDA20 /* Promotion.swift */,
+				71C1B44B1D30062000CDDA20 /* PromotionManager.swift */,
+				71C1B4471D2EC08000CDDA20 /* PromotionParseExtension.swift */,
+			);
+			name = Promotion;
+			sourceTree = "<group>";
+		};
 		A475E2FD1D0A9B3A00FB66C3 = {
 			isa = PBXGroup;
 			children = (
@@ -187,16 +217,10 @@
 		A475E33A1D148F1600FB66C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A4869DCE1D259DB60076EC37 /* Product.swift */,
-				A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */,
-				A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */,
-				71ED9C101D26D42000DA14DA /* PetShop.swift */,
-				717247711D2C1BC600BD694D /* PetShopParseExtension.swift */,
+				7A31925E1D34012F004096A0 /* PetShop */,
+				7A31925F1D340139004096A0 /* Product */,
+				7A3192601D34013F004096A0 /* Promotion */,
 				A40B341E1D30270F00BCC240 /* Extensions.swift */,
-				71C1B4431D2EB8A300CDDA20 /* Promotion.swift */,
-				71C1B4471D2EC08000CDDA20 /* PromotionParseExtension.swift */,
-				71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */,
-				71C1B44B1D30062000CDDA20 /* PromotionManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -670,6 +694,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PupCare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -682,6 +707,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PupCare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
