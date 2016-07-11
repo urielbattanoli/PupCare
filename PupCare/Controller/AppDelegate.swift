@@ -19,13 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        let configuration = ParseClientConfiguration {
-            $0.applicationId = "dckKugdRir32iGpqm561bgmwmxEBxR3wEnKtKodD"
-            $0.clientKey = "4jZKylHLUj9WNFu304CQltMuYM8aoJTiocHfMBTU"
-//            $0.server = "http://ec2-54-191-28-37.us-west-2.compute.amazonaws.com:1337/upper"
-            $0.localDatastoreEnabled = true
-        }
-        Parse.initializeWithConfiguration(configuration)
+        ParseManager.InitParse()
         
         return true
     }

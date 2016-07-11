@@ -15,7 +15,7 @@ extension PetShop {
         var data = [String : AnyObject]()
         
         print(parseObject["name"] as! String)
-        
+        data["objectId"] = parseObject.objectId
         data["name"] = parseObject["name"] as! String
         data["photo"] = (parseObject["photo"] as! PFFile).url
         data["location"] = parseObject["location"] as! PFGeoPoint

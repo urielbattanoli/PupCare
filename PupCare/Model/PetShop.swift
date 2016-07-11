@@ -11,6 +11,7 @@ import Parse
 
 class PetShop: NSObject {
 
+    var objectId: String = ""
     var name: String = ""
     var imageUrl: String = ""
     var location = PFGeoPoint()
@@ -24,6 +25,7 @@ class PetShop: NSObject {
     var allPetShops: [PetShop] = []
     
     init(data: [String: AnyObject]) {
+        self.objectId = data["objectId"] as! String
         self.name = data["name"] as! String
         self.imageUrl = data["photo"] as! String
         self.location = data["location"] as! PFGeoPoint
