@@ -19,7 +19,7 @@ class Product: NSObject{
     
     init(data: [String : AnyObject]) {
         self.name = data["name"] as! String
-        self.imageUrl = data["imageUrl"] as! String
+        self.imageUrl = ""//data["imageUrl"] as! String
         self.descript = data["description"] as! String
         self.brand = data["brand"] as! String
         self.price = (data["price"] as! NSNumber).stringPreco()
