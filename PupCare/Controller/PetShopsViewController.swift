@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import Parse
 
 class PetShopsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        PFCloud.callFunctionInBackground("getNearPetShopList", withParameters: ["lat":10.0,"lng":10.0,"maxDistance":10.0]) { (results, error) in
+            print(results)
+        }
+
+        
         // Do any additional setup after loading the view.
     }
 

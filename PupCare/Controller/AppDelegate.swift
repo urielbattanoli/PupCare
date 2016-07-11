@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let configuration = ParseClientConfiguration {
-            $0.applicationId = "pupCare"
-            $0.clientKey = "pupCareClientKey"
-            $0.server = "http://ec2-54-191-28-37.us-west-2.compute.amazonaws.com:1337/pupCare"
+            $0.applicationId = "dckKugdRir32iGpqm561bgmwmxEBxR3wEnKtKodD"
+            $0.clientKey = "4jZKylHLUj9WNFu304CQltMuYM8aoJTiocHfMBTU"
+//            $0.server = "http://ec2-54-191-28-37.us-west-2.compute.amazonaws.com:1337/upper"
             $0.localDatastoreEnabled = true
         }
         Parse.initializeWithConfiguration(configuration)
