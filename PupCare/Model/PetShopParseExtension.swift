@@ -14,16 +14,16 @@ extension PetShop {
     convenience init(parseObject: PFObject) {
         var data = [String : AnyObject]()
         
-        let petShop = parseObject["PetShop"] as! PFObject
+        print(parseObject["name"] as! String)
         
-        data["name"] = petShop["name"] as! String
+        data["name"] = parseObject["name"] as! String
         //data["photo"] = petShop["photo"] as! UIImage //
-        data["location"] = petShop["description"] as! PFGeoPoint
-        data["address"] = petShop["address"] as! String
-        data["neighboarhood"] = petShop["neighboarhood"] as! String
+        data["location"] = parseObject["location"] as! PFGeoPoint
+        data["address"] = parseObject["address"] as! String
+        data["neighbourhood"] = parseObject["neighbourhood"] as! String
         
         
-        data["ranking"] = petShop["ranking"] as! Float
+        data["rating"] = parseObject["rating"] as! Float
         
         
         self.init(data: data)

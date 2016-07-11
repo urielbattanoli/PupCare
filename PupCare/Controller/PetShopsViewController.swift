@@ -23,36 +23,36 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
         
-        
-        let petShop1 = PetShop()
-        petShop1.name = "Pets Mimados"
-        petShop1.address = "Orfanatrofio"
-        allPetShops.append(petShop1)
-        
-        let petShop2 = PetShop()
-        petShop2.name = "Pets Furiosos"
-        petShop2.address = "PUCRS"
-        allPetShops.append(petShop2)
-        
-        let petShop3 = PetShop()
-        petShop3.name = "Pets Shows"
-        petShop3.address = "Nonoai"
-        allPetShops.append(petShop3)
-        
-        let petShop4 = PetShop()
-        petShop4.name = "Pets Carinhosos"
-        petShop4.address = "Protásio Alves"
-        allPetShops.append(petShop4)
-        
-        let petShop5 = PetShop()
-        petShop5.name = "Pets Mimados"
-        petShop5.address = "Orfanatrofio"
-        allPetShops.append(petShop5)
-        
-        let petShop6 = PetShop()
-        petShop6.name = "Pets Correndo"
-        petShop6.address = "Osvaldo Aranha"
-        allPetShops.append(petShop6)
+//        
+//        let petShop1 = PetShop()
+//        petShop1.name = "Pets Mimados"
+//        petShop1.address = "Orfanatrofio"
+//        allPetShops.append(petShop1)
+//        
+//        let petShop2 = PetShop()
+//        petShop2.name = "Pets Furiosos"
+//        petShop2.address = "PUCRS"
+//        allPetShops.append(petShop2)
+//        
+//        let petShop3 = PetShop()
+//        petShop3.name = "Pets Shows"
+//        petShop3.address = "Nonoai"
+//        allPetShops.append(petShop3)
+//        
+//        let petShop4 = PetShop()
+//        petShop4.name = "Pets Carinhosos"
+//        petShop4.address = "Protásio Alves"
+//        allPetShops.append(petShop4)
+//        
+//        let petShop5 = PetShop()
+//        petShop5.name = "Pets Mimados"
+//        petShop5.address = "Orfanatrofio"
+//        allPetShops.append(petShop5)
+//        
+//        let petShop6 = PetShop()
+//        petShop6.name = "Pets Correndo"
+//        petShop6.address = "Osvaldo Aranha"
+//        allPetShops.append(petShop6)
         
         
         petShopsTableView.dataSource = self
@@ -137,10 +137,11 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func reloadPetShops () {
-        PetShopManager.getNearbyPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
-//            self.allPetShops = petshops!
+        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
+            self.allPetShops = petshops!
             // Descomentar quando arrumar cloud
             self.refreshControl.endRefreshing()
+            self.petShopsTableView.reloadData()
         })
     }
     
