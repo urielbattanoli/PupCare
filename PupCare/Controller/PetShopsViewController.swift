@@ -73,12 +73,12 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         petShopsTableView.tableHeaderView = searchController.searchBar
         
         
-        searchController.searchBar.sizeToFit()
+//        searchController.searchBar.sizeToFit()
         searchController.hidesNavigationBarDuringPresentation = false
         
         self.reloadPetShops()
         
-        self.petShopsTableView.contentOffset = CGPointMake(0, self.searchController.searchBar.frame.size.height)
+        self.petShopsTableView.contentOffset = CGPointMake(0, self.petShopsTableView.tableHeaderView!.frame.size.height)//self.searchController.searchBar.frame.size.height)
         
         // Do any additional setup after loading the view.
     }
@@ -140,10 +140,12 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func reloadPetShops () {
         PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
-            self.allPetShops = petshops!
-            // Descomentar quando arrumar cloud
-            self.refreshControl.endRefreshing()
-            self.petShopsTableView.reloadData()
+            if error == nil {
+                self.allPetShops = petshops!
+                // Descomentar quando arrumar cloud
+                self.refreshControl.endRefreshing()
+                self.petShopsTableView.reloadData()
+            }
         })
     }
     
