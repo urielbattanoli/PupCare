@@ -10,21 +10,35 @@ import UIKit
 import Parse
 
 class PromotionManager: NSObject {
-
-    static func getNearbyPromotions(latitude: Float, longitude: Float, withinKilometers: Float, response: (promotions: [Promotion]?, error: NSError?) -> ()) {
+    
+    static func getPromotionsList(latitude: Float, longitude: Float, withinKilometers: Float, response: (promotions: [Promotion]?, error: NSError?) -> ()) {
         
-        let currentLocation = PFGeoPoint(latitude: 10, longitude: 10)
-        
-        PFCloud.callFunctionInBackground("getPromotions", withParameters: ["currentLocation": currentLocation]) { (promotions, error) in
-            var result: [Promotion] = []
+        PFCloud.callFunctionInBackground("getPromotionsList", withParameters: ["lat": latitude,"lng":longitude, "maxDistance":withinKilometers]) { (promotions, error) in
+            
+            var allPromotions: [Promotion] = []
             if let promotions = promotions as? [PFObject] {
                 
                 for promotion in promotions {
                     let object = Promotion(parseObject:promotion)
-                    result.append(object)
+                    allPromotions.append(object)
                 }
             }
-            response(promotions: result, error: error)
+            response(promotions: allPromotions, error: error)
+        }
+    }
+    
+    
+    
+    static func getPromotionDetails(promotionId: String, response: (promoionDetails: Promotion, error: NSError) -> ()) {
+        
+        let params = ["promoId" : promotionId]
+        
+        PFCloud.callFunctionInBackground("getPromotionDetails", withParameters: params) { (details, error) in
+            var promotion = Promotion()
+            if let details = details as? PFObject {
+                promotion = Promotion(parseObject: details)
+            }
+            response(promoionDetails: promotion, error: error!)
         }
     }
 }

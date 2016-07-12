@@ -20,8 +20,8 @@ extension Promotion {
         data["promotionDescription"] = parseObject["promotionDescription"] as! String
         data["lastPrice"] = parseObject["lastPrice"] as! Float
         data["newPrice"] = parseObject["newPrice"] as! Float
-        data["initialDate"] = parseObject["initialDate"] as! String
-        data["finalDate"] = parseObject["finalDate"] as! String
+        data["initialDate"] = parseObject["initialDate"] as! NSDate
+        data["finalDate"] = parseObject["finalDate"] as! NSDate
         
         self.init(data: data)
     }

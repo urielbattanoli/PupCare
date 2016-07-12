@@ -32,8 +32,8 @@ class Promotion: NSObject {
         self.newPrice = data["newPrice"] as! Float
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss.SSSSxxx"
-        self.initialDate = dateFormatter.dateFromString(data["initialDate"] as! String)!
-        self.finalDate = dateFormatter.dateFromString(data["finalDate"] as! String)!
+        self.initialDate = dateFormatter.dateFromString(data["initialDate"] as! NSDate)!
+        self.finalDate = dateFormatter.dateFromString(data["finalDate"] as! NSDate)!
         
         
     }
