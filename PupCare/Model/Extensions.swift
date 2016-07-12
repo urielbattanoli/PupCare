@@ -8,9 +8,25 @@
 
 import UIKit
 
-extension NSNumber{
-    func stringPreco() -> String {
-        let value = String(format: "%.2f", self.doubleValue)
-        return "R$ \(value.stringByReplacingOccurrencesOfString(".", withString: ","))"
+extension NSNumber {
+    func numberToPrice() -> String {
+        
+        let formatter = NSNumberFormatter()
+        formatter.locale = NSLocale.currentLocale()
+        formatter.numberStyle = .CurrencyStyle
+        
+        return formatter.stringFromNumber(self.doubleValue)!
+        
+//        let value = String(format: "%.2f", self.doubleValue)
+//        return "R$ \(value.stringByReplacingOccurrencesOfString(".", withString: ","))"
+    }
+}
+
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundToPlaces(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return round(self * divisor) / divisor
     }
 }
