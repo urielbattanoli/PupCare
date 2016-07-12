@@ -22,7 +22,7 @@ class Product: NSObject{
         self.imageUrl = data["imageUrl"] as! String
         self.descript = data["description"] as! String
         self.brand = data["brand"] as! String
-        self.price = (data["price"] as! NSNumber).stringPreco()
+        self.price = (data["price"] as! NSNumber).numberToPrice()
         self.stock = data["stock"] as! NSNumber
     }
 }
