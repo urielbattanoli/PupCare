@@ -18,6 +18,16 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var promo = Promotion()
+        
+        promo.promotionName = "Coleira para cachorro DogMax"
+        promo.promotionDescription = "Coleira confeccionada em couro ecológico, para cães de pequeno porte."
+        promo.lastPrice = 99.99
+        promo.newPrice = 80.00
+        
+        
+        allPromotions.append(promo)
+        
         
         
         // Do any additional setup after loading the view.
@@ -31,8 +41,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PromotionsCell", forIndexPath: indexPath) as! PromotionsTableViewCell
         
-        cell.priceLabel.text = allPromotions[indexPath.row].promotionName
-        cell.petShopLabel.text = allPromotions[indexPath.row].petshop.name
+        cell.promotion = self.allPromotions[indexPath.row]
         
         return cell
     }
