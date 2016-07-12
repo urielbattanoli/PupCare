@@ -16,9 +16,6 @@ extension NSNumber {
         formatter.numberStyle = .CurrencyStyle
         
         return formatter.stringFromNumber(self.doubleValue)!
-        
-//        let value = String(format: "%.2f", self.doubleValue)
-//        return "R$ \(value.stringByReplacingOccurrencesOfString(".", withString: ","))"
     }
 }
 
