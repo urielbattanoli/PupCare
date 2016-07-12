@@ -18,6 +18,9 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.promotionsTableView.delegate = self
+        self.promotionsTableView.dataSource = self
+        
         var promo = Promotion()
         
         promo.promotionName = "Coleira para cachorro DogMax"

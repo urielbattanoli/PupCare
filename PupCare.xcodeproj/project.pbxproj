@@ -306,7 +306,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3311D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCare" */;
 			buildPhases = (
-				143C9771FE2112750DE29E44 /* 📦 Check Pods Manifest.lock */,
+				143C9771FE2112750DE29E44 /* [CP] Check Pods Manifest.lock */,
 				FAB16126395BA0690BB2B701 /* [CP] Check Pods Manifest.lock */,
 				3F249DE335038DD01C322263 /* [CP] Check Pods Manifest.lock */,
 				E55CB90DA334C769AB2F41A3 /* [CP] Check Pods Manifest.lock */,
@@ -331,7 +331,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3341D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCareTests" */;
 			buildPhases = (
-				9A84CD40ABCB224A98244A91 /* 📦 Check Pods Manifest.lock */,
+				9A84CD40ABCB224A98244A91 /* [CP] Check Pods Manifest.lock */,
 				73B83D64EABFE2ED0EC21EE4 /* [CP] Check Pods Manifest.lock */,
 				A475E3191D0A9B3B00FB66C3 /* Sources */,
 				A475E31A1D0A9B3B00FB66C3 /* Frameworks */,
@@ -447,14 +447,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		143C9771FE2112750DE29E44 /* 📦 Check Pods Manifest.lock */ = {
+		143C9771FE2112750DE29E44 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,14 +567,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9A84CD40ABCB224A98244A91 /* 📦 Check Pods Manifest.lock */ = {
+		9A84CD40ABCB224A98244A91 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
