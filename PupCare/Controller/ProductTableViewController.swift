@@ -16,7 +16,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var petShopImage: UIImageView!
     @IBOutlet weak var petShopName: UILabel!
     @IBOutlet weak var petShopAdress: UILabel!
-    @IBOutlet weak var petShopNeighboarhood: UILabel!
+    @IBOutlet weak var petShopNeighbourhood: UILabel!
     @IBOutlet weak var petShopDistance: UILabel!
     
     // MARK: Variables
@@ -61,36 +61,20 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         if let petshop = self.petShop{
             self.petShopName.text = petshop.name
             self.petShopAdress.text = petshop.address
-            self.petShopImage.image = petshop.imageFile
+            self.petShopImage.kf_showIndicatorWhenLoading = true
+            self.petShopImage.kf_setImageWithURL(NSURL(string: petShop!.imageUrl)!, placeholderImage: nil)
             self.petShopDistance.text = "calcular"
-            self.petShopNeighboarhood.text = petshop.neighboarhood
+            self.petShopNeighbourhood.text = petshop.neighbourhood
             if petshop.products.count > 0{
                 self.products = petshop.products
             }
             else{
-                self.productManager.getProductList("petShopId", block: { (products) in
-                    //                    petshop.products = products
-                    //                    self.products = products
+                self.productManager.getProductList((petShop?.objectId)!, block: { (products) in
+                    petshop.products = products
+                    self.products = products
                 })
             }
         }
-        
-        var product = Product(data: ["name":"Osso Grande" , "description":"osso de catioro azul ou branco com cheirinho de delicia e ppk tbm, escolha o cheirinho que vc quer muito bem para o bem da sua mulher" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://barkpost.com.br/wp-content/uploads/2014/11/whatthepup.png"])
-        var vetor = [product]
-        
-        product = Product(data: ["name":"Osso Pequeno" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://wallpaper.ultradownloads.com.br/45586_Papel-de-Parede-Filhote-de-Cachorro_1024x768.jpg"])
-        vetor.append(product)
-        
-        product = Product(data: ["name":"bolinha" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://www.adimaxpet.com.br/assets/photo_dica2.png"])
-        vetor.append(product)
-        
-        product = Product(data: ["name":"racao Grande" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://cdn3.tudosobrecachorros.com.br/wp-content/uploads/so-quem-tem-cachorro-entende-2.jpg"])
-        vetor.append(product)
-        
-        product = Product(data: ["name":"racao pequena" , "description":"osso de catioro" , "price":12.50 , "stock":10 , "brand":"pedigrilson", "imageUrl":"http://image.cachorrogato.com.br/textimages/alimentacao-filhotes-cachorro.jpg"])
-        vetor.append(product)
-        
-        self.products = vetor
     }
     
     // MARK: Table view data source
@@ -132,7 +116,21 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         return 90
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("goToDetail", sender: self.products![indexPath.row])
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
     // MARK: Functions
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToDetail"{
+            let productDetail = segue.destinationViewController as! ProductDetailViewController
+            
+            productDetail.product = sender as? Product
+        }
+    }
+    
     func filterProductsForSearchText(searchText: String, scope: String = "All") {
         self.filteredProducts = products!.filter { product in
             return product.name.lowercaseString.containsString(searchText.lowercaseString)
@@ -143,7 +141,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func reloadProducts() {
-        self.productManager.getProductList("petShopId") { (products) in
+        self.productManager.getProductList((petShop?.objectId)!) { (products) in
             self.products = products
             self.refreshControl?.endRefreshing()
         }

@@ -14,16 +14,18 @@ extension Product{
     convenience init(parseObject: PFObject) {
         var data = [String : AnyObject]()
         
+        print(parseObject)
+        
         //PetShop_Product
         data["price"] = parseObject["price"] as! NSNumber
-        data["stock"] = parseObject["stock"] as! NSNumber
+        data["stock"] = parseObject["stockCount"] as! NSNumber
         
         //Product
-        let product = parseObject["product"] as! PFObject
+        let product = parseObject["productId"] as! PFObject
         
         data["name"] = product["name"] as! String
-        data["imageUrl"] = (product["photo"] as! PFFile).url
-        data["description"] = product["description"] as! String
+        data["imageUrl"] = (product["image"] as! PFFile).url
+        data["description"] = product["descript"] as! String
         data["brand"] = product["brand"] as! String
         
         self.init(data: data)

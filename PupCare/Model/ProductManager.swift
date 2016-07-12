@@ -13,6 +13,7 @@ class ProductManager: NSObject {
     
     func getProductList(petShopId: String, block: ([Product])->()) {
         let params = ["petShopId" : petShopId]
+        print(petShopId)
         PFCloud.callFunctionInBackground("getProductList", withParameters: params) { (objects, error) in
             var products = [Product]()
             if let error = error{
