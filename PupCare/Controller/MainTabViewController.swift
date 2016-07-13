@@ -16,13 +16,13 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         self.tabBar.tintColor = UIColor.redColor()
         
-        //PetShops ViewController
-        let vcPetShops = UIStoryboard(name: "Petshops", bundle: nil).instantiateInitialViewController()!
-        vcPetShops.tabBarItem = UITabBarItem(title: "Pet Shops", image: UIImage(named: "petShopIcon"), selectedImage: nil)
-        
         //Promotions ViewController
         let vcPromotions = UIStoryboard(name: "Promotions", bundle: nil).instantiateInitialViewController()!
         vcPromotions.tabBarItem = UITabBarItem(title: "Promoções", image: UIImage(named: "promotionsIcon"), selectedImage: nil)
+        
+        //PetShops ViewController
+        let vcPetShops = UIStoryboard(name: "Petshops", bundle: nil).instantiateInitialViewController()!
+        vcPetShops.tabBarItem = UITabBarItem(title: "Pet Shops", image: UIImage(named: "petShopIcon"), selectedImage: nil)
         
         //Orders ViewController
         let vcOrders  = UIStoryboard(name: "Orders", bundle: nil).instantiateInitialViewController()!
@@ -32,7 +32,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         let vcCart = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()!
         vcCart.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
         
-        self.viewControllers = [vcPetShops,vcPromotions,vcOrders,vcCart]
+        self.viewControllers = [vcPromotions,vcPetShops,vcOrders,vcCart]
     }
 
     override func didReceiveMemoryWarning() {
