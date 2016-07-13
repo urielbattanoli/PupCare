@@ -14,8 +14,6 @@ extension Product{
     convenience init(parseObject: PFObject) {
         var data = [String : AnyObject]()
         
-        print(parseObject)
-        
         //PetShop_Product
         data["price"] = parseObject["price"] as! NSNumber
         data["stock"] = parseObject["stockCount"] as! NSNumber

@@ -61,8 +61,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         if let petshop = self.petShop{
             self.petShopName.text = petshop.name
             self.petShopAdress.text = petshop.address
-            self.petShopImage.kf_showIndicatorWhenLoading = true
-            self.petShopImage.kf_setImageWithURL(NSURL(string: petShop!.imageUrl)!, placeholderImage: nil)
+            self.petShopImage.loadImage(petShop!.imageUrl)
             self.petShopDistance.text = "calcular"
             self.petShopNeighbourhood.text = petshop.neighbourhood
             if petshop.products.count > 0{

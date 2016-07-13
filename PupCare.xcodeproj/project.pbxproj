@@ -27,6 +27,11 @@
 		A42331C01D2ACE5400CFF8DA /* ProductParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */; };
 		A43C9E8A1D34413200D6D0D8 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43C9E891D34413200D6D0D8 /* ProductDetail.storyboard */; };
 		A43C9E8C1D34416300D6D0D8 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E8B1D34416300D6D0D8 /* ProductDetailViewController.swift */; };
+		A43C9E901D3513E100D6D0D8 /* MyProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E8F1D3513E100D6D0D8 /* MyProfileTableViewCell.swift */; };
+		A43C9E941D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E931D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift */; };
+		A43C9E971D36860100D6D0D8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E961D36860100D6D0D8 /* User.swift */; };
+		A43C9E991D3688EA00D6D0D8 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E981D3688EA00D6D0D8 /* UserManager.swift */; };
+		A43C9E9B1D3688FA00D6D0D8 /* UserParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E9A1D3688FA00D6D0D8 /* UserParseExtension.swift */; };
 		A440AF9B1D2AF2EC005B6CBC /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */; };
 		A475E30F1D0A9B3A00FB66C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */; };
 		A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A475E3101D0A9B3A00FB66C3 /* PupCare.xcdatamodeld */; };
@@ -90,6 +95,11 @@
 		A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductParseExtension.swift; path = Model/ProductParseExtension.swift; sourceTree = "<group>"; };
 		A43C9E891D34413200D6D0D8 /* ProductDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProductDetail.storyboard; path = View/ProductDetail.storyboard; sourceTree = "<group>"; };
 		A43C9E8B1D34416300D6D0D8 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDetailViewController.swift; path = Controller/ProductDetailViewController.swift; sourceTree = "<group>"; };
+		A43C9E8F1D3513E100D6D0D8 /* MyProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileTableViewCell.swift; path = Controller/MyProfileTableViewCell.swift; sourceTree = "<group>"; };
+		A43C9E931D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileDetailTableViewCell.swift; path = Controller/MyProfileDetailTableViewCell.swift; sourceTree = "<group>"; };
+		A43C9E961D36860100D6D0D8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		A43C9E981D3688EA00D6D0D8 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Model/UserManager.swift; sourceTree = "<group>"; };
+		A43C9E9A1D3688FA00D6D0D8 /* UserParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserParseExtension.swift; path = Model/UserParseExtension.swift; sourceTree = "<group>"; };
 		A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductManager.swift; path = Model/ProductManager.swift; sourceTree = "<group>"; };
 		A475E3061D0A9B3A00FB66C3 /* PupCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PupCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A475E30E1D0A9B3A00FB66C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,6 +187,16 @@
 			name = Promotion;
 			sourceTree = "<group>";
 		};
+		A43C9E951D3685EA00D6D0D8 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A43C9E961D36860100D6D0D8 /* User.swift */,
+				A43C9E981D3688EA00D6D0D8 /* UserManager.swift */,
+				A43C9E9A1D3688FA00D6D0D8 /* UserParseExtension.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		A475E2FD1D0A9B3A00FB66C3 = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +258,7 @@
 				7A31925E1D34012F004096A0 /* PetShop */,
 				7A31925F1D340139004096A0 /* Product */,
 				7A3192601D34013F004096A0 /* Promotion */,
+				A43C9E951D3685EA00D6D0D8 /* User */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -265,6 +286,8 @@
 				A475E34B1D18547100FB66C3 /* CartViewController.swift */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
 				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
+				A43C9E931D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift */,
+				A43C9E8F1D3513E100D6D0D8 /* MyProfileTableViewCell.swift */,
 				A400B4761D34324300051363 /* MyProfileViewController.swift */,
 				A475E34D1D18548900FB66C3 /* OrdersViewController.swift */,
 				71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */,
@@ -672,6 +695,7 @@
 				A475E3521D18569B00FB66C3 /* MainTabViewController.swift in Sources */,
 				71C1B4441D2EB8A300CDDA20 /* Promotion.swift in Sources */,
 				71C1B44C1D30062000CDDA20 /* PromotionManager.swift in Sources */,
+				A43C9E971D36860100D6D0D8 /* User.swift in Sources */,
 				A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */,
 				A42331C01D2ACE5400CFF8DA /* ProductParseExtension.swift in Sources */,
 				A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */,
@@ -679,16 +703,20 @@
 				A475E34E1D18548900FB66C3 /* OrdersViewController.swift in Sources */,
 				71C1B4481D2EC08000CDDA20 /* PromotionParseExtension.swift in Sources */,
 				71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */,
+				A43C9E9B1D3688FA00D6D0D8 /* UserParseExtension.swift in Sources */,
 				A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */,
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,
+				A43C9E991D3688EA00D6D0D8 /* UserManager.swift in Sources */,
 				A43C9E8C1D34416300D6D0D8 /* ProductDetailViewController.swift in Sources */,
 				71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */,
+				A43C9E901D3513E100D6D0D8 /* MyProfileTableViewCell.swift in Sources */,
 				A4869DCF1D259DB60076EC37 /* Product.swift in Sources */,
 				A475E34C1D18547100FB66C3 /* CartViewController.swift in Sources */,
 				715100761D341129003A6817 /* ParseManager.swift in Sources */,
 				A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */,
 				71C1B4461D2EB91300CDDA20 /* PetShopManager.swift in Sources */,
 				A475E3461D1490AA00FB66C3 /* AppDelegate.swift in Sources */,
+				A43C9E941D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift in Sources */,
 				A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
