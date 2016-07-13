@@ -10,6 +10,7 @@ import UIKit
 import Parse
 
 class PetShopManager: NSObject {
+    
     static func getNearPetShops(latitude: Float, longitude: Float, withinKilometers: Float, response: (petshops: [PetShop]?, error: NSError?) -> ()) {
         PFCloud.callFunctionInBackground("getNearPetShopList", withParameters: ["lat": latitude,"lng":longitude, "maxDistance":withinKilometers]) { (petshops, error) in
             var result: [PetShop] = []

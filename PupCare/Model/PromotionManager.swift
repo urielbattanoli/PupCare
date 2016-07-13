@@ -29,16 +29,16 @@ class PromotionManager: NSObject {
     
     
     
-    static func getPromotionDetails(promotionId: String, response: (promoionDetails: Promotion, error: NSError) -> ()) {
+    static func getPromotionDetails(promotionId: String, response: (promotionDetails: Promotion, error: NSError) -> ()) {
         
         let params = ["promoId" : promotionId]
         
-        PFCloud.callFunctionInBackground("getPromotionDetails", withParameters: params) { (details, error) in
+        PFCloud.callFunctionInBackground("getPromotionDetails", withParameters: params) { (promotionDetails, error) in
             var promotion = Promotion()
-            if let details = details as? PFObject {
+            if let details = promotionDetails as? PFObject {
                 promotion = Promotion(parseObject: details)
             }
-            response(promoionDetails: promotion, error: error!)
+            response(promotionDetails: promotion, error: error!)
         }
     }
 }

@@ -11,7 +11,7 @@ import Parse
 
 class ProductManager: NSObject {
     
-    func getProductList(petShopId: String, block: ([Product])->()) {
+    static func getProductList(petShopId: String, block: ([Product])->()) {
         let params = ["petShopId" : petShopId]
         print(petShopId)
         PFCloud.callFunctionInBackground("getProductList", withParameters: params) { (objects, error) in
