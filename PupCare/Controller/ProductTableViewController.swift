@@ -30,8 +30,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     var filteredProducts: [Product] = []
     
-    let productManager = ProductManager()
-    
     var searchController: UISearchController?{
         didSet{
             self.searchController?.hidesNavigationBarDuringPresentation = false
@@ -68,7 +66,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
                 self.products = petshop.products
             }
             else{
-                self.productManager.getProductList((petShop?.objectId)!, block: { (products) in
+                ProductManager.getProductList((petShop?.objectId)!, block: { (products) in
                     petshop.products = products
                     self.products = products
                 })
@@ -140,7 +138,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func reloadProducts() {
-        self.productManager.getProductList((petShop?.objectId)!) { (products) in
+        ProductManager.getProductList((petShop?.objectId)!) { (products) in
             self.products = products
             self.refreshControl?.endRefreshing()
         }

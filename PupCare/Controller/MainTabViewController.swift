@@ -16,13 +16,13 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         self.tabBar.tintColor = UIColor.redColor()
         
-        //PetShops ViewController
-        let vcPetShops = UIStoryboard(name: "Petshops", bundle: nil).instantiateInitialViewController()!
-        vcPetShops.tabBarItem = UITabBarItem(title: "Pet Shops", image: UIImage(named: "petShopIcon"), selectedImage: nil)
-        
         //Promotions ViewController
         let vcPromotions = UIStoryboard(name: "Promotions", bundle: nil).instantiateInitialViewController()!
         vcPromotions.tabBarItem = UITabBarItem(title: "Promoções", image: UIImage(named: "promotionsIcon"), selectedImage: nil)
+        
+        //PetShops ViewController
+        let vcPetShops = UIStoryboard(name: "Petshops", bundle: nil).instantiateInitialViewController()!
+        vcPetShops.tabBarItem = UITabBarItem(title: "Pet Shops", image: UIImage(named: "petShopIcon"), selectedImage: nil)
         
         //Orders ViewController
         let vcOrders  = UIStoryboard(name: "Orders", bundle: nil).instantiateInitialViewController()!
