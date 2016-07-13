@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "pupCare"
+    },
+    "pupCare": {
+      "applicationId": "bX1VUcnhpxm029C497YZ7motmeY2hY6kBFRxDBtV"
+    }
+  }
+}

@@ -7,30 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AC64BA1D2C32E400477F05 /* Login.Storyboard */; };
 		569E4878009CE5DDF43F544E /* Pods_PupCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */; };
-		2FFB26B9F34E6BD67BC9084A /* Pods_PupCareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */; };
-		569E4878009CE5DDF43F544E /* Pods_PupCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */; };
-		715100761D341129003A6817 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715100751D341129003A6817 /* ParseManager.swift */; };
-		715100771D341129003A6817 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715100751D341129003A6817 /* ParseManager.swift */; };
-		717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717247711D2C1BC600BD694D /* PetShopParseExtension.swift */; };
-		71BBC2561D25A89200194861 /* PetShopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */; };
-		71C1B4441D2EB8A300CDDA20 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4431D2EB8A300CDDA20 /* Promotion.swift */; };
-		71C1B4461D2EB91300CDDA20 /* PetShopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */; };
-		71C1B4481D2EC08000CDDA20 /* PromotionParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4471D2EC08000CDDA20 /* PromotionParseExtension.swift */; };
-		71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */; };
-		71C1B44C1D30062000CDDA20 /* PromotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B44B1D30062000CDDA20 /* PromotionManager.swift */; };
-		71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9C101D26D42000DA14DA /* PetShop.swift */; };
-		7A04ECB01D356BCA00270189 /* CloudCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */; };
-		A400B4751D34311100051363 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A400B4741D34311100051363 /* Profile.storyboard */; };
-		A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400B4761D34324300051363 /* MyProfileViewController.swift */; };
-		A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */; };
-		A40B341D1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */; };
-		A40B341F1D30270F00BCC240 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341E1D30270F00BCC240 /* Extensions.swift */; };
 		A42331C01D2ACE5400CFF8DA /* ProductParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */; };
-		A43C9E8A1D34413200D6D0D8 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43C9E891D34413200D6D0D8 /* ProductDetail.storyboard */; };
-		A43C9E8C1D34416300D6D0D8 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E8B1D34416300D6D0D8 /* ProductDetailViewController.swift */; };
-		A440AF9B1D2AF2EC005B6CBC /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */; };
 		A475E30F1D0A9B3A00FB66C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */; };
 		A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A475E3101D0A9B3A00FB66C3 /* PupCare.xcdatamodeld */; };
 		A475E3141D0A9B3A00FB66C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A475E3131D0A9B3A00FB66C3 /* Assets.xcassets */; };
@@ -49,6 +27,7 @@
 		A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */; };
 		A475E3521D18569B00FB66C3 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E3511D18569B00FB66C3 /* MainTabViewController.swift */; };
 		A4869DC91D2595090076EC37 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4869DC81D2595090076EC37 /* Products.storyboard */; };
+		A4869DCB1D25953F0076EC37 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCA1D25953F0076EC37 /* ProductsViewController.swift */; };
 		A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */; };
 		A4869DCF1D259DB60076EC37 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCE1D259DB60076EC37 /* Product.swift */; };
 /* End PBXBuildFile section */
@@ -72,30 +51,9 @@
 
 /* Begin PBXFileReference section */
 		0493F2875AEB302E7CCF3B2B /* Pods-PupCare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.release.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.release.xcconfig"; sourceTree = "<group>"; };
-		39AC64BA1D2C32E400477F05 /* Login.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.Storyboard; path = View/Login.Storyboard; sourceTree = "<group>"; };
 		3AB0AC7D08F3CCBE82BDDF13 /* Pods-PupCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.debug.xcconfig"; sourceTree = "<group>"; };
-		715100751D341129003A6817 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseManager.swift; path = Model/ParseManager.swift; sourceTree = "<group>"; };
-		717247711D2C1BC600BD694D /* PetShopParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopParseExtension.swift; path = Model/PetShopParseExtension.swift; sourceTree = "<group>"; };
-		71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopsTableViewCell.swift; path = Controller/PetShopsTableViewCell.swift; sourceTree = "<group>"; };
-		71C1B4431D2EB8A300CDDA20 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Model/Promotion.swift; sourceTree = "<group>"; };
-		71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopManager.swift; path = Model/PetShopManager.swift; sourceTree = "<group>"; };
-		71C1B4471D2EC08000CDDA20 /* PromotionParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionParseExtension.swift; path = Model/PromotionParseExtension.swift; sourceTree = "<group>"; };
-		71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionsTableViewCell.swift; path = Controller/PromotionsTableViewCell.swift; sourceTree = "<group>"; };
-		71C1B44B1D30062000CDDA20 /* PromotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionManager.swift; path = Model/PromotionManager.swift; sourceTree = "<group>"; };
-		71ED9C101D26D42000DA14DA /* PetShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShop.swift; path = Model/PetShop.swift; sourceTree = "<group>"; };
-		7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCodeTests.swift; sourceTree = "<group>"; };
-		7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCareTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8744664412D2A7E02501B9E5 /* Pods-PupCareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests.debug.xcconfig"; sourceTree = "<group>"; };
 		97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A400B4741D34311100051363 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = View/Profile.storyboard; sourceTree = "<group>"; };
-		A400B4761D34324300051363 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileViewController.swift; path = Controller/MyProfileViewController.swift; sourceTree = "<group>"; };
-		A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductTableViewController.swift; path = Controller/ProductTableViewController.swift; sourceTree = "<group>"; };
-		A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductHeaderTableViewCell.swift; path = Controller/ProductHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		A40B341E1D30270F00BCC240 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Model/Extensions.swift; sourceTree = "<group>"; };
 		A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductParseExtension.swift; path = Model/ProductParseExtension.swift; sourceTree = "<group>"; };
-		A43C9E891D34413200D6D0D8 /* ProductDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProductDetail.storyboard; path = View/ProductDetail.storyboard; sourceTree = "<group>"; };
-		A43C9E8B1D34416300D6D0D8 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDetailViewController.swift; path = Controller/ProductDetailViewController.swift; sourceTree = "<group>"; };
-		A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductManager.swift; path = Model/ProductManager.swift; sourceTree = "<group>"; };
 		A475E3061D0A9B3A00FB66C3 /* PupCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PupCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A475E30E1D0A9B3A00FB66C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A475E3111D0A9B3A00FB66C3 /* PupCare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PupCare.xcdatamodel; sourceTree = "<group>"; };
@@ -120,9 +78,9 @@
 		A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionsViewController.swift; path = Controller/PromotionsViewController.swift; sourceTree = "<group>"; };
 		A475E3511D18569B00FB66C3 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabViewController.swift; path = Controller/MainTabViewController.swift; sourceTree = "<group>"; };
 		A4869DC81D2595090076EC37 /* Products.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Products.storyboard; path = View/Products.storyboard; sourceTree = "<group>"; };
+		A4869DCA1D25953F0076EC37 /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductsViewController.swift; path = Controller/ProductsViewController.swift; sourceTree = "<group>"; };
 		A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductTableViewCell.swift; path = Controller/ProductTableViewCell.swift; sourceTree = "<group>"; };
 		A4869DCE1D259DB60076EC37 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Model/Product.swift; sourceTree = "<group>"; };
-		DDD843DED49D52DA47654117 /* Pods-PupCareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCareTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +96,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FFB26B9F34E6BD67BC9084A /* Pods_PupCareTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,36 +109,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A31925E1D34012F004096A0 /* PetShop */ = {
-			isa = PBXGroup;
-			children = (
-				71ED9C101D26D42000DA14DA /* PetShop.swift */,
-				71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */,
-				717247711D2C1BC600BD694D /* PetShopParseExtension.swift */,
-			);
-			name = PetShop;
-			sourceTree = "<group>";
-		};
-		7A31925F1D340139004096A0 /* Product */ = {
-			isa = PBXGroup;
-			children = (
-				A4869DCE1D259DB60076EC37 /* Product.swift */,
-				A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */,
-				A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */,
-			);
-			name = Product;
-			sourceTree = "<group>";
-		};
-		7A3192601D34013F004096A0 /* Promotion */ = {
-			isa = PBXGroup;
-			children = (
-				71C1B4431D2EB8A300CDDA20 /* Promotion.swift */,
-				71C1B44B1D30062000CDDA20 /* PromotionManager.swift */,
-				71C1B4471D2EC08000CDDA20 /* PromotionParseExtension.swift */,
-			);
-			name = Promotion;
-			sourceTree = "<group>";
-		};
 		A475E2FD1D0A9B3A00FB66C3 = {
 			isa = PBXGroup;
 			children = (
@@ -221,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				A475E3211D0A9B3B00FB66C3 /* PupCareTests.swift */,
-				7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */,
 				A475E3231D0A9B3B00FB66C3 /* Info.plist */,
 			);
 			path = PupCareTests;
@@ -239,11 +165,8 @@
 		A475E33A1D148F1600FB66C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A40B341E1D30270F00BCC240 /* Extensions.swift */,
-				715100751D341129003A6817 /* ParseManager.swift */,
-				7A31925E1D34012F004096A0 /* PetShop */,
-				7A31925F1D340139004096A0 /* Product */,
-				7A3192601D34013F004096A0 /* Promotion */,
+				A4869DCE1D259DB60076EC37 /* Product.swift */,
+				A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -256,11 +179,8 @@
 				A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */,
 				A475E3431D14906500FB66C3 /* Orders.storyboard */,
 				A475E33D1D148FEB00FB66C3 /* Petshops.storyboard */,
-				A43C9E891D34413200D6D0D8 /* ProductDetail.storyboard */,
 				A4869DC81D2595090076EC37 /* Products.storyboard */,
-				A400B4741D34311100051363 /* Profile.storyboard */,
 				A475E33F1D14902400FB66C3 /* Promotions.storyboard */,
-				39AC64BA1D2C32E400477F05 /* Login.Storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -272,16 +192,11 @@
 				A475E34B1D18547100FB66C3 /* CartViewController.swift */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
 				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
-				A400B4761D34324300051363 /* MyProfileViewController.swift */,
 				A475E34D1D18548900FB66C3 /* OrdersViewController.swift */,
-				71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */,
 				A475E3491D18545D00FB66C3 /* PetShopsViewController.swift */,
-				A43C9E8B1D34416300D6D0D8 /* ProductDetailViewController.swift */,
-				A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */,
-				A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */,
-				A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */,
-				71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */,
 				A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */,
+				A4869DCA1D25953F0076EC37 /* ProductsViewController.swift */,
+				A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -291,8 +206,6 @@
 			children = (
 				3AB0AC7D08F3CCBE82BDDF13 /* Pods-PupCare.debug.xcconfig */,
 				0493F2875AEB302E7CCF3B2B /* Pods-PupCare.release.xcconfig */,
-				8744664412D2A7E02501B9E5 /* Pods-PupCareTests.debug.xcconfig */,
-				DDD843DED49D52DA47654117 /* Pods-PupCareTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -301,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */,
-				7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -313,17 +225,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3311D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCare" */;
 			buildPhases = (
-				143C9771FE2112750DE29E44 /* [CP] Check Pods Manifest.lock */,
-				FAB16126395BA0690BB2B701 /* [CP] Check Pods Manifest.lock */,
-				3F249DE335038DD01C322263 /* [CP] Check Pods Manifest.lock */,
-				E55CB90DA334C769AB2F41A3 /* [CP] Check Pods Manifest.lock */,
+				E55CB90DA334C769AB2F41A3 /* 📦 Check Pods Manifest.lock */,
 				A475E3021D0A9B3A00FB66C3 /* Sources */,
 				A475E3031D0A9B3A00FB66C3 /* Frameworks */,
 				A475E3041D0A9B3A00FB66C3 /* Resources */,
-				3D74F531D03640DADC7B5BA2 /* [CP] Embed Pods Frameworks */,
-				AAA1E56ADF62DB5312F41510 /* [CP] Copy Pods Resources */,
-				35699D18B5E1C0334D27EF7D /* 📦 Embed Pods Frameworks */,
-				4B94C060601FB9767DD79E2A /* 📦 Copy Pods Resources */,
+				3D74F531D03640DADC7B5BA2 /* 📦 Embed Pods Frameworks */,
+				AAA1E56ADF62DB5312F41510 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -338,15 +245,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3341D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCareTests" */;
 			buildPhases = (
-				9A84CD40ABCB224A98244A91 /* [CP] Check Pods Manifest.lock */,
-				73B83D64EABFE2ED0EC21EE4 /* [CP] Check Pods Manifest.lock */,
 				A475E3191D0A9B3B00FB66C3 /* Sources */,
 				A475E31A1D0A9B3B00FB66C3 /* Frameworks */,
 				A475E31B1D0A9B3B00FB66C3 /* Resources */,
-				4D7AE4B83FFB1BFCD396E950 /* [CP] Embed Pods Frameworks */,
-				D58843189FCD4F578EB08070 /* [CP] Copy Pods Resources */,
-				6B2E87756D21FC8401E93068 /* 📦 Embed Pods Frameworks */,
-				A969FF7230CFACE32F078662 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -430,11 +331,8 @@
 				A475E3401D14902400FB66C3 /* Promotions.storyboard in Resources */,
 				A475E3441D14906500FB66C3 /* Orders.storyboard in Resources */,
 				A475E3421D14905200FB66C3 /* Cart.storyboard in Resources */,
-				A400B4751D34311100051363 /* Profile.storyboard in Resources */,
 				A4869DC91D2595090076EC37 /* Products.storyboard in Resources */,
 				A475E33E1D148FEB00FB66C3 /* Petshops.storyboard in Resources */,
-				39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */,
-				A43C9E8A1D34413200D6D0D8 /* ProductDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,22 +353,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		143C9771FE2112750DE29E44 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		35699D18B5E1C0334D27EF7D /* 📦 Embed Pods Frameworks */ = {
+		3D74F531D03640DADC7B5BA2 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -485,37 +368,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCare/Pods-PupCare-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3D74F531D03640DADC7B5BA2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCare/Pods-PupCare-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3F249DE335038DD01C322263 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		4B94C060601FB9767DD79E2A /* 📦 Copy Pods Resources */ = {
+		AAA1E56ADF62DB5312F41510 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -530,134 +383,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCare/Pods-PupCare-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4D7AE4B83FFB1BFCD396E950 /* [CP] Embed Pods Frameworks */ = {
+		E55CB90DA334C769AB2F41A3 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6B2E87756D21FC8401E93068 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		73B83D64EABFE2ED0EC21EE4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9A84CD40ABCB224A98244A91 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A969FF7230CFACE32F078662 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AAA1E56ADF62DB5312F41510 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCare/Pods-PupCare-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D58843189FCD4F578EB08070 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E55CB90DA334C769AB2F41A3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FAB16126395BA0690BB2B701 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,29 +406,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A475E34A1D18545D00FB66C3 /* PetShopsViewController.swift in Sources */,
-				A40B341F1D30270F00BCC240 /* Extensions.swift in Sources */,
-				A440AF9B1D2AF2EC005B6CBC /* ProductManager.swift in Sources */,
-				717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */,
-				71BBC2561D25A89200194861 /* PetShopsTableViewCell.swift in Sources */,
 				A475E3521D18569B00FB66C3 /* MainTabViewController.swift in Sources */,
-				71C1B4441D2EB8A300CDDA20 /* Promotion.swift in Sources */,
-				71C1B44C1D30062000CDDA20 /* PromotionManager.swift in Sources */,
 				A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */,
 				A42331C01D2ACE5400CFF8DA /* ProductParseExtension.swift in Sources */,
-				A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */,
-				A40B341D1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift in Sources */,
 				A475E34E1D18548900FB66C3 /* OrdersViewController.swift in Sources */,
-				71C1B4481D2EC08000CDDA20 /* PromotionParseExtension.swift in Sources */,
-				71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */,
-				A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */,
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,
-				A43C9E8C1D34416300D6D0D8 /* ProductDetailViewController.swift in Sources */,
-				71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */,
 				A4869DCF1D259DB60076EC37 /* Product.swift in Sources */,
 				A475E34C1D18547100FB66C3 /* CartViewController.swift in Sources */,
-				715100761D341129003A6817 /* ParseManager.swift in Sources */,
+				A4869DCB1D25953F0076EC37 /* ProductsViewController.swift in Sources */,
 				A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */,
-				71C1B4461D2EB91300CDDA20 /* PetShopManager.swift in Sources */,
 				A475E3461D1490AA00FB66C3 /* AppDelegate.swift in Sources */,
 				A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */,
 			);
@@ -705,9 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A04ECB01D356BCA00270189 /* CloudCodeTests.swift in Sources */,
 				A475E3221D0A9B3B00FB66C3 /* PupCareTests.swift in Sources */,
-				715100771D341129003A6817 /* ParseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,7 +562,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PupCare/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -858,7 +574,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PupCare/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -867,7 +582,6 @@
 		};
 		A475E3351D0A9B3B00FB66C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8744664412D2A7E02501B9E5 /* Pods-PupCareTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PupCareTests/Info.plist;
@@ -880,7 +594,6 @@
 		};
 		A475E3361D0A9B3B00FB66C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDD843DED49D52DA47654117 /* Pods-PupCareTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PupCareTests/Info.plist;

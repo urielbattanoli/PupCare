@@ -16,23 +16,23 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         self.tabBar.tintColor = UIColor.redColor()
         
-        //PetShops ViewController
-        let vcPetShops = UIStoryboard(name: "Petshops", bundle: nil).instantiateInitialViewController()!
-        vcPetShops.tabBarItem = UITabBarItem(title: "Pet Shops", image: UIImage(named: "Paws"), selectedImage: nil)
-        
         //Promotions ViewController
         let vcPromotions = UIStoryboard(name: "Promotions", bundle: nil).instantiateInitialViewController()!
-        vcPromotions.tabBarItem = UITabBarItem(title: "Promoções", image: nil, selectedImage: nil)
+        vcPromotions.tabBarItem = UITabBarItem(title: "Promoções", image: UIImage(named: "promotionsIcon"), selectedImage: nil)
+        
+        //PetShops ViewController
+        let vcPetShops = UIStoryboard(name: "Petshops", bundle: nil).instantiateInitialViewController()!
+        vcPetShops.tabBarItem = UITabBarItem(title: "Pet Shops", image: UIImage(named: "petShopIcon"), selectedImage: nil)
         
         //Orders ViewController
         let vcOrders  = UIStoryboard(name: "Orders", bundle: nil).instantiateInitialViewController()!
-        vcOrders.tabBarItem = UITabBarItem(title: "Pedidos", image: nil, selectedImage: nil)
+        vcOrders.tabBarItem = UITabBarItem(title: "Pedidos", image: UIImage(named: "ordersIcon"), selectedImage: nil)
         
         //Cart ViewController
-        let vcCart = UIStoryboard(name: "Cart", bundle: nil).instantiateInitialViewController()!
-        vcCart.tabBarItem = UITabBarItem(title: "Carrinho", image: nil, selectedImage: nil)
+        let vcCart = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()!
+        vcCart.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
         
-        self.viewControllers = [vcPetShops,vcPromotions,vcOrders,vcCart]
+        self.viewControllers = [vcPromotions,vcPetShops,vcOrders,vcCart]
     }
 
     override func didReceiveMemoryWarning() {
