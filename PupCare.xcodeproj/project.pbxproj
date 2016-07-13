@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AC64BA1D2C32E400477F05 /* Login.Storyboard */; };
 		569E4878009CE5DDF43F544E /* Pods_PupCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */; };
 		A475E30F1D0A9B3A00FB66C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */; };
 		A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A475E3101D0A9B3A00FB66C3 /* PupCare.xcdatamodeld */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		0493F2875AEB302E7CCF3B2B /* Pods-PupCare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.release.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.release.xcconfig"; sourceTree = "<group>"; };
+		39AC64BA1D2C32E400477F05 /* Login.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.Storyboard; path = View/Login.Storyboard; sourceTree = "<group>"; };
 		3AB0AC7D08F3CCBE82BDDF13 /* Pods-PupCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.debug.xcconfig"; sourceTree = "<group>"; };
 		97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A475E3061D0A9B3A00FB66C3 /* PupCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PupCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 				A475E33D1D148FEB00FB66C3 /* Petshops.storyboard */,
 				A4869DC81D2595090076EC37 /* Products.storyboard */,
 				A475E33F1D14902400FB66C3 /* Promotions.storyboard */,
+				39AC64BA1D2C32E400477F05 /* Login.Storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -222,12 +225,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3311D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCare" */;
 			buildPhases = (
-				E55CB90DA334C769AB2F41A3 /* 📦 Check Pods Manifest.lock */,
+				E55CB90DA334C769AB2F41A3 /* [CP] Check Pods Manifest.lock */,
 				A475E3021D0A9B3A00FB66C3 /* Sources */,
 				A475E3031D0A9B3A00FB66C3 /* Frameworks */,
 				A475E3041D0A9B3A00FB66C3 /* Resources */,
-				3D74F531D03640DADC7B5BA2 /* 📦 Embed Pods Frameworks */,
-				AAA1E56ADF62DB5312F41510 /* 📦 Copy Pods Resources */,
+				3D74F531D03640DADC7B5BA2 /* [CP] Embed Pods Frameworks */,
+				AAA1E56ADF62DB5312F41510 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -330,6 +333,7 @@
 				A475E3421D14905200FB66C3 /* Cart.storyboard in Resources */,
 				A4869DC91D2595090076EC37 /* Products.storyboard in Resources */,
 				A475E33E1D148FEB00FB66C3 /* Petshops.storyboard in Resources */,
+				39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,14 +354,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D74F531D03640DADC7B5BA2 /* 📦 Embed Pods Frameworks */ = {
+		3D74F531D03640DADC7B5BA2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,14 +369,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCare/Pods-PupCare-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AAA1E56ADF62DB5312F41510 /* 📦 Copy Pods Resources */ = {
+		AAA1E56ADF62DB5312F41510 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,14 +384,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCare/Pods-PupCare-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E55CB90DA334C769AB2F41A3 /* 📦 Check Pods Manifest.lock */ = {
+		E55CB90DA334C769AB2F41A3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

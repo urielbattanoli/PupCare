@@ -21,8 +21,4 @@ class Product: PFObject, PFSubclassing{
     static func parseClassName() -> String {
         return "Product"
     }
-    
-    func productImage() -> UIImageView{
-        let imageView = 
-    }
 }
