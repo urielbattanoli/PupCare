@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class ProductTableViewCell: UITableViewCell {
     
@@ -21,8 +20,7 @@ class ProductTableViewCell: UITableViewCell {
     var product: Product?{
         didSet{
             if let product = self.product{
-                self.photoImageView.kf_showIndicatorWhenLoading = true
-                self.photoImageView.kf_setImageWithURL(NSURL(string: product.imageUrl)!, placeholderImage: nil)
+                self.photoImageView.loadImage(product.imageUrl)
                 self.lblName.text = product.name
                 self.lblDescription.text = product.descript
                 self.lblPrice.text = product.price

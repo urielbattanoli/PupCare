@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class PetShopsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -118,8 +117,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.petShopNameLabel.text = petShop.name
         cell.petShopAddressLabel.text = petShop.address
         cell.ranking = Int(petShop.ranking)
-        cell.petShopImageView.kf_setImageWithURL(NSURL(string: petShop.imageUrl)!, placeholderImage: nil)
-        cell.petShopImageView.kf_showIndicatorWhenLoading = true
+        cell.petShopImageView.loadImage(petShop.imageUrl)
         
         return cell
     }
