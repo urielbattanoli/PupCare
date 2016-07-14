@@ -18,7 +18,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     private let numberOfRowSection0 = 1
     private let numberOfRowSection1 = 5
     private let numberOfRowSection2 = 4
-    private let numberOfRowOne = 1
+    private let numberOfRowSectionShrunk = 2
     
     var section1Expanded = false
     var section2Expanded = false
@@ -53,65 +53,84 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         default:
             print("default section")
         }
-        return self.numberOfRowOne
+        return self.numberOfRowSectionShrunk
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cellProfileDetail") as! MyProfileDetailTableViewCell
+        let separator = tableView.dequeueReusableCellWithIdentifier("cellSeparator")!
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellProfileDetail") as! MyProfileDetailTableViewCell
+        let section = tableView.dequeueReusableCellWithIdentifier("cellProfileSection") as! MyProfileDetailTableViewCell
         
         switch indexPath.section {
         case 0:
             let profile = tableView.dequeueReusableCellWithIdentifier("cellProfile") as! MyProfileTableViewCell
             profile.photoUrl = "https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xap1/v/t1.0-9/22729_821076457975277_2327804208051810931_n.jpg?oh=177f81efd8e3384b1ac1a01ca9266994&oe=57F6ECBC&__gda__=1478920913_017f3319e64c909d609126b6811800bb"//user?.photoUrl
             return profile
-        case 1:
-            switch indexPath.row {
-            case 0:
-                cell = tableView.dequeueReusableCellWithIdentifier("cellProfileSection") as! MyProfileDetailTableViewCell
-                cell.string = "Dados Pessoais"
-                cell.contentView.tag = indexPath.section
-                
-                let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.sectionTapped(_:)))
-                
-                cell.contentView.addGestureRecognizer(gestureRecognizer)
-                cell.contentView.topCorners(5)
-            case 1:
-                cell.string = "Uriel Battanoli"//user?.name
-            case 2:
-                cell.string = "001.094.302-12"
-            case 3:
-                cell.string = "Graciano Azambuja, 229"
-            case 4:
-                let separetor = tableView.dequeueReusableCellWithIdentifier("cellSeparator")!
-                separetor.contentView.botCorners(5)
-                return separetor
-            default:
-                print("default cellForRow InSection 0")
+            
+        case 1 where indexPath.row == 0:
+            section.string = "Dados Pessoais"
+            section.contentView.tag = indexPath.section
+            
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.sectionTapped(_:)))
+            
+            section.contentView.addGestureRecognizer(gestureRecognizer)
+            if !self.section1Expanded{
+                section.changeConstraintSize(0)
             }
-        case 2:
-            switch indexPath.row {
-            case 0:
-                cell = tableView.dequeueReusableCellWithIdentifier("cellProfileSection") as! MyProfileDetailTableViewCell
-                cell.string = "Dados do Cartão"
-                cell.contentView.tag = indexPath.section
-                
-                let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.sectionTapped(_:)))
-                
-                cell.contentView.addGestureRecognizer(gestureRecognizer)
-                cell.contentView.topCorners(5)
-            case 1:
-                cell.string = "**** **** **** 0000"
-            case 2:
-                cell.string = "07/17"
-            case 3:
-                cell.string = "***"
-            case 4:
-                let separetor = tableView.dequeueReusableCellWithIdentifier("cellSeparator")!
-                separetor.contentView.botCorners(5)
-                return separetor
-            default:
-                print("default cellForRow InSection 1")
+            else{
+                section.changeConstraintSize(-15)
             }
+            section.setCorner()
+            return section
+            
+        case 1 where indexPath.row == 1:
+            if !self.section1Expanded{
+                return separator
+            }
+            cell.string = "Uriel Battanoli"//user?.name
+            
+        case 1 where indexPath.row == 2:
+            cell.string = "001.094.302-12"
+            
+        case 1 where indexPath.row == 3:
+            cell.string = "Graciano Azambuja, 229"
+            cell.setCorner()
+            
+        case 1 where indexPath.row == 4:
+            return separator
+            
+        case 2 where indexPath.row == 0:
+            section.string = "Dados do Cartão"
+            section.contentView.tag = indexPath.section
+            
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.sectionTapped(_:)))
+            
+            section.contentView.addGestureRecognizer(gestureRecognizer)
+            if !self.section2Expanded{
+                section.changeConstraintSize(0)
+            }
+            else{
+                section.changeConstraintSize(-15)
+            }
+            section.setCorner()
+            return section
+            
+        case 2 where indexPath.row == 1:
+            if !self.section2Expanded{
+                return separator
+            }
+            cell.string = "**** **** **** 1234"
+            
+        case 2 where indexPath.row == 2:
+            cell.string = "07/17"
+            
+        case 2 where indexPath.row == 3:
+            cell.string = "***"
+            cell.setCorner()
+            
+        case 2 where indexPath.row == 4:
+            return separator
+            
         default:
             print("default section in cell for row")
         }
@@ -131,7 +150,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         else if indexPath.row == 0{
             return 45
         }
-        else if indexPath.row == 4{
+        else if (indexPath.row == 4) || (!self.section1Expanded && indexPath.section == 1) || (!self.section2Expanded && indexPath.section == 2){
             return 20
         }
         return 40

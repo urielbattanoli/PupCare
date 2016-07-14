@@ -2,10 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xU0-Fl-9mG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--My Profile View Controller-->
+        <!--Minha Conta-->
         <scene sceneID="aAh-IR-iJr">
             <objects>
                 <viewController id="UPQ-08-Ira" customClass="MyProfileViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,27 +21,27 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellProfile" rowHeight="255" id="pcU-RQ-rRf" customClass="MyProfileTableViewCell" customModule="PupCare" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellProfile" rowHeight="255" id="pcU-RQ-rRf" customClass="MyProfileTableViewCell" customModule="PupCare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="570" height="255"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pcU-RQ-rRf" id="ayS-lp-N8i">
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="255"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nmS-bN-BdI">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nmS-bN-BdI" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
                                                     <rect key="frame" x="203" y="65" width="165" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="165" id="3V9-Br-ksk"/>
                                                         <constraint firstAttribute="width" constant="165" id="FtB-Ym-xFz"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="82.5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6tw-hh-usv">
-                                                    <rect key="frame" x="15" y="15" width="540" height="26"/>
+                                                    <rect key="frame" x="0.0" y="15" width="570" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="xtw-uP-6yJ"/>
                                                     </constraints>
@@ -50,15 +49,24 @@
                                                         <segment title="First"/>
                                                         <segment title="Second"/>
                                                     </segments>
+                                                    <color key="tintColor" red="0.3294117647" green="0.78039215689999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="6tw-hh-usv" firstAttribute="leading" secondItem="ayS-lp-N8i" secondAttribute="leading" id="JDO-Uy-tBG"/>
                                                 <constraint firstItem="6tw-hh-usv" firstAttribute="top" secondItem="ayS-lp-N8i" secondAttribute="top" constant="15" id="PVA-xH-7cV"/>
                                                 <constraint firstAttribute="trailing" secondItem="6tw-hh-usv" secondAttribute="trailing" constant="15" id="S3y-Jl-IMU"/>
+                                                <constraint firstAttribute="trailing" secondItem="6tw-hh-usv" secondAttribute="trailing" id="Zuo-gO-hOx"/>
                                                 <constraint firstItem="6tw-hh-usv" firstAttribute="leading" secondItem="ayS-lp-N8i" secondAttribute="leading" constant="15" id="dAq-rN-QZc"/>
                                                 <constraint firstItem="nmS-bN-BdI" firstAttribute="centerX" secondItem="ayS-lp-N8i" secondAttribute="centerX" id="uAI-Pb-7k4"/>
                                                 <constraint firstItem="nmS-bN-BdI" firstAttribute="top" secondItem="6tw-hh-usv" secondAttribute="bottom" constant="25" id="uBm-5A-Ens"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="S3y-Jl-IMU"/>
+                                                    <exclude reference="dAq-rN-QZc"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imageProfile" destination="nmS-bN-BdI" id="kYT-Tg-KXf"/>
@@ -72,23 +80,42 @@
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Profile Informations" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b06-1z-NNQ">
-                                                    <rect key="frame" x="8" y="12" width="554" height="20"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAa-vG-eb2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="570" height="59"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Profile Informations" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b06-1z-NNQ">
+                                                            <rect key="frame" x="0.0" y="12" width="570" height="20"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.3294117647" green="0.78039215689999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="b06-1z-NNQ" firstAttribute="leading" secondItem="TAa-vG-eb2" secondAttribute="leading" id="LMf-Vh-w2c"/>
+                                                        <constraint firstAttribute="trailing" secondItem="b06-1z-NNQ" secondAttribute="trailing" id="oZ3-EI-THd"/>
+                                                        <constraint firstItem="b06-1z-NNQ" firstAttribute="centerY" secondItem="TAa-vG-eb2" secondAttribute="centerY" id="pvg-Bv-nHN"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="pvg-Bv-nHN"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.3294117647" green="0.78039215689999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="b06-1z-NNQ" firstAttribute="leading" secondItem="Bjs-A3-gPz" secondAttribute="leadingMargin" id="AwQ-dC-uQC"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="b06-1z-NNQ" secondAttribute="trailing" id="Z5C-gf-RwO"/>
-                                                <constraint firstItem="b06-1z-NNQ" firstAttribute="centerY" secondItem="Bjs-A3-gPz" secondAttribute="centerY" id="fkj-fk-LGO"/>
+                                                <constraint firstItem="TAa-vG-eb2" firstAttribute="leading" secondItem="Bjs-A3-gPz" secondAttribute="leading" id="B8r-uz-XkF"/>
+                                                <constraint firstItem="b06-1z-NNQ" firstAttribute="centerY" secondItem="Bjs-A3-gPz" secondAttribute="centerY" id="FFT-dN-vy3"/>
+                                                <constraint firstAttribute="trailing" secondItem="TAa-vG-eb2" secondAttribute="trailing" id="Mtc-ke-v2R"/>
+                                                <constraint firstAttribute="bottom" secondItem="TAa-vG-eb2" secondAttribute="bottom" constant="-15" id="XeE-7q-Ixm"/>
+                                                <constraint firstItem="TAa-vG-eb2" firstAttribute="top" secondItem="Bjs-A3-gPz" secondAttribute="top" id="nxE-eV-yGX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bottomConstraint" destination="XeE-7q-Ixm" id="dhO-zE-5fH"/>
                                             <outlet property="textField" destination="b06-1z-NNQ" id="czj-hp-FjZ"/>
+                                            <outlet property="viewBack" destination="TAa-vG-eb2" id="V8t-am-8Kh"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellProfileDetail" id="pJ0-sY-vf7" customClass="MyProfileDetailTableViewCell" customModule="PupCare" customModuleProvider="target">
@@ -98,25 +125,44 @@
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8YM-KD-yqM">
-                                                    <rect key="frame" x="0.0" y="14" width="570" height="17"/>
-                                                    <color key="textColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hW-yl-CcC">
+                                                    <rect key="frame" x="0.0" y="-15" width="570" height="59"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8YM-KD-yqM">
+                                                            <rect key="frame" x="0.0" y="29" width="570" height="17"/>
+                                                            <color key="textColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="8YM-KD-yqM" firstAttribute="leading" secondItem="6hW-yl-CcC" secondAttribute="leading" id="3nS-Bv-M4g"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8YM-KD-yqM" secondAttribute="trailing" id="Hq5-Yo-Pgo"/>
+                                                        <constraint firstItem="8YM-KD-yqM" firstAttribute="centerY" secondItem="6hW-yl-CcC" secondAttribute="centerY" id="sVk-Iw-J1I"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="sVk-Iw-J1I"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="8YM-KD-yqM" firstAttribute="centerY" secondItem="9SJ-kn-O7B" secondAttribute="centerY" id="G6Q-Qd-9ti"/>
-                                                <constraint firstItem="8YM-KD-yqM" firstAttribute="leading" secondItem="9SJ-kn-O7B" secondAttribute="leading" id="RUQ-xX-MGF"/>
-                                                <constraint firstAttribute="trailing" secondItem="8YM-KD-yqM" secondAttribute="trailing" id="Xas-4C-LBA"/>
+                                                <constraint firstAttribute="trailing" secondItem="6hW-yl-CcC" secondAttribute="trailing" id="BHZ-NS-9bq"/>
+                                                <constraint firstItem="6hW-yl-CcC" firstAttribute="top" secondItem="9SJ-kn-O7B" secondAttribute="top" constant="-15" id="CL9-0k-VrT"/>
+                                                <constraint firstItem="6hW-yl-CcC" firstAttribute="leading" secondItem="9SJ-kn-O7B" secondAttribute="leading" id="E3t-9O-Ab6"/>
+                                                <constraint firstAttribute="bottom" secondItem="6hW-yl-CcC" secondAttribute="bottom" id="eik-uw-BYm"/>
+                                                <constraint firstItem="8YM-KD-yqM" firstAttribute="centerY" secondItem="9SJ-kn-O7B" secondAttribute="centerY" id="lQ8-Ba-3KC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="textField" destination="8YM-KD-yqM" id="nt9-gS-juY"/>
+                                            <outlet property="viewBack" destination="6hW-yl-CcC" id="sh8-L8-ctE"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellSeparator" id="MGP-Jf-RW8">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellSeparator" id="MGP-Jf-RW8">
                                         <rect key="frame" x="0.0" y="435" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MGP-Jf-RW8" id="O3w-7w-bx1">
@@ -140,7 +186,7 @@
                             <constraint firstItem="B7s-zn-LAh" firstAttribute="top" secondItem="VZ3-0z-az6" secondAttribute="bottom" id="xKm-62-8ea"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mgv-63-mx0"/>
+                    <navigationItem key="navigationItem" title="Minha Conta" id="mgv-63-mx0"/>
                     <connections>
                         <outlet property="tableView" destination="VZ3-0z-az6" id="OZe-Zq-30s"/>
                     </connections>

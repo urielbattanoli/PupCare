@@ -9,8 +9,10 @@
 import UIKit
 
 class MyProfileDetailTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var viewBack: UIView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var string: String?{
         didSet{
@@ -20,15 +22,33 @@ class MyProfileDetailTableViewCell: UITableViewCell {
         }
     }
     
+    var corner: CGFloat?{
+        didSet{
+            if let view = self.viewBack{
+                view.layer.masksToBounds = true
+                view.layer.cornerRadius = self.corner!
+            }
+        }
+    }
+    
+    func changeConstraintSize(size: CGFloat) {
+        if let constraint = self.bottomConstraint{
+            constraint.constant = size
+        }
+    }
+    
+    func setCorner() {
+        self.corner = 5
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

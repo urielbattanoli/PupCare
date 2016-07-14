@@ -27,24 +27,6 @@ extension UIImageView{
     }
 }
 
-extension UIView{
-    func botCorners(radius: CGFloat){
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.TopLeft , .TopRight], cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.CGPath
-        
-        self.layer.mask = mask
-    }
-    
-    func topCorners(radius: CGFloat){
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.BottomLeft , .BottomRight], cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.CGPath
-        
-        self.layer.mask = mask
-    }
-}
-
 extension Double {
     /// Rounds the double to decimal places value
     func roundToPlaces(places:Int) -> Double {
