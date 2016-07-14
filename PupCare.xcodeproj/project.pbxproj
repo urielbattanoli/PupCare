@@ -20,6 +20,9 @@
 		71C1B44C1D30062000CDDA20 /* PromotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B44B1D30062000CDDA20 /* PromotionManager.swift */; };
 		71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9C101D26D42000DA14DA /* PetShop.swift */; };
 		7A04ECB01D356BCA00270189 /* CloudCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */; };
+		7A37C7B21D37DB6300FBE13F /* Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37C7B11D37DB6300FBE13F /* Designables.swift */; };
+		7A9E9B8A1D36CE9700AC978C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E9B891D36CE9700AC978C /* SignUpViewController.swift */; };
+		7A9E9B8E1D36CEDC00AC978C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9E9B8C1D36CEDC00AC978C /* Main.storyboard */; };
 		A400B4751D34311100051363 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A400B4741D34311100051363 /* Profile.storyboard */; };
 		A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400B4761D34324300051363 /* MyProfileViewController.swift */; };
 		A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */; };
@@ -86,6 +89,9 @@
 		71C1B44B1D30062000CDDA20 /* PromotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionManager.swift; path = Model/PromotionManager.swift; sourceTree = "<group>"; };
 		71ED9C101D26D42000DA14DA /* PetShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShop.swift; path = Model/PetShop.swift; sourceTree = "<group>"; };
 		7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCodeTests.swift; sourceTree = "<group>"; };
+		7A37C7B11D37DB6300FBE13F /* Designables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Designables.swift; sourceTree = "<group>"; };
+		7A9E9B891D36CE9700AC978C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controller/SignUpViewController.swift; sourceTree = "<group>"; };
+		7A9E9B8D1D36CEDC00AC978C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PupCare/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCareTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8744664412D2A7E02501B9E5 /* Pods-PupCareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests.debug.xcconfig"; sourceTree = "<group>"; };
 		97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				A40B341E1D30270F00BCC240 /* Extensions.swift */,
+				7A37C7B11D37DB6300FBE13F /* Designables.swift */,
 				715100751D341129003A6817 /* ParseManager.swift */,
 				7A31925E1D34012F004096A0 /* PetShop */,
 				7A31925F1D340139004096A0 /* Product */,
@@ -718,6 +725,7 @@
 				715100761D341129003A6817 /* ParseManager.swift in Sources */,
 				A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */,
 				71C1B4461D2EB91300CDDA20 /* PetShopManager.swift in Sources */,
+				7A37C7B21D37DB6300FBE13F /* Designables.swift in Sources */,
 				A475E3461D1490AA00FB66C3 /* AppDelegate.swift in Sources */,
 				A43C9E941D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift in Sources */,
 				A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */,
