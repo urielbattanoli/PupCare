@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SignUpViewController: UIViewController {
 
@@ -18,29 +19,17 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        name.layer.borderColor = UIColor(red: 220, green: 220, blue: 220, alpha: 1).CGColor
-        name.layer.borderWidth = 1
-        name.borderStyle = UITextBorderStyle.Line
-        
-        email.layer.borderColor = UIColor(red: 220, green: 220, blue: 220, alpha: 1).CGColor
-        email.layer.borderWidth = 1
-        email.borderStyle = UITextBorderStyle.Line
-        
-        password.layer.borderColor = UIColor(red: 220, green: 220, blue: 220, alpha: 1).CGColor
-        password.layer.borderWidth = 1
-        password.borderStyle = UITextBorderStyle.Line
-        
-        passwordConfirmation.layer.borderColor = UIColor(red: 220, green: 220, blue: 220, alpha: 1).CGColor
-        passwordConfirmation.layer.borderWidth = 1
-        passwordConfirmation.borderStyle = UITextBorderStyle.Line
-
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func didPressSignUp(sender: AnyObject) {
+        
     }
     
 

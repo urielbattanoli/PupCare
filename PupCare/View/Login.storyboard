@@ -353,6 +353,9 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressSignUp:" destination="b6i-YU-n2n" eventType="touchUpInside" id="bx6-jF-7PI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.32941176470588235" green="0.7803921568627451" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
