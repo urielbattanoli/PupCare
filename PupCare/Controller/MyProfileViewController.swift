@@ -14,10 +14,10 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Variables
-    private let numberOfSections = 3
+    private let numberOfSections = 4
     private let numberOfRowSection0 = 1
     private let numberOfRowSection1 = 5
-    private let numberOfRowSection2 = 4
+    private let numberOfRowSection2 = 5
     private let numberOfRowSectionShrunk = 2
     
     var section1Expanded = false
@@ -50,6 +50,8 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             return self.numberOfRowSection1
         case 2 where self.section2Expanded:
             return self.numberOfRowSection2
+        case 3:
+            return 1
         default:
             print("default section")
         }
@@ -57,6 +59,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let logOut = tableView.dequeueReusableCellWithIdentifier("cellLogOut") as! MyProfileDetailTableViewCell
         let separator = tableView.dequeueReusableCellWithIdentifier("cellSeparator")!
         let cell = tableView.dequeueReusableCellWithIdentifier("cellProfileDetail") as! MyProfileDetailTableViewCell
         let section = tableView.dequeueReusableCellWithIdentifier("cellProfileSection") as! MyProfileDetailTableViewCell
@@ -131,6 +134,14 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         case 2 where indexPath.row == 4:
             return separator
             
+        case 3 where indexPath.row == 0:
+            logOut.string = "Sair"
+            logOut.setCorner()
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.didPressLogOut))
+            logOut.contentView.addGestureRecognizer(gesture)
+            
+            return logOut
         default:
             print("default section in cell for row")
         }
@@ -167,5 +178,9 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         self.tableView.reloadSections(NSIndexSet(index: section!), withRowAnimation: .Automatic)
+    }
+    
+    func didPressLogOut() {
+        print("sair")
     }
 }

@@ -46,8 +46,8 @@
                                                         <constraint firstAttribute="height" constant="25" id="xtw-uP-6yJ"/>
                                                     </constraints>
                                                     <segments>
-                                                        <segment title="First"/>
-                                                        <segment title="Second"/>
+                                                        <segment title="Meu Perfil"/>
+                                                        <segment title="Meus Pets"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.3294117647" green="0.78039215689999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </segmentedControl>
@@ -68,6 +68,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="imageProfile" destination="nmS-bN-BdI" id="kYT-Tg-KXf"/>
                                             <outlet property="segmentedControl" destination="6tw-hh-usv" id="cB3-7v-mlR"/>
@@ -112,6 +113,7 @@
                                                 <constraint firstItem="TAa-vG-eb2" firstAttribute="top" secondItem="Bjs-A3-gPz" secondAttribute="top" id="nxE-eV-yGX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="bottomConstraint" destination="XeE-7q-Ixm" id="dhO-zE-5fH"/>
                                             <outlet property="textField" destination="b06-1z-NNQ" id="czj-hp-FjZ"/>
@@ -148,7 +150,6 @@
                                                     </variation>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="6hW-yl-CcC" secondAttribute="trailing" id="BHZ-NS-9bq"/>
                                                 <constraint firstItem="6hW-yl-CcC" firstAttribute="top" secondItem="9SJ-kn-O7B" secondAttribute="top" constant="-15" id="CL9-0k-VrT"/>
@@ -157,6 +158,7 @@
                                                 <constraint firstItem="8YM-KD-yqM" firstAttribute="centerY" secondItem="9SJ-kn-O7B" secondAttribute="centerY" id="lQ8-Ba-3KC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="textField" destination="8YM-KD-yqM" id="nt9-gS-juY"/>
                                             <outlet property="viewBack" destination="6hW-yl-CcC" id="sh8-L8-ctE"/>
@@ -169,6 +171,52 @@
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellLogOut" id="b5Y-jX-1Ij" customClass="MyProfileDetailTableViewCell" customModule="PupCare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="479" width="570" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b5Y-jX-1Ij" id="oGp-S2-Nrn">
+                                            <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEU-ev-ide">
+                                                    <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Log Out" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zef-D4-nJK">
+                                                            <rect key="frame" x="0.0" y="12" width="570" height="20"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.64766808712121215" green="0.085554140714085916" blue="0.098737517602942845" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="zef-D4-nJK" secondAttribute="trailing" id="DG2-AP-IKh"/>
+                                                        <constraint firstItem="zef-D4-nJK" firstAttribute="leading" secondItem="bEU-ev-ide" secondAttribute="leading" id="Fc1-hc-Wej"/>
+                                                        <constraint firstItem="zef-D4-nJK" firstAttribute="centerY" secondItem="bEU-ev-ide" secondAttribute="centerY" id="rXs-1r-8DG"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="rXs-1r-8DG"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bEU-ev-ide" firstAttribute="leading" secondItem="oGp-S2-Nrn" secondAttribute="leading" id="Ovd-AW-9xj"/>
+                                                <constraint firstItem="bEU-ev-ide" firstAttribute="top" secondItem="oGp-S2-Nrn" secondAttribute="top" id="RFf-nI-D7P"/>
+                                                <constraint firstAttribute="trailing" secondItem="bEU-ev-ide" secondAttribute="trailing" id="XNp-F6-3eJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="bEU-ev-ide" secondAttribute="bottom" id="dP9-PL-2Bm"/>
+                                                <constraint firstItem="zef-D4-nJK" firstAttribute="centerY" secondItem="oGp-S2-Nrn" secondAttribute="centerY" id="vHs-xV-cpX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="textField" destination="zef-D4-nJK" id="4ab-kB-xIF"/>
+                                            <outlet property="viewBack" destination="bEU-ev-ide" id="wCq-om-3ND"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
