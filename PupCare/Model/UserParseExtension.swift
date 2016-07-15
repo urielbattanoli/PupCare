@@ -14,9 +14,9 @@ extension User {
     convenience init(parseObject: PFUser) {
         var data = [String : AnyObject]()
         
-        data["userId"] = parseObject["objectId"] as! String
-        data["name"] = parseObject["name"] as! String
-        data["photo"] = (parseObject["image"] as! PFFile).url
+        data["userId"] = parseObject.objectId
+        data["name"] = parseObject.username
+//        data["photo"] = (parseObject["image"] as! PFFile).url
         
         self.init(data: data)
     }
