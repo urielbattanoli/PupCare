@@ -181,6 +181,14 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func didPressLogOut() {
-        print("sair")
+        UserManager.logOutUser { 
+            self.dismissViewControllerAnimated(false, completion: nil)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "logInSegue" {
+            segue.destinationViewController.childViewControllers[0] as! LoginViewController
+        }
     }
 }

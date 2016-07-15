@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Parse
 
 class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,13 +29,17 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         let vcOrders  = UIStoryboard(name: "Orders", bundle: nil).instantiateInitialViewController()!
         vcOrders.tabBarItem = UITabBarItem(title: "Pedidos", image: UIImage(named: "ordersIcon"), selectedImage: nil)
         
-        //Cart ViewController
-        let vcProfile = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()!
+        //Profile ViewController
+        var vcProfile = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
+        
+        if PFUser.currentUser() != nil{
+            vcProfile = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()!
+        }
         vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
         
         self.viewControllers = [vcPetShops,vcPromotions,vcOrders,vcProfile]
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,13 +47,13 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
