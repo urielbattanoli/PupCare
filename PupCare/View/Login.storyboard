@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sSH-9v-m9q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sSH-9v-m9q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -50,6 +50,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signInAction:" destination="uQP-E4-poI" eventType="touchUpInside" id="yKw-1U-otz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTl-2G-NkY" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
                                 <rect key="frame" x="20" y="339" width="560" height="40"/>
@@ -83,6 +86,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpWithFacebook:" destination="uQP-E4-poI" eventType="touchUpInside" id="7q6-Vd-N5R"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cat-and-dog-pics" translatesAutoresizingMaskIntoConstraints="NO" id="iSL-Yv-ufZ">
                                 <rect key="frame" x="20" y="387" width="560" height="213"/>
@@ -110,13 +116,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="1eV-qN-Llo"/>
                     <connections>
-                        <segue destination="kaf-6p-qMD" kind="show" id="sGs-Hd-RmG"/>
+                        <segue destination="kaf-6p-qMD" kind="show" identifier="signInSegue" id="sGs-Hd-RmG"/>
                         <segue destination="b6i-YU-n2n" kind="show" identifier="signUpSegue" id="VBr-NT-8Wf"/>
+                        <segue destination="8PP-Jz-iJc" kind="show" identifier="singInWithFacebookSegue" id="Hu9-ij-AGM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bp7-eU-cOG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400" y="690"/>
+            <point key="canvasLocation" x="410" y="797"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="rwy-HC-xCM">
@@ -395,13 +402,13 @@
             </objects>
             <point key="canvasLocation" x="1184" y="1182"/>
         </scene>
-        <!--Profile-->
+        <!--Main-->
         <scene sceneID="Uwb-E4-b2u">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="8PP-Jz-iJc" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" id="8PP-Jz-iJc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQu-zk-HIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1762.5" y="837"/>
+            <point key="canvasLocation" x="1855" y="822"/>
         </scene>
     </scenes>
     <resources>
@@ -409,4 +416,7 @@
         <image name="PupCareWt" width="90" height="98"/>
         <image name="cat-and-dog-pics" width="375" height="326"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Hu9-ij-AGM"/>
+    </inferredMetricsTieBreakers>
 </document>

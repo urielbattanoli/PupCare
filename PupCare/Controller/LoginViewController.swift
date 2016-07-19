@@ -25,15 +25,17 @@ class LoginViewController: UIViewController {
     @IBAction func signUpAction(sender: AnyObject) {
         performSegueWithIdentifier("signUpSegue", sender: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func signInAction(sender: AnyObject) {
+        performSegueWithIdentifier("signInSegue", sender: nil)
     }
-    */
-
+    
+    @IBAction func signUpWithFacebook(sender: AnyObject) {
+        UserManager.singInWithFacebook {
+            if let tabController = self.navigationController?.childViewControllers[0] as? LoginViewController {
+                tabController.view.layer.addAnimation(CustomTransitions.dismissCustomTransition(), forKey: kCATransition)
+                tabController.dismissViewControllerAnimated(false, completion: nil)
+            }
+        }
+    }
 }
