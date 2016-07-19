@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="255"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CSl-LB-kve" id="fmy-5X-NnH">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="254.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsG-hn-qAu">
@@ -188,11 +188,30 @@
                     <navigationItem key="navigationItem" title="Promoções" id="qjO-0H-tp3"/>
                     <connections>
                         <outlet property="promotionsTableView" destination="tA8-Tm-iqX" id="yxE-2C-aoZ"/>
+                        <segue destination="sdt-Jl-Yfj" kind="show" id="FD0-xC-vwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1TO-Oi-vlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1061" y="204"/>
+        </scene>
+        <!--Promotions View Controller-->
+        <scene sceneID="HSX-r4-9Ir">
+            <objects>
+                <viewController id="sdt-Jl-Yfj" customClass="PromotionsViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="emu-xt-liG"/>
+                        <viewControllerLayoutGuide type="bottom" id="g2T-8k-m89"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bNT-CE-41W">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qtx-wm-Wnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1838" y="204"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fE6-fF-VeG">
