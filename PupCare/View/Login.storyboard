@@ -1,26 +1,412 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sSH-9v-m9q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="8EX-Cl-Nwx">
+        <!--Navigation Controller-->
+        <scene sceneID="hHJ-Qg-gKX">
             <objects>
-                <viewController id="CER-Nd-AUa" sceneMemberID="viewController">
+                <navigationController id="sSH-9v-m9q" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tjc-Ma-wFh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uQP-E4-poI" kind="relationship" relationship="rootViewController" id="Atm-BD-yw6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1hq-ZL-cY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-372" y="690"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="TNW-MV-hqO">
+            <objects>
+                <viewController id="uQP-E4-poI" customClass="LoginViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YOz-Je-K0L"/>
-                        <viewControllerLayoutGuide type="bottom" id="WfT-Qx-U3G"/>
+                        <viewControllerLayoutGuide type="top" id="mU2-bp-yUB"/>
+                        <viewControllerLayoutGuide type="bottom" id="aew-Bk-GbQ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="A8M-8e-6BM">
+                    <view key="view" contentMode="scaleToFill" id="kjj-pQ-4j2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PupCareLogo" translatesAutoresizingMaskIntoConstraints="NO" id="nE7-gJ-xiM">
+                                <rect key="frame" x="20" y="72" width="560" height="126"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3H-Cw-gyR" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="20" y="223" width="560" height="40"/>
+                                <color key="backgroundColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="R1e-Lv-dkf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Entrar com sua conta"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTl-2G-NkY" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="20" y="339" width="560" height="40"/>
+                                <color key="backgroundColor" red="0.32941176470588235" green="0.7803921568627451" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3jT-dF-yAI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cadastre-se"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpAction:" destination="uQP-E4-poI" eventType="touchUpInside" id="jUK-Th-Cyc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9N-J9-eKl" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="20" y="281" width="560" height="40"/>
+                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="O9w-4a-6e5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Entrar com o Facebook"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cat-and-dog-pics" translatesAutoresizingMaskIntoConstraints="NO" id="iSL-Yv-ufZ">
+                                <rect key="frame" x="20" y="387" width="560" height="213"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iSL-Yv-ufZ" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="146-02-HKS"/>
+                            <constraint firstItem="tTl-2G-NkY" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="1bI-jU-vmA"/>
+                            <constraint firstItem="F9N-J9-eKl" firstAttribute="top" secondItem="A3H-Cw-gyR" secondAttribute="bottom" constant="18" id="77v-GH-XJI"/>
+                            <constraint firstItem="iSL-Yv-ufZ" firstAttribute="top" secondItem="tTl-2G-NkY" secondAttribute="bottom" constant="8" id="BZe-io-M2x"/>
+                            <constraint firstItem="A3H-Cw-gyR" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailingMargin" id="Cra-rj-ibR"/>
+                            <constraint firstItem="aew-Bk-GbQ" firstAttribute="top" secondItem="iSL-Yv-ufZ" secondAttribute="bottom" id="ElB-6d-rK5"/>
+                            <constraint firstItem="F9N-J9-eKl" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="ICf-fa-eIL"/>
+                            <constraint firstItem="F9N-J9-eKl" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailingMargin" id="KaK-pc-KjC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nE7-gJ-xiM" secondAttribute="trailing" id="QNR-se-6P2"/>
+                            <constraint firstItem="tTl-2G-NkY" firstAttribute="top" secondItem="F9N-J9-eKl" secondAttribute="bottom" constant="18" id="RCI-my-rbh"/>
+                            <constraint firstItem="tTl-2G-NkY" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailingMargin" id="Utm-zO-LU0"/>
+                            <constraint firstItem="A3H-Cw-gyR" firstAttribute="top" secondItem="nE7-gJ-xiM" secondAttribute="bottom" constant="25" id="bLu-Mm-DqA"/>
+                            <constraint firstItem="nE7-gJ-xiM" firstAttribute="top" secondItem="mU2-bp-yUB" secondAttribute="bottom" constant="8" id="pNL-zN-QJp"/>
+                            <constraint firstItem="nE7-gJ-xiM" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="ruS-76-cfU"/>
+                            <constraint firstItem="A3H-Cw-gyR" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="vjH-ff-PPy"/>
+                            <constraint firstItem="iSL-Yv-ufZ" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailingMargin" id="zdK-iA-Yfy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1eV-qN-Llo"/>
+                    <connections>
+                        <segue destination="kaf-6p-qMD" kind="show" id="sGs-Hd-RmG"/>
+                        <segue destination="b6i-YU-n2n" kind="show" identifier="signUpSegue" id="VBr-NT-8Wf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bp7-eU-cOG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="690"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rwy-HC-xCM">
+            <objects>
+                <viewController id="kaf-6p-qMD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ibe-lE-HP1"/>
+                        <viewControllerLayoutGuide type="bottom" id="qZz-bM-mjV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I5W-Dh-eIV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PupCareWt" translatesAutoresizingMaskIntoConstraints="NO" id="GCK-8K-dAc">
+                                <rect key="frame" x="20" y="72" width="560" height="98"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5a6-CS-BSK" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="20" y="195" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LMA-vG-59S"/>
+                                </constraints>
+                                <color key="textColor" red="0.32941176470588235" green="0.7803921568627451" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7C-dx-AH9" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="20" y="253" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="m8n-J1-Kq3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nm-XQ-7RZ" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="20" y="321" width="560" height="40"/>
+                                <color key="backgroundColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1Ey-Mk-otn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Fazer login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.5097460150718689" green="0.50983732938766479" blue="0.50974023342132568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-Be-Pin" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="20" y="376" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9Kv-Oo-FLP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="Esqueceu sua senha?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32893285155296326" green="0.7812531590461731" blue="0.98977404832839966" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="N7C-dx-AH9" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leadingMargin" id="1I7-Rw-7da"/>
+                            <constraint firstItem="BVC-Be-Pin" firstAttribute="trailing" secondItem="I5W-Dh-eIV" secondAttribute="trailingMargin" id="1zw-22-iF8"/>
+                            <constraint firstItem="5a6-CS-BSK" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leadingMargin" id="5LO-Vr-gnT"/>
+                            <constraint firstItem="GCK-8K-dAc" firstAttribute="trailing" secondItem="I5W-Dh-eIV" secondAttribute="trailingMargin" id="5ym-oT-wDP"/>
+                            <constraint firstItem="5a6-CS-BSK" firstAttribute="top" secondItem="GCK-8K-dAc" secondAttribute="bottom" constant="25" id="6iS-lO-dub"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5a6-CS-BSK" secondAttribute="trailing" id="7aL-7N-Vgp"/>
+                            <constraint firstItem="BVC-Be-Pin" firstAttribute="top" secondItem="4nm-XQ-7RZ" secondAttribute="bottom" constant="15" id="8MX-TU-Aqg"/>
+                            <constraint firstItem="BVC-Be-Pin" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leadingMargin" id="9t2-DF-bjT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N7C-dx-AH9" secondAttribute="trailing" id="Eij-JR-w58"/>
+                            <constraint firstItem="N7C-dx-AH9" firstAttribute="top" secondItem="5a6-CS-BSK" secondAttribute="bottom" constant="18" id="KuB-LE-nOM"/>
+                            <constraint firstItem="4nm-XQ-7RZ" firstAttribute="top" secondItem="N7C-dx-AH9" secondAttribute="bottom" constant="28" id="S7x-9u-OgL"/>
+                            <constraint firstItem="GCK-8K-dAc" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leadingMargin" id="hCX-vD-Di9"/>
+                            <constraint firstItem="4nm-XQ-7RZ" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leadingMargin" id="p4g-bw-7Qe"/>
+                            <constraint firstItem="4nm-XQ-7RZ" firstAttribute="trailing" secondItem="I5W-Dh-eIV" secondAttribute="trailingMargin" id="qGv-iS-gA0"/>
+                            <constraint firstItem="GCK-8K-dAc" firstAttribute="top" secondItem="ibe-lE-HP1" secondAttribute="bottom" constant="8" id="rjF-sl-9dT"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="419-Xj-lrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EKL-Rv-KId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="525" y="648"/>
+            <point key="canvasLocation" x="1196" y="415"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="bpF-8c-CP0">
+            <objects>
+                <viewController id="b6i-YU-n2n" customClass="SignUpViewController" customModule="PupCare" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t45-OX-XtD"/>
+                        <viewControllerLayoutGuide type="bottom" id="5h9-f2-oTV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fgz-4q-M9o">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome Completo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ojT-Xp-Hq0" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="163" y="190" width="275" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="A66-YZ-8uK"/>
+                                </constraints>
+                                <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.27972632646560669" green="0.7290530800819397" blue="0.98291677236557007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1R2-Di-UDP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="163" y="280" width="275" height="30"/>
+                                <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.27972632646560669" green="0.7290530800819397" blue="0.98291677236557007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha novamente" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-sd-WNE" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="163" y="325" width="275" height="30"/>
+                                <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.27972632646560669" green="0.7290530800819397" blue="0.98291677236557007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EbY-1e-GLP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="163" y="235" width="275" height="30"/>
+                                <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.27972632646560669" green="0.7290530800819397" blue="0.98291677236557007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="PupCareWt" translatesAutoresizingMaskIntoConstraints="NO" id="zFh-Sv-rPi" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="255" y="72" width="90" height="98"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onn-fw-d2O" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="188" y="380" width="225" height="45"/>
+                                <color key="backgroundColor" red="0.58039215686274503" green="0.58039215686274503" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="JDN-Wy-MVd"/>
+                                    <constraint firstAttribute="width" constant="225" id="JK1-aP-N9r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Cadastrar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didPressSignUp:" destination="b6i-YU-n2n" eventType="touchUpInside" id="bx6-jF-7PI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32941176470588235" green="0.7803921568627451" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zFh-Sv-rPi" firstAttribute="top" secondItem="t45-OX-XtD" secondAttribute="bottom" constant="8" id="1e4-jd-Ajt"/>
+                            <constraint firstItem="1R2-Di-UDP" firstAttribute="centerX" secondItem="EbY-1e-GLP" secondAttribute="centerX" id="5zC-p5-3WY"/>
+                            <constraint firstItem="onn-fw-d2O" firstAttribute="centerX" secondItem="qbh-sd-WNE" secondAttribute="centerX" id="BUF-CX-ynq"/>
+                            <constraint firstItem="EbY-1e-GLP" firstAttribute="top" secondItem="ojT-Xp-Hq0" secondAttribute="bottom" constant="15" id="DrL-Et-IMa"/>
+                            <constraint firstItem="EbY-1e-GLP" firstAttribute="width" secondItem="ojT-Xp-Hq0" secondAttribute="width" id="G5f-te-AuT"/>
+                            <constraint firstItem="zFh-Sv-rPi" firstAttribute="centerX" secondItem="fgz-4q-M9o" secondAttribute="centerX" id="Qmh-yt-4v6"/>
+                            <constraint firstItem="1R2-Di-UDP" firstAttribute="top" secondItem="EbY-1e-GLP" secondAttribute="bottom" constant="15" id="Tyn-g0-vRg"/>
+                            <constraint firstItem="qbh-sd-WNE" firstAttribute="top" secondItem="1R2-Di-UDP" secondAttribute="bottom" constant="15" id="YIb-if-fsv"/>
+                            <constraint firstItem="qbh-sd-WNE" firstAttribute="centerX" secondItem="1R2-Di-UDP" secondAttribute="centerX" id="aHO-Tq-bwK"/>
+                            <constraint firstItem="qbh-sd-WNE" firstAttribute="width" secondItem="1R2-Di-UDP" secondAttribute="width" id="ja8-4a-TCa"/>
+                            <constraint firstItem="1R2-Di-UDP" firstAttribute="width" secondItem="EbY-1e-GLP" secondAttribute="width" id="nI1-wZ-ZWA"/>
+                            <constraint firstItem="ojT-Xp-Hq0" firstAttribute="top" secondItem="zFh-Sv-rPi" secondAttribute="bottom" constant="20" id="nOM-Bt-OV7"/>
+                            <constraint firstItem="ojT-Xp-Hq0" firstAttribute="centerX" secondItem="zFh-Sv-rPi" secondAttribute="centerX" id="oEV-hb-Ue3"/>
+                            <constraint firstItem="onn-fw-d2O" firstAttribute="top" secondItem="qbh-sd-WNE" secondAttribute="bottom" constant="25" id="qbK-FP-YMR"/>
+                            <constraint firstItem="EbY-1e-GLP" firstAttribute="centerX" secondItem="ojT-Xp-Hq0" secondAttribute="centerX" id="tES-hy-d7a"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="email" destination="EbY-1e-GLP" id="huz-4g-Lhi"/>
+                        <outlet property="name" destination="ojT-Xp-Hq0" id="5G4-6U-f9B"/>
+                        <outlet property="password" destination="1R2-Di-UDP" id="Xyc-jV-ESF"/>
+                        <outlet property="passwordConfirmation" destination="qbh-sd-WNE" id="hXa-ng-ETs"/>
+                        <segue destination="8PP-Jz-iJc" kind="show" identifier="profileAfterSignUpSegue" id="bE8-pn-eR8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bGj-g1-3bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1184" y="1182"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="Uwb-E4-b2u">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="8PP-Jz-iJc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xQu-zk-HIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1762.5" y="837"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="PupCareLogo" width="115" height="126"/>
+        <image name="PupCareWt" width="90" height="98"/>
+        <image name="cat-and-dog-pics" width="375" height="326"/>
+    </resources>
 </document>
