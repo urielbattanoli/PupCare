@@ -10,6 +10,8 @@
 		2FFB26B9F34E6BD67BC9084A /* Pods_PupCareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */; };
 		39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AC64BA1D2C32E400477F05 /* Login.Storyboard */; };
 		569E4878009CE5DDF43F544E /* Pods_PupCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */; };
+		7117600B1D3FDDD8002452CA /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7117600A1D3FDDD8002452CA /* iCarousel.m */; };
+		711760101D3FED08002452CA /* PromotionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */; };
 		715100761D341129003A6817 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715100751D341129003A6817 /* ParseManager.swift */; };
 		715100771D341129003A6817 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715100751D341129003A6817 /* ParseManager.swift */; };
 		717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717247711D2C1BC600BD694D /* PetShopParseExtension.swift */; };
@@ -81,6 +83,10 @@
 		0493F2875AEB302E7CCF3B2B /* Pods-PupCare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.release.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.release.xcconfig"; sourceTree = "<group>"; };
 		39AC64BA1D2C32E400477F05 /* Login.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.Storyboard; path = View/Login.Storyboard; sourceTree = "<group>"; };
 		3AB0AC7D08F3CCBE82BDDF13 /* Pods-PupCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.debug.xcconfig"; sourceTree = "<group>"; };
+		711760091D3FDDD8002452CA /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		7117600A1D3FDDD8002452CA /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		7117600C1D3FDF17002452CA /* PupCare-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PupCare-Bridging-Header.h"; path = "Model/PupCare-Bridging-Header.h"; sourceTree = "<group>"; };
+		7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionDetailsViewController.swift; sourceTree = "<group>"; };
 		715100751D341129003A6817 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseManager.swift; path = Model/ParseManager.swift; sourceTree = "<group>"; };
 		717247711D2C1BC600BD694D /* PetShopParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopParseExtension.swift; path = Model/PetShopParseExtension.swift; sourceTree = "<group>"; };
 		71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopsTableViewCell.swift; path = Controller/PetShopsTableViewCell.swift; sourceTree = "<group>"; };
@@ -167,6 +173,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		711760081D3FDDD8002452CA /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				711760091D3FDDD8002452CA /* iCarousel.h */,
+				7117600A1D3FDDD8002452CA /* iCarousel.m */,
+			);
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
 		7A31925E1D34012F004096A0 /* PetShop */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +279,7 @@
 		A475E33A1D148F1600FB66C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7117600C1D3FDF17002452CA /* PupCare-Bridging-Header.h */,
 				A40B341E1D30270F00BCC240 /* Extensions.swift */,
 				7A37C7B11D37DB6300FBE13F /* Designables.swift */,
 				715100751D341129003A6817 /* ParseManager.swift */,
@@ -295,6 +311,7 @@
 		A475E33C1D148F2600FB66C3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */,
 				A475E3451D1490AA00FB66C3 /* AppDelegate.swift */,
 				A475E34B1D18547100FB66C3 /* CartViewController.swift */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
@@ -331,6 +348,7 @@
 		D329FF60092A948C369EA991 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				711760081D3FDDD8002452CA /* iCarousel */,
 				97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */,
 				7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */,
 			);
@@ -722,6 +740,7 @@
 				71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */,
 				A43C9E9B1D3688FA00D6D0D8 /* UserParseExtension.swift in Sources */,
 				A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */,
+				711760101D3FED08002452CA /* PromotionDetailsViewController.swift in Sources */,
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,
 				A43C9E991D3688EA00D6D0D8 /* UserManager.swift in Sources */,
 				A43C9E8C1D34416300D6D0D8 /* ProductDetailViewController.swift in Sources */,
@@ -729,6 +748,7 @@
 				A43C9E901D3513E100D6D0D8 /* MyProfileTableViewCell.swift in Sources */,
 				A4869DCF1D259DB60076EC37 /* Product.swift in Sources */,
 				A475E34C1D18547100FB66C3 /* CartViewController.swift in Sources */,
+				7117600B1D3FDDD8002452CA /* iCarousel.m in Sources */,
 				715100761D341129003A6817 /* ParseManager.swift in Sources */,
 				A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */,
 				71C1B4461D2EB91300CDDA20 /* PetShopManager.swift in Sources */,
@@ -834,6 +854,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "PupCare/Model/PupCare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -873,6 +894,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "PupCare/Model/PupCare-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -888,6 +910,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "./PupCare/Model/PupCare-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -901,6 +924,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "./PupCare/Model/PupCare-Bridging-Header.h";
 			};
 			name = Release;
 		};
