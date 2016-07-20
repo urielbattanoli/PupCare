@@ -10,10 +10,12 @@ import UIKit
 
 class PromotionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
 
     @IBOutlet weak var promotionsTableView: UITableView!
 
     var allPromotions: [Promotion] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,10 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
     }
 
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,15 +69,27 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("PromotionDetails", sender: self.allPromotions[indexPath.row])
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
     
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "PromotionDetails" {
+            let promotionDetails = segue.destinationViewController as! PromotionDetailsViewController
+            
+            promotionDetails.promotion = sender as? Promotion
+        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+ 
 
 }
