@@ -9,18 +9,18 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     @IBAction func signUpAction(sender: AnyObject) {
         performSegueWithIdentifier("signUpSegue", sender: nil)
@@ -32,10 +32,13 @@ class LoginViewController: UIViewController {
     
     @IBAction func signUpWithFacebook(sender: AnyObject) {
         UserManager.singInWithFacebook {
-            if let tabController = self.navigationController?.childViewControllers[0] as? LoginViewController {
-                tabController.view.layer.addAnimation(CustomTransitions.dismissCustomTransition(), forKey: kCATransition)
-                tabController.dismissViewControllerAnimated(false, completion: nil)
-            }
+            let vcProfile : UIViewController! = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()
+            vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
+            
+            var viewControllers = self.tabBarController?.viewControllers ?? []
+            viewControllers[3] = vcProfile
+            
+            self.tabBarController?.setViewControllers(viewControllers, animated: false)
         }
     }
 }

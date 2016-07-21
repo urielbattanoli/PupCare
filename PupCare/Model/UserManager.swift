@@ -34,6 +34,20 @@ class UserManager: NSObject {
         }
     }
     
+    
+    static func singInUser(username: String, password:String, response:(usuario: User?)->()){
+      
+        PFUser.logInWithUsernameInBackground(username, password: password) { (user, error) in
+            if user != nil {
+                let usuario = User(parseObject: user!)
+                response(usuario: usuario)
+            } else {
+                response(usuario: nil)
+            }
+        }
+        
+    }
+    
     static func logOutUser(block: ()->()) {
         PFUser.logOutInBackgroundWithBlock { (error) in
             if error != nil {
