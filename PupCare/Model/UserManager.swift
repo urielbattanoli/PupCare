@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseFacebookUtilsV4
 
 class UserManager: NSObject {
 
@@ -33,12 +34,45 @@ class UserManager: NSObject {
         }
     }
     
+    
+    static func singInUser(username: String, password:String, response:(usuario: User?)->()){
+      
+        PFUser.logInWithUsernameInBackground(username, password: password) { (user, error) in
+            if user != nil {
+                let usuario = User(parseObject: user!)
+                response(usuario: usuario)
+            } else {
+                response(usuario: nil)
+            }
+        }
+        
+    }
+    
     static func logOutUser(block: ()->()) {
         PFUser.logOutInBackgroundWithBlock { (error) in
             if error != nil {
                 
             } else {
                 block()
+            }
+        }
+    }
+    
+    static func singInWithFacebook(block: ()->()){
+        
+        let permissions = ["public_profile","email"]
+        
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    print("User signed up and logged in through Facebook!")
+                } else {
+                    print("User logged in through Facebook!")
+                }
+                block()
+            } else {
+                print("Uh oh. The user cancelled the Facebook login.")
             }
         }
     }

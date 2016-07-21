@@ -8,10 +8,14 @@
 
 import Foundation
 import Parse
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
+import ParseFacebookUtilsV4
 
 
 class ParseManager {
-    static func InitParse() {
+    static func InitParse(launchOptions: [NSObject: AnyObject]?) {
         let configuration = ParseClientConfiguration {
             $0.applicationId = "dckKugdRir32iGpqm561bgmwmxEBxR3wEnKtKodD"
             $0.clientKey = "4jZKylHLUj9WNFu304CQltMuYM8aoJTiocHfMBTU"
@@ -19,5 +23,8 @@ class ParseManager {
             $0.localDatastoreEnabled = true
         }
         Parse.initializeWithConfiguration(configuration)
+        
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        
     }
 }

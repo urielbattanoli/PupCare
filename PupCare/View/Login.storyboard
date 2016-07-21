@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sSH-9v-m9q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sSH-9v-m9q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -12,6 +12,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tjc-Ma-wFh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="uQP-E4-poI" kind="relationship" relationship="rootViewController" id="Atm-BD-yw6"/>
@@ -19,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hq-ZL-cY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-372" y="690"/>
+            <point key="canvasLocation" x="-376" y="796"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="TNW-MV-hqO">
@@ -33,11 +34,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PupCareLogo" translatesAutoresizingMaskIntoConstraints="NO" id="nE7-gJ-xiM">
-                                <rect key="frame" x="20" y="72" width="560" height="126"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="cat-and-dog-pics" translatesAutoresizingMaskIntoConstraints="NO" id="u3t-69-178">
+                                <rect key="frame" x="111" y="341" width="375" height="326"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3H-Cw-gyR" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="20" y="223" width="560" height="40"/>
+                                <rect key="frame" x="50" y="205" width="500" height="40"/>
                                 <color key="backgroundColor" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="R1e-Lv-dkf"/>
@@ -50,9 +52,12 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signInAction:" destination="uQP-E4-poI" eventType="touchUpInside" id="yKw-1U-otz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTl-2G-NkY" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="20" y="339" width="560" height="40"/>
+                                <rect key="frame" x="50" y="315" width="500" height="40"/>
                                 <color key="backgroundColor" red="0.32941176470588235" green="0.7803921568627451" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3jT-dF-yAI"/>
@@ -70,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9N-J9-eKl" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="20" y="281" width="560" height="40"/>
+                                <rect key="frame" x="50" y="260" width="500" height="40"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="O9w-4a-6e5"/>
@@ -83,45 +88,52 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpWithFacebook:" destination="uQP-E4-poI" eventType="touchUpInside" id="7q6-Vd-N5R"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cat-and-dog-pics" translatesAutoresizingMaskIntoConstraints="NO" id="iSL-Yv-ufZ">
-                                <rect key="frame" x="20" y="387" width="560" height="213"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="PupCareLogo" translatesAutoresizingMaskIntoConstraints="NO" id="mxN-gP-aHq">
+                                <rect key="frame" x="243" y="50" width="115" height="126"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iSL-Yv-ufZ" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="146-02-HKS"/>
-                            <constraint firstItem="tTl-2G-NkY" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="1bI-jU-vmA"/>
-                            <constraint firstItem="F9N-J9-eKl" firstAttribute="top" secondItem="A3H-Cw-gyR" secondAttribute="bottom" constant="18" id="77v-GH-XJI"/>
-                            <constraint firstItem="iSL-Yv-ufZ" firstAttribute="top" secondItem="tTl-2G-NkY" secondAttribute="bottom" constant="8" id="BZe-io-M2x"/>
-                            <constraint firstItem="A3H-Cw-gyR" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailingMargin" id="Cra-rj-ibR"/>
-                            <constraint firstItem="aew-Bk-GbQ" firstAttribute="top" secondItem="iSL-Yv-ufZ" secondAttribute="bottom" id="ElB-6d-rK5"/>
-                            <constraint firstItem="F9N-J9-eKl" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="ICf-fa-eIL"/>
-                            <constraint firstItem="F9N-J9-eKl" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailingMargin" id="KaK-pc-KjC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nE7-gJ-xiM" secondAttribute="trailing" id="QNR-se-6P2"/>
-                            <constraint firstItem="tTl-2G-NkY" firstAttribute="top" secondItem="F9N-J9-eKl" secondAttribute="bottom" constant="18" id="RCI-my-rbh"/>
-                            <constraint firstItem="tTl-2G-NkY" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailingMargin" id="Utm-zO-LU0"/>
-                            <constraint firstItem="A3H-Cw-gyR" firstAttribute="top" secondItem="nE7-gJ-xiM" secondAttribute="bottom" constant="25" id="bLu-Mm-DqA"/>
-                            <constraint firstItem="nE7-gJ-xiM" firstAttribute="top" secondItem="mU2-bp-yUB" secondAttribute="bottom" constant="8" id="pNL-zN-QJp"/>
-                            <constraint firstItem="nE7-gJ-xiM" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="ruS-76-cfU"/>
-                            <constraint firstItem="A3H-Cw-gyR" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leadingMargin" id="vjH-ff-PPy"/>
-                            <constraint firstItem="iSL-Yv-ufZ" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailingMargin" id="zdK-iA-Yfy"/>
+                            <constraint firstItem="mxN-gP-aHq" firstAttribute="centerX" secondItem="kjj-pQ-4j2" secondAttribute="centerX" id="0D6-R1-Xby"/>
+                            <constraint firstItem="tTl-2G-NkY" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leading" constant="50" id="1bI-jU-vmA"/>
+                            <constraint firstItem="mxN-gP-aHq" firstAttribute="top" secondItem="mU2-bp-yUB" secondAttribute="bottom" constant="-14" id="26e-gF-Rzw"/>
+                            <constraint firstItem="u3t-69-178" firstAttribute="centerX" secondItem="tTl-2G-NkY" secondAttribute="centerX" constant="-1" id="4Bq-vv-GDG"/>
+                            <constraint firstItem="F9N-J9-eKl" firstAttribute="top" secondItem="A3H-Cw-gyR" secondAttribute="bottom" constant="15" id="77v-GH-XJI"/>
+                            <constraint firstItem="u3t-69-178" firstAttribute="top" secondItem="tTl-2G-NkY" secondAttribute="bottom" constant="-14" id="Cwb-AY-cue"/>
+                            <constraint firstItem="F9N-J9-eKl" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leading" constant="50" id="ICf-fa-eIL"/>
+                            <constraint firstItem="F9N-J9-eKl" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailing" constant="-50" id="KaK-pc-KjC"/>
+                            <constraint firstAttribute="trailing" secondItem="A3H-Cw-gyR" secondAttribute="trailing" constant="50" id="PMj-iv-zg3"/>
+                            <constraint firstItem="tTl-2G-NkY" firstAttribute="top" secondItem="F9N-J9-eKl" secondAttribute="bottom" constant="15" id="RCI-my-rbh"/>
+                            <constraint firstItem="mxN-gP-aHq" firstAttribute="top" secondItem="kjj-pQ-4j2" secondAttribute="top" constant="50" id="S8I-Ag-IxL"/>
+                            <constraint firstItem="tTl-2G-NkY" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailing" constant="-50" id="Utm-zO-LU0"/>
+                            <constraint firstItem="A3H-Cw-gyR" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leading" constant="50" id="jbZ-aQ-Flb"/>
+                            <constraint firstItem="A3H-Cw-gyR" firstAttribute="top" secondItem="mxN-gP-aHq" secondAttribute="bottom" constant="29" id="pvZ-SP-erz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="26e-gF-Rzw"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="1eV-qN-Llo"/>
                     <connections>
-                        <segue destination="kaf-6p-qMD" kind="show" id="sGs-Hd-RmG"/>
+                        <segue destination="kaf-6p-qMD" kind="show" identifier="signInSegue" id="sGs-Hd-RmG"/>
                         <segue destination="b6i-YU-n2n" kind="show" identifier="signUpSegue" id="VBr-NT-8Wf"/>
+                        <segue destination="8PP-Jz-iJc" kind="show" identifier="singInWithFacebookSegue" id="Hu9-ij-AGM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bp7-eU-cOG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400" y="690"/>
+            <point key="canvasLocation" x="409.5" y="796.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="rwy-HC-xCM">
             <objects>
-                <viewController id="kaf-6p-qMD" sceneMemberID="viewController">
+                <viewController id="kaf-6p-qMD" customClass="SignInViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ibe-lE-HP1"/>
                         <viewControllerLayoutGuide type="bottom" id="qZz-bM-mjV"/>
@@ -138,7 +150,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LMA-vG-59S"/>
                                 </constraints>
-                                <color key="textColor" red="0.32941176470588235" green="0.7803921568627451" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -152,7 +164,7 @@
                                         <color key="value" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
@@ -161,8 +173,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="m8n-J1-Kq3"/>
                                 </constraints>
+                                <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="5"/>
@@ -174,7 +187,7 @@
                                         <color key="value" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
@@ -196,6 +209,9 @@
                                         <color key="value" red="0.5097460150718689" green="0.50983732938766479" blue="0.50974023342132568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signInAction:" destination="kaf-6p-qMD" eventType="touchUpInside" id="M3W-2x-XE4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-Be-Pin" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
                                 <rect key="frame" x="20" y="376" width="560" height="40"/>
@@ -232,6 +248,10 @@
                             <constraint firstItem="GCK-8K-dAc" firstAttribute="top" secondItem="ibe-lE-HP1" secondAttribute="bottom" constant="8" id="rjF-sl-9dT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="N7C-dx-AH9" id="LAZ-6C-I0g"/>
+                        <outlet property="usernameTextField" destination="5a6-CS-BSK" id="UFc-Gq-atS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKL-Rv-KId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -249,8 +269,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome Completo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ojT-Xp-Hq0" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="163" y="190" width="275" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome Completo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ojT-Xp-Hq0" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="162" y="190" width="275" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="275" id="A66-YZ-8uK"/>
                                 </constraints>
@@ -268,12 +288,12 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.27972632646560669" green="0.7290530800819397" blue="0.98291677236557007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1R2-Di-UDP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="163" y="280" width="275" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1R2-Di-UDP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="162" y="280" width="275" height="30"/>
                                 <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -288,12 +308,12 @@
                                         <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.27972632646560669" green="0.7290530800819397" blue="0.98291677236557007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha novamente" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-sd-WNE" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="163" y="325" width="275" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha novamente" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-sd-WNE" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="162" y="325" width="275" height="30"/>
                                 <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -308,12 +328,12 @@
                                         <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.27972632646560669" green="0.7290530800819397" blue="0.98291677236557007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EbY-1e-GLP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="163" y="235" width="275" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EbY-1e-GLP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="162" y="235" width="275" height="30"/>
                                 <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -328,21 +348,21 @@
                                         <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.27972632646560669" green="0.7290530800819397" blue="0.98291677236557007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.5607843137254902" green="0.55686274509803924" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="PupCareWt" translatesAutoresizingMaskIntoConstraints="NO" id="zFh-Sv-rPi" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="255" y="72" width="90" height="98"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="PupCareWt" translatesAutoresizingMaskIntoConstraints="NO" id="zFh-Sv-rPi" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="254" y="72" width="90" height="98"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onn-fw-d2O" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="188" y="380" width="225" height="45"/>
-                                <color key="backgroundColor" red="0.58039215686274503" green="0.58039215686274503" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onn-fw-d2O" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="187" y="380" width="225" height="45"/>
+                                <color key="backgroundColor" red="0.56078431370000004" green="0.5568627451" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="JDN-Wy-MVd"/>
                                     <constraint firstAttribute="width" constant="225" id="JK1-aP-N9r"/>
@@ -395,13 +415,13 @@
             </objects>
             <point key="canvasLocation" x="1184" y="1182"/>
         </scene>
-        <!--Profile-->
+        <!--Main-->
         <scene sceneID="Uwb-E4-b2u">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="8PP-Jz-iJc" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" id="8PP-Jz-iJc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQu-zk-HIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1762.5" y="837"/>
+            <point key="canvasLocation" x="1855" y="822"/>
         </scene>
     </scenes>
     <resources>
@@ -409,4 +429,7 @@
         <image name="PupCareWt" width="90" height="98"/>
         <image name="cat-and-dog-pics" width="375" height="326"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bE8-pn-eR8"/>
+    </inferredMetricsTieBreakers>
 </document>

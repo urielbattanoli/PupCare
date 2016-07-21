@@ -26,12 +26,16 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
+    
     
     
     @IBAction func didPressSignUp(sender: AnyObject) {
         if verifyFields() {
             UserManager.singUpUser(name.text! , email: email.text!, password: password.text!, block: { (succeeded, message, userCreated) in
-                if self.setAlertBody("",message: message) {
+                if self.setAlertBody("",messageReceived: message) {
                     self.dismissViewControllerAnimated(false, completion: nil)
                 }
             })
@@ -50,20 +54,20 @@ class SignUpViewController: UIViewController {
     private func verifyFields() -> Bool{
         
         if password.text != passwordConfirmation.text {
-            return setAlertBody("password",message: "")
+            return setAlertBody("password")
         } else if email.text == "" {
-            return setAlertBody("email",message: "")
+            return setAlertBody("email")
         } else if name.text == ""{
-            return setAlertBody("name",message: "")
+            return setAlertBody("name")
         }
-        return setAlertBody("",message: "")
+        return setAlertBody("")
     }
     
-    private func setAlertBody(field : String, message: String) -> Bool{
+    private func setAlertBody(field : String) -> Bool{
         let alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
         let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
         alert.addAction(cancel)
-
+        
         switch field {
         case "password":
             alert.message = "Senha e Confirmação de Senha não conferem. Por favor, insira senhas iguas."
@@ -71,8 +75,6 @@ class SignUpViewController: UIViewController {
             alert.message = "Por favor, insira um e-mail válido"
         case "name":
             alert.message = "Por Favor, insira um e-mail válido"
-        case "signUp" where message.containsString("username"):
-            alert.message = "E-mail já cadastrado"
         default:
             return true
         }
@@ -80,15 +82,18 @@ class SignUpViewController: UIViewController {
         return false
     }
     
+    private func setAlertBody(field : String, messageReceived: String) -> Bool{
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        alert.addAction(cancel)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        switch field {
+        case "signUp" where messageReceived.containsString("username"):
+            alert.message = "E-mail já cadastrado"
+        default:
+            return true
+        }
+        self.presentViewController(alert, animated: true, completion: nil)
+        return false
     }
-    */
-
 }
