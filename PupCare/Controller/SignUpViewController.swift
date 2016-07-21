@@ -26,6 +26,10 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
+    
     
     
     @IBAction func didPressSignUp(sender: AnyObject) {
