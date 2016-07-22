@@ -27,6 +27,12 @@ class CloudCodeTests: XCTestCase {
         super.tearDown()
     }
     
+    func testFacebookLogin(){
+        UserManager.singInWithFacebook { 
+            <#code#>
+        }
+    }
+    
     func testPromotionsQuery(){
         let expectation: XCTestExpectation = expectationWithDescription("Promotions query completed with no errors")
         
