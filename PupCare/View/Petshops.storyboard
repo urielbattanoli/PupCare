@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbS-cO-ctE" id="7uU-n7-Fk9">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXB-ol-xEg">
@@ -38,67 +38,70 @@
                                                                 <constraint firstAttribute="height" constant="160" id="ZXJ-CR-wfq"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlI-sg-RdC">
-                                                            <rect key="frame" x="5" y="165" width="71" height="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlI-sg-RdC">
+                                                            <rect key="frame" x="10" y="170" width="165" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="165" id="TIP-e1-M8R"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucE-tY-IyB">
-                                                            <rect key="frame" x="296" y="165" width="52" height="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucE-tY-IyB">
+                                                            <rect key="frame" x="425" y="170" width="145" height="14"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="145" id="RaP-2F-nnv"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-3g-Jwh">
-                                                            <rect key="frame" x="5" y="213" width="92" height="12"/>
+                                                            <rect key="frame" x="10" y="205" width="107" height="15"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" alpha="0.0" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="HuP-kd-ri3">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="11.5" id="BoO-Hd-NG0"/>
-                                                                        <constraint firstAttribute="height" constant="11.5" id="UsF-do-Jbm"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="9Af-3Z-vkr"/>
+                                                                        <constraint firstAttribute="width" constant="15" id="Rn6-Sg-R0C"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="rME-rK-LoO">
-                                                                    <rect key="frame" x="20" y="0.0" width="12" height="12"/>
+                                                                    <rect key="frame" x="23" y="0.0" width="15" height="15"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="11.5" id="Hbd-x8-G7Y"/>
-                                                                        <constraint firstAttribute="height" constant="11.5" id="IDr-te-foc"/>
+                                                                        <constraint firstAttribute="width" constant="15" id="Hca-HM-duN"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="oQO-4J-bpR"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" alpha="0.0" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="aAZ-39-AJZ">
-                                                                    <rect key="frame" x="40" y="0.0" width="12" height="12"/>
+                                                                    <rect key="frame" x="46" y="0.0" width="15" height="15"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="11.5" id="feb-LP-bE0"/>
-                                                                        <constraint firstAttribute="width" constant="11.5" id="iKh-DE-iaL"/>
+                                                                        <constraint firstAttribute="width" constant="15" id="grc-xb-kBr"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="wsh-PV-sM0"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" alpha="0.0" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="z8D-Gp-sFV">
-                                                                    <rect key="frame" x="60" y="0.0" width="12" height="12"/>
+                                                                    <rect key="frame" x="69" y="0.0" width="15" height="15"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="11.5" id="nBw-Ao-MGn"/>
-                                                                        <constraint firstAttribute="width" constant="11.5" id="zTf-is-8Be"/>
+                                                                        <constraint firstAttribute="width" constant="15" id="511-qx-eTd"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="jc9-ZP-FbL"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" alpha="0.0" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="bXb-ds-TZf">
-                                                                    <rect key="frame" x="80" y="0.0" width="12" height="12"/>
+                                                                    <rect key="frame" x="92" y="0.0" width="15" height="15"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="11.5" id="GES-7M-8cr"/>
-                                                                        <constraint firstAttribute="width" constant="11.5" id="Zho-SB-Chk"/>
+                                                                        <constraint firstAttribute="width" constant="15" id="0Co-6o-cCy"/>
+                                                                        <constraint firstAttribute="height" constant="15" id="v17-c6-wav"/>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                         </stackView>
-                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BY9-C2-6Fr">
-                                                            <rect key="frame" x="290" y="0.0" width="1" height="230"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-ep-JCh">
+                                                            <rect key="frame" x="475" y="205" width="95" height="15"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="1" id="F4U-lg-UTS"/>
+                                                                <constraint firstAttribute="height" constant="15" id="A54-hE-onz"/>
+                                                                <constraint firstAttribute="width" constant="95" id="jEl-BZ-Nnb"/>
                                                             </constraints>
-                                                        </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-ep-JCh">
-                                                            <rect key="frame" x="296" y="211" width="50" height="14"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -106,18 +109,15 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="GFd-ep-JCh" firstAttribute="leading" secondItem="BY9-C2-6Fr" secondAttribute="trailing" constant="5" id="4u1-yy-Orj"/>
-                                                        <constraint firstItem="ucE-tY-IyB" firstAttribute="leading" secondItem="BY9-C2-6Fr" secondAttribute="trailing" constant="5" id="8Y1-p8-8hv"/>
-                                                        <constraint firstAttribute="bottom" secondItem="GFd-ep-JCh" secondAttribute="bottom" constant="5" id="8vA-Xw-2hk"/>
-                                                        <constraint firstItem="VlI-sg-RdC" firstAttribute="top" secondItem="Hrf-yq-YN9" secondAttribute="bottom" constant="5" id="CiE-T2-L5Q"/>
-                                                        <constraint firstAttribute="bottom" secondItem="BY9-C2-6Fr" secondAttribute="bottom" id="DPq-qm-sFp"/>
-                                                        <constraint firstAttribute="bottom" secondItem="iaV-3g-Jwh" secondAttribute="bottom" constant="5" id="EF0-PH-cMF"/>
-                                                        <constraint firstItem="ucE-tY-IyB" firstAttribute="top" secondItem="Hrf-yq-YN9" secondAttribute="bottom" constant="5" id="Hz7-3U-5cM"/>
+                                                        <constraint firstAttribute="bottom" secondItem="GFd-ep-JCh" secondAttribute="bottom" constant="10" id="8vA-Xw-2hk"/>
+                                                        <constraint firstItem="VlI-sg-RdC" firstAttribute="top" secondItem="Hrf-yq-YN9" secondAttribute="bottom" constant="10" id="CiE-T2-L5Q"/>
+                                                        <constraint firstAttribute="bottom" secondItem="iaV-3g-Jwh" secondAttribute="bottom" constant="10" id="EF0-PH-cMF"/>
+                                                        <constraint firstItem="ucE-tY-IyB" firstAttribute="top" secondItem="Hrf-yq-YN9" secondAttribute="bottom" constant="10" id="Hz7-3U-5cM"/>
                                                         <constraint firstItem="Hrf-yq-YN9" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" id="Pdx-ib-Tip"/>
-                                                        <constraint firstItem="BY9-C2-6Fr" firstAttribute="top" secondItem="zXB-ol-xEg" secondAttribute="top" id="g3i-PG-eId"/>
-                                                        <constraint firstItem="VlI-sg-RdC" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" constant="5" id="h1g-yV-NtF"/>
-                                                        <constraint firstItem="iaV-3g-Jwh" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" constant="5" id="kJO-lE-dvw"/>
-                                                        <constraint firstItem="BY9-C2-6Fr" firstAttribute="centerX" secondItem="zXB-ol-xEg" secondAttribute="centerX" id="mNH-YH-jgb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="GFd-ep-JCh" secondAttribute="trailing" constant="10" id="TWk-Q8-VkR"/>
+                                                        <constraint firstItem="VlI-sg-RdC" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" constant="10" id="h1g-yV-NtF"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ucE-tY-IyB" secondAttribute="trailing" constant="10" id="jtz-Gz-mDH"/>
+                                                        <constraint firstItem="iaV-3g-Jwh" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" constant="10" id="kJO-lE-dvw"/>
                                                         <constraint firstItem="Hrf-yq-YN9" firstAttribute="top" secondItem="zXB-ol-xEg" secondAttribute="top" id="rUA-vn-d7I"/>
                                                         <constraint firstAttribute="trailing" secondItem="Hrf-yq-YN9" secondAttribute="trailing" id="wcs-S5-wjT"/>
                                                     </constraints>
