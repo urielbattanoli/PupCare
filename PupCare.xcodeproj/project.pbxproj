@@ -21,6 +21,7 @@
 		71C1B4481D2EC08000CDDA20 /* PromotionParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4471D2EC08000CDDA20 /* PromotionParseExtension.swift */; };
 		71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */; };
 		71C1B44C1D30062000CDDA20 /* PromotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B44B1D30062000CDDA20 /* PromotionManager.swift */; };
+		71D722C81D47EE4800035392 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D722C71D47EE4800035392 /* Config.swift */; };
 		71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9C101D26D42000DA14DA /* PetShop.swift */; };
 		7A0050411D383556003B89C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */; };
 		7A04ECB01D356BCA00270189 /* CloudCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */; };
@@ -96,6 +97,7 @@
 		71C1B4471D2EC08000CDDA20 /* PromotionParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionParseExtension.swift; path = Model/PromotionParseExtension.swift; sourceTree = "<group>"; };
 		71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionsTableViewCell.swift; path = Controller/PromotionsTableViewCell.swift; sourceTree = "<group>"; };
 		71C1B44B1D30062000CDDA20 /* PromotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionManager.swift; path = Model/PromotionManager.swift; sourceTree = "<group>"; };
+		71D722C71D47EE4800035392 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Model/Config.swift; sourceTree = "<group>"; };
 		71ED9C101D26D42000DA14DA /* PetShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShop.swift; path = Model/PetShop.swift; sourceTree = "<group>"; };
 		7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCodeTests.swift; sourceTree = "<group>"; };
 		7A37C7B11D37DB6300FBE13F /* Designables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Designables.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				7A31925F1D340139004096A0 /* Product */,
 				7A3192601D34013F004096A0 /* Promotion */,
 				A43C9E951D3685EA00D6D0D8 /* User */,
+				71D722C71D47EE4800035392 /* Config.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,
 				A43C9E991D3688EA00D6D0D8 /* UserManager.swift in Sources */,
 				A43C9E8C1D34416300D6D0D8 /* ProductDetailViewController.swift in Sources */,
+				71D722C81D47EE4800035392 /* Config.swift in Sources */,
 				71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */,
 				A43C9E901D3513E100D6D0D8 /* MyProfileTableViewCell.swift in Sources */,
 				A4869DCF1D259DB60076EC37 /* Product.swift in Sources */,

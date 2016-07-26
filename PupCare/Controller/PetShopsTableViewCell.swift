@@ -15,6 +15,7 @@ class PetShopsTableViewCell: UITableViewCell {
     @IBOutlet weak var petShopAddressLabel: UILabel!
     @IBOutlet weak var petShopDistanceLabel: UILabel!
     @IBOutlet weak var petShopView: UIView!
+    @IBOutlet weak var petShopContentView: UIView!
     
     var ranking: Int = 0
     
@@ -26,7 +27,10 @@ class PetShopsTableViewCell: UITableViewCell {
         petShopImageView.layer.masksToBounds = true
         petShopImageView.layer.cornerRadius = 10
         
-        
+        petShopContentView.layer.borderWidth = Config.PetShops.BorderWidth
+        petShopContentView.layer.borderColor = Config.PetShops.BorderColor.CGColor
+        petShopContentView.layer.masksToBounds = true
+        petShopContentView.layer.cornerRadius = 10
         
         for index in 0...ranking {
             self.viewWithTag(index)?.alpha = 1

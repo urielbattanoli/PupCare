@@ -14,7 +14,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
 
     var photos: [UIImage] = []
     var promotion: Promotion?
-    var promotionColor = UIColor(red: 84/255, green: 199/255, blue: 252/255, alpha: 1)
+    var promotionColor = Config.MainColors.BlueColor
     var downloader: ImageDownloader! = ImageDownloader(name: "downloadPromotionImages")
     
     
@@ -41,7 +41,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         backgroundView.clipsToBounds = true
         backgroundView.layer.cornerRadius = 5
         backgroundView.layer.borderWidth = 0.5
-        backgroundView.layer.borderColor = UIColor(red: 0xC8, green: 0xC8, blue: 0xC8).CGColor
+        backgroundView.layer.borderColor = Config.MainColors.BorderColor.CGColor
     
     }
     

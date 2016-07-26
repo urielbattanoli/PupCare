@@ -99,7 +99,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func reloadPetShops () {
-        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
+        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10000, response: { (petshops, error) in
             if error == nil {
                 self.allPetShops = petshops!
                 // Descomentar quando arrumar cloud

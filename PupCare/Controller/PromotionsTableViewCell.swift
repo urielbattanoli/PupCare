@@ -21,27 +21,20 @@ class PromotionsTableViewCell: UITableViewCell {
     @IBOutlet weak var productDescriptionLabel: UILabel!
     @IBOutlet weak var discountPercentageLabel: UILabel!
     
-    var promotionColor = UIColor(red: 84/255, green: 199/255, blue: 252/255, alpha: 1)
-    var oldPriceColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
-    
     var promotion: Promotion? {
         didSet{
             if let promotion = self.promotion {
-                
-//                let formatter = NSNumberFormatter()
-//                formatter.locale = NSLocale.currentLocale()
-//                formatter.numberStyle = .CurrencyStyle
-                
+            
                 self.productNameLabel.text = promotion.promotionName
                 self.oldPrice.text = NSNumber(float: promotion.lastPrice).numberToPrice()
                 self.newPriceLabel.text = NSNumber(float: promotion.newPrice).numberToPrice()
                 self.productDescriptionLabel.text = promotion.promotionDescription
-                self.newPriceLabel.textColor = promotionColor
-                self.oldPrice.textColor = oldPriceColor
+                self.newPriceLabel.textColor = Config.MainColors.PromotionColor
+                self.oldPrice.textColor = Config.MainColors.OldPriceColor
                 self.promotionPhoto.loadImage(promotion.promotionImage)
                 
                 self.discountPercentageLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2 / 2 * -1))
-                self.discountPercentageLabel.text = "\(Double(100 - (100 * promotion.newPrice / promotion.lastPrice)).roundToPlaces(2))%"
+                self.discountPercentageLabel.text = "\(Double(100 - (100 * promotion.newPrice / promotion.lastPrice)).roundToPlaces(0))%"
             }
         }
     }
@@ -51,7 +44,7 @@ class PromotionsTableViewCell: UITableViewCell {
         
         self.addToCartButton.clipsToBounds = true
         self.addToCartButton.layer.cornerRadius = 5
-        self.addToCartButton.backgroundColor = promotionColor
+        self.addToCartButton.backgroundColor = Config.MainColors.PromotionColor
         
         
     }
