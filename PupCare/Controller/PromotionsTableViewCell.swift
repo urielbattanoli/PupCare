@@ -38,6 +38,7 @@ class PromotionsTableViewCell: UITableViewCell {
                 self.productDescriptionLabel.text = promotion.promotionDescription
                 self.newPriceLabel.textColor = promotionColor
                 self.oldPrice.textColor = oldPriceColor
+                self.promotionPhoto.loadImage(promotion.promotionImage)
                 
                 self.discountPercentageLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2 / 2 * -1))
                 self.discountPercentageLabel.text = "\(Double(100 - (100 * promotion.newPrice / promotion.lastPrice)).roundToPlaces(2))%"

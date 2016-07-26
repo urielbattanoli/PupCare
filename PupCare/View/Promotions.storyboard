@@ -208,22 +208,89 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6l-k4-aCS" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="84" width="600" height="225"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="536" id="vxc-Dy-Tur"/>
+                                    <constraint firstAttribute="height" constant="225" id="vxc-Dy-Tur"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbY-UM-ZWG">
+                                <rect key="frame" x="188" y="334" width="225" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="6zx-Ob-Lon"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWp-cs-514">
+                                <rect key="frame" x="188" y="363" width="225" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="2FO-WC-acR"/>
+                                    <constraint firstAttribute="width" constant="225" id="oFp-b0-5Wa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iH-rj-PSn">
+                                <rect key="frame" x="188" y="530" width="225" height="50"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fpl-On-vPf">
+                                        <rect key="frame" x="15" y="3" width="195" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preço Original: R$ 999,99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byz-vr-CDV">
+                                                <rect key="frame" x="0.0" y="0.0" width="195" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="195" id="TaE-a3-phf"/>
+                                                    <constraint firstAttribute="height" constant="17" id="yc9-MY-95N"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preço Atual: RS 999,99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzl-dT-if0">
+                                                <rect key="frame" x="0.0" y="22" width="195" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="195" id="UlF-wz-AFx"/>
+                                                    <constraint firstAttribute="height" constant="22" id="xgi-Kl-DPy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fpl-On-vPf" firstAttribute="centerY" secondItem="7iH-rj-PSn" secondAttribute="centerY" id="3Xj-bn-P2a"/>
+                                    <constraint firstItem="fpl-On-vPf" firstAttribute="centerX" secondItem="7iH-rj-PSn" secondAttribute="centerX" id="5l1-mS-KIx"/>
+                                    <constraint firstAttribute="width" constant="225" id="8dt-Dt-Nyw"/>
+                                    <constraint firstAttribute="height" constant="50" id="Hb8-5D-ipo"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PbY-UM-ZWG" firstAttribute="top" secondItem="M6l-k4-aCS" secondAttribute="bottom" constant="25" id="4eb-qf-3hM"/>
+                            <constraint firstItem="UWp-cs-514" firstAttribute="top" secondItem="PbY-UM-ZWG" secondAttribute="bottom" constant="10" id="96u-ro-NqR"/>
+                            <constraint firstItem="g2T-8k-m89" firstAttribute="top" secondItem="7iH-rj-PSn" secondAttribute="bottom" constant="20" id="JQ0-Qd-gT0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="M6l-k4-aCS" secondAttribute="trailing" constant="-20" id="O78-xw-RWN"/>
                             <constraint firstItem="M6l-k4-aCS" firstAttribute="leading" secondItem="bNT-CE-41W" secondAttribute="leadingMargin" constant="-20" id="OsV-f9-68z"/>
-                            <constraint firstItem="M6l-k4-aCS" firstAttribute="top" secondItem="emu-xt-liG" secondAttribute="bottom" id="xqO-a3-wJU"/>
+                            <constraint firstItem="UWp-cs-514" firstAttribute="centerX" secondItem="bNT-CE-41W" secondAttribute="centerX" id="dqs-nl-7Mg"/>
+                            <constraint firstItem="PbY-UM-ZWG" firstAttribute="centerX" secondItem="bNT-CE-41W" secondAttribute="centerX" id="wxa-EB-nqc"/>
+                            <constraint firstItem="M6l-k4-aCS" firstAttribute="top" secondItem="emu-xt-liG" secondAttribute="bottom" constant="20" id="xqO-a3-wJU"/>
+                            <constraint firstItem="7iH-rj-PSn" firstAttribute="centerX" secondItem="bNT-CE-41W" secondAttribute="centerX" id="xyG-TA-b0e"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="7iH-rj-PSn" id="74f-Ec-pbS"/>
                         <outlet property="carousel" destination="M6l-k4-aCS" id="hKr-b7-Th6"/>
+                        <outlet property="newPriceLabel" destination="Rzl-dT-if0" id="1DI-xt-l98"/>
+                        <outlet property="originalPriceLabel" destination="byz-vr-CDV" id="UPW-Di-XsW"/>
+                        <outlet property="subtitleLabel" destination="UWp-cs-514" id="2m8-PV-D3G"/>
+                        <outlet property="titleLabel" destination="PbY-UM-ZWG" id="8C4-xl-m1V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qtx-wm-Wnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
