@@ -13,6 +13,8 @@ class PetShopsTableViewCell: UITableViewCell {
     @IBOutlet weak var petShopImageView: UIImageView!
     @IBOutlet weak var petShopNameLabel: UILabel!
     @IBOutlet weak var petShopAddressLabel: UILabel!
+    @IBOutlet weak var petShopDistanceLabel: UILabel!
+    @IBOutlet weak var petShopView: UIView!
     
     var ranking: Int = 0
     
@@ -23,6 +25,7 @@ class PetShopsTableViewCell: UITableViewCell {
         
         petShopImageView.layer.masksToBounds = true
         petShopImageView.layer.cornerRadius = 10
+        
         
         
         for index in 0...ranking {
