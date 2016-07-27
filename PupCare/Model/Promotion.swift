@@ -15,6 +15,7 @@ class Promotion: NSObject {
     var products: [Product] = []
     var petshop: PetShop!
     var promotionName: String = ""
+    var promotionImage: String = ""
     var promotionDescription: String = ""
     var lastPrice: Float = 0
     var newPrice: Float = 0
@@ -24,8 +25,8 @@ class Promotion: NSObject {
     init(data: [String: AnyObject]) {
         
         self.objectId = data["objectId"] as! String
-        //self.products
-//        self.petshop
+        self.promotionImage = data["image"] as! String
+        self.petshop = data["petShop"] as! PetShop
         self.promotionName = data["promotionName"] as! String
         self.promotionDescription = data["promotionDescription"] as! String
         self.lastPrice = data["lastPrice"] as! Float

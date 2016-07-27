@@ -7,23 +7,84 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     @IBOutlet var carousel: iCarousel!
 
-    var photos: [Int] = [1,2,3]
+    var photos: [UIImage] = []
     var promotion: Promotion?
+    var promotionColor = Config.MainColors.BlueColor
+    var downloader: ImageDownloader! = ImageDownloader(name: "downloadPromotionImages")
+    
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var originalPriceLabel: UILabel!
+    @IBOutlet weak var newPriceLabel: UILabel!
+    @IBOutlet weak var backgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        carousel.type = .Linear
-        
+        self.view.clipsToBounds = true
+        self.loadPromotion()
         
         carousel.delegate = self
         carousel.dataSource = self
+        carousel.type = .Linear
+        carousel.clipsToBounds = true
         
-        // Do any additional setup after loading the view.
+        self.view.clipsToBounds = true
+        
+        newPriceLabel.textColor = UIColor(CGColor: promotionColor)
+        
+        backgroundView.clipsToBounds = true
+        backgroundView.layer.cornerRadius = 5
+        backgroundView.layer.borderWidth = 0.5
+        backgroundView.layer.borderColor = Config.MainColors.BorderColor
+    
+    }
+    
+    func reloadDetails() {
+        titleLabel.text = promotion!.promotionName
+        subtitleLabel.text = promotion!.promotionDescription
+        newPriceLabel.text = "Preço Atual: \(NSNumber(float: promotion!.newPrice).numberToPrice())"
+        originalPriceLabel.text = "Preço Original: \(NSNumber(float: promotion!.lastPrice).numberToPrice())"
+        
+        let group = dispatch_group_create()
+        
+        for product in (promotion?.products)!  {
+
+            if let url = NSURL(string: product.imageUrl) {
+                dispatch_group_enter(group)
+                self.downloader.downloadImageWithURL(url, options: .None, progressBlock: { (receivedSize, totalSize) -> () in
+                    
+                    }, completionHandler:{(image,error,imageURL,data) -> () in
+                        if image != nil {
+                            self.photos.append(image!)
+                        }
+                        dispatch_group_leave(group)
+                })
+            }
+        }
+        
+        dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
+            if self.photos.count > 0 {
+                self.carousel.reloadData()
+            }
+        }
+    }
+    
+    func loadPromotion() {
+        PromotionManager.getPromotionDetails(promotion!) { (promotionDetails, error) in
+            if error == nil {
+                self.promotion = promotionDetails as Promotion!
+                
+                print("PROMO")
+                print(self.promotion!)
+                self.reloadDetails()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +97,8 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     }
     
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
-        var label: UILabel
+        
+//        var label: UILabel
         var itemView: UIImageView
         
         //create new view if no view is available for recycling
@@ -45,22 +107,17 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
             //don't do anything specific to the index within
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later
-            itemView = UIImageView(frame:CGRect(x:0, y:0, width:200, height:200))
-            itemView.image = UIImage(named: "page.png")
-            itemView.contentMode = .Center
+            itemView = UIImageView(frame:CGRect(x:0, y:0, width:225, height:225))
+            itemView.image = photos[index]
+            itemView.contentMode = UIViewContentMode.ScaleAspectFit
+//            itemView.contentMode = .Center
             
-            label = UILabel(frame:itemView.bounds)
-            label.backgroundColor = UIColor.clearColor()
-            label.textAlignment = .Center
-            label.font = label.font.fontWithSize(50)
-            label.tag = 1
-            itemView.addSubview(label)
         }
         else
         {
             //get a reference to the label in the recycled view
             itemView = view as! UIImageView;
-            label = itemView.viewWithTag(1) as! UILabel!
+//            label = itemView.viewWithTag(1) as! UILabel!
         }
         
         //set item label
@@ -68,20 +125,33 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         //views outside of the `if (view == nil) {...}` check otherwise
         //you'll get weird issues with carousel item content appearing
         //in the wrong place in the carousel
-        label.text = "\(photos[index])"
+//        label.text = "\(photos[index])"
         
         return itemView
         
     }
     
+    
+//    func carouselWillBeginScrollingAnimation(carousel: iCarousel) {
+//        carousel.itemViewAtIndex(carousel.currentItemIndex). = carousel.itemViewAtIndex(carousel.currentItemIndex)?.frame.width / 2
+//    }
+    
+    
     func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-        if (option == .Spacing) {
-            return value * 1.15
+    
+        switch option {
+        case .Wrap:
+            return 1.0
+        case .Spacing:
+            return value * 1.1
+        default:
+            return value
         }
-        
-        return value
+    
     }
 
+    
+    
     /*
     // MARK: - Navigation
 

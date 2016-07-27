@@ -23,6 +23,8 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         self.promotionsTableView.delegate = self
         self.promotionsTableView.dataSource = self
         
+        self.promotionsTableView.separatorStyle = .None
+        
 //        var promo = Promotion()
 //        
 //        promo.promotionName = "Coleira para cachorro DogMax"

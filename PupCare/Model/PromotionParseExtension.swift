@@ -13,10 +13,12 @@ extension Promotion {
     convenience init (parseObject: PFObject) {
         
         var data = [String: AnyObject]()
-//        let promotion = parseObject["Promotion"] as! PFObject
+        
+        data["petShop"] = PetShop(parseObject: parseObject["petShopId"] as! PFObject)
         
         data["objectId"] = parseObject.objectId
         data["promotionName"] = parseObject["promotionName"] as! String
+        data["image"] = (parseObject["image"] as! PFFile).url
         data["promotionDescription"] = parseObject["promotionDescription"] as! String
         data["lastPrice"] = parseObject["lastPrice"] as! Float
         data["newPrice"] = parseObject["newPrice"] as! Float
