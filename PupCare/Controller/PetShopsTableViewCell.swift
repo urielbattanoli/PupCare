@@ -16,6 +16,7 @@ class PetShopsTableViewCell: UITableViewCell {
     @IBOutlet weak var petShopDistanceLabel: UILabel!
     @IBOutlet weak var petShopView: UIView!
     @IBOutlet weak var petShopContentView: UIView!
+    @IBOutlet weak var petShopRoundedView: UIView!
     
     var ranking: Int = 0
     
@@ -23,15 +24,12 @@ class PetShopsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        petShopImageView.layer.masksToBounds = true
-        petShopImageView.layer.cornerRadius = 10
-        
-        petShopContentView.layer.borderWidth = Config.BorderWidth
-        petShopContentView.layer.borderColor = Config.MainColors.BorderColor
-        petShopContentView.layer.masksToBounds = true
-        petShopContentView.layer.cornerRadius = 10
-        
+
+        petShopRoundedView.layer.cornerRadius = 10
+        petShopRoundedView.layer.borderWidth = Config.BorderWidth
+        petShopRoundedView.layer.borderColor = Config.MainColors.BorderColor
+        petShopRoundedView.clipsToBounds = true
+
         for index in 0...ranking {
             self.viewWithTag(index)?.alpha = 1
         }
