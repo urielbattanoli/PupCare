@@ -32,6 +32,7 @@
 		7A7036F81D42A0CA005FAB68 /* AddressParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */; };
 		7A7036FA1D4641D4005FAB68 /* AddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F91D4641D4005FAB68 /* AddressManager.swift */; };
 		7A9E9B8A1D36CE9700AC978C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E9B891D36CE9700AC978C /* SignUpViewController.swift */; };
+		7AAC46CC1D49322600D026AC /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAC46CB1D49322600D026AC /* OrderManager.swift */; };
 		A400B4751D34311100051363 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A400B4741D34311100051363 /* Profile.storyboard */; };
 		A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400B4761D34324300051363 /* MyProfileViewController.swift */; };
 		A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */; };
@@ -110,6 +111,7 @@
 		7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParseExtension.swift; sourceTree = "<group>"; };
 		7A7036F91D4641D4005FAB68 /* AddressManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressManager.swift; path = Model/AddressManager.swift; sourceTree = "<group>"; };
 		7A9E9B891D36CE9700AC978C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controller/SignUpViewController.swift; sourceTree = "<group>"; };
+		7AAC46CB1D49322600D026AC /* OrderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderManager.swift; path = Model/OrderManager.swift; sourceTree = "<group>"; };
 		7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCareTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8744664412D2A7E02501B9E5 /* Pods-PupCareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests.debug.xcconfig"; sourceTree = "<group>"; };
 		97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +292,14 @@
 			name = Address;
 			sourceTree = "<group>";
 		};
+		7AAC46CD1D49322F00D026AC /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				7AAC46CB1D49322600D026AC /* OrderManager.swift */,
+			);
+			name = Order;
+			sourceTree = "<group>";
+		};
 		A43C9E951D3685EA00D6D0D8 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +376,7 @@
 				7A31925E1D34012F004096A0 /* PetShop */,
 				7A31925F1D340139004096A0 /* Product */,
 				7A3192601D34013F004096A0 /* Promotion */,
+				7AAC46CD1D49322F00D026AC /* Order */,
 				A43C9E951D3685EA00D6D0D8 /* User */,
 			);
 			name = Model;
@@ -842,6 +853,7 @@
 				A475E34E1D18548900FB66C3 /* OrdersViewController.swift in Sources */,
 				71C1B4481D2EC08000CDDA20 /* PromotionParseExtension.swift in Sources */,
 				71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */,
+				7AAC46CC1D49322600D026AC /* OrderManager.swift in Sources */,
 				A43C9E9B1D3688FA00D6D0D8 /* UserParseExtension.swift in Sources */,
 				A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */,
 				711760101D3FED08002452CA /* PromotionDetailsViewController.swift in Sources */,
