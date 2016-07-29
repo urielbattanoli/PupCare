@@ -22,15 +22,6 @@ class MyProfileDetailTableViewCell: UITableViewCell {
         }
     }
     
-    var corner: CGFloat?{
-        didSet{
-            if let view = self.viewBack{
-                view.layer.masksToBounds = true
-                view.layer.cornerRadius = self.corner!
-            }
-        }
-    }
-    
     func changeConstraintSize(size: CGFloat) {
         if let constraint = self.bottomConstraint{
             constraint.constant = size
@@ -38,7 +29,10 @@ class MyProfileDetailTableViewCell: UITableViewCell {
     }
     
     func setCorner() {
-        self.corner = 5
+        if let view = self.viewBack{
+            view.layer.masksToBounds = true
+            view.layer.cornerRadius = 5
+        }
     }
     
     override func awakeFromNib() {

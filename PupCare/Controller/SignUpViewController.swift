@@ -46,7 +46,7 @@ class SignUpViewController: UIViewController {
         if segue.identifier == "profileAfterSignUpSegue" {
             let profileVC = segue.destinationViewController.childViewControllers[0] as! MyProfileViewController
             
-            profileVC.user = sender as? User
+            profileVC.user = (sender as? User)!
             
         }
     }

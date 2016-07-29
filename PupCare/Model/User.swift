@@ -12,11 +12,12 @@ class User: NSObject {
 
     let userId: String
     let name: String
-//    let photoUrl: String
+    let photoUrl: String
+    var cards = [Card]()
     
     init(data: [String : AnyObject]) {
         self.userId = data["userId"] as! String
         self.name = data["name"] as! String
-//        self.photoUrl = data["photo"] as! String
+        self.photoUrl = data["photo"] as! String
     }
 }

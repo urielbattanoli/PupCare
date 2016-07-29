@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xU0-Fl-9mG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xU0-Fl-9mG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Minha Conta-->
@@ -218,6 +219,64 @@
                                             <outlet property="viewBack" destination="bEU-ev-ide" id="wCq-om-3ND"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellCard" id="c5o-va-bFJ" customClass="MyProfileCardTableViewCell" customModule="PupCare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="523" width="570" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c5o-va-bFJ" id="Urh-8X-HI4">
+                                            <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l7H-RN-QnN">
+                                                    <rect key="frame" x="0.0" y="-10" width="570" height="54"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Adicionar cartão de crédito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZT-Gi-AGm">
+                                                            <rect key="frame" x="178" y="21" width="207" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Clf-hR-eym">
+                                                            <rect key="frame" x="508" y="13" width="54" height="37"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="54" id="VX8-cp-4Sg"/>
+                                                                <constraint firstAttribute="height" constant="37" id="g4R-I1-Q83"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Clf-hR-eym" secondAttribute="trailing" id="LwZ-Mn-1j3"/>
+                                                        <constraint firstItem="yZT-Gi-AGm" firstAttribute="centerY" secondItem="l7H-RN-QnN" secondAttribute="centerY" id="imf-h7-DWt"/>
+                                                        <constraint firstItem="yZT-Gi-AGm" firstAttribute="centerX" secondItem="l7H-RN-QnN" secondAttribute="centerX" id="q7W-8u-dmT"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="imf-h7-DWt"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yZT-Gi-AGm" firstAttribute="centerY" secondItem="Urh-8X-HI4" secondAttribute="centerY" id="6CZ-lh-5uq"/>
+                                                <constraint firstItem="l7H-RN-QnN" firstAttribute="leading" secondItem="Urh-8X-HI4" secondAttribute="leading" id="Eww-3a-4Ig"/>
+                                                <constraint firstItem="l7H-RN-QnN" firstAttribute="top" secondItem="Urh-8X-HI4" secondAttribute="top" constant="-10" id="NWz-a8-rCL"/>
+                                                <constraint firstAttribute="bottom" secondItem="l7H-RN-QnN" secondAttribute="bottom" id="Zdf-sW-Te8"/>
+                                                <constraint firstAttribute="trailing" secondItem="l7H-RN-QnN" secondAttribute="trailing" id="hXQ-mT-Thg"/>
+                                                <constraint firstItem="Clf-hR-eym" firstAttribute="centerY" secondItem="Urh-8X-HI4" secondAttribute="centerY" id="jn1-zl-u1b"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="l7H-RN-QnN" secondAttribute="trailing" id="sXc-ny-rlf"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="sXc-ny-rlf"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageCard" destination="Clf-hR-eym" id="JvP-Wc-v7Q"/>
+                                            <outlet property="lblCard" destination="yZT-Gi-AGm" id="nc9-yx-PN3"/>
+                                            <outlet property="viewBack" destination="l7H-RN-QnN" id="FU3-BC-1pD"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <sections/>
                                 <connections>
@@ -238,11 +297,20 @@
                     <connections>
                         <outlet property="tableView" destination="VZ3-0z-az6" id="OZe-Zq-30s"/>
                         <segue destination="2Vx-wW-WnN" kind="show" identifier="logInSegue" id="Krs-ga-Tj8"/>
+                        <segue destination="Ejz-4t-2yR" kind="show" identifier="cardSegue" id="gJ2-Pw-gB5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6P-EZ-iw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3741" y="532"/>
+        </scene>
+        <!--Card-->
+        <scene sceneID="n4a-zc-iR9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Card" id="Ejz-4t-2yR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTI-1U-qMc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4308.5" y="296"/>
         </scene>
         <!--Login-->
         <scene sceneID="fod-6l-4Ys">

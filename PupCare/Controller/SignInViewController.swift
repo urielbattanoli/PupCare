@@ -40,7 +40,7 @@ class SignInViewController: UIViewController {
                     let vcProfile : UIViewController! = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()
                     vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
                     let profile = vcProfile.childViewControllers[0] as! MyProfileViewController
-                    profile.user = usuario
+                    profile.user = usuario!
                     
                     var viewControllers = self.tabBarController?.viewControllers ?? []
                     viewControllers[3] = vcProfile

@@ -34,7 +34,11 @@
 		A40B341D1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */; };
 		A40B341F1D30270F00BCC240 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341E1D30270F00BCC240 /* Extensions.swift */; };
 		A420BBB21D4154D7004F4C1B /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A420BBB11D4154D7004F4C1B /* ProductDetail.storyboard */; };
+		A420BBB51D46890E004F4C1B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420BBB41D46890E004F4C1B /* Card.swift */; };
 		A42331C01D2ACE5400CFF8DA /* ProductParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */; };
+		A42751A11D47E29E00B083C6 /* MyProfileCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42751A01D47E29E00B083C6 /* MyProfileCardTableViewCell.swift */; };
+		A42751A31D47E87500B083C6 /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A42751A21D47E87500B083C6 /* Card.storyboard */; };
+		A42751A61D47E8BC00B083C6 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42751A51D47E8BC00B083C6 /* AddCardViewController.swift */; };
 		A43C9E8C1D34416300D6D0D8 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E8B1D34416300D6D0D8 /* ProductDetailViewController.swift */; };
 		A43C9E901D3513E100D6D0D8 /* MyProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E8F1D3513E100D6D0D8 /* MyProfileTableViewCell.swift */; };
 		A43C9E941D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E931D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift */; };
@@ -111,7 +115,11 @@
 		A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductHeaderTableViewCell.swift; path = Controller/ProductHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		A40B341E1D30270F00BCC240 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Model/Extensions.swift; sourceTree = "<group>"; };
 		A420BBB11D4154D7004F4C1B /* ProductDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProductDetail.storyboard; path = View/ProductDetail.storyboard; sourceTree = "<group>"; };
+		A420BBB41D46890E004F4C1B /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Model/Card.swift; sourceTree = "<group>"; };
 		A42331BF1D2ACE5400CFF8DA /* ProductParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductParseExtension.swift; path = Model/ProductParseExtension.swift; sourceTree = "<group>"; };
+		A42751A01D47E29E00B083C6 /* MyProfileCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileCardTableViewCell.swift; path = Controller/MyProfileCardTableViewCell.swift; sourceTree = "<group>"; };
+		A42751A21D47E87500B083C6 /* Card.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Card.storyboard; path = View/Card.storyboard; sourceTree = "<group>"; };
+		A42751A51D47E8BC00B083C6 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddCardViewController.swift; path = Controller/AddCardViewController.swift; sourceTree = "<group>"; };
 		A43C9E8B1D34416300D6D0D8 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDetailViewController.swift; path = Controller/ProductDetailViewController.swift; sourceTree = "<group>"; };
 		A43C9E8F1D3513E100D6D0D8 /* MyProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileTableViewCell.swift; path = Controller/MyProfileTableViewCell.swift; sourceTree = "<group>"; };
 		A43C9E931D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileDetailTableViewCell.swift; path = Controller/MyProfileDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -268,8 +276,25 @@
 				A43C9E931D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift */,
 				A43C9E8F1D3513E100D6D0D8 /* MyProfileTableViewCell.swift */,
 				A400B4761D34324300051363 /* MyProfileViewController.swift */,
+				A42751A01D47E29E00B083C6 /* MyProfileCardTableViewCell.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		A420BBB31D4688D0004F4C1B /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				A420BBB41D46890E004F4C1B /* Card.swift */,
+			);
+			name = Card;
+			sourceTree = "<group>";
+		};
+		A42751A41D47E89A00B083C6 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				A42751A51D47E8BC00B083C6 /* AddCardViewController.swift */,
+			);
+			name = Card;
 			sourceTree = "<group>";
 		};
 		A43C9E951D3685EA00D6D0D8 /* User */ = {
@@ -307,6 +332,7 @@
 		A475E3081D0A9B3A00FB66C3 /* PupCare */ = {
 			isa = PBXGroup;
 			children = (
+				A42751A41D47E89A00B083C6 /* Card */,
 				A475E33C1D148F2600FB66C3 /* Controller */,
 				A475E33B1D148F1F00FB66C3 /* View */,
 				A475E33A1D148F1600FB66C3 /* Model */,
@@ -339,13 +365,14 @@
 		A475E33A1D148F1600FB66C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7117600C1D3FDF17002452CA /* PupCare-Bridging-Header.h */,
-				A40B341E1D30270F00BCC240 /* Extensions.swift */,
+				A420BBB31D4688D0004F4C1B /* Card */,
 				7A37C7B11D37DB6300FBE13F /* Designables.swift */,
+				A40B341E1D30270F00BCC240 /* Extensions.swift */,
 				715100751D341129003A6817 /* ParseManager.swift */,
 				7A31925E1D34012F004096A0 /* PetShop */,
 				7A31925F1D340139004096A0 /* Product */,
 				7A3192601D34013F004096A0 /* Promotion */,
+				7117600C1D3FDF17002452CA /* PupCare-Bridging-Header.h */,
 				A43C9E951D3685EA00D6D0D8 /* User */,
 			);
 			name = Model;
@@ -364,6 +391,7 @@
 				A475E33F1D14902400FB66C3 /* Promotions.storyboard */,
 				39AC64BA1D2C32E400477F05 /* Login.Storyboard */,
 				A420BBB11D4154D7004F4C1B /* ProductDetail.storyboard */,
+				A42751A21D47E87500B083C6 /* Card.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -534,6 +562,7 @@
 				A475E3421D14905200FB66C3 /* Cart.storyboard in Resources */,
 				A420BBB21D4154D7004F4C1B /* ProductDetail.storyboard in Resources */,
 				A400B4751D34311100051363 /* Profile.storyboard in Resources */,
+				A42751A31D47E87500B083C6 /* Card.storyboard in Resources */,
 				A4869DC91D2595090076EC37 /* Products.storyboard in Resources */,
 				A475E33E1D148FEB00FB66C3 /* Petshops.storyboard in Resources */,
 				39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */,
@@ -825,8 +854,10 @@
 				A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */,
 				711760101D3FED08002452CA /* PromotionDetailsViewController.swift in Sources */,
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,
+				A420BBB51D46890E004F4C1B /* Card.swift in Sources */,
 				A43C9E991D3688EA00D6D0D8 /* UserManager.swift in Sources */,
 				A43C9E8C1D34416300D6D0D8 /* ProductDetailViewController.swift in Sources */,
+				A42751A61D47E8BC00B083C6 /* AddCardViewController.swift in Sources */,
 				71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */,
 				A43C9E901D3513E100D6D0D8 /* MyProfileTableViewCell.swift in Sources */,
 				A4869DCF1D259DB60076EC37 /* Product.swift in Sources */,
@@ -834,6 +865,7 @@
 				7117600B1D3FDDD8002452CA /* iCarousel.m in Sources */,
 				715100761D341129003A6817 /* ParseManager.swift in Sources */,
 				A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */,
+				A42751A11D47E29E00B083C6 /* MyProfileCardTableViewCell.swift in Sources */,
 				7A7036EB1D40117E005FAB68 /* SignInViewController.swift in Sources */,
 				71C1B4461D2EB91300CDDA20 /* PetShopManager.swift in Sources */,
 				7A37C7B21D37DB6300FBE13F /* Designables.swift in Sources */,
