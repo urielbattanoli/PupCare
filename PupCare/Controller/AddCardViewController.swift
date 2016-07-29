@@ -62,7 +62,7 @@ class AddCardViewController: UIViewController {
         
         let datePickerView = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
-        datePickerView.date
+        //datePickerView.date
     }
     
     @IBAction func didPressAddCard(sender: AnyObject) {
