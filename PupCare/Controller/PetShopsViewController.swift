@@ -22,41 +22,10 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //
-        //        let petShop1 = PetShop()
-        //        petShop1.name = "Pets Mimados"
-        //        petShop1.address = "Orfanatrofio"
-        //        allPetShops.append(petShop1)
-        //
-        //        let petShop2 = PetShop()
-        //        petShop2.name = "Pets Furiosos"
-        //        petShop2.address = "PUCRS"
-        //        allPetShops.append(petShop2)
-        //
-        //        let petShop3 = PetShop()
-        //        petShop3.name = "Pets Shows"
-        //        petShop3.address = "Nonoai"
-        //        allPetShops.append(petShop3)
-        //
-        //        let petShop4 = PetShop()
-        //        petShop4.name = "Pets Carinhosos"
-        //        petShop4.address = "Protásio Alves"
-        //        allPetShops.append(petShop4)
-        //
-        //        let petShop5 = PetShop()
-        //        petShop5.name = "Pets Mimados"
-        //        petShop5.address = "Orfanatrofio"
-        //        allPetShops.append(petShop5)
-        //
-        //        let petShop6 = PetShop()
-        //        petShop6.name = "Pets Correndo"
-        //        petShop6.address = "Osvaldo Aranha"
-        //        allPetShops.append(petShop6)
-        
-        
         petShopsTableView.dataSource = self
         petShopsTableView.delegate = self
+        
+        petShopsTableView.separatorStyle = .None
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Puxe para atualizar")
@@ -69,17 +38,14 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        petShopsTableView.tableHeaderView = searchController.searchBar
+//        petShopsTableView.tableHeaderView = searchController.searchBar
         
-        
-//        searchController.searchBar.sizeToFit()
         searchController.hidesNavigationBarDuringPresentation = false
         
         self.reloadPetShops()
         
-        self.petShopsTableView.contentOffset = CGPointMake(0, self.petShopsTableView.tableHeaderView!.frame.size.height)//self.searchController.searchBar.frame.size.height)
+//        self.petShopsTableView.contentOffset = CGPointMake(0, self.petShopsTableView.tableHeaderView!.frame.size.height)//self.searchController.searchBar.frame.size.height)
         
-        // Do any additional setup after loading the view.
     }
     
     func filterPetShopsForSearchText(searchText: String, scope: String = "All") {
@@ -98,11 +64,6 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    //    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    //        return 44;
-    //    }
-    
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("PetShopCell", forIndexPath: indexPath) as! PetShopsTableViewCell
@@ -118,6 +79,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.petShopAddressLabel.text = petShop.address
         cell.ranking = Int(petShop.ranking)
         cell.petShopImageView.loadImage(petShop.imageUrl)
+        
         
         return cell
     }
@@ -137,7 +99,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func reloadPetShops () {
-        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10, response: { (petshops, error) in
+        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10000, response: { (petshops, error) in
             if error == nil {
                 self.allPetShops = petshops!
                 // Descomentar quando arrumar cloud

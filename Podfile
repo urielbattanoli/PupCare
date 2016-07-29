@@ -9,6 +9,8 @@ pod 'FBSDKLoginKit', '~> 4.11.0'
 pod 'FBSDKShareKit', '~> 4.11.0'
 pod 'ParseFacebookUtilsV4', '~> 1.11.1'
 pod 'Kingfisher', '~> 2.4'
+pod 'Alamofire', '~> 3.4'
+pod 'SwiftyJSON'
 end
 
 target 'PupCareTests' do
@@ -18,4 +20,6 @@ target 'PupCareTests' do
     pod 'FBSDKShareKit', '~> 4.11.0'
     pod 'ParseFacebookUtilsV4', '~> 1.11.1'
     pod 'Kingfisher', '~> 2.4'
+    pod 'Alamofire', '~> 3.4'
+    pod 'SwiftyJSON'
 end

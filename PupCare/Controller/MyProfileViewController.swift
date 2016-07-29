@@ -26,12 +26,14 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     var section1Expanded = false
     var section2Expanded = false
     
-    var user = User(parseObject: PFUser.currentUser()!)
+    var user: User!
     
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.user = User(parseObject: PFUser.currentUser()!)
+        print(self.user)
         self.tableView.delegate = self
         self.numberOfRowSection2 = self.user.cards.count+3
     }
@@ -96,10 +98,10 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             if !self.section1Expanded{
                 return separator
             }
-            cell.string = "Uriel Battanoli"//user?.name
+            cell.string = self.user.name
             
         case 1 where indexPath.row == 2:
-            cell.string = "001.094.302-12"
+            cell.string = self.user.email
             
         case 1 where indexPath.row == 3:
             cell.string = "Graciano Azambuja, 229"
@@ -202,7 +204,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func didPressLogOut() {
-        UserManager.logOutUser {
+        UserManager.sharedInstance.logOutUser {
             let vcProfile : UIViewController! = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
             vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
             
