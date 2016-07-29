@@ -12,9 +12,12 @@
 		569E4878009CE5DDF43F544E /* Pods_PupCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */; };
 		7117600B1D3FDDD8002452CA /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7117600A1D3FDDD8002452CA /* iCarousel.m */; };
 		711760101D3FED08002452CA /* PromotionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */; };
+		7118ED3E1D4BD901000CCB1E /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7118ED3D1D4BD901000CCB1E /* Cart.swift */; };
 		715100761D341129003A6817 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715100751D341129003A6817 /* ParseManager.swift */; };
 		715100771D341129003A6817 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715100751D341129003A6817 /* ParseManager.swift */; };
 		717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717247711D2C1BC600BD694D /* PetShopParseExtension.swift */; };
+		71AC43E01D4A7E3F00C9BD31 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC43DF1D4A7E3F00C9BD31 /* CartViewController.swift */; };
+		71AC43E21D4A8A2D00C9BD31 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC43E11D4A8A2D00C9BD31 /* CartTableViewCell.swift */; };
 		71BBC2561D25A89200194861 /* PetShopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */; };
 		71C1B4441D2EB8A300CDDA20 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4431D2EB8A300CDDA20 /* Promotion.swift */; };
 		71C1B4461D2EB91300CDDA20 /* PetShopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */; };
@@ -58,7 +61,6 @@
 		A475E3461D1490AA00FB66C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E3451D1490AA00FB66C3 /* AppDelegate.swift */; };
 		A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E3471D18535000FB66C3 /* InitialViewController.swift */; };
 		A475E34A1D18545D00FB66C3 /* PetShopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E3491D18545D00FB66C3 /* PetShopsViewController.swift */; };
-		A475E34C1D18547100FB66C3 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E34B1D18547100FB66C3 /* CartViewController.swift */; };
 		A475E34E1D18548900FB66C3 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E34D1D18548900FB66C3 /* OrdersViewController.swift */; };
 		A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */; };
 		A475E3521D18569B00FB66C3 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A475E3511D18569B00FB66C3 /* MainTabViewController.swift */; };
@@ -92,8 +94,11 @@
 		7117600A1D3FDDD8002452CA /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		7117600C1D3FDF17002452CA /* PupCare-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PupCare-Bridging-Header.h"; path = "Model/PupCare-Bridging-Header.h"; sourceTree = "<group>"; };
 		7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionDetailsViewController.swift; sourceTree = "<group>"; };
+		7118ED3D1D4BD901000CCB1E /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cart.swift; path = Model/Cart.swift; sourceTree = "<group>"; };
 		715100751D341129003A6817 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseManager.swift; path = Model/ParseManager.swift; sourceTree = "<group>"; };
 		717247711D2C1BC600BD694D /* PetShopParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopParseExtension.swift; path = Model/PetShopParseExtension.swift; sourceTree = "<group>"; };
+		71AC43DF1D4A7E3F00C9BD31 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartViewController.swift; path = Controller/CartViewController.swift; sourceTree = "<group>"; };
+		71AC43E11D4A8A2D00C9BD31 /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopsTableViewCell.swift; path = Controller/PetShopsTableViewCell.swift; sourceTree = "<group>"; };
 		71C1B4431D2EB8A300CDDA20 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Model/Promotion.swift; sourceTree = "<group>"; };
 		71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopManager.swift; path = Model/PetShopManager.swift; sourceTree = "<group>"; };
@@ -146,7 +151,6 @@
 		A475E3451D1490AA00FB66C3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Controller/AppDelegate.swift; sourceTree = "<group>"; };
 		A475E3471D18535000FB66C3 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitialViewController.swift; path = Controller/InitialViewController.swift; sourceTree = "<group>"; };
 		A475E3491D18545D00FB66C3 /* PetShopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopsViewController.swift; path = Controller/PetShopsViewController.swift; sourceTree = "<group>"; };
-		A475E34B1D18547100FB66C3 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartViewController.swift; path = Controller/CartViewController.swift; sourceTree = "<group>"; };
 		A475E34D1D18548900FB66C3 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrdersViewController.swift; path = Controller/OrdersViewController.swift; sourceTree = "<group>"; };
 		A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionsViewController.swift; path = Controller/PromotionsViewController.swift; sourceTree = "<group>"; };
 		A475E3511D18569B00FB66C3 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabViewController.swift; path = Controller/MainTabViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +194,23 @@
 				7117600A1D3FDDD8002452CA /* iCarousel.m */,
 			);
 			path = iCarousel;
+			sourceTree = "<group>";
+		};
+		7118ED3C1D4BD8E0000CCB1E /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				7118ED3D1D4BD901000CCB1E /* Cart.swift */,
+			);
+			name = Cart;
+			sourceTree = "<group>";
+		};
+		71AC43DE1D4A7DED00C9BD31 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				71AC43E11D4A8A2D00C9BD31 /* CartTableViewCell.swift */,
+				71AC43DF1D4A7E3F00C9BD31 /* CartViewController.swift */,
+			);
+			name = Cart;
 			sourceTree = "<group>";
 		};
 		7A31925E1D34012F004096A0 /* PetShop */ = {
@@ -264,7 +285,6 @@
 		7A7036F01D41308C005FAB68 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				A475E34B1D18547100FB66C3 /* CartViewController.swift */,
 				A475E34D1D18548900FB66C3 /* OrdersViewController.swift */,
 			);
 			name = Order;
@@ -362,6 +382,7 @@
 				7A37C7B11D37DB6300FBE13F /* Designables.swift */,
 				715100751D341129003A6817 /* ParseManager.swift */,
 				71D722C71D47EE4800035392 /* Config.swift */,
+				7118ED3C1D4BD8E0000CCB1E /* Cart */,
 				7A7036F21D429ED6005FAB68 /* Address */,
 				7A31925E1D34012F004096A0 /* PetShop */,
 				7A31925F1D340139004096A0 /* Product */,
@@ -395,6 +416,7 @@
 				A475E3451D1490AA00FB66C3 /* AppDelegate.swift */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
 				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
+				71AC43DE1D4A7DED00C9BD31 /* Cart */,
 				7A7036EE1D413072005FAB68 /* Login */,
 				7A7036F01D41308C005FAB68 /* Order */,
 				7A7036ED1D41306A005FAB68 /* PetShop */,
@@ -831,6 +853,7 @@
 				A440AF9B1D2AF2EC005B6CBC /* ProductManager.swift in Sources */,
 				717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */,
 				71BBC2561D25A89200194861 /* PetShopsTableViewCell.swift in Sources */,
+				71AC43E01D4A7E3F00C9BD31 /* CartViewController.swift in Sources */,
 				A475E3521D18569B00FB66C3 /* MainTabViewController.swift in Sources */,
 				71C1B4441D2EB8A300CDDA20 /* Promotion.swift in Sources */,
 				71C1B44C1D30062000CDDA20 /* PromotionManager.swift in Sources */,
@@ -844,6 +867,7 @@
 				71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */,
 				A43C9E9B1D3688FA00D6D0D8 /* UserParseExtension.swift in Sources */,
 				A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */,
+				71AC43E21D4A8A2D00C9BD31 /* CartTableViewCell.swift in Sources */,
 				711760101D3FED08002452CA /* PromotionDetailsViewController.swift in Sources */,
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,
 				A43C9E991D3688EA00D6D0D8 /* UserManager.swift in Sources */,
@@ -854,7 +878,7 @@
 				7A7036F41D429EF3005FAB68 /* Address.swift in Sources */,
 				A43C9E901D3513E100D6D0D8 /* MyProfileTableViewCell.swift in Sources */,
 				A4869DCF1D259DB60076EC37 /* Product.swift in Sources */,
-				A475E34C1D18547100FB66C3 /* CartViewController.swift in Sources */,
+				7118ED3E1D4BD901000CCB1E /* Cart.swift in Sources */,
 				7117600B1D3FDDD8002452CA /* iCarousel.m in Sources */,
 				715100761D341129003A6817 /* ParseManager.swift in Sources */,
 				A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */,

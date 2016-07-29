@@ -36,12 +36,12 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         
         self.view.clipsToBounds = true
         
-        newPriceLabel.textColor = UIColor(CGColor: promotionColor)
+        newPriceLabel.textColor = UIColor(CGColor: promotionColor.CGColor)
         
         backgroundView.clipsToBounds = true
         backgroundView.layer.cornerRadius = 5
         backgroundView.layer.borderWidth = 0.5
-        backgroundView.layer.borderColor = Config.MainColors.BorderColor
+        backgroundView.layer.borderColor = Config.MainColors.BorderColor.CGColor
     
     }
     
