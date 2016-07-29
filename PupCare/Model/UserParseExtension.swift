@@ -16,7 +16,7 @@ extension User {
         
         data["userId"] = parseObject.objectId
         data["name"] = parseObject["name"]
-//        data["photo"] = (parseObject["image"] as! PFFile).url
+        data["photo"] = (parseObject["image"] as! PFFile).url
         
         self.init(data: data)
     }

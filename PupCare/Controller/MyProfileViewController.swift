@@ -181,7 +181,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func didPressLogOut() {
-        UserManager.logOutUser { 
+        UserManager.sharedInstance.logOutUser { 
             let vcProfile : UIViewController! = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
             vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
             
