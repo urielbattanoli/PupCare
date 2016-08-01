@@ -10,9 +10,9 @@ import UIKit
 
 class Card: NSObject {
 
-    let name: String
-    let number: String
-    let expirationDate: String
+    var name: String
+    var number: String
+    var expirationDate: String
     
     init(data: [String : AnyObject]) {
         self.name = data["name"] as! String

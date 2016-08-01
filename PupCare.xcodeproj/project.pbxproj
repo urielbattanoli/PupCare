@@ -69,6 +69,7 @@
 		A4869DC91D2595090076EC37 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4869DC81D2595090076EC37 /* Products.storyboard */; };
 		A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */; };
 		A4869DCF1D259DB60076EC37 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCE1D259DB60076EC37 /* Product.swift */; };
+		A49877151D4F7CFC00DD4F02 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,7 @@
 		A4869DC81D2595090076EC37 /* Products.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Products.storyboard; path = View/Products.storyboard; sourceTree = "<group>"; };
 		A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductTableViewCell.swift; path = Controller/ProductTableViewCell.swift; sourceTree = "<group>"; };
 		A4869DCE1D259DB60076EC37 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Model/Product.swift; sourceTree = "<group>"; };
+		A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthYearPickerView.swift; path = Model/MonthYearPickerView.swift; sourceTree = "<group>"; };
 		DDD843DED49D52DA47654117 /* Pods-PupCareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCareTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -350,7 +352,6 @@
 		A475E3081D0A9B3A00FB66C3 /* PupCare */ = {
 			isa = PBXGroup;
 			children = (
-				A42751A41D47E89A00B083C6 /* Card */,
 				A475E33C1D148F2600FB66C3 /* Controller */,
 				A475E33B1D148F1F00FB66C3 /* View */,
 				A475E33A1D148F1600FB66C3 /* Model */,
@@ -394,6 +395,7 @@
 				7A3192601D34013F004096A0 /* Promotion */,
 				7117600C1D3FDF17002452CA /* PupCare-Bridging-Header.h */,
 				A43C9E951D3685EA00D6D0D8 /* User */,
+				A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -419,16 +421,17 @@
 		A475E33C1D148F2600FB66C3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */,
 				A475E3451D1490AA00FB66C3 /* AppDelegate.swift */,
+				A42751A41D47E89A00B083C6 /* Card */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
-				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
 				7A7036EE1D413072005FAB68 /* Login */,
+				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
 				7A7036F01D41308C005FAB68 /* Order */,
 				7A7036ED1D41306A005FAB68 /* PetShop */,
 				7A7036EC1D413062005FAB68 /* Product */,
 				7A7036F11D4130AA005FAB68 /* Profile */,
 				7A7036EF1D413080005FAB68 /* Promotion */,
+				7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -906,6 +909,7 @@
 				A43C9E9B1D3688FA00D6D0D8 /* UserParseExtension.swift in Sources */,
 				A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */,
 				711760101D3FED08002452CA /* PromotionDetailsViewController.swift in Sources */,
+				A49877151D4F7CFC00DD4F02 /* MonthYearPickerView.swift in Sources */,
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,
 				A420BBB51D46890E004F4C1B /* Card.swift in Sources */,
 				A43C9E991D3688EA00D6D0D8 /* UserManager.swift in Sources */,

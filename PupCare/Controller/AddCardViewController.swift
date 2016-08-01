@@ -12,8 +12,8 @@ import UIKit
 }
 
 class AddCardViewController: UIViewController {
-
-    //Mark: Outlets
+    
+    //MARK: Outlets
     @IBOutlet weak var lblCardNumber: UILabel!
     @IBOutlet weak var lblDateCard: UILabel!
     @IBOutlet weak var lblNameCard: UILabel!
@@ -23,34 +23,40 @@ class AddCardViewController: UIViewController {
     @IBOutlet weak var txtFieldDateCard: UITextField!
     @IBOutlet weak var txtFieldNameCard: UITextField!
     
+    @IBOutlet weak var btAddCard: UIButton!
+    
     weak var delegate : AddCardDelegate?
     
-    //Mark: Variables
+    //MARK: Variables
     var card: Card?
     
-    //Mark: Life cycle
+    //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Adicionar cartão"
+        
+        
         if let card = self.card{
-            self.lblCardNumber.text = "\(card.number)"
-            self.lblDateCard.text = "\(card.expirationDate)"
+            self.title = "Editar cartão"
+            
+            self.lblCardNumber.text = card.number.numberCardMask()
+            self.lblDateCard.text = card.expirationDate
             self.lblNameCard.text = card.name
+            self.btAddCard.setTitle("Salvar mudanças", forState: .Normal)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //Mark: Actions
+    //MARK: Actions
     @IBAction func didEditingChanged(textField: UITextField) {
         switch textField {
         case self.txtFieldCardNumber:
-            self.lblCardNumber.text = textField.text
-        case self.txtFieldDateCard:
-            self.lblDateCard.text = textField.text
+            self.lblCardNumber.text = textField.text//?.numberCardMask()
         case self.txtFieldNameCard:
             self.lblNameCard.text = textField.text
         default:
@@ -59,18 +65,55 @@ class AddCardViewController: UIViewController {
     }
     
     @IBAction func didPressDate(textField: UITextField) {
-        
-        let datePickerView = UIDatePicker()
-        datePickerView.datePickerMode = UIDatePickerMode.Date
-        //datePickerView.date
+        let datePickerView = MonthYearPickerView()
+        datePickerView.onDateSelected = {(month: Int, year: Int) in
+            let date = String(format: "%02d/%d", month, year)
+            
+            self.lblDateCard.text = date
+            textField.text = date
+        }
+        textField.inputView = datePickerView
     }
     
     @IBAction func didPressAddCard(sender: AnyObject) {
-        let data = ["number":self.lblCardNumber.text!,
-                    "expirationDate":self.lblDateCard.text!,
-                    "name":self.lblNameCard.text!]
-        let newCard = Card(data: data)
+        var newCard: Card!
+        if let card = self.card{
+            self.editCard()
+            newCard = card
+        }
+        else{
+            let data = ["number":self.txtFieldCardNumber.text!,
+                        "expirationDate":self.lblDateCard.text!,
+                        "name":self.lblNameCard.text!]
+            newCard = Card(data: data)
+        }
         self.delegate?.cardDidAdded?(newCard)
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func didPressOnView(sender: UIControl) {
+        self.dismissKeyboard()
+    }
+    
+    //MARK: Functions
+    func editCard(){
+        if let card = self.card{
+            // if change number
+            if((self.txtFieldCardNumber.text != self.card?.number) && (self.txtFieldCardNumber.text != "")){
+            card.number = self.lblCardNumber.text!
+            }
+            // if change date
+            if((self.txtFieldDateCard.text != self.card?.expirationDate) && (self.txtFieldDateCard.text != "")){
+                card.expirationDate = self.lblDateCard.text!
+            }
+            // if change name
+            if((self.txtFieldNameCard.text != self.card?.name) && (self.txtFieldNameCard.text != "")){
+                card.name = self.lblNameCard.text!
+            }
+        }
+    }
+    
+    func dismissKeyboard(){
+        self.view.endEditing(true)
     }
 }

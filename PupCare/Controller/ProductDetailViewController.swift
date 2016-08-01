@@ -25,9 +25,10 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         
         self.title = "Detalhes do produto"
 
-        self.carousel.type = .Rotary
+        
         self.carousel.delegate = self
         self.carousel.dataSource = self
+        self.carousel.type = .Rotary
         
         self.carousel.userInteractionEnabled = false
     }

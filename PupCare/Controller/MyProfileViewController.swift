@@ -216,6 +216,8 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
+        
         switch segue.identifier! {
         case "logInSegue":
             segue.destinationViewController.childViewControllers[0] as! LoginViewController
@@ -230,9 +232,11 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    //Mark: Card delegate
+    //MARK: Card delegate
     func cardDidAdded(card: Card) {
-        self.user.cards.append(card)
+        if !self.user.cards.contains(card){
+            self.user.cards.append(card)
+        }
         self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Automatic)
     }
 }

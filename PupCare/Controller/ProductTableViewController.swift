@@ -52,6 +52,9 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Detalhes da Pet Shop"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
+        
         self.searchController = UISearchController(searchResultsController: nil)
         self.refreshControl = UIRefreshControl()
         self.tableView.tableFooterView = UIView()
