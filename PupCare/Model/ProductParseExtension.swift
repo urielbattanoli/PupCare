@@ -21,6 +21,7 @@ extension Product{
         //Product
         let product = parseObject["productId"] as! PFObject
         
+        data["objectId"] = product.objectId
         data["name"] = product["name"] as! String
         data["imageUrl"] = (product["image"] as! PFFile).url
         data["description"] = product["descript"] as! String

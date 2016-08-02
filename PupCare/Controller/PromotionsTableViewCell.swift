@@ -30,7 +30,7 @@ class PromotionsTableViewCell: UITableViewCell {
                 self.newPriceLabel.text = NSNumber(float: promotion.newPrice).numberToPrice()
                 self.productDescriptionLabel.text = promotion.promotionDescription
                 self.newPriceLabel.textColor = Config.MainColors.PromotionColor
-                self.oldPrice.textColor = Config.MainColors.OldPriceColor
+                self.oldPrice.textColor = Config.MainColors.GreyColor
                 self.promotionPhoto.loadImage(promotion.promotionImage)
                 
                 self.discountPercentageLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2 / 2 * -1))

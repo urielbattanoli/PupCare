@@ -118,6 +118,12 @@
                                                 <constraint firstItem="Ael-Rv-Q70" firstAttribute="top" secondItem="eWc-bt-XsL" secondAttribute="bottom" constant="5" id="woI-YJ-GmY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="PetShopAddressLabel" destination="eWc-bt-XsL" id="M1r-I7-vi1"/>
+                                            <outlet property="PetShopDistanceLabel" destination="Ael-Rv-Q70" id="Lqe-F2-sZT"/>
+                                            <outlet property="PetShopNameLabel" destination="5QL-R4-rZp" id="iFw-CP-yv3"/>
+                                            <outlet property="PetShopPhotoImageView" destination="QVj-mM-zvu" id="ZQU-sk-Zvi"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CartProduct" rowHeight="90" id="0um-Gh-9cG" customClass="CartTableViewCell" customModule="PupCare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="118" width="600" height="90"/>
@@ -160,6 +166,11 @@
                                                 <constraint firstItem="2pv-4x-bjQ" firstAttribute="leading" secondItem="5si-hy-PzY" secondAttribute="trailing" constant="10" id="qcF-zJ-nYq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ProductNameLabel" destination="2pv-4x-bjQ" id="KQv-sC-0Wc"/>
+                                            <outlet property="ProductPhotoImageView" destination="5si-hy-PzY" id="FGH-9P-cB4"/>
+                                            <outlet property="ProductValueLabel" destination="57b-fg-uoT" id="sBy-xL-TWP"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CartConfirmation" rowHeight="110" id="2Yk-LC-7aG" customClass="CartTableViewCell" customModule="PupCare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="208" width="600" height="110"/>
@@ -237,6 +248,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="FinishOrderButton" destination="7wl-ua-gtA" id="Ofd-Ji-D5K"/>
+                                            <outlet property="FinishOrderItensCount" destination="faN-mn-Ty8" id="OBQ-bY-IUq"/>
+                                            <outlet property="FinishOrderPriceLabel" destination="iir-6C-Cyu" id="csb-SR-PKT"/>
+                                            <outlet property="FinishOrderQuantityLabel" destination="qya-Tp-fZK" id="5xK-ol-A3i"/>
+                                            <outlet property="FinishOrderTotalPrice" destination="Bew-Eh-vYx" id="5Ds-kj-iJe"/>
                                             <outlet property="finishOrder" destination="7wl-ua-gtA" id="Cx2-jQ-YrJ"/>
                                         </connections>
                                     </tableViewCell>
