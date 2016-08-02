@@ -21,8 +21,10 @@ class PromotionsTableViewCell: UITableViewCell {
     @IBOutlet weak var productDescriptionLabel: UILabel!
     @IBOutlet weak var discountPercentageLabel: UILabel!
     
+    var indexPath: NSIndexPath?
+    
     var promotion: Promotion? {
-        didSet{
+        didSet {
             if let promotion = self.promotion {
             
                 self.productNameLabel.text = promotion.promotionName
@@ -35,6 +37,8 @@ class PromotionsTableViewCell: UITableViewCell {
                 
                 self.discountPercentageLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2 / 2 * -1))
                 self.discountPercentageLabel.text = "\(Double(100 - (100 * promotion.newPrice / promotion.lastPrice)).roundToPlaces(0))%"
+                self.addToCartButton.addTarget(self, action: #selector(PromotionsTableViewCell.didPressAddToCart), forControlEvents: .TouchUpInside)
+                self.addToCartButton.tag = indexPath!.row
             }
         }
     }
@@ -54,6 +58,12 @@ class PromotionsTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+ 
+    func didPressAddToCart() {
+        
     
+        Cart.sharedInstance.addToCart((self.promotion?.petshop)!, product: nil, promotion: self.promotion, quantity: 1)
+        
+    }
 }
 

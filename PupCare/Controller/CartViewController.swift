@@ -36,7 +36,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return Cart.sharedInstance.cartProduct.productList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

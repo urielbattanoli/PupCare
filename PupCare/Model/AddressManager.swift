@@ -21,7 +21,7 @@ class AddressManager: NSObject {
         let urlTo = "https://viacep.com.br/ws/\(zip)/json/unicode/"
         Alamofire.request(.GET, urlTo).responseJSON { (response) in
             let json = JSON(data: response.data!)
-            print(json)
+//            print(json)
             jsonResponse(json: json, error: nil)
         }
     }
@@ -52,19 +52,19 @@ class AddressManager: NSObject {
         let addressString = "\(address.zip)"
         CLGeocoder().geocodeAddressString(addressString, completionHandler: { (placemarks, error) in
             if error != nil {
-                print(error)
+//                print(error)
                 return
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
                 let location = placemark?.location
                 let coordinate = location?.coordinate
-                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+//                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
                 if placemark?.areasOfInterest?.count > 0 {
                     let areaOfInterest = placemark!.areasOfInterest![0]
-                    print(areaOfInterest)
+//                    print(areaOfInterest)
                 } else {
-                    print("No area of interest found.")
+//                    print("No area of interest found.")
                 }
             }
         })
@@ -82,21 +82,21 @@ class AddressManager: NSObject {
                 let pmDict = pm.addressDictionary
                 
                 //DADOS NECESSÁRIOS PARA CRIAR UM ENDEREÇO
-                print(pmDict!["FormattedAddressLines"]![1])
-                print(pmDict!["FormattedAddressLines"]![2])
-                print(pmDict!["FormattedAddressLines"]![3])
-                print(pmDict!["FormattedAddressLines"]![4])
-                print(pmDict!["CountryCode"])
-                print(pmDict!["SubLocality"])
-                print(pmDict!["ZIP"])
-                print(pmDict!["Thoroughfare"])
-                print(pmDict!["PostCodeExtension"])
+//                print(pmDict!["FormattedAddressLines"]![1])
+//                print(pmDict!["FormattedAddressLines"]![2])
+//                print(pmDict!["FormattedAddressLines"]![3])
+//                print(pmDict!["FormattedAddressLines"]![4])
+//                print(pmDict!["CountryCode"])
+//                print(pmDict!["SubLocality"])
+//                print(pmDict!["ZIP"])
+//                print(pmDict!["Thoroughfare"])
+//                print(pmDict!["PostCodeExtension"])
                 
                 if pm.areasOfInterest?.count > 0 {
                     let areaOfInterest = pm.areasOfInterest?[0]
-                    print(areaOfInterest!)
+//                    print(areaOfInterest!)
                 } else {
-                    print("No area of interest found.")
+//                    print("No area of interest found.")
                 }
             }
         })

@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="255"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CSl-LB-kve" id="fmy-5X-NnH">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="254.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsG-hn-qAu">
@@ -185,7 +185,13 @@
                             <constraint firstItem="tA8-Tm-iqX" firstAttribute="top" secondItem="M3p-Ow-q66" secondAttribute="topMargin" id="tRI-ce-uss"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Promoções" id="qjO-0H-tp3"/>
+                    <navigationItem key="navigationItem" title="Promoções" id="qjO-0H-tp3">
+                        <barButtonItem key="rightBarButtonItem" title="Cart" id="b3b-qX-pNP">
+                            <connections>
+                                <segue destination="SOw-FG-V9x" kind="show" id="7Fj-t9-jwS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="promotionsTableView" destination="tA8-Tm-iqX" id="yxE-2C-aoZ"/>
                         <segue destination="sdt-Jl-Yfj" kind="show" identifier="PromotionDetails" id="FD0-xC-vwP"/>
@@ -194,6 +200,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1TO-Oi-vlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1061" y="204"/>
+        </scene>
+        <!--Cart-->
+        <scene sceneID="XTg-CA-cMJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Cart" id="SOw-FG-V9x" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uQD-kR-9Vz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1559.5" y="-230"/>
         </scene>
         <!--Promotion Details View Controller-->
         <scene sceneID="HSX-r4-9Ir">
@@ -295,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qtx-wm-Wnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="204"/>
+            <point key="canvasLocation" x="1830" y="204"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fE6-fF-VeG">
