@@ -27,7 +27,7 @@ class OrderManager: NSObject {
     private let GetCardBrandUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Card/GetAvailableCardBrands"
     private let ValidateCardNumberUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Card/ValidateCardNumber"
     private let StartTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/StartTransaction"
-    private let GetTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/"
+    private let GetTransactionByTrackIdUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/Find/"
     
     override init(){
         authorizationHeaderToIso = authorizationHeader.stringByReplacingPercentEscapesUsingEncoding(NSISOLatin1StringEncoding)!
@@ -79,9 +79,9 @@ class OrderManager: NSObject {
         }
     }
     
-    func getTransaction(trackId : String){
+    func getTransactionByTrackId(trackId : String){
         
-        let transactionUrl = "\(GetTransactionUrl)\(trackId))"
+        let transactionUrl = "\(GetTransactionByTrackIdUrl)\(trackId)"
         
         Alamofire.request(.GET, transactionUrl, parameters: nil, headers: self.requestHeaders)
             .response { request, response, data, error in

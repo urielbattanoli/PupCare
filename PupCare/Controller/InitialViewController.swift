@@ -28,7 +28,7 @@ class InitialViewController: UIViewController {
 //        OrderManager.sharedInstance.getAvailableCardBrands()
 //        OrderManager.sharedInstance.chechIfCardIsValid(cardInfo["CardNumber"] as! String)
 //        OrderManager.sharedInstance.startTransaction(10.0, cardInfo: cardInfo)
-        OrderManager.sharedInstance.getTransaction("5iBn8nYVOv")
+        OrderManager.sharedInstance.getTransactionByTrackId("5iBn8nYVOv")
         // Do any additional setup after loading the view.
     }
     
