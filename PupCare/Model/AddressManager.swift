@@ -82,10 +82,10 @@ class AddressManager: NSObject {
                 let pmDict = pm.addressDictionary
                 
                 //DADOS NECESSÁRIOS PARA CRIAR UM ENDEREÇO
-                print(pmDict!["FormattedAddressLines"]![1])
-                print(pmDict!["FormattedAddressLines"]![2])
-                print(pmDict!["FormattedAddressLines"]![3])
-                print(pmDict!["FormattedAddressLines"]![4])
+//                print(pmDict!["FormattedAddressLines"]![1])
+//                print(pmDict!["FormattedAddressLines"]![2])
+//                print(pmDict!["FormattedAddressLines"]![3])
+//                print(pmDict!["FormattedAddressLines"]![4])
                 print(pmDict!["CountryCode"])
                 print(pmDict!["SubLocality"])
                 print(pmDict!["ZIP"])

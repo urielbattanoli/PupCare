@@ -521,6 +521,7 @@
 				TargetAttributes = {
 					A475E3051D0A9B3A00FB66C3 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 5CB58H6L4R;
 					};
 					A475E31C1D0A9B3B00FB66C3 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1025,11 +1026,14 @@
 			baseConfigurationReference = 3AB0AC7D08F3CCBE82BDDF13 /* Pods-PupCare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PupCare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "./PupCare/Model/PupCare-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1039,11 +1043,14 @@
 			baseConfigurationReference = 0493F2875AEB302E7CCF3B2B /* Pods-PupCare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PupCare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "./PupCare/Model/PupCare-Bridging-Header.h";
 			};
 			name = Release;
