@@ -10,15 +10,14 @@ import UIKit
 
 struct ProductCart {
     var petShop: PetShop
-    var product: Product?
-    var promotion: Promotion?
-    var quantity: Int = 0
+    var products: [Product] = []
+    var promotions: [Promotion] = []
 }
 
 class CartProduct {
-    var productList: Dictionary<String, [ProductCart]> = [:]
+    var productList: Dictionary<String, ProductCart> = [:]
     
-    subscript(s: String) -> [ProductCart]? {
+    subscript(s: String) -> ProductCart? {
         get {
             return productList[s]
         }
@@ -26,6 +25,7 @@ class CartProduct {
             productList[s] = newValue
         }
     }
+    
 }
 
 class Cart: NSObject {
@@ -35,68 +35,37 @@ class Cart: NSObject {
     var cartProduct: CartProduct! = CartProduct()
     
     
-    func addToCart(petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int) {
+    func addToCart(petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int) -> Int {
+        
+        
+        for (pet, var productCart) in Cart.sharedInstance.cartProduct.productList {
+            if pet == petShop.objectId {
 
-            
-            for (pet, productCart) in Cart.sharedInstance.cartProduct.productList {
-                if pet == petShop.objectId {
-                    for (index, var productIn) in productCart.enumerate() {
-                        
-                        if let product = productIn.product {
-                            if productIn.product!.isEqual(product) {
-                                productIn.quantity = productIn.quantity + 1
-                                Cart.sharedInstance.cartProduct.productList["\(petShop.objectId)"]?.removeAtIndex(index)
-                                Cart.sharedInstance.cartProduct.productList["\(petShop.objectId)"]?.append(productIn)
-                                return
-                            }
-                        }
-                        if let promotion = productIn.promotion {
-                            if productIn.promotion!.isEqual(promotion) {
-                                productIn.quantity = productIn.quantity + 1
-                                Cart.sharedInstance.cartProduct.productList["\(petShop.objectId)"]?.removeAtIndex(index)
-                                Cart.sharedInstance.cartProduct.productList["\(petShop.objectId)"]?.append(productIn)
-                                return
-                            }
-                        }
-                    }
+                if productCart.products.contains(product!) {
+                    return 1
+                }
+                
+                if productCart.promotions.contains(promotion!) {
+                    return 1
+                }
+                
+                if let product = product {
+                    
+                    productCart.products.append(product)
+                    
+                    Cart.sharedInstance.cartProduct.productList["\(petShop.objectId)"]? = productCart
+                    
+                }
+                if let promotion = promotion {
+                    productCart.promotions.append(promotion)
+                    Cart.sharedInstance.cartProduct.productList["\(petShop.objectId)"]? = productCart
                 }
             }
-            
-            
-            // Percorre todos os profutos
-//            for var productsFromPetShop in petShopProducts {
-//                
-//                // Se o item existe adiciona mais um na quantidade
-//                if item.product == product!.objectId {
-//                
-//                    item.quantity = item.quantity + quantity
-//                    break
-//                }
-//            }
-
-//            if ja tem pet shop e n tem produto {
-//                petShopProducts.append(ProductCart(petShop: petShop, product: product!, promotion: promotion!, quantity: 1))
-//            }
-            
-            
-            
-            
-//        }
-//        else {
-        
-//            Cart.sharedInstance.cartProducts.setValue([ProductCart(petShop: petShop, product: product!, promotion: promotion!, quantity: 1)], forKey: petShop.objectId)
-//            Cart.sharedInstance.cartProducts![petShop.objectId]!.append(ProductCart(petShop: petShop, product: product!, promotion: promotion!, quantity: 1))
-            
-            Cart.sharedInstance.cartProduct.productList[petShop.objectId] = [ProductCart(petShop: petShop, product: product, promotion: promotion, quantity: 1)]
-            
-            
-//        }
-        
+        }
         
         print(Cart.sharedInstance.cartProduct!)
+        return 0
     }
-    
-    
     
     func removeFromCart () {
         
