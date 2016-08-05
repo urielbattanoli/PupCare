@@ -51,6 +51,38 @@ extension UIColor {
 
 extension String {
     func numberCardMask()-> String{
-        return "**** **** **** \(self)"
+        var string = ""
+        
+            for i in 0..<self.characters.count{
+                if i%4 == 0{
+                    string += " "
+                }
+                if i<12{
+                    string += "*"
+                    continue
+                }
+                string += self.substringFromIndex(self.startIndex.advancedBy(i)).substringToIndex(self.startIndex.advancedBy(1))
+            }
+        
+        
+        return string
+    }
+    
+    func brandCard() -> String{
+        if self.characters.count>5{
+            if self.hasPrefix("438935") || self.hasPrefix("451416") || self.hasPrefix("504175") || self.hasPrefix("5067") || self.hasPrefix("4576") || self.hasPrefix("4011") || self.hasPrefix("506699"){
+                return "elo"
+            }
+            else if self.hasPrefix("4"){
+                return "visa"
+            }
+            else if self.hasPrefix("5"){
+                return "master"
+            }
+            else {
+                return "invalidCard"
+            }
+        }
+        return ""
     }
 }

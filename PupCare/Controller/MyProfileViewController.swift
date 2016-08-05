@@ -33,6 +33,10 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         
         self.user = User(parseObject: PFUser.currentUser()!)
+        CardManager.sharedInstance.getCardList(user.userId!) { (cards) in
+            self.user.cards = cards
+            self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Automatic)
+        }
         print(self.user)
         self.tableView.delegate = self
         self.numberOfRowSection2 = self.user.cards.count+3
@@ -67,7 +71,6 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let logOut = tableView.dequeueReusableCellWithIdentifier("cellLogOut") as! MyProfileDetailTableViewCell
         let separator = tableView.dequeueReusableCellWithIdentifier("cellSeparator")!
         let cell = tableView.dequeueReusableCellWithIdentifier("cellProfileDetail") as! MyProfileDetailTableViewCell
         let section = tableView.dequeueReusableCellWithIdentifier("cellProfileSection") as! MyProfileDetailTableViewCell
@@ -80,11 +83,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             
         case 1 where indexPath.row == 0:
             section.string = "Dados Pessoais"
-            section.contentView.tag = indexPath.section
             
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.sectionTapped(_:)))
-            
-            section.contentView.addGestureRecognizer(gestureRecognizer)
             if !self.section1Expanded{
                 section.changeConstraintSize(0)
             }
@@ -113,11 +112,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         case 2:
             if indexPath.row == 0{
                 section.string = "Dados do Cartão"
-                section.contentView.tag = indexPath.section
                 
-                let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.sectionTapped(_:)))
-                
-                section.contentView.addGestureRecognizer(gestureRecognizer)
                 if !self.section2Expanded{
                     section.changeConstraintSize(0)
                 }
@@ -139,14 +134,13 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
                     return cellCard
                 }
                 cellCard.card = self.user.cards[indexPath.row-1]
+                return cellCard
             }
             
         case 3 where indexPath.row == 0:
+            let logOut = tableView.dequeueReusableCellWithIdentifier("cellLogOut") as! MyProfileDetailTableViewCell
             logOut.string = "Sair"
             logOut.setCorner()
-            
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.didPressLogOut))
-            logOut.contentView.addGestureRecognizer(gesture)
             
             return logOut
         default:
@@ -156,17 +150,55 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        switch editingStyle {
+        case .Delete:
+            if indexPath.section == 2{
+                let row = indexPath.row
+                if row>0 && row<self.numberOfRowSection2-2{
+                    self.user.cards.removeAtIndex(row-1)
+                    self.numberOfRowSection2 -= 1
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
+            }
+        default:
+            print("default commitEditing")
+        }
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.section == 2{
+            if indexPath.row>0 && indexPath.row<self.numberOfRowSection2-2{
+                return true
+            }
+        }
+        return false
+    }
+    
     // MARK: Table View Delegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
+        case 1:
+            if indexPath.row == 0{
+                self.section1Expanded = !self.section1Expanded
+                self.tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
+            }
         case 2:
+            if indexPath.row == 0{
+                self.section2Expanded = !self.section2Expanded
+                self.tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
+            }
             if indexPath.row == self.numberOfRowSection2-2{
                 performSegueWithIdentifier("cardSegue", sender: nil)
             }
             else if indexPath.row>0 && indexPath.row<self.numberOfRowSection2-2{
                 let card = self.user.cards[indexPath.row-1]
                 performSegueWithIdentifier("cardSegue", sender: card)
+            }
+        case 3:
+            if indexPath.row == 0{
+                self.didPressLogOut()
             }
         default:
             print("default didSelect card")
@@ -186,23 +218,19 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         return 40
     }
     
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteBt = UITableViewRowAction(style: .Default, title: "Remover") { (action, indexPath) in
+            self.tableView.dataSource?.tableView!(
+                self.tableView,
+                commitEditingStyle: .Delete,
+                forRowAtIndexPath: indexPath)
+            return
+        }
+        deleteBt.backgroundColor = UIColor(red: 165/255, green: 22/255, blue: 25/255, alpha: 1)
+        return [deleteBt]
+    }
+    
     // MARK: Functions
-    func sectionTapped(obj: AnyObject) {
-        let section = (obj as? UITapGestureRecognizer)?.view?.tag
-        if section == 1 {
-            self.section1Expanded = !self.section1Expanded
-        }
-        else if section == 2{
-            self.section2Expanded = !self.section2Expanded
-        }
-        
-        self.tableView.reloadSections(NSIndexSet(index: section!), withRowAnimation: .Automatic)
-    }
-    
-    func cellCardTapped(obj: AnyObject) {
-        
-    }
-    
     func didPressLogOut() {
         UserManager.sharedInstance.logOutUser {
             let vcProfile : UIViewController! = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()

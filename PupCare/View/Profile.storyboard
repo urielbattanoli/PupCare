@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xU0-Fl-9mG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Minha Conta-->
@@ -17,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VZ3-0z-az6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VZ3-0z-az6">
                                 <rect key="frame" x="15" y="0.0" width="570" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -229,31 +228,25 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l7H-RN-QnN">
                                                     <rect key="frame" x="0.0" y="-10" width="570" height="54"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Adicionar cartão de crédito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZT-Gi-AGm">
-                                                            <rect key="frame" x="178" y="21" width="207" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adicionar cartão de crédito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZT-Gi-AGm">
+                                                            <rect key="frame" x="200" y="24" width="170" height="16"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Clf-hR-eym">
-                                                            <rect key="frame" x="508" y="13" width="54" height="37"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Clf-hR-eym">
+                                                            <rect key="frame" x="530" y="17" width="30" height="30"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="54" id="VX8-cp-4Sg"/>
-                                                                <constraint firstAttribute="height" constant="37" id="g4R-I1-Q83"/>
+                                                                <constraint firstAttribute="width" constant="30" id="VX8-cp-4Sg"/>
+                                                                <constraint firstAttribute="height" constant="30" id="g4R-I1-Q83"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="Clf-hR-eym" secondAttribute="trailing" id="LwZ-Mn-1j3"/>
-                                                        <constraint firstItem="yZT-Gi-AGm" firstAttribute="centerY" secondItem="l7H-RN-QnN" secondAttribute="centerY" id="imf-h7-DWt"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Clf-hR-eym" secondAttribute="trailing" constant="10" id="LwZ-Mn-1j3"/>
                                                         <constraint firstItem="yZT-Gi-AGm" firstAttribute="centerX" secondItem="l7H-RN-QnN" secondAttribute="centerX" id="q7W-8u-dmT"/>
                                                     </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="imf-h7-DWt"/>
-                                                        </mask>
-                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -263,13 +256,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="l7H-RN-QnN" secondAttribute="bottom" id="Zdf-sW-Te8"/>
                                                 <constraint firstAttribute="trailing" secondItem="l7H-RN-QnN" secondAttribute="trailing" id="hXQ-mT-Thg"/>
                                                 <constraint firstItem="Clf-hR-eym" firstAttribute="centerY" secondItem="Urh-8X-HI4" secondAttribute="centerY" id="jn1-zl-u1b"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="l7H-RN-QnN" secondAttribute="trailing" id="sXc-ny-rlf"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="sXc-ny-rlf"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imageCard" destination="Clf-hR-eym" id="JvP-Wc-v7Q"/>

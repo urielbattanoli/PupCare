@@ -16,114 +16,182 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-Bz-Rpu" customClass="UIControl">
-                                <rect key="frame" x="118" y="105" width="365" height="389"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZz-Yc-mx3" customClass="UIControl">
+                                <rect key="frame" x="40" y="30" width="520" height="165"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZz-Yc-mx3" customClass="UIControl">
-                                        <rect key="frame" x="8" y="8" width="349" height="129"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uH-jv-cQC">
-                                                <rect key="frame" x="23" y="65" width="68" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOME NO CARTÃO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5c-U2-Skb">
-                                                <rect key="frame" x="23" y="94" width="251" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tb7-Sy-aa7">
-                                                <rect key="frame" x="275" y="83" width="66" height="38"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="38" id="6rH-iG-Jtv"/>
-                                                    <constraint firstAttribute="width" constant="66" id="IIW-in-A4Z"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000 0000 0000 0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dw-7o-zjg">
-                                                <rect key="frame" x="23" y="30" width="318" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.83659318364949486" green="0.83659318364949486" blue="0.83659318364949486" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VAL 07/2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uH-jv-cQC">
+                                        <rect key="frame" x="10" y="61" width="510" height="21"/>
                                         <constraints>
-                                            <constraint firstItem="3dw-7o-zjg" firstAttribute="top" secondItem="BZz-Yc-mx3" secondAttribute="top" constant="30" id="5um-SF-vFY"/>
-                                            <constraint firstItem="q5c-U2-Skb" firstAttribute="top" secondItem="3uH-jv-cQC" secondAttribute="bottom" constant="8" id="6Qr-Lg-O0m"/>
-                                            <constraint firstItem="q5c-U2-Skb" firstAttribute="leading" secondItem="3uH-jv-cQC" secondAttribute="leading" id="JFV-Pz-R2d"/>
-                                            <constraint firstAttribute="bottom" secondItem="Tb7-Sy-aa7" secondAttribute="bottom" constant="8" id="R66-tJ-6jH"/>
-                                            <constraint firstItem="Tb7-Sy-aa7" firstAttribute="leading" secondItem="q5c-U2-Skb" secondAttribute="trailing" constant="1" id="Tpx-na-0St"/>
-                                            <constraint firstItem="3uH-jv-cQC" firstAttribute="leading" secondItem="3dw-7o-zjg" secondAttribute="leading" id="ZCW-Hg-uTE"/>
-                                            <constraint firstAttribute="height" constant="129" id="aLx-2U-HUY"/>
-                                            <constraint firstAttribute="trailing" secondItem="3dw-7o-zjg" secondAttribute="trailing" constant="8" id="eYE-Q6-rNj"/>
-                                            <constraint firstItem="3dw-7o-zjg" firstAttribute="leading" secondItem="BZz-Yc-mx3" secondAttribute="leading" constant="23" id="gTN-cE-Jt3"/>
-                                            <constraint firstAttribute="trailing" secondItem="Tb7-Sy-aa7" secondAttribute="trailing" constant="8" id="q7h-kh-anM"/>
-                                            <constraint firstItem="3uH-jv-cQC" firstAttribute="top" secondItem="3dw-7o-zjg" secondAttribute="bottom" constant="14" id="rRg-hg-CV7"/>
+                                            <constraint firstAttribute="height" constant="21" id="E9T-Ps-Fb7"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="didPressOnView:" destination="nds-my-ALX" eventType="touchUpInside" id="xcj-L8-Xpi"/>
-                                        </connections>
-                                    </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número do cartão" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugr-S1-doV">
-                                        <rect key="frame" x="24" y="173" width="319" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                        <connections>
-                                            <action selector="didEditingChanged:" destination="nds-my-ALX" eventType="editingChanged" id="vkz-qJ-x8J"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de vencimento" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uof-t4-8Yg">
-                                        <rect key="frame" x="24" y="217" width="319" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="didPressDate:" destination="nds-my-ALX" eventType="editingDidBegin" id="CBo-n8-QfZ"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome no cartão" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VqJ-8O-Nae">
-                                        <rect key="frame" x="24" y="261" width="319" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="didEditingChanged:" destination="nds-my-ALX" eventType="editingChanged" id="JsO-Iv-Sgy"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-Wj-N43">
-                                        <rect key="frame" x="24" y="322" width="319" height="30"/>
-                                        <color key="backgroundColor" red="0.3294117647" green="0.78039215689999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Cadastrar cartão">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didPressAddCard:" destination="nds-my-ALX" eventType="touchUpInside" id="nZE-CE-LEi"/>
-                                        </connections>
-                                    </button>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URIEL W BATTANOLI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5c-U2-Skb">
+                                        <rect key="frame" x="10" y="97" width="444" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="xmg-cC-1Ju"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tb7-Sy-aa7">
+                                        <rect key="frame" x="455" y="137" width="55" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="6rH-iG-Jtv"/>
+                                            <constraint firstAttribute="width" constant="55" id="IIW-in-A4Z"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**** **** **** 1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dw-7o-zjg">
+                                        <rect key="frame" x="10" y="30" width="500" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="c7w-Uy-mht"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="BZz-Yc-mx3" firstAttribute="leading" secondItem="z1x-Bz-Rpu" secondAttribute="leading" constant="8" id="7ot-1Y-QHD"/>
-                                    <constraint firstAttribute="width" constant="365" id="Al6-X0-9dO"/>
-                                    <constraint firstItem="BZz-Yc-mx3" firstAttribute="top" secondItem="z1x-Bz-Rpu" secondAttribute="top" constant="8" id="CrE-tg-f0R"/>
-                                    <constraint firstAttribute="height" constant="389" id="N2d-lT-boc"/>
-                                    <constraint firstAttribute="trailing" secondItem="BZz-Yc-mx3" secondAttribute="trailing" constant="8" id="bGV-30-YJ0"/>
+                                    <constraint firstItem="3dw-7o-zjg" firstAttribute="top" secondItem="BZz-Yc-mx3" secondAttribute="top" constant="30" id="5um-SF-vFY"/>
+                                    <constraint firstItem="q5c-U2-Skb" firstAttribute="top" secondItem="3uH-jv-cQC" secondAttribute="bottom" constant="15" id="6Qr-Lg-O0m"/>
+                                    <constraint firstItem="q5c-U2-Skb" firstAttribute="leading" secondItem="3uH-jv-cQC" secondAttribute="leading" id="JFV-Pz-R2d"/>
+                                    <constraint firstAttribute="trailing" secondItem="3uH-jv-cQC" secondAttribute="trailing" id="Q6Z-bW-UL5"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tb7-Sy-aa7" secondAttribute="bottom" constant="10" id="R66-tJ-6jH"/>
+                                    <constraint firstItem="Tb7-Sy-aa7" firstAttribute="leading" secondItem="q5c-U2-Skb" secondAttribute="trailing" constant="1" id="Tpx-na-0St"/>
+                                    <constraint firstItem="3uH-jv-cQC" firstAttribute="leading" secondItem="3dw-7o-zjg" secondAttribute="leading" id="ZCW-Hg-uTE"/>
+                                    <constraint firstAttribute="height" constant="165" id="aLx-2U-HUY"/>
+                                    <constraint firstAttribute="trailing" secondItem="3dw-7o-zjg" secondAttribute="trailing" constant="10" id="eYE-Q6-rNj"/>
+                                    <constraint firstItem="3dw-7o-zjg" firstAttribute="leading" secondItem="BZz-Yc-mx3" secondAttribute="leading" constant="10" id="gTN-cE-Jt3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tb7-Sy-aa7" secondAttribute="trailing" constant="10" id="q7h-kh-anM"/>
+                                    <constraint firstItem="3uH-jv-cQC" firstAttribute="top" secondItem="3dw-7o-zjg" secondAttribute="bottom" constant="10" id="rRg-hg-CV7"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="didPressOnView:" destination="nds-my-ALX" eventType="touchUpInside" id="bqn-ov-JCS"/>
+                                    <action selector="didPressOnView:" destination="nds-my-ALX" eventType="touchUpInside" id="xcj-L8-Xpi"/>
                                 </connections>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número do cartão" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugr-S1-doV">
+                                <rect key="frame" x="10" y="205" width="580" height="45"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Fnl-r5-Z8o"/>
+                                    <constraint firstAttribute="height" constant="45" id="LSf-eo-WmM"/>
+                                    <constraint firstAttribute="width" constant="319" id="YXQ-cn-0TL"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="qPN-Db-m1X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Fnl-r5-Z8o"/>
+                                        <exclude reference="YXQ-cn-0TL"/>
+                                        <exclude reference="qPN-Db-m1X"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="didEditingChanged:" destination="nds-my-ALX" eventType="editingChanged" id="vkz-qJ-x8J"/>
+                                    <outlet property="delegate" destination="nds-my-ALX" id="Xob-FW-KCD"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de vencimento" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uof-t4-8Yg">
+                                <rect key="frame" x="10" y="260" width="580" height="45"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="319" id="8Vn-eX-61X"/>
+                                    <constraint firstAttribute="height" constant="45" id="b0V-Wq-aNu"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="e9u-5x-lXM"/>
+                                    <constraint firstAttribute="height" constant="30" id="m86-mt-UG9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8Vn-eX-61X"/>
+                                        <exclude reference="e9u-5x-lXM"/>
+                                        <exclude reference="m86-mt-UG9"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="didPressDate:" destination="nds-my-ALX" eventType="editingDidBegin" id="CBo-n8-QfZ"/>
+                                    <outlet property="delegate" destination="nds-my-ALX" id="cx8-tG-0na"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome no cartão" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VqJ-8O-Nae">
+                                <rect key="frame" x="10" y="315" width="580" height="45"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Fys-BC-JiA"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="MHF-CT-Md0"/>
+                                    <constraint firstAttribute="width" constant="319" id="raN-nR-V3v"/>
+                                    <constraint firstAttribute="height" constant="45" id="rrW-2s-U7e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Fys-BC-JiA"/>
+                                        <exclude reference="MHF-CT-Md0"/>
+                                        <exclude reference="raN-nR-V3v"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="didEditingChanged:" destination="nds-my-ALX" eventType="editingChanged" id="JsO-Iv-Sgy"/>
+                                    <outlet property="delegate" destination="nds-my-ALX" id="ylc-72-hro"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-Wj-N43" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="370" width="580" height="45"/>
+                                <color key="backgroundColor" red="0.3294117647" green="0.78039215689999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="1gB-EO-Gkk"/>
+                                    <constraint firstAttribute="width" constant="319" id="vjN-OQ-CGr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Cadastrar cartão">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="vjN-OQ-CGr"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="didPressAddCard:" destination="nds-my-ALX" eventType="touchUpInside" id="nZE-CE-LEi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="z1x-Bz-Rpu" firstAttribute="centerX" secondItem="KxV-Hd-YYP" secondAttribute="centerX" id="9fR-Rp-rVl"/>
-                            <constraint firstItem="z1x-Bz-Rpu" firstAttribute="centerY" secondItem="KxV-Hd-YYP" secondAttribute="centerY" id="mc5-YR-pdt"/>
+                            <constraint firstItem="ugr-S1-doV" firstAttribute="top" secondItem="BZz-Yc-mx3" secondAttribute="bottom" constant="10" id="0nr-04-qHp"/>
+                            <constraint firstAttribute="trailing" secondItem="Uof-t4-8Yg" secondAttribute="trailing" constant="10" id="11l-FD-Nnz"/>
+                            <constraint firstItem="Uof-t4-8Yg" firstAttribute="leading" secondItem="KxV-Hd-YYP" secondAttribute="leading" constant="10" id="2Oa-2P-dEK"/>
+                            <constraint firstAttribute="trailing" secondItem="ugr-S1-doV" secondAttribute="trailing" constant="10" id="2xf-Aa-NkN"/>
+                            <constraint firstAttribute="trailing" secondItem="VqJ-8O-Nae" secondAttribute="trailing" constant="10" id="C7d-e7-Uyr"/>
+                            <constraint firstItem="VqJ-8O-Nae" firstAttribute="leading" secondItem="KxV-Hd-YYP" secondAttribute="leading" constant="10" id="CLv-H2-L1K"/>
+                            <constraint firstAttribute="trailing" secondItem="TGy-Wj-N43" secondAttribute="trailing" constant="10" id="JRF-Bo-Md9"/>
+                            <constraint firstItem="ugr-S1-doV" firstAttribute="leading" secondItem="KxV-Hd-YYP" secondAttribute="leading" constant="10" id="LIs-Pl-2hX"/>
+                            <constraint firstItem="TGy-Wj-N43" firstAttribute="top" secondItem="VqJ-8O-Nae" secondAttribute="bottom" constant="10" id="RAg-4g-TKI"/>
+                            <constraint firstItem="TGy-Wj-N43" firstAttribute="leading" secondItem="KxV-Hd-YYP" secondAttribute="leading" constant="10" id="WbR-7l-I8g"/>
+                            <constraint firstItem="Uof-t4-8Yg" firstAttribute="top" secondItem="ugr-S1-doV" secondAttribute="bottom" constant="10" id="ZrM-yt-uyT"/>
+                            <constraint firstItem="BZz-Yc-mx3" firstAttribute="top" secondItem="sCb-2Z-XeO" secondAttribute="bottom" constant="10" id="aIr-rf-EQw"/>
+                            <constraint firstItem="BZz-Yc-mx3" firstAttribute="leading" secondItem="KxV-Hd-YYP" secondAttribute="leading" constant="40" id="lIM-DC-4CV"/>
+                            <constraint firstItem="VqJ-8O-Nae" firstAttribute="top" secondItem="Uof-t4-8Yg" secondAttribute="bottom" constant="10" id="vys-GK-3a2"/>
+                            <constraint firstAttribute="trailing" secondItem="BZz-Yc-mx3" secondAttribute="trailing" constant="40" id="xr6-bp-2Ed"/>
                         </constraints>
                         <connections>
                             <action selector="didPressOnView:" destination="nds-my-ALX" eventType="touchUpInside" id="Sxk-wk-FQ3"/>
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="backgroundCardView" destination="BZz-Yc-mx3" id="BXI-ye-zUC"/>
                         <outlet property="btAddCard" destination="TGy-Wj-N43" id="lDm-6z-WnE"/>
                         <outlet property="imageBrandCard" destination="Tb7-Sy-aa7" id="6QK-yd-RLr"/>
                         <outlet property="lblCardNumber" destination="3dw-7o-zjg" id="0Jw-cD-o3L"/>

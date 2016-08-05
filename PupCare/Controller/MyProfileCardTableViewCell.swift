@@ -17,7 +17,8 @@ class MyProfileCardTableViewCell: UITableViewCell {
     var card: Card?{
         didSet{
             if let card = self.card{
-                self.lblCard.text = "\(card.number)"
+                self.lblCard.text = card.number.numberCardMask()
+                self.imageCard.image = UIImage(named: card.number.brandCard())
             }
         }
     }
@@ -32,6 +33,7 @@ class MyProfileCardTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.imageCard.image = UIImage(named: "addCard")
         self.viewBack.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.viewBack.layer.borderWidth = 1
     }
