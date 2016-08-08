@@ -12,7 +12,7 @@ class MyProfileTableViewCell: UITableViewCell {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var imageProfile: UIImageView!
-    
+
     var photoUrl: String?{
         didSet{
             if let url = self.photoUrl{
