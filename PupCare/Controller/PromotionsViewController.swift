@@ -52,6 +52,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PromotionsCell", forIndexPath: indexPath) as! PromotionsTableViewCell
         
+        cell.indexPath = indexPath
         cell.promotion = self.allPromotions[indexPath.row]
         
         return cell
@@ -62,7 +63,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func reloadPromotions() {
-        PromotionManager.getPromotionsList(10, longitude: 10, withinKilometers: 10) { (promotions, error) in
+        PromotionManager.getPromotionsList(10, longitude: 10, withinKilometers: 100000) { (promotions, error) in
             if error == nil {
                 print(promotions!)
                 self.allPromotions = promotions!
@@ -92,6 +93,4 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
- 
-
 }

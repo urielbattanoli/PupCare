@@ -27,7 +27,7 @@ class PetShopsTableViewCell: UITableViewCell {
 
         petShopRoundedView.layer.cornerRadius = 10
         petShopRoundedView.layer.borderWidth = Config.BorderWidth
-        petShopRoundedView.layer.borderColor = Config.MainColors.BorderColor
+        petShopRoundedView.layer.borderColor = Config.MainColors.BorderColor.CGColor
         petShopRoundedView.clipsToBounds = true
 
         for index in 0...ranking {

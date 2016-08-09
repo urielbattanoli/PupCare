@@ -10,6 +10,7 @@ import UIKit
 
 class Product: NSObject{
     
+    let objectId: String
     let name: String
     let imageUrl: String
     let descript: String
@@ -18,6 +19,7 @@ class Product: NSObject{
     let stock: NSNumber
     
     init(data: [String : AnyObject]) {
+        self.objectId = data["objectId"] as! String
         self.name = data["name"] as! String
         self.imageUrl = data["imageUrl"] as! String
         self.descript = data["description"] as! String
