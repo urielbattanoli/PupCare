@@ -288,6 +288,7 @@
 			children = (
 				71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */,
 				A475E34F1D1854D800FB66C3 /* PromotionsViewController.swift */,
+				7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */,
 			);
 			name = Promotion;
 			sourceTree = "<group>";
@@ -443,17 +444,17 @@
 			isa = PBXGroup;
 			children = (
 				A475E3451D1490AA00FB66C3 /* AppDelegate.swift */,
-				A42751A41D47E89A00B083C6 /* Card */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
 				71AC43DE1D4A7DED00C9BD31 /* Cart */,
 				7A7036EE1D413072005FAB68 /* Login */,
 				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
+				A42751A41D47E89A00B083C6 /* Card */,
+				7A7036EE1D413072005FAB68 /* Login */,
 				7A7036F01D41308C005FAB68 /* Order */,
 				7A7036ED1D41306A005FAB68 /* PetShop */,
 				7A7036EC1D413062005FAB68 /* Product */,
 				7A7036F11D4130AA005FAB68 /* Profile */,
 				7A7036EF1D413080005FAB68 /* Promotion */,
-				7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

@@ -35,7 +35,7 @@ class AddressManager: NSObject {
     }
     
     private func tranformAddressToPFObject(address: Address) -> PFObject {
-        let addressAsPFObject = PFObject()
+        let addressAsPFObject = PFObject(className: "Address")
         addressAsPFObject["street"] = address.street
         addressAsPFObject["zip"] = address.zip
         addressAsPFObject["number"] = address.number
