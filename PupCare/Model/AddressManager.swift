@@ -70,7 +70,7 @@ class AddressManager: NSObject {
         })
     }
     
-    func transformGeoPointToAddress(latitude: CLLocationDegrees, longitude: CLLocationDegrees, response:(address: Address)->()) {
+    func transformGeoPointToAddress(latitude: CLLocationDegrees, longitude: CLLocationDegrees, response:(data: [String:AnyObject])->()) {
         let location = CLLocation(latitude: latitude, longitude: longitude)
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
@@ -81,23 +81,19 @@ class AddressManager: NSObject {
                 let pm = placemarks![0]
                 let pmDict = pm.addressDictionary
                 
-                //DADOS NECESSÁRIOS PARA CRIAR UM ENDEREÇO
-//                print(pmDict!["FormattedAddressLines"]![1])
-//                print(pmDict!["FormattedAddressLines"]![2])
-//                print(pmDict!["FormattedAddressLines"]![3])
-//                print(pmDict!["FormattedAddressLines"]![4])
-                print(pmDict!["CountryCode"])
-                print(pmDict!["SubLocality"])
-                print(pmDict!["ZIP"])
-                print(pmDict!["Thoroughfare"])
-                print(pmDict!["PostCodeExtension"])
+                var addressDict = [String:AnyObject]()
+                let cityState = (pmDict!["FormattedAddressLines"] as! [String])[2]
+                let city = cityState.substringFromIndex(cityState.startIndex).substringToIndex(cityState.endIndex.advancedBy(-5))
                 
-                if pm.areasOfInterest?.count > 0 {
-                    let areaOfInterest = pm.areasOfInterest?[0]
-                    print(areaOfInterest!)
-                } else {
-                    print("No area of interest found.")
-                }
+                addressDict["userId"] = PFUser.currentUser()?.objectId
+                addressDict["street"] = pmDict!["Thoroughfare"]
+                addressDict["neighbourhood"] = pmDict!["SubLocality"]
+                addressDict["state"] = pmDict!["State"]
+                addressDict["city"] = city
+                addressDict["zip"] = "\(pmDict!["ZIP"]!)\(pmDict!["PostCodeExtension"]!)"
+                addressDict["location"] = PFGeoPoint(latitude: latitude, longitude: longitude)
+                
+                response(data: addressDict)
             }
         })
     }
