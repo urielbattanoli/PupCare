@@ -41,29 +41,43 @@ class Cart: NSObject {
         for (pet, var productCart) in Cart.sharedInstance.cartProduct.productList {
             if pet == petShop.objectId {
 
-                if productCart.products.contains(product!) {
-                    return 1
-                }
-                
-                if productCart.promotions.contains(promotion!) {
-                    return 1
-                }
                 
                 if let product = product {
                     
+                    if productCart.products.contains(product) {
+                        return 1
+                    }
+                    
                     productCart.products.append(product)
                     
-                    Cart.sharedInstance.cartProduct.productList["\(petShop.objectId)"]? = productCart
-                    
+                    Cart.sharedInstance.cartProduct.productList[petShop.objectId]? = productCart
+                    return 1
                 }
                 if let promotion = promotion {
+                    if productCart.promotions.contains(promotion) {
+                        return 1
+                    }
+                    
                     productCart.promotions.append(promotion)
-                    Cart.sharedInstance.cartProduct.productList["\(petShop.objectId)"]? = productCart
+                    Cart.sharedInstance.cartProduct.productList[petShop.objectId]? = productCart
+                    return 1
                 }
             }
         }
         
+        if let promotion = promotion {
+            let newPetShop = ProductCart(petShop: petShop, products: [], promotions: [promotion])
+            Cart.sharedInstance.cartProduct.productList[petShop.objectId] = newPetShop
+        }
+        
+        if let product = product {
+            let newPetShop = ProductCart(petShop: petShop, products: [product], promotions: [])
+            Cart.sharedInstance.cartProduct.productList[petShop.objectId] = newPetShop
+        }
+        
         print(Cart.sharedInstance.cartProduct!)
+        
+        
         return 0
     }
     

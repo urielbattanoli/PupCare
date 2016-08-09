@@ -32,27 +32,10 @@ class CartTableViewCell: UITableViewCell {
     @IBOutlet weak var PetShopPhotoImageView: UIImageView!
     
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        // Finish Order
-        FinishOrderTotalPrice.textColor = Config.MainColors.GreyColor
-        FinishOrderItensCount.textColor = Config.MainColors.GreyColor
-        FinishOrderQuantityLabel.textColor = Config.MainColors.GreyColor
-        FinishOrderPriceLabel.textColor = Config.MainColors.GreyColor
-        FinishOrderButton.backgroundColor = Config.MainColors.BlueColor
-        FinishOrderButton.layer.cornerRadius = 10
-        
-        
-        // Product
-        ProductValueLabel.tintColor = Config.MainColors.BlueColor
-        
-        
-        // PetShop Details
-        PetShopAddressLabel.textColor = Config.MainColors.GreyColor
-        PetShopDistanceLabel.textColor = Config.MainColors.GreyColor
-        PetShopPhotoImageView.layer.cornerRadius = 10
-        PetShopPhotoImageView.layer.masksToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -61,8 +44,6 @@ class CartTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    
-    @IBAction func finishOrder(sender: AnyObject) {
-        
-    }
+
 }
+//

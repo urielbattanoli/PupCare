@@ -63,7 +63,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func reloadPromotions() {
-        PromotionManager.getPromotionsList(10, longitude: 10, withinKilometers: 10) { (promotions, error) in
+        PromotionManager.getPromotionsList(10, longitude: 10, withinKilometers: 100000) { (promotions, error) in
             if error == nil {
                 print(promotions!)
                 self.allPromotions = promotions!
