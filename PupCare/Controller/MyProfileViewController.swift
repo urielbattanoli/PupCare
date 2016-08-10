@@ -17,10 +17,10 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Variables
-    private let numberOfSections = 4
+    private let numberOfSections = 3
     private let numberOfRowSection0 = 1
     private let numberOfRowSection1 = 5
-    private var numberOfRowSection2 = 3
+    private var numberOfRowSection2 = 2
     private let numberOfRowSectionShrunk = 2
     
     var section1Expanded = false
@@ -33,9 +33,8 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         
         self.user = User(parseObject: PFUser.currentUser()!)
-        print(self.user)
+        
         self.tableView.delegate = self
-        self.numberOfRowSection2 = self.user.cards.count+3
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,7 +48,6 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.numberOfRowSection2 = self.user.cards.count+3
         
         switch section {
         case 0:
@@ -58,16 +56,13 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             return self.numberOfRowSection1
         case 2 where self.section2Expanded:
             return self.numberOfRowSection2
-        case 3:
-            return 1
         default:
-            print("default section")
+            print("default section\(section)")
         }
         return self.numberOfRowSectionShrunk
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let logOut = tableView.dequeueReusableCellWithIdentifier("cellLogOut") as! MyProfileDetailTableViewCell
         let separator = tableView.dequeueReusableCellWithIdentifier("cellSeparator")!
         let cell = tableView.dequeueReusableCellWithIdentifier("cellProfileDetail") as! MyProfileDetailTableViewCell
         let section = tableView.dequeueReusableCellWithIdentifier("cellProfileSection") as! MyProfileDetailTableViewCell
@@ -82,9 +77,6 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             section.string = "Dados Pessoais"
             section.contentView.tag = indexPath.section
             
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.sectionTapped(_:)))
-            
-            section.contentView.addGestureRecognizer(gestureRecognizer)
             if !self.section1Expanded{
                 section.changeConstraintSize(0)
             }
@@ -110,45 +102,15 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         case 1 where indexPath.row == 4:
             return separator
             
-        case 2:
-            if indexPath.row == 0{
-                section.string = "Dados do Cartão"
-                section.contentView.tag = indexPath.section
-                
-                let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.sectionTapped(_:)))
-                
-                section.contentView.addGestureRecognizer(gestureRecognizer)
-                if !self.section2Expanded{
-                    section.changeConstraintSize(0)
-                }
-                else{
-                    section.changeConstraintSize(-15)
-                }
-                section.setCorner()
-                return section
-            }
-            if (!self.section2Expanded && indexPath.row == self.numberOfRowSectionShrunk-1) || indexPath.row == self.numberOfRowSection2-1{
-                return separator
-            }
-            
-            if self.section2Expanded{
-                let cellCard = tableView.dequeueReusableCellWithIdentifier("cellCard") as! MyProfileCardTableViewCell
-                
-                if indexPath.row == self.numberOfRowSection2-2{
-                    cellCard.setCorner()
-                    return cellCard
-                }
-                cellCard.card = self.user.cards[indexPath.row-1]
-            }
-            
-        case 3 where indexPath.row == 0:
+        case 2 where indexPath.row == 0:
+            let logOut = tableView.dequeueReusableCellWithIdentifier("cellLogOut") as! MyProfileDetailTableViewCell
             logOut.string = "Sair"
             logOut.setCorner()
             
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController.didPressLogOut))
-            logOut.contentView.addGestureRecognizer(gesture)
-            
             return logOut
+        case 2 where indexPath.row == 1:
+            return separator
+            
         default:
             print("default section in cell for row")
         }
@@ -160,14 +122,11 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
+        case 1:
+            self.section1Expanded = !self.section1Expanded
+            self.tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
         case 2:
-            if indexPath.row == self.numberOfRowSection2-2{
-                performSegueWithIdentifier("cardSegue", sender: nil)
-            }
-            else if indexPath.row>0 && indexPath.row<self.numberOfRowSection2-2{
-                let card = self.user.cards[indexPath.row-1]
-                performSegueWithIdentifier("cardSegue", sender: card)
-            }
+            self.didPressLogOut()
         default:
             print("default didSelect card")
         }
@@ -187,22 +146,6 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // MARK: Functions
-    func sectionTapped(obj: AnyObject) {
-        let section = (obj as? UITapGestureRecognizer)?.view?.tag
-        if section == 1 {
-            self.section1Expanded = !self.section1Expanded
-        }
-        else if section == 2{
-            self.section2Expanded = !self.section2Expanded
-        }
-        
-        self.tableView.reloadSections(NSIndexSet(index: section!), withRowAnimation: .Automatic)
-    }
-    
-    func cellCardTapped(obj: AnyObject) {
-        
-    }
-    
     func didPressLogOut() {
         UserManager.sharedInstance.logOutUser {
             let vcProfile : UIViewController! = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
@@ -221,22 +164,8 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         switch segue.identifier! {
         case "logInSegue":
             segue.destinationViewController.childViewControllers[0] as! LoginViewController
-        case "cardSegue":
-            let addCardVC = segue.destinationViewController as! AddCardViewController
-            addCardVC.delegate = self
-            if let card = sender as? Card{
-                addCardVC.card = card
-            }
         default:
             print("default prepareForSegue")
         }
-    }
-    
-    //MARK: Card delegate
-    func cardDidAdded(card: Card) {
-        if !self.user.cards.contains(card){
-            self.user.cards.append(card)
-        }
-        self.tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Automatic)
     }
 }
