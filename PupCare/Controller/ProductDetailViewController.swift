@@ -31,6 +31,12 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         self.carousel.type = .Rotary
         
         self.carousel.userInteractionEnabled = false
+        
+        
+        if let product = self.product{
+            self.lblName.text = product.name
+            self.lblDescription.text = product.descript
+        }
     }
     
     // Mark: iCarousel
