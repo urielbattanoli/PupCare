@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import SwiftyJSON
 
 class AddressViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -19,6 +20,8 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var cityTextView: TXTAttributedStyle!
     @IBOutlet weak var stateTextView: TXTAttributedStyle!
     @IBOutlet weak var addressNameTextView: TXTAttributedStyle!
+    
+    var searchZipTextField : UITextField!
     
     let locationManager = CLLocationManager()
     
@@ -36,6 +39,20 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func configAlertTextView(textField: UITextField){
+        textField.placeholder = "Ex: 90008890"
+        textField.textAlignment = .Center
+        searchZipTextField = textField
+    }
+    
+    func disabletTextFieldInteraction(){
+        self.streetTextView.userInteractionEnabled = false
+        self.neighbourhoodTextView.userInteractionEnabled = false
+        self.zipTextView.userInteractionEnabled = false
+        self.cityTextView.userInteractionEnabled = false
+        self.stateTextView.userInteractionEnabled = false
+    }
+    
     @IBAction func searchAddressByCurrentLocation(sender: AnyObject) {
         locationManager.startUpdatingLocation()
         
@@ -43,11 +60,7 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         let longitude = locationManager.location?.coordinate.longitude
         
         AddressManager.sharedInstance.transformGeoPointToAddress(latitude!, longitude: longitude!) { (addressData) in
-            self.streetTextView.userInteractionEnabled = false
-            self.neighbourhoodTextView.userInteractionEnabled = false
-            self.zipTextView.userInteractionEnabled = false
-            self.cityTextView.userInteractionEnabled = false
-            self.stateTextView.userInteractionEnabled = false
+            self.disabletTextFieldInteraction()
             
             self.streetTextView.text = addressData["street"] as? String
             self.neighbourhoodTextView.text = addressData["neighbourhood"] as? String
@@ -60,6 +73,25 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func searchAddressByZipCode(sender: AnyObject) {
+        let alert = UIAlertController(title: "Buscar endereço pelo CEP", message: "Digite o cep sem hífen", preferredStyle: .Alert)
+        alert.addTextFieldWithConfigurationHandler(configAlertTextView)
+        alert.addAction(UIAlertAction(title: "Done", style: .Default, handler:{ (UIAlertAction) in
+            
+            AddressManager.sharedInstance.getZipInformation(self.searchZipTextField.text!, jsonResponse: { (json, error) in
+            
+                self.disabletTextFieldInteraction()
+                
+                self.streetTextView.text = json!["logradouro"].string
+                self.neighbourhoodTextView.text = json!["bairro"].string
+                self.zipTextView.text = self.searchZipTextField.text!
+                self.cityTextView.text = json!["localidade"].string
+                self.stateTextView.text = json!["uf"].string
+            })
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler:nil))
+        self.presentViewController(alert, animated: true, completion: {
+        })
     }
     
     @IBAction func saveAddress(sender: AnyObject) {

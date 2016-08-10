@@ -17,6 +17,8 @@ class AddressManager: NSObject {
     
     static let sharedInstance = AddressManager()
     
+    
+    
     func getZipInformation(zip: String, jsonResponse: (json: JSON?, error: NSError?) -> ()) {
         let urlTo = "https://viacep.com.br/ws/\(zip)/json/unicode/"
         Alamofire.request(.GET, urlTo).responseJSON { (response) in
