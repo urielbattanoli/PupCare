@@ -14,7 +14,6 @@ class User: NSObject {
     var name: String?
     var photoUrl: String?
     var email: String?
-    var cards = [Card]()
     
     init(data: [String : AnyObject]) {
         self.userId = data["userId"] as? String
