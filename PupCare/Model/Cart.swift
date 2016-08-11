@@ -85,5 +85,15 @@ class Cart: NSObject {
         
     }
     
+    func showCartView() {
+        var cgrect = CGRectMake(0, 0, 100, 100)
+        
+        var view = UIView(frame: cgrect)
+        view.backgroundColor = UIColor.redColor()
+        
+        UIApplication.sharedApplication().keyWindow?.addSubview(view)
+    }
+    
+    
     
 }

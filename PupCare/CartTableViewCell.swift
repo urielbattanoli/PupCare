@@ -10,6 +10,8 @@ import UIKit
 
 class CartTableViewCell: UITableViewCell {
 
+    var product: Product?
+    var promotion: Promotion?
     
     // Finish Order
     @IBOutlet weak var FinishOrderButton: UIButton!
@@ -23,6 +25,8 @@ class CartTableViewCell: UITableViewCell {
     @IBOutlet weak var ProductValueLabel: UILabel!
     @IBOutlet weak var ProductNameLabel: UILabel!
     @IBOutlet weak var ProductPhotoImageView: UIImageView!
+    @IBOutlet weak var ProductQuantitySlider: UISlider!
+    @IBOutlet weak var ProductQuantity: UILabel!
     
     
     // PetShop Details
@@ -44,6 +48,22 @@ class CartTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func sliderChance(sender: UISlider) {
+        let rounded = round(sender.value)
+        
+        sender.value = rounded
+        
+        self.ProductQuantity.text = "\(rounded)"
+        
+        if let product = product {
+            self.ProductValueLabel.text = "\(Float(product.price)! * rounded)"
+        }
+        if let promotion = promotion {
+            self.ProductValueLabel.text = "\(Float(promotion.lastPrice) * rounded)"
+        }
+        
+        
+    }
 
 }
 //

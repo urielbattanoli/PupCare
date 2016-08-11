@@ -184,22 +184,53 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="h0X-W0-zbh">
+                                                    <rect key="frame" x="88" y="30" width="504" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="263" id="Kew-eV-PxH"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Kew-eV-PxH"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="sliderChance:" destination="0um-Gh-9cG" eventType="valueChanged" id="aKE-dC-uGw"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxr-P0-MEH">
+                                                    <rect key="frame" x="540" y="63" width="50" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="3wM-aa-JnT"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="5si-hy-PzY" secondAttribute="bottom" constant="10" id="3t2-ZZ-5HE"/>
+                                                <constraint firstItem="h0X-W0-zbh" firstAttribute="leading" secondItem="5si-hy-PzY" secondAttribute="trailing" constant="10" id="ELw-xa-5Ti"/>
+                                                <constraint firstItem="57b-fg-uoT" firstAttribute="top" secondItem="h0X-W0-zbh" secondAttribute="bottom" constant="3" id="Oed-0N-jmf"/>
                                                 <constraint firstItem="5si-hy-PzY" firstAttribute="top" secondItem="ra7-9k-yv5" secondAttribute="top" constant="10" id="OsK-CR-iEZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="57b-fg-uoT" secondAttribute="bottom" constant="10" id="RHF-ut-GPU"/>
                                                 <constraint firstItem="5si-hy-PzY" firstAttribute="leading" secondItem="ra7-9k-yv5" secondAttribute="leading" constant="10" id="W1I-q7-OtR"/>
+                                                <constraint firstAttribute="trailing" secondItem="fxr-P0-MEH" secondAttribute="trailing" constant="10" id="Weh-Sf-a4L"/>
+                                                <constraint firstAttribute="trailing" secondItem="h0X-W0-zbh" secondAttribute="trailing" constant="10" id="a6E-VK-LLS"/>
                                                 <constraint firstItem="57b-fg-uoT" firstAttribute="leading" secondItem="5si-hy-PzY" secondAttribute="trailing" constant="10" id="av5-Mc-VJS"/>
                                                 <constraint firstItem="2pv-4x-bjQ" firstAttribute="top" secondItem="ra7-9k-yv5" secondAttribute="top" constant="10" id="gAr-qn-wym"/>
                                                 <constraint firstAttribute="trailing" secondItem="2pv-4x-bjQ" secondAttribute="trailing" constant="30" id="oQF-JH-psP"/>
                                                 <constraint firstItem="2pv-4x-bjQ" firstAttribute="leading" secondItem="5si-hy-PzY" secondAttribute="trailing" constant="10" id="qcF-zJ-nYq"/>
+                                                <constraint firstItem="h0X-W0-zbh" firstAttribute="top" secondItem="2pv-4x-bjQ" secondAttribute="bottom" constant="3" id="u2a-bk-vhM"/>
+                                                <constraint firstAttribute="bottom" secondItem="fxr-P0-MEH" secondAttribute="bottom" constant="10" id="uwS-U8-SoR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="ProductNameLabel" destination="2pv-4x-bjQ" id="3Sv-iQ-dT9"/>
                                             <outlet property="ProductPhotoImageView" destination="5si-hy-PzY" id="Fbi-yY-lRl"/>
+                                            <outlet property="ProductQuantity" destination="fxr-P0-MEH" id="Ph3-Gn-2od"/>
+                                            <outlet property="ProductQuantitySlider" destination="h0X-W0-zbh" id="pw9-aX-tGm"/>
                                             <outlet property="ProductValueLabel" destination="57b-fg-uoT" id="p5l-As-6hL"/>
                                         </connections>
                                     </tableViewCell>
