@@ -72,6 +72,7 @@
 		A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */; };
 		A4869DCF1D259DB60076EC37 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCE1D259DB60076EC37 /* Product.swift */; };
 		A49877151D4F7CFC00DD4F02 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */; };
+		A4CAA30C1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAA30B1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductTableViewCell.swift; path = Controller/ProductTableViewCell.swift; sourceTree = "<group>"; };
 		A4869DCE1D259DB60076EC37 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Model/Product.swift; sourceTree = "<group>"; };
 		A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthYearPickerView.swift; path = Model/MonthYearPickerView.swift; sourceTree = "<group>"; };
+		A4CAA30B1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileAddressTableViewCell.swift; path = Controller/MyProfileAddressTableViewCell.swift; sourceTree = "<group>"; };
 		DDD843DED49D52DA47654117 /* Pods-PupCareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCareTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,6 +310,7 @@
 				A43C9E8F1D3513E100D6D0D8 /* MyProfileTableViewCell.swift */,
 				A400B4761D34324300051363 /* MyProfileViewController.swift */,
 				A42751A01D47E29E00B083C6 /* MyProfileCardTableViewCell.swift */,
+				A4CAA30B1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -446,7 +449,6 @@
 				A475E3451D1490AA00FB66C3 /* AppDelegate.swift */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
 				71AC43DE1D4A7DED00C9BD31 /* Cart */,
-				7A7036EE1D413072005FAB68 /* Login */,
 				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
 				A42751A41D47E89A00B083C6 /* Card */,
 				7A7036EE1D413072005FAB68 /* Login */,
@@ -487,6 +489,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3311D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCare" */;
 			buildPhases = (
+				4F5E67E3554E5E14D34C3903 /* 📦 Check Pods Manifest.lock */,
 				0CB42F44DFD31EEF33C26145 /* [CP] Check Pods Manifest.lock */,
 				6FD4D5EEE2C1A8F7C954863A /* [CP] Check Pods Manifest.lock */,
 				143C9771FE2112750DE29E44 /* [CP] Check Pods Manifest.lock */,
@@ -514,6 +517,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3341D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCareTests" */;
 			buildPhases = (
+				78739C84F840103B85F61317 /* 📦 Check Pods Manifest.lock */,
 				01D566CC89C08DA6B5712182 /* [CP] Check Pods Manifest.lock */,
 				EF1AA9539EC77E2CBF7FE417 /* [CP] Check Pods Manifest.lock */,
 				9A84CD40ABCB224A98244A91 /* [CP] Check Pods Manifest.lock */,
@@ -754,6 +758,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4F5E67E3554E5E14D34C3903 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		6B2E87756D21FC8401E93068 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -792,6 +811,21 @@
 			inputPaths = (
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		78739C84F840103B85F61317 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -957,6 +991,7 @@
 				7A37C7B41D38261D00FBE13F /* LoginViewController.swift in Sources */,
 				A475E3461D1490AA00FB66C3 /* AppDelegate.swift in Sources */,
 				A43C9E941D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift in Sources */,
+				A4CAA30C1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift in Sources */,
 				A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
