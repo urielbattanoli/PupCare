@@ -12,26 +12,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var CartTableView: UITableView!
     
-    // Finish Order
-//    @IBOutlet weak var FinishOrderButton: UIButton!
-//    @IBOutlet weak var FinishOrderItensCount: UILabel!
-//    @IBOutlet weak var FinishOrderTotalPrice: UILabel!
-//    @IBOutlet weak var FinishOrderQuantityLabel: UILabel!
-//    @IBOutlet weak var FinishOrderPriceLabel: UILabel!
-//    
-//    
-//    // Product
-//    @IBOutlet weak var ProductValueLabel: UILabel!
-//    @IBOutlet weak var ProductNameLabel: UILabel!
-//    @IBOutlet weak var ProductPhotoImageView: UIImageView!
-    
-    
-    // PetShop Details
-    
-    
-//    @IBOutlet weak var PetShopAddressLabel: UILabel!
-//    @IBOutlet weak var PetShopDistanceLabel: UILabel!
-//    @IBOutlet weak var PetShopPhotoImageView: UIImageView!
     
     var sections: [ProductCart] = []
     
@@ -97,13 +77,19 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if indexPath.row - 1 < sections[indexPath.section].products.count {
                 cell.ProductNameLabel.text = sections[indexPath.section].products[indexPath.row - 1].name
+                cell.ProductValueLabel.text = sections[indexPath.section].products[indexPath.row - 1].price
+                cell.product = sections[indexPath.section].products[indexPath.row - 1]
             } else {
-                cell.ProductNameLabel.text = sections[indexPath.section].promotions[indexPath.row - 1].promotionName
+                let promotion = sections[indexPath.section].promotions[indexPath.row - 1]
+                cell.ProductNameLabel.text = promotion.promotionName
+                cell.ProductValueLabel.text = "\(promotion.lastPrice)"
+                cell.promotion = promotion
             }
             
             cell.ProductNameLabel.textColor = Config.MainColors.GreyColor
             cell.ProductValueLabel.textColor = Config.MainColors.GreyColor
-//            cell.ProductPhotoImageView.image = 
+            cell.ProductQuantity.textColor = Config.MainColors.GreyColor
+            
             
             break
         }

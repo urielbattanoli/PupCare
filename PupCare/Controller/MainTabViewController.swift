@@ -38,6 +38,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
         
         self.viewControllers = [vcPromotions,vcPetShops,vcOrders,vcProfile]
+        
     }
     
     override func didReceiveMemoryWarning() {
