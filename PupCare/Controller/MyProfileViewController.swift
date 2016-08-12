@@ -20,7 +20,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     private let numberOfSections = 3
     private let numberOfRowSection0 = 1
     private let numberOfRowSection1 = 5
-    private var numberOfRowSection2 = 2
+    private var numberOfRowSection2 = 1
     private let numberOfRowSectionShrunk = 2
     
     var section1Expanded = false
@@ -75,7 +75,6 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             
         case 1 where indexPath.row == 0:
             section.string = "Dados Pessoais"
-            section.contentView.tag = indexPath.section
             
             if !self.section1Expanded{
                 section.changeConstraintSize(0)
@@ -95,11 +94,16 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         case 1 where indexPath.row == 2:
             cell.string = self.user.email
             
-        case 1 where indexPath.row == 3:
-            cell.string = "Graciano Azambuja, 229"
-            cell.setCorner()
+        case 1 where indexPath.row > 2 && indexPath.row < self.numberOfRowSection1-1:
+            let addressCell = tableView.dequeueReusableCellWithIdentifier("cellAddress") as! MyProfileAddressTableViewCell
+            if indexPath.row == self.numberOfRowSection1-2{
+                addressCell.setCorner()
+                return addressCell
+            }
+            addressCell.address = self.user.addressList[indexPath.row-3]
+            return addressCell
             
-        case 1 where indexPath.row == 4:
+        case 1 where indexPath.row == self.numberOfRowSection1-1:
             return separator
             
         case 2 where indexPath.row == 0:
@@ -122,13 +126,19 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
-        case 1:
+        case 1 where indexPath.row == 0:
             self.section1Expanded = !self.section1Expanded
             self.tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
+        case 1 where indexPath.row > 2 && indexPath.row < self.numberOfRowSection1-1:
+            if indexPath.row == self.numberOfRowSection1-2{
+                performSegueWithIdentifier("goToAddAddress", sender: nil)
+            }
+            let address = self.user.addressList[indexPath.row]
+            performSegueWithIdentifier("goToAddAddress", sender: address)
         case 2:
             self.didPressLogOut()
         default:
-            print("default didSelect card")
+            print("default didSelect")
         }
     }
     

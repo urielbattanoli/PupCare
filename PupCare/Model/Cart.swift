@@ -89,13 +89,13 @@ class Cart: NSObject {
     }
     
     func showCartView() {
-        var tab: UITabBarController = UITabBarController()
-        var cgrect = CGRectMake(tab.tabBar.frame.size.height , tab.tabBar.frame.size.height, tab.tabBar.frame.size.width, 40)
-        
-        var view = UIView(frame: cgrect)
-        view.backgroundColor = UIColor.redColor()
-        
-        UIApplication.sharedApplication().keyWindow?.addSubview(view)
+//        var tab: UITabBarController = UITabBarController()
+//        var cgrect = CGRectMake(tab.tabBar.frame.size.height , tab.tabBar.frame.size.height, tab.tabBar.frame.size.width, 40)
+//        
+//        var view = UIView(frame: cgrect)
+//        view.backgroundColor = UIColor.redColor()
+//        
+//        UIApplication.sharedApplication().keyWindow?.addSubview(view)
     }
     
     
