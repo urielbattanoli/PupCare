@@ -25,6 +25,8 @@
 		71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */; };
 		71C1B44C1D30062000CDDA20 /* PromotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B44B1D30062000CDDA20 /* PromotionManager.swift */; };
 		71D722C81D47EE4800035392 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D722C71D47EE4800035392 /* Config.swift */; };
+		71E40A3B1D5D0B8100B44FAE /* CartResume.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71E40A3A1D5D0B8100B44FAE /* CartResume.xib */; };
+		71E40A3D1D5D0CE500B44FAE /* CartResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E40A3C1D5D0CE500B44FAE /* CartResume.swift */; };
 		71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9C101D26D42000DA14DA /* PetShop.swift */; };
 		7A0050411D383556003B89C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */; };
 		7A04ECB01D356BCA00270189 /* CloudCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */; };
@@ -111,6 +113,8 @@
 		71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionsTableViewCell.swift; path = Controller/PromotionsTableViewCell.swift; sourceTree = "<group>"; };
 		71C1B44B1D30062000CDDA20 /* PromotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionManager.swift; path = Model/PromotionManager.swift; sourceTree = "<group>"; };
 		71D722C71D47EE4800035392 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Model/Config.swift; sourceTree = "<group>"; };
+		71E40A3A1D5D0B8100B44FAE /* CartResume.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CartResume.xib; path = View/CartResume.xib; sourceTree = "<group>"; };
+		71E40A3C1D5D0CE500B44FAE /* CartResume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartResume.swift; path = View/CartResume.swift; sourceTree = "<group>"; };
 		71ED9C101D26D42000DA14DA /* PetShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShop.swift; path = Model/PetShop.swift; sourceTree = "<group>"; };
 		7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCodeTests.swift; sourceTree = "<group>"; };
 		7A37C7B11D37DB6300FBE13F /* Designables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Designables.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				71AC43E11D4A8A2D00C9BD31 /* CartTableViewCell.swift */,
+				71E40A3C1D5D0CE500B44FAE /* CartResume.swift */,
 				71AC43DF1D4A7E3F00C9BD31 /* CartViewController.swift */,
 			);
 			name = Cart;
@@ -426,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				A475E3411D14905200FB66C3 /* Cart.storyboard */,
+				71E40A3A1D5D0B8100B44FAE /* CartResume.xib */,
 				A475E3151D0A9B3A00FB66C3 /* LaunchScreen.storyboard */,
 				A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */,
 				A475E3431D14906500FB66C3 /* Orders.storyboard */,
@@ -446,7 +452,6 @@
 				A475E3451D1490AA00FB66C3 /* AppDelegate.swift */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
 				71AC43DE1D4A7DED00C9BD31 /* Cart */,
-				7A7036EE1D413072005FAB68 /* Login */,
 				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
 				A42751A41D47E89A00B083C6 /* Card */,
 				7A7036EE1D413072005FAB68 /* Login */,
@@ -614,6 +619,7 @@
 				A4869DC91D2595090076EC37 /* Products.storyboard in Resources */,
 				A475E33E1D148FEB00FB66C3 /* Petshops.storyboard in Resources */,
 				39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */,
+				71E40A3B1D5D0B8100B44FAE /* CartResume.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,6 +955,7 @@
 				7118ED3E1D4BD901000CCB1E /* Cart.swift in Sources */,
 				7117600B1D3FDDD8002452CA /* iCarousel.m in Sources */,
 				715100761D341129003A6817 /* ParseManager.swift in Sources */,
+				71E40A3D1D5D0CE500B44FAE /* CartResume.swift in Sources */,
 				A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */,
 				A42751A11D47E29E00B083C6 /* MyProfileCardTableViewCell.swift in Sources */,
 				7A7036EB1D40117E005FAB68 /* SignInViewController.swift in Sources */,

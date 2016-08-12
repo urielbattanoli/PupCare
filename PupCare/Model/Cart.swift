@@ -77,6 +77,9 @@ class Cart: NSObject {
         
         print(Cart.sharedInstance.cartProduct!)
         
+        if Cart.sharedInstance.cartProduct.productList.count > 0 {
+            Cart.sharedInstance.showCartView()
+        }
         
         return 0
     }
@@ -86,7 +89,8 @@ class Cart: NSObject {
     }
     
     func showCartView() {
-        var cgrect = CGRectMake(0, 0, 100, 100)
+        var tab: UITabBarController = UITabBarController()
+        var cgrect = CGRectMake(tab.tabBar.frame.size.height , tab.tabBar.frame.size.height, tab.tabBar.frame.size.width, 40)
         
         var view = UIView(frame: cgrect)
         view.backgroundColor = UIColor.redColor()
