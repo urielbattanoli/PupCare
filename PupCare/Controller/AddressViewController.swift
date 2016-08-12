@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import SwiftyJSON
+import Parse
 
 class AddressViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -22,6 +23,8 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var addressNameTextView: TXTAttributedStyle!
     
     var searchZipTextField : UITextField!
+    
+    var location : PFGeoPoint?
     
     let locationManager = CLLocationManager()
     
@@ -39,13 +42,29 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func configAlertTextView(textField: UITextField){
+    private func configAlertTextView(textField: UITextField){
         textField.placeholder = "Ex: 90008890"
         textField.textAlignment = .Center
         searchZipTextField = textField
     }
     
-    func disabletTextFieldInteraction(){
+    private func filledAllRequiredFields() -> Bool{
+        if self.streetTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
+        self.numberTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
+        self.zipTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
+        self.cityTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
+        self.stateTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
+        self.neighbourhoodTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == ""
+        {
+            return false
+        }
+        
+        return true
+    }
+    
+    
+    
+    private func disabletTextFieldInteraction(){
         self.streetTextView.userInteractionEnabled = false
         self.neighbourhoodTextView.userInteractionEnabled = false
         self.zipTextView.userInteractionEnabled = false
@@ -67,6 +86,7 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
             self.zipTextView.text = addressData["zip"] as? String
             self.cityTextView.text = addressData["city"] as? String
             self.stateTextView.text = addressData["state"] as? String
+            self.location = (addressData["location"] as? PFGeoPoint)!
         }
         
         locationManager.stopUpdatingLocation()
@@ -86,6 +106,30 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
                 self.zipTextView.text = self.searchZipTextField.text!
                 self.cityTextView.text = json!["localidade"].string
                 self.stateTextView.text = json!["uf"].string
+                
+                var addressData = [String:AnyObject]()
+                
+                addressData["userId"] = ""
+                addressData["name"] = ""
+                addressData["street"] = json!["logradouro"].string
+                addressData["number"] = 759
+                addressData["neighbourhood"] = json!["bairro"].string
+                addressData["state"] = json!["uf"].string
+                addressData["city"] = json!["localidade"].string
+                addressData["zip"] = self.searchZipTextField.text!
+                addressData["location"] = PFGeoPoint()
+                addressData["additionalInfo"] = ""
+                
+                
+                let address = Address(data: addressData)
+                
+                AddressManager.sharedInstance.transformAddressToGeoPoint(address, response: { (geoPoint) in
+                    let lat = geoPoint.latitude
+                    let lng = geoPoint.longitude
+                    
+                    address.location = PFGeoPoint(latitude: lat, longitude: lng)
+                })
+                
             })
             
         }))
@@ -95,5 +139,6 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func saveAddress(sender: AnyObject) {
+        
     }
 }

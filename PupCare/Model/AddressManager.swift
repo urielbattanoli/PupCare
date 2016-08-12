@@ -51,7 +51,8 @@ class AddressManager: NSObject {
     }
     
     func transformAddressToGeoPoint(address: Address, response:(geoPoint: CLLocationCoordinate2D)->()){
-        let addressString = "\(address.zip)"
+        let addressString = "\(address.street), \(address.number) \(address.city)"
+        print(addressString)
         CLGeocoder().geocodeAddressString(addressString, completionHandler: { (placemarks, error) in
             if error != nil {
                 print(error)
@@ -62,12 +63,8 @@ class AddressManager: NSObject {
                 let location = placemark?.location
                 let coordinate = location?.coordinate
                 print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
-                if placemark?.areasOfInterest?.count > 0 {
-                    let areaOfInterest = placemark!.areasOfInterest![0]
-                    print(areaOfInterest)
-                } else {
-                    print("No area of interest found.")
-                }
+                
+                response(geoPoint: (location?.coordinate)!)
             }
         })
     }

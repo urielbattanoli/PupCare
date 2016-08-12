@@ -19,6 +19,7 @@ class Address: NSObject {
     let state: String
     let city: String
     let zip: String
+    let additionalInfo : String
     var location = PFGeoPoint()
     
     init(data: [String : AnyObject]) {
@@ -30,6 +31,7 @@ class Address: NSObject {
         self.state = data["state"] as! String
         self.city = data["city"] as! String
         self.zip = data["zip"] as! String
+        self.additionalInfo = data["additionalInfo"] as! String
         self.location = data["location"] as! PFGeoPoint
     }
 }

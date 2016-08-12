@@ -22,6 +22,7 @@ extension Address {
         data["state"] = parseObject["state"] as! String
         data["city"] = parseObject["city"] as! String
         data["zip"] = parseObject["zip"] as! String
+        data["additionalInfo"] = parseObject["additionalInfo"] as! String
         data["location"] = parseObject["location"] as! PFGeoPoint        
         
         self.init(data: data)
