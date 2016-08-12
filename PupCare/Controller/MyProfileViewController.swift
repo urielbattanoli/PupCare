@@ -27,6 +27,12 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     var section2Expanded = false
     
     var user: User!
+    var imageProfile: UIImageView?{
+        didSet{
+            let gest = UITapGestureRecognizer(target: self, action: #selector(self.didPressPhoto))
+            self.imageProfile!.addGestureRecognizer(gest)
+        }
+    }
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -71,6 +77,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         case 0:
             let profile = tableView.dequeueReusableCellWithIdentifier("cellProfile") as! MyProfileTableViewCell
             profile.photoUrl = user.photoUrl
+            self.imageProfile = profile.imageProfile
             return profile
             
         case 1 where indexPath.row == 0:
@@ -156,6 +163,10 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // MARK: Functions
+    func didPressPhoto(obj: AnyObject) {
+        print(obj)
+    }
+    
     func didPressLogOut() {
         UserManager.sharedInstance.logOutUser {
             let vcProfile : UIViewController! = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()

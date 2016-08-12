@@ -29,7 +29,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="255"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nmS-bN-BdI" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nmS-bN-BdI" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
                                                     <rect key="frame" x="203" y="65" width="165" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="165" id="3V9-Br-ksk"/>
@@ -288,7 +288,7 @@
                                                     <rect key="frame" x="0.0" y="-10" width="570" height="54"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adicionar cartão de crédito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MH-7v-Tob">
-                                                            <rect key="frame" x="181.5" y="21" width="207" height="21"/>
+                                                            <rect key="frame" x="182" y="21" width="207" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
