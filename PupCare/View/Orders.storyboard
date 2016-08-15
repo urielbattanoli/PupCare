@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Orders View Controller-->
+        <!--Meus pedidos-->
         <scene sceneID="X1V-5E-hNW">
             <objects>
-                <viewController id="OVh-Rv-Hao" customClass="OrdersViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Meus pedidos" id="OVh-Rv-Hao" customClass="OrdersViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jxa-t1-njZ"/>
                         <viewControllerLayoutGuide type="bottom" id="cbl-uT-jSR"/>
@@ -170,7 +170,7 @@
                             <constraint firstItem="dCA-ho-iU6" firstAttribute="leading" secondItem="KNf-GB-Jt6" secondAttribute="leading" id="gcr-1F-WmR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ryR-bs-Gxh"/>
+                    <navigationItem key="navigationItem" title="Meus Pedidos" id="ryR-bs-Gxh"/>
                     <connections>
                         <outlet property="tableView" destination="dCA-ho-iU6" id="fyn-eU-Ydv"/>
                     </connections>
@@ -189,6 +189,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.29411764705882354" green="0.0" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
