@@ -15,7 +15,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         self.delegate = self
-        self.tabBar.tintColor = UIColor(CGColor: Config.MainColors.BlueColor)
+        self.tabBar.tintColor = UIColor(CGColor: Config.MainColors.BlueColor.CGColor)
         
         //Promotions ViewController
         let vcPromotions = UIStoryboard(name: "Promotions", bundle: nil).instantiateInitialViewController()!
@@ -38,6 +38,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
         
         self.viewControllers = [vcPromotions,vcPetShops,vcOrders,vcProfile]
+        
     }
     
     override func didReceiveMemoryWarning() {

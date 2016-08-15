@@ -19,6 +19,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     
     // Mark: Variables
     var product: Product?
+    var petshop: PetShop?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,12 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         self.carousel.type = .Rotary
         
         self.carousel.userInteractionEnabled = false
+        
+        
+        if let product = self.product{
+            self.lblName.text = product.name
+            self.lblDescription.text = product.descript
+        }
     }
     
     // Mark: iCarousel
@@ -64,6 +71,12 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         return value
     }
 
+    @IBAction func AddToCartButton(sender: AnyObject) {
+        Cart.sharedInstance.addToCart(self.petshop!, product: self.product, promotion: nil, quantity: 1)
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

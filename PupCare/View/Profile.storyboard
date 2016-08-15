@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A270f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xU0-Fl-9mG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A286a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xU0-Fl-9mG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -29,7 +29,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="255"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nmS-bN-BdI" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nmS-bN-BdI" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
                                                     <rect key="frame" x="203" y="65" width="165" height="165"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="165" id="3V9-Br-ksk"/>
@@ -219,7 +219,7 @@
                                             <outlet property="viewBack" destination="bEU-ev-ide" id="wCq-om-3ND"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellCard" id="c5o-va-bFJ" customClass="MyProfileCardTableViewCell" customModule="PupCare" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellAddress" id="c5o-va-bFJ" customClass="MyProfileAddressTableViewCell" customModule="PupCare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="523" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c5o-va-bFJ" id="Urh-8X-HI4">
@@ -229,14 +229,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l7H-RN-QnN">
                                                     <rect key="frame" x="0.0" y="-10" width="570" height="54"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Adicionar cartão de crédito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZT-Gi-AGm">
-                                                            <rect key="frame" x="178" y="21" width="207" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adicionar novo endereço" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZT-Gi-AGm">
+                                                            <rect key="frame" x="190" y="21" width="190" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Clf-hR-eym">
-                                                            <rect key="frame" x="508" y="13" width="54" height="37"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Clf-hR-eym">
+                                                            <rect key="frame" x="506" y="13" width="54" height="37"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="54" id="VX8-cp-4Sg"/>
                                                                 <constraint firstAttribute="height" constant="37" id="g4R-I1-Q83"/>
@@ -245,7 +245,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="Clf-hR-eym" secondAttribute="trailing" id="LwZ-Mn-1j3"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Clf-hR-eym" secondAttribute="trailing" constant="10" id="LwZ-Mn-1j3"/>
                                                         <constraint firstItem="yZT-Gi-AGm" firstAttribute="centerY" secondItem="l7H-RN-QnN" secondAttribute="centerY" id="imf-h7-DWt"/>
                                                         <constraint firstItem="yZT-Gi-AGm" firstAttribute="centerX" secondItem="l7H-RN-QnN" secondAttribute="centerX" id="q7W-8u-dmT"/>
                                                     </constraints>
@@ -272,9 +272,67 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imageCard" destination="Clf-hR-eym" id="JvP-Wc-v7Q"/>
-                                            <outlet property="lblCard" destination="yZT-Gi-AGm" id="nc9-yx-PN3"/>
+                                            <outlet property="imageAddress" destination="Clf-hR-eym" id="aGu-GQ-hAo"/>
+                                            <outlet property="lblAddress" destination="yZT-Gi-AGm" id="cUV-Lj-n2V"/>
                                             <outlet property="viewBack" destination="l7H-RN-QnN" id="FU3-BC-1pD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellCard" id="MBD-F3-ufx" customClass="MyProfileCardTableViewCell" customModule="PupCare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="567" width="570" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MBD-F3-ufx" id="Ts6-4B-0s5">
+                                            <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oke-Gq-0Qi">
+                                                    <rect key="frame" x="0.0" y="-10" width="570" height="54"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adicionar cartão de crédito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MH-7v-Tob">
+                                                            <rect key="frame" x="182" y="21" width="207" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="raf-og-HD7">
+                                                            <rect key="frame" x="506" y="13" width="54" height="37"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="54" id="KLX-Gm-Ftq"/>
+                                                                <constraint firstAttribute="height" constant="37" id="ybE-3B-Lg0"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="8MH-7v-Tob" firstAttribute="centerX" secondItem="oke-Gq-0Qi" secondAttribute="centerX" id="NTq-0K-OnZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="raf-og-HD7" secondAttribute="trailing" constant="10" id="Usf-ws-2Pf"/>
+                                                        <constraint firstItem="8MH-7v-Tob" firstAttribute="centerY" secondItem="oke-Gq-0Qi" secondAttribute="centerY" id="aM1-zt-URb"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="aM1-zt-URb"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="oke-Gq-0Qi" secondAttribute="bottom" id="4sG-Jo-ZEg"/>
+                                                <constraint firstItem="raf-og-HD7" firstAttribute="centerY" secondItem="Ts6-4B-0s5" secondAttribute="centerY" id="8dh-UW-pSm"/>
+                                                <constraint firstItem="oke-Gq-0Qi" firstAttribute="leading" secondItem="Ts6-4B-0s5" secondAttribute="leading" id="GqJ-gX-doQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oke-Gq-0Qi" secondAttribute="trailing" id="He3-Wt-jPM"/>
+                                                <constraint firstItem="oke-Gq-0Qi" firstAttribute="top" secondItem="Ts6-4B-0s5" secondAttribute="top" constant="-10" id="IDE-Sa-AiX"/>
+                                                <constraint firstAttribute="trailing" secondItem="oke-Gq-0Qi" secondAttribute="trailing" id="INm-LH-sfC"/>
+                                                <constraint firstItem="8MH-7v-Tob" firstAttribute="centerY" secondItem="Ts6-4B-0s5" secondAttribute="centerY" id="Qwd-fs-AwC"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="He3-Wt-jPM"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageCard" destination="raf-og-HD7" id="yMx-wE-oMJ"/>
+                                            <outlet property="lblCard" destination="8MH-7v-Tob" id="S5Q-KW-CcH"/>
+                                            <outlet property="viewBack" destination="oke-Gq-0Qi" id="NRB-YO-tlK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -298,6 +356,7 @@
                         <outlet property="tableView" destination="VZ3-0z-az6" id="OZe-Zq-30s"/>
                         <segue destination="2Vx-wW-WnN" kind="show" identifier="logInSegue" id="Krs-ga-Tj8"/>
                         <segue destination="Ejz-4t-2yR" kind="show" identifier="cardSegue" id="gJ2-Pw-gB5"/>
+                        <segue destination="lh7-wG-pDH" kind="show" identifier="goToAddAddress" id="nR2-jG-fjo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6P-EZ-iw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -320,6 +379,14 @@
             </objects>
             <point key="canvasLocation" x="4322.5" y="532"/>
         </scene>
+        <!--Address-->
+        <scene sceneID="NZs-rX-9dd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Address" id="lh7-wG-pDH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="voH-Yq-pfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4323.5" y="715"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="vkG-DD-pnH">
             <objects>
@@ -339,4 +406,7 @@
             <point key="canvasLocation" x="2929" y="532"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="userIcon" width="23" height="23"/>
+    </resources>
 </document>

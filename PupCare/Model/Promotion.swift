@@ -34,7 +34,6 @@ class Promotion: NSObject {
         self.initialDate = data["initialDate"] as! NSDate
         self.finalDate = data["finalDate"] as! NSDate
         
-        
     }
     
     override init() {

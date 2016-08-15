@@ -36,12 +36,12 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         
         self.view.clipsToBounds = true
         
-        newPriceLabel.textColor = UIColor(CGColor: promotionColor)
+        newPriceLabel.textColor = UIColor(CGColor: promotionColor.CGColor)
         
         backgroundView.clipsToBounds = true
         backgroundView.layer.cornerRadius = 5
         backgroundView.layer.borderWidth = 0.5
-        backgroundView.layer.borderColor = Config.MainColors.BorderColor
+        backgroundView.layer.borderColor = Config.MainColors.BorderColor.CGColor
     
     }
     
@@ -97,45 +97,22 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     }
     
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
-        
-//        var label: UILabel
         var itemView: UIImageView
         
         //create new view if no view is available for recycling
         if (view == nil)
         {
-            //don't do anything specific to the index within
-            //this `if (view == nil) {...}` statement because the view will be
-            //recycled and used with other index values later
             itemView = UIImageView(frame:CGRect(x:0, y:0, width:225, height:225))
             itemView.image = photos[index]
             itemView.contentMode = UIViewContentMode.ScaleAspectFit
-//            itemView.contentMode = .Center
-            
         }
         else
         {
-            //get a reference to the label in the recycled view
             itemView = view as! UIImageView;
-//            label = itemView.viewWithTag(1) as! UILabel!
         }
-        
-        //set item label
-        //remember to always set any properties of your carousel item
-        //views outside of the `if (view == nil) {...}` check otherwise
-        //you'll get weird issues with carousel item content appearing
-        //in the wrong place in the carousel
-//        label.text = "\(photos[index])"
-        
         return itemView
         
     }
-    
-    
-//    func carouselWillBeginScrollingAnimation(carousel: iCarousel) {
-//        carousel.itemViewAtIndex(carousel.currentItemIndex). = carousel.itemViewAtIndex(carousel.currentItemIndex)?.frame.width / 2
-//    }
-    
     
     func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
     

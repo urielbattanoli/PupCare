@@ -128,6 +128,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             let productDetail = segue.destinationViewController as! ProductDetailViewController
             
             productDetail.product = sender as? Product
+            productDetail.petshop = self.petShop
         }
     }
     
