@@ -435,19 +435,19 @@
 		A475E33A1D148F1600FB66C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7A7036F21D429ED6005FAB68 /* Address */,
-				A420BBB31D4688D0004F4C1B /* Card */,
-				7118ED3C1D4BD8E0000CCB1E /* Cart */,
 				71D722C71D47EE4800035392 /* Config.swift */,
 				7A37C7B11D37DB6300FBE13F /* Designables.swift */,
 				A40B341E1D30270F00BCC240 /* Extensions.swift */,
 				A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */,
-				A4CAA5241D5E5AF00053EDEA /* Order */,
 				715100751D341129003A6817 /* ParseManager.swift */,
+				7117600C1D3FDF17002452CA /* PupCare-Bridging-Header.h */,
+				7A7036F21D429ED6005FAB68 /* Address */,
+				A420BBB31D4688D0004F4C1B /* Card */,
+				7118ED3C1D4BD8E0000CCB1E /* Cart */,
+				A4CAA5241D5E5AF00053EDEA /* Order */,
 				7A31925E1D34012F004096A0 /* PetShop */,
 				7A31925F1D340139004096A0 /* Product */,
 				7A3192601D34013F004096A0 /* Promotion */,
-				7117600C1D3FDF17002452CA /* PupCare-Bridging-Header.h */,
 				A43C9E951D3685EA00D6D0D8 /* User */,
 			);
 			name = Model;
@@ -476,13 +476,13 @@
 		A475E33C1D148F2600FB66C3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7A11BEC01D62024E00134ED8 /* Address */,
 				A475E3451D1490AA00FB66C3 /* AppDelegate.swift */,
+				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
+				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
+				7A11BEC01D62024E00134ED8 /* Address */,
 				A42751A41D47E89A00B083C6 /* Card */,
 				71AC43DE1D4A7DED00C9BD31 /* Cart */,
-				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
 				7A7036EE1D413072005FAB68 /* Login */,
-				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
 				7A7036F01D41308C005FAB68 /* Order */,
 				7A7036ED1D41306A005FAB68 /* PetShop */,
 				7A7036EC1D413062005FAB68 /* Product */,
