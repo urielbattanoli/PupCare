@@ -29,7 +29,14 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
+//            let data = ["orderId":"asd123asd24a",
+//                        "petShop": petshops![0],
+//                        "date": NSDate(),
+//                        "price": 145.00]
+//            let order = Order(data: data)
+//            self.oldOrders = [order]
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,5 +89,13 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
             print("viewForHeader default")
         }
         return cell.contentView
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 95
     }
 }

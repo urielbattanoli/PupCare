@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A286a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eGH-64-Dyd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eGH-64-Dyd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -181,9 +181,21 @@
                         <constraints>
                             <constraint firstItem="3Lk-Tk-EXU" firstAttribute="top" secondItem="tA8-Tm-iqX" secondAttribute="bottom" id="3pk-3b-R5O"/>
                             <constraint firstItem="tA8-Tm-iqX" firstAttribute="leading" secondItem="M3p-Ow-q66" secondAttribute="leadingMargin" constant="-20" id="Cl9-od-5VB"/>
+                            <constraint firstItem="tA8-Tm-iqX" firstAttribute="top" secondItem="ylQ-76-MY2" secondAttribute="bottom" id="DYt-j4-KPE"/>
+                            <constraint firstAttribute="trailing" secondItem="tA8-Tm-iqX" secondAttribute="trailing" id="IKw-p8-mqM"/>
+                            <constraint firstItem="3Lk-Tk-EXU" firstAttribute="top" secondItem="tA8-Tm-iqX" secondAttribute="bottom" id="JDL-Ky-bNS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tA8-Tm-iqX" secondAttribute="trailing" constant="-20" id="eEO-mY-jRB"/>
+                            <constraint firstItem="tA8-Tm-iqX" firstAttribute="leading" secondItem="M3p-Ow-q66" secondAttribute="leading" id="hNd-Sg-nGl"/>
                             <constraint firstItem="tA8-Tm-iqX" firstAttribute="top" secondItem="M3p-Ow-q66" secondAttribute="topMargin" id="tRI-ce-uss"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Cl9-od-5VB"/>
+                                <exclude reference="eEO-mY-jRB"/>
+                                <exclude reference="tRI-ce-uss"/>
+                                <exclude reference="3pk-3b-R5O"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Promoções" id="qjO-0H-tp3">
                         <barButtonItem key="rightBarButtonItem" title="Cart" id="b3b-qX-pNP">

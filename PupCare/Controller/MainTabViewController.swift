@@ -15,7 +15,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         self.delegate = self
-        self.tabBar.tintColor = UIColor(red: 250, green: 250, blue: 250)
+        self.tabBar.tintColor = UIColor.whiteColor()
         
         //Promotions ViewController
         let vcPromotions = UIStoryboard(name: "Promotions", bundle: nil).instantiateInitialViewController()!

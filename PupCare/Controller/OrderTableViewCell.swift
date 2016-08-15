@@ -21,11 +21,13 @@ class OrderTableViewCell: UITableViewCell {
     //MARK: Variables
     var order: Order?{
         didSet{
-           self.petShopImage.loadImage((self.order?.petShop.imageUrl)!)
-            self.petshopNameLbl.text = self.order?.petShop.name
-            self.orderCodLbl.text = "Código: \(self.order?.orderId)"
-            self.orderDateLbl.text = "Data: \(self.order?.orderDate.descriptionWithLocale(NSLocale.currentLocale()))"
-            self.orderPriceLbl.text = "Valor: \(self.order?.price.numberToPrice())"
+            if let order = self.order{
+                self.petShopImage.loadImage(order.petShop.imageUrl)
+                self.petshopNameLbl.text = order.petShop.name
+                self.orderCodLbl.text = "Código: \(order.orderId)"
+                self.orderDateLbl.text = "Data: \(order.orderDate.dateToString())"
+                self.orderPriceLbl.text = "Valor: \(order.price.numberToPrice())"
+            }
         }
     }
     
@@ -33,12 +35,14 @@ class OrderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.viewBackground.layer.cornerRadius = 5
+        self.viewBackground.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).CGColor
+        self.viewBackground.layer.borderWidth = 0.5
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
