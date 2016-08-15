@@ -56,7 +56,7 @@ class CartTableViewCell: UITableViewCell {
         self.ProductQuantity.text = "\(rounded)"
         
         if let product = product {
-            self.ProductValueLabel.text = "\(Float(product.price)! * rounded)"
+            self.ProductValueLabel.text = "\(Float(product.price) * rounded)"
         }
         if let promotion = promotion {
             self.ProductValueLabel.text = "\(Float(promotion.lastPrice) * rounded)"

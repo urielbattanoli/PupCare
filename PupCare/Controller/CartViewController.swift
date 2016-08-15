@@ -39,50 +39,64 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].products.count + sections[section].promotions.count + 2
+        return (sections[section].products.count + sections[section].promotions.count + 2)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell: CartTableViewCell
         
+        print("CURRENT ROW\(indexPath.row)")
+        let lenght = sections[indexPath.section].products.count + sections[indexPath.section].promotions.count + 1
         
         switch indexPath.row {
         case 0:
+            
             cell = tableView.dequeueReusableCellWithIdentifier("CartPetShop", forIndexPath: indexPath) as! CartTableViewCell
             
-            // PetShop Details
-            cell.PetShopNameLabel.textColor = Config.MainColors.GreyColor
-            cell.PetShopDistanceLabel.textColor = Config.MainColors.GreyColor
-            cell.PetShopPhotoImageView.layer.cornerRadius = 10
+            let petShop = sections[indexPath.section].petShop
+            cell.PetShopPhotoImageView.loadImage(petShop.imageUrl)
             cell.PetShopPhotoImageView.layer.masksToBounds = true
-//
-            cell.PetShopNameLabel.text = sections[indexPath.section].petShop.name
+            cell.PetShopPhotoImageView.layer.cornerRadius = 10
+            
+            cell.PetShopDistanceLabel.textColor = Config.MainColors.GreyColor
             cell.PetShopAddressLabel.textColor = Config.MainColors.GreyColor
-            cell.PetShopAddressLabel.text = sections[indexPath.section].petShop.address
+            cell.PetShopNameLabel.textColor = Config.MainColors.GreyColor
+            cell.PetShopAddressLabel.text = petShop.address
+            cell.PetShopNameLabel.text = petShop.name
+            
             break
-        case indexPath.length:
+        case lenght:
+            
             cell = tableView.dequeueReusableCellWithIdentifier("CartConfirmation", forIndexPath: indexPath) as! CartTableViewCell
             cell.FinishOrderButton.backgroundColor = Config.MainColors.BlueColor
             cell.FinishOrderButton.layer.cornerRadius = 5
             cell.FinishOrderButton.layer.masksToBounds = true
-            
+
             cell.FinishOrderPriceLabel.textColor = Config.MainColors.GreyColor
             cell.FinishOrderTotalPrice.textColor = Config.MainColors.GreyColor
             cell.FinishOrderItensCount.textColor = Config.MainColors.GreyColor
             cell.FinishOrderQuantityLabel.textColor = Config.MainColors.GreyColor
+            
             break
         default:
             cell = tableView.dequeueReusableCellWithIdentifier("CartProduct", forIndexPath: indexPath) as! CartTableViewCell
             
-            if indexPath.row - 1 < sections[indexPath.section].products.count {
-                cell.ProductNameLabel.text = sections[indexPath.section].products[indexPath.row - 1].name
-                cell.ProductValueLabel.text = sections[indexPath.section].products[indexPath.row - 1].price
+            if indexPath.row <= sections[indexPath.section].products.count {
+                
+                let product = sections[indexPath.section].products[indexPath.row - 1]
                 cell.product = sections[indexPath.section].products[indexPath.row - 1]
+                cell.ProductPhotoImageView.loadImage(product.imageUrl)
+                cell.ProductValueLabel.text = "\(product.price)"
+                cell.ProductNameLabel.text = product.name
+                
             } else {
-                let promotion = sections[indexPath.section].promotions[indexPath.row - 1]
+                
+                let promotion = sections[indexPath.section].promotions[indexPath.row - 1 -
+                    sections[indexPath.section].products.count]
                 cell.ProductNameLabel.text = promotion.promotionName
                 cell.ProductValueLabel.text = "\(promotion.lastPrice)"
+                cell.ProductPhotoImageView.loadImage(promotion.promotionImage)
                 cell.promotion = promotion
             }
             

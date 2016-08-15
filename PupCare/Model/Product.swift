@@ -15,7 +15,7 @@ class Product: NSObject{
     let imageUrl: String
     let descript: String
     let brand: String
-    let price: String
+    let price: NSNumber
     let stock: NSNumber
     
     init(data: [String : AnyObject]) {
@@ -24,7 +24,7 @@ class Product: NSObject{
         self.imageUrl = data["imageUrl"] as! String
         self.descript = data["description"] as! String
         self.brand = data["brand"] as! String
-        self.price = (data["price"] as! NSNumber).numberToPrice()
+        self.price = data["price"] as! NSNumber
         self.stock = data["stock"] as! NSNumber
     }
 }

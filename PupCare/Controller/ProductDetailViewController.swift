@@ -72,7 +72,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     }
 
     @IBAction func AddToCartButton(sender: AnyObject) {
-        Cart.sharedInstance.addToCart(PetShop(), product: self.product, promotion: nil, quantity: 1)
+        Cart.sharedInstance.addToCart(self.petshop!, product: self.product, promotion: nil, quantity: 1)
     }
     
     
