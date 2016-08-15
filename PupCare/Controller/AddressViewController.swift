@@ -127,7 +127,7 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
                     let lat = geoPoint.latitude
                     let lng = geoPoint.longitude
                     
-                    address.location = PFGeoPoint(latitude: lat, longitude: lng)
+                    address.location = CLLocation(latitude: lat, longitude: lng)
                 })
                 
             })

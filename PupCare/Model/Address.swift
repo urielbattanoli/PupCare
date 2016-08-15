@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+import CoreLocation
 
 class Address: NSObject {
     
@@ -20,7 +20,7 @@ class Address: NSObject {
     let city: String
     let zip: String
     let additionalInfo : String
-    var location = PFGeoPoint()
+    var location : CLLocation
     
     init(data: [String : AnyObject]) {
         self.userId = data["userId"] as! String
@@ -32,6 +32,6 @@ class Address: NSObject {
         self.city = data["city"] as! String
         self.zip = data["zip"] as! String
         self.additionalInfo = data["additionalInfo"] as! String
-        self.location = data["location"] as! PFGeoPoint
+        self.location = data["location"] as! CLLocation
     }
 }

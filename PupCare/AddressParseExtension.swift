@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import CoreLocation
 
 extension Address {
     
@@ -23,7 +24,8 @@ extension Address {
         data["city"] = parseObject["city"] as! String
         data["zip"] = parseObject["zip"] as! String
         data["additionalInfo"] = parseObject["additionalInfo"] as! String
-        data["location"] = parseObject["location"] as! PFGeoPoint        
+        let geoPoint = parseObject["location"] as! PFGeoPoint
+        data["location"] = CLLocation(latitude: geoPoint.latitude,longitude: geoPoint.longitude)
         
         self.init(data: data)
     }
