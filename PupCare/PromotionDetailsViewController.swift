@@ -36,7 +36,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         
         self.view.clipsToBounds = true
         
-        newPriceLabel.textColor = UIColor(CGColor: promotionColor.CGColor)
+//        newPriceLabel.textColor = UIColor(CGColor: promotionColor.CGColor)
         
         backgroundView.clipsToBounds = true
         backgroundView.layer.cornerRadius = 5
@@ -104,6 +104,9 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         {
             itemView = UIImageView(frame:CGRect(x:0, y:0, width:225, height:225))
             itemView.image = photos[index]
+            itemView.layer.borderWidth = 5
+            itemView.layer.borderColor = UIColor(red: 115, green: 40, blue: 115).CGColor
+            itemView.layer.cornerRadius = 10
             itemView.contentMode = UIViewContentMode.ScaleAspectFit
         }
         else

@@ -25,16 +25,6 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.promotionsTableView.separatorStyle = .None
         
-//        var promo = Promotion()
-//        
-//        promo.promotionName = "Coleira para cachorro DogMax"
-//        promo.promotionDescription = "Coleira confeccionada em couro ecológico, para cães de pequeno porte."
-//        promo.lastPrice = 99.99
-//        promo.newPrice = 80.00
-//        
-//        
-//        allPromotions.append(promo)
-        
         reloadPromotions()
         
         // Do any additional setup after loading the view.

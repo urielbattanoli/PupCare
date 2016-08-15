@@ -35,6 +35,9 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             self.searchController?.hidesNavigationBarDuringPresentation = false
             self.searchController?.searchResultsUpdater = self
             self.searchController?.dimsBackgroundDuringPresentation = false
+            self.searchController?.searchBar.tintColor = UIColor(red: 115, green: 40, blue: 115)
+            self.searchController?.searchBar.barTintColor = UIColor(red: 250, green: 250, blue: 250)
+            self.searchController?.searchBar.placeholder = "Farejar"
             definesPresentationContext = true
             self.tableView.tableHeaderView = searchController!.searchBar
         }

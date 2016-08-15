@@ -55,6 +55,9 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         if view == nil{
             itemView = UIImageView(frame: CGRect(x: 0, y: 0, width: 225, height: 225))
             itemView.loadImage((self.product?.imageUrl)!)
+            itemView.layer.borderWidth = 5
+            itemView.layer.borderColor = UIColor(red: 115, green: 40, blue: 115).CGColor
+            itemView.layer.cornerRadius = 10
             itemView.contentMode = .ScaleAspectFit
         }
         else{

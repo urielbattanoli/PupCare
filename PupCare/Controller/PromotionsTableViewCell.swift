@@ -9,9 +9,7 @@
 import UIKit
 
 class PromotionsTableViewCell: UITableViewCell {
-    
-    
-    
+
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var oldPrice: UILabel!
     @IBOutlet weak var petShopLabel: UILabel!
@@ -20,6 +18,7 @@ class PromotionsTableViewCell: UITableViewCell {
     @IBOutlet weak var newPriceLabel: UILabel!
     @IBOutlet weak var productDescriptionLabel: UILabel!
     @IBOutlet weak var discountPercentageLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
     
     var indexPath: NSIndexPath?
     
@@ -31,8 +30,6 @@ class PromotionsTableViewCell: UITableViewCell {
                 self.oldPrice.text = NSNumber(float: promotion.lastPrice).numberToPrice()
                 self.newPriceLabel.text = NSNumber(float: promotion.newPrice).numberToPrice()
                 self.productDescriptionLabel.text = promotion.promotionDescription
-                self.newPriceLabel.textColor = Config.MainColors.PromotionColor
-                self.oldPrice.textColor = Config.MainColors.GreyColor
                 self.promotionPhoto.loadImage(promotion.promotionImage)
                 
                 self.discountPercentageLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2 / 2 * -1))
@@ -46,11 +43,12 @@ class PromotionsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.containerView.layer.borderWidth = Config.BorderWidth
+        self.containerView.layer.borderColor = Config.MainColors.BorderColor.CGColor
+        self.containerView.layer.cornerRadius = 5
+        
         self.addToCartButton.clipsToBounds = true
         self.addToCartButton.layer.cornerRadius = 5
-        self.addToCartButton.backgroundColor = Config.MainColors.PromotionColor
-        
-        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

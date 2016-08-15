@@ -14,16 +14,16 @@
                         <viewControllerLayoutGuide type="bottom" id="B7s-zn-LAh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tab-3c-lP1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VZ3-0z-az6">
-                                <rect key="frame" x="15" y="0.0" width="570" height="600"/>
+                                <rect key="frame" x="15" y="0.0" width="570" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellProfile" rowHeight="255" id="pcU-RQ-rRf" customClass="MyProfileTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="570" height="255"/>
+                                        <rect key="frame" x="0.0" y="28" width="570" height="255"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pcU-RQ-rRf" id="ayS-lp-N8i">
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="255"/>
@@ -50,7 +50,7 @@
                                                         <segment title="Meu Perfil"/>
                                                         <segment title="Meus Pets"/>
                                                     </segments>
-                                                    <color key="tintColor" red="0.3294117647" green="0.78039215689999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -76,7 +76,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellProfileSection" id="AXb-dx-wX8" customClass="MyProfileDetailTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="347" width="570" height="44"/>
+                                        <rect key="frame" x="0.0" y="283" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AXb-dx-wX8" id="Bjs-A3-gPz">
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
@@ -93,7 +93,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.3294117647" green="0.78039215689999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="b06-1z-NNQ" firstAttribute="leading" secondItem="TAa-vG-eb2" secondAttribute="leading" id="LMf-Vh-w2c"/>
                                                         <constraint firstAttribute="trailing" secondItem="b06-1z-NNQ" secondAttribute="trailing" id="oZ3-EI-THd"/>
@@ -122,7 +122,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellProfileDetail" id="pJ0-sY-vf7" customClass="MyProfileDetailTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="391" width="570" height="44"/>
+                                        <rect key="frame" x="0.0" y="327" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pJ0-sY-vf7" id="9SJ-kn-O7B">
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
@@ -166,7 +166,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellSeparator" id="MGP-Jf-RW8">
-                                        <rect key="frame" x="0.0" y="435" width="570" height="44"/>
+                                        <rect key="frame" x="0.0" y="371" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MGP-Jf-RW8" id="O3w-7w-bx1">
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
@@ -175,7 +175,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellLogOut" id="b5Y-jX-1Ij" customClass="MyProfileDetailTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="479" width="570" height="44"/>
+                                        <rect key="frame" x="0.0" y="415" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b5Y-jX-1Ij" id="oGp-S2-Nrn">
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
@@ -220,7 +220,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellAddress" id="c5o-va-bFJ" customClass="MyProfileAddressTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="523" width="570" height="44"/>
+                                        <rect key="frame" x="0.0" y="459" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c5o-va-bFJ" id="Urh-8X-HI4">
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
@@ -278,7 +278,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellCard" id="MBD-F3-ufx" customClass="MyProfileCardTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="567" width="570" height="44"/>
+                                        <rect key="frame" x="0.0" y="503" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MBD-F3-ufx" id="Ts6-4B-0s5">
                                             <rect key="frame" x="0.0" y="0.0" width="570" height="44"/>
@@ -392,9 +392,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xU0-Fl-9mG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nFh-Op-M6C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="nFh-Op-M6C">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.29411764705882354" green="0.0" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
