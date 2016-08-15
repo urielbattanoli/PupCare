@@ -55,6 +55,7 @@
 		A43C9E991D3688EA00D6D0D8 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E981D3688EA00D6D0D8 /* UserManager.swift */; };
 		A43C9E9B1D3688FA00D6D0D8 /* UserParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E9A1D3688FA00D6D0D8 /* UserParseExtension.swift */; };
 		A440AF9B1D2AF2EC005B6CBC /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */; };
+		A45B7E401D5E5D5C004EDC50 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B7E3F1D5E5D5C004EDC50 /* OrderTableViewCell.swift */; };
 		A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A475E3101D0A9B3A00FB66C3 /* PupCare.xcdatamodeld */; };
 		A475E3141D0A9B3A00FB66C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A475E3131D0A9B3A00FB66C3 /* Assets.xcassets */; };
 		A475E3171D0A9B3A00FB66C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E3151D0A9B3A00FB66C3 /* LaunchScreen.storyboard */; };
@@ -75,6 +76,8 @@
 		A4869DCF1D259DB60076EC37 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4869DCE1D259DB60076EC37 /* Product.swift */; };
 		A49877151D4F7CFC00DD4F02 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */; };
 		A4CAA30C1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAA30B1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift */; };
+		A4CAA5281D5E5BEB0053EDEA /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAA5271D5E5BEB0053EDEA /* Order.swift */; };
+		A4CAA52A1D5E5C090053EDEA /* OrderParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAA5291D5E5C090053EDEA /* OrderParseExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +149,7 @@
 		A43C9E981D3688EA00D6D0D8 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Model/UserManager.swift; sourceTree = "<group>"; };
 		A43C9E9A1D3688FA00D6D0D8 /* UserParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserParseExtension.swift; path = Model/UserParseExtension.swift; sourceTree = "<group>"; };
 		A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductManager.swift; path = Model/ProductManager.swift; sourceTree = "<group>"; };
+		A45B7E3F1D5E5D5C004EDC50 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderTableViewCell.swift; path = Controller/OrderTableViewCell.swift; sourceTree = "<group>"; };
 		A475E3061D0A9B3A00FB66C3 /* PupCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PupCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A475E30E1D0A9B3A00FB66C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A475E3111D0A9B3A00FB66C3 /* PupCare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PupCare.xcdatamodel; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 		A4869DCE1D259DB60076EC37 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Model/Product.swift; sourceTree = "<group>"; };
 		A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthYearPickerView.swift; path = Model/MonthYearPickerView.swift; sourceTree = "<group>"; };
 		A4CAA30B1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileAddressTableViewCell.swift; path = Controller/MyProfileAddressTableViewCell.swift; sourceTree = "<group>"; };
+		A4CAA5271D5E5BEB0053EDEA /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = Model/Order.swift; sourceTree = "<group>"; };
+		A4CAA5291D5E5C090053EDEA /* OrderParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderParseExtension.swift; path = Model/OrderParseExtension.swift; sourceTree = "<group>"; };
 		DDD843DED49D52DA47654117 /* Pods-PupCareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCareTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				A475E34D1D18548900FB66C3 /* OrdersViewController.swift */,
+				A45B7E3F1D5E5D5C004EDC50 /* OrderTableViewCell.swift */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -413,6 +420,7 @@
 		A475E33A1D148F1600FB66C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A4CAA5241D5E5AF00053EDEA /* Order */,
 				A420BBB31D4688D0004F4C1B /* Card */,
 				7A37C7B11D37DB6300FBE13F /* Designables.swift */,
 				A40B341E1D30270F00BCC240 /* Extensions.swift */,
@@ -465,6 +473,15 @@
 				7A7036EF1D413080005FAB68 /* Promotion */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		A4CAA5241D5E5AF00053EDEA /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				A4CAA5271D5E5BEB0053EDEA /* Order.swift */,
+				A4CAA5291D5E5C090053EDEA /* OrderParseExtension.swift */,
+			);
+			name = Order;
 			sourceTree = "<group>";
 		};
 		C9936620C906765E7A645C8D /* Pods */ = {
@@ -964,6 +981,7 @@
 				71C1B4441D2EB8A300CDDA20 /* Promotion.swift in Sources */,
 				71C1B44C1D30062000CDDA20 /* PromotionManager.swift in Sources */,
 				A43C9E971D36860100D6D0D8 /* User.swift in Sources */,
+				A4CAA5281D5E5BEB0053EDEA /* Order.swift in Sources */,
 				A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */,
 				A42331C01D2ACE5400CFF8DA /* ProductParseExtension.swift in Sources */,
 				A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */,
@@ -983,11 +1001,13 @@
 				A42751A61D47E8BC00B083C6 /* AddCardViewController.swift in Sources */,
 				7A7036FA1D4641D4005FAB68 /* AddressManager.swift in Sources */,
 				71D722C81D47EE4800035392 /* Config.swift in Sources */,
+				A4CAA52A1D5E5C090053EDEA /* OrderParseExtension.swift in Sources */,
 				71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */,
 				7A7036F41D429EF3005FAB68 /* Address.swift in Sources */,
 				A43C9E901D3513E100D6D0D8 /* MyProfileTableViewCell.swift in Sources */,
 				A4869DCF1D259DB60076EC37 /* Product.swift in Sources */,
 				7118ED3E1D4BD901000CCB1E /* Cart.swift in Sources */,
+				A45B7E401D5E5D5C004EDC50 /* OrderTableViewCell.swift in Sources */,
 				7117600B1D3FDDD8002452CA /* iCarousel.m in Sources */,
 				715100761D341129003A6817 /* ParseManager.swift in Sources */,
 				71E40A3D1D5D0CE500B44FAE /* CartResume.swift in Sources */,

@@ -8,8 +8,24 @@
 
 import UIKit
 
-class OrdersViewController: UIViewController {
+class OrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    //MARK: Outlets
+    @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: Variables
+    var processingOrders: [Order] = []{
+        didSet{
+            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+        }
+    }
+    var oldOrders: [Order] = []{
+        didSet{
+            self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+        }
+    }
+    
+    //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,14 +38,49 @@ class OrdersViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: TableView data source
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
     }
-    */
-
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return self.processingOrders.count
+        case 1:
+            return self.oldOrders.count
+        default:
+            print("numbersOfRows default")
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("orderCell") as! OrderTableViewCell
+        
+        switch indexPath.section {
+        case 0:
+            cell.order = self.processingOrders[indexPath.row]
+        case 1:
+            cell.order = self.oldOrders[indexPath.row]
+        default:
+            print("cellForRow default")
+        }
+        
+        return cell
+    }
+    
+    //MARK: TableView delegate
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCellWithIdentifier("headerCell") as! OrderHeaderTableViewCell
+        switch section {
+        case 0:
+            cell.titleLabel.text = "Em andamento"
+        case 1:
+            cell.titleLabel.text = "Histórico de pedidos"
+        default:
+            print("viewForHeader default")
+        }
+        return cell.contentView
+    }
 }
