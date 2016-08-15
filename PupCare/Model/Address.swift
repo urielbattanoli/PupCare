@@ -11,19 +11,19 @@ import CoreLocation
 
 class Address: NSObject {
     
-    let userId: String
-    let name: String
-    let street: String
-    let number: NSNumber
-    let neighbourhood: String
-    let state: String
-    let city: String
-    let zip: String
-    let additionalInfo : String
+    var addressId: String
+    var name: String
+    var street: String
+    var number: NSNumber
+    var neighbourhood: String
+    var state: String
+    var city: String
+    var zip: String
+    var additionalInfo : String
     var location : CLLocation
     
     init(data: [String : AnyObject]) {
-        self.userId = data["userId"] as! String
+        self.addressId = data["addressId"] as! String
         self.name = data["name"] as! String
         self.street = data["street"] as! String
         self.number = data["number"] as! NSNumber

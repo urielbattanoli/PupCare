@@ -24,9 +24,11 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     
     var searchZipTextField : UITextField!
     
-    var location : PFGeoPoint?
+    var location : CLLocation?
     
     let locationManager = CLLocationManager()
+    
+    var address: Address?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,14 +64,29 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         return true
     }
     
-    
-    
     private func disabletTextFieldInteraction(){
         self.streetTextView.userInteractionEnabled = false
         self.neighbourhoodTextView.userInteractionEnabled = false
         self.zipTextView.userInteractionEnabled = false
         self.cityTextView.userInteractionEnabled = false
         self.stateTextView.userInteractionEnabled = false
+    }
+    
+    private func tranformJSONToData(json : JSON) -> [String:AnyObject]{
+        var addressData = [String:AnyObject]()
+        
+        addressData["addressId"] = ""
+        addressData["name"] = ""
+        addressData["street"] = json["logradouro"].string
+        addressData["number"] = 0
+        addressData["neighbourhood"] = json["bairro"].string
+        addressData["state"] = json["uf"].string
+        addressData["city"] = json["localidade"].string
+        addressData["zip"] = self.searchZipTextField.text!
+        addressData["location"] = CLLocation()
+        addressData["additionalInfo"] = ""
+        
+        return addressData
     }
     
     @IBAction func searchAddressByCurrentLocation(sender: AnyObject) {
@@ -86,11 +103,16 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
             self.zipTextView.text = addressData["zip"] as? String
             self.cityTextView.text = addressData["city"] as? String
             self.stateTextView.text = addressData["state"] as? String
-            self.location = (addressData["location"] as? PFGeoPoint)!
+            
+            self.address = Address(data: addressData)
+            
+            self.address?.location = addressData["location"] as! CLLocation
         }
         
         locationManager.stopUpdatingLocation()
     }
+    
+    
     
     @IBAction func searchAddressByZipCode(sender: AnyObject) {
         let alert = UIAlertController(title: "Buscar endereço pelo CEP", message: "Digite o cep sem hífen", preferredStyle: .Alert)
@@ -107,27 +129,13 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
                 self.cityTextView.text = json!["localidade"].string
                 self.stateTextView.text = json!["uf"].string
                 
-                var addressData = [String:AnyObject]()
+                self.address = Address(data: self.tranformJSONToData(json!))
                 
-                addressData["userId"] = ""
-                addressData["name"] = ""
-                addressData["street"] = json!["logradouro"].string
-                addressData["number"] = 759
-                addressData["neighbourhood"] = json!["bairro"].string
-                addressData["state"] = json!["uf"].string
-                addressData["city"] = json!["localidade"].string
-                addressData["zip"] = self.searchZipTextField.text!
-                addressData["location"] = PFGeoPoint()
-                addressData["additionalInfo"] = ""
-                
-                
-                let address = Address(data: addressData)
-                
-                AddressManager.sharedInstance.transformAddressToGeoPoint(address, response: { (geoPoint) in
+                AddressManager.sharedInstance.transformAddressToGeoPoint(self.address!, response: { (geoPoint) in
                     let lat = geoPoint.latitude
                     let lng = geoPoint.longitude
                     
-                    address.location = CLLocation(latitude: lat, longitude: lng)
+                    self.address!.location = CLLocation(latitude: lat, longitude: lng)
                 })
                 
             })
@@ -138,7 +146,41 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         })
     }
     
+    func completeAddressInformation(){
+        if let street = streetTextView.text {
+            address?.street = street
+        }
+        if let number = Int(numberTextView.text!){
+            address?.number = NSNumber(integer: number)
+        }
+        if let additionalInfo = complementTextView.text {
+            address?.additionalInfo = additionalInfo
+        }
+        if let neighbourhood = neighbourhoodTextView.text {
+            address?.neighbourhood = neighbourhood
+        }
+        if let zip = zipTextView.text {
+            address?.zip = zip
+        }
+        if let city = cityTextView.text {
+            address?.city = city
+        }
+        if let state = stateTextView.text{
+            address?.state = state
+        }
+        if let name = addressNameTextView.text {
+            address?.name = name
+        }
+    }
+    
     @IBAction func saveAddress(sender: AnyObject) {
-        
+        if filledAllRequiredFields() {
+            completeAddressInformation()
+            AddressManager.sharedInstance.saveUserNewAddress(self.address!, response: { (success, error) in
+                if success {
+                    self.dismissViewControllerAnimated(false, completion: nil)
+                }
+            })
+        }
     }
 }

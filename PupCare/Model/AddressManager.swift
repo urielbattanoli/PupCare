@@ -17,8 +17,6 @@ class AddressManager: NSObject {
     
     static let sharedInstance = AddressManager()
     
-    
-    
     func getZipInformation(zip: String, jsonResponse: (json: JSON?, error: NSError?) -> ()) {
         let urlTo = "https://viacep.com.br/ws/\(zip)/json/unicode/"
         Alamofire.request(.GET, urlTo).responseJSON { (response) in
@@ -32,18 +30,21 @@ class AddressManager: NSObject {
         let addressPFObject = AddressManager.sharedInstance.tranformAddressToPFObject(address)
         
         addressPFObject.saveInBackgroundWithBlock { (success, error) in
-            return (success,error)
+            response(success,error)
         }
     }
     
     private func tranformAddressToPFObject(address: Address) -> PFObject {
         let addressAsPFObject = PFObject(className: "Address")
+        if address.addressId != "" {
+            addressAsPFObject["addressId"] = address.addressId
+        }
         addressAsPFObject["street"] = address.street
         addressAsPFObject["zip"] = address.zip
         addressAsPFObject["number"] = address.number
         addressAsPFObject["city"] = address.city
         addressAsPFObject["neighbourhood"] = address.neighbourhood
-        addressAsPFObject["location"] = address.location
+        addressAsPFObject["location"] = PFGeoPoint(location: address.location)
         addressAsPFObject["state"] = address.state
         addressAsPFObject["name"] = address.name
         
@@ -84,13 +85,16 @@ class AddressManager: NSObject {
                 let cityState = (pmDict!["FormattedAddressLines"] as! [String])[2]
                 let city = cityState.substringFromIndex(cityState.startIndex).substringToIndex(cityState.endIndex.advancedBy(-5))
                 
-                addressDict["userId"] = PFUser.currentUser()?.objectId
+                addressDict["addressId"] = ""
+                addressDict["name"] = ""
                 addressDict["street"] = pmDict!["Thoroughfare"]
+                addressDict["number"] = 0
+                addressDict["additionalInfo"] = ""
                 addressDict["neighbourhood"] = pmDict!["SubLocality"]
                 addressDict["state"] = pmDict!["State"]
                 addressDict["city"] = city
                 addressDict["zip"] = "\(pmDict!["ZIP"]!)\(pmDict!["PostCodeExtension"]!)"
-                addressDict["location"] = PFGeoPoint(latitude: latitude, longitude: longitude)
+                addressDict["location"] = CLLocation(latitude: latitude, longitude: longitude)
                 
                 response(data: addressDict)
             }
