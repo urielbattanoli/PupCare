@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G4d-vM-CpQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A286a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G4d-vM-CpQ">
     <dependencies>
         <development version="7000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,119 +15,129 @@
                         <viewControllerLayoutGuide type="bottom" id="0Yf-cr-gsv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lqb-hA-YAJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="240" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Zd-C8-zIJ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PetShopCell" id="sbS-cO-ctE" customClass="PetShopsTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="240"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbS-cO-ctE" id="7uU-n7-Fk9">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="239.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXB-ol-xEg">
-                                                    <rect key="frame" x="10" y="10" width="580" height="230"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H3-mu-efp">
+                                                    <rect key="frame" x="15" y="10" width="570" height="230"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PetShopDoBom" translatesAutoresizingMaskIntoConstraints="NO" id="Hrf-yq-YN9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="580" height="160"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="570" height="160"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="160" id="ZXJ-CR-wfq"/>
+                                                                <constraint firstAttribute="height" constant="160" id="6IX-NC-89h"/>
+                                                                <constraint firstAttribute="height" constant="160" id="NWy-XK-ils"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="aot-iI-2lq"/>
                                                             </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="NWy-XK-ils"/>
+                                                                    <exclude reference="aot-iI-2lq"/>
+                                                                </mask>
+                                                            </variation>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlI-sg-RdC">
-                                                            <rect key="frame" x="10" y="170" width="165" height="17"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="165" id="TIP-e1-M8R"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucE-tY-IyB">
-                                                            <rect key="frame" x="425" y="170" width="145" height="14"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="145" id="RaP-2F-nnv"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-3g-Jwh">
-                                                            <rect key="frame" x="10" y="205" width="107" height="15"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXB-ol-xEg">
+                                                            <rect key="frame" x="0.0" y="160" width="570" height="70"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" alpha="0.0" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="HuP-kd-ri3">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlI-sg-RdC">
+                                                                    <rect key="frame" x="10" y="10" width="165" height="17"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="15" id="9Af-3Z-vkr"/>
-                                                                        <constraint firstAttribute="width" constant="15" id="Rn6-Sg-R0C"/>
+                                                                        <constraint firstAttribute="width" constant="165" id="b5z-0f-c37"/>
                                                                     </constraints>
-                                                                </imageView>
-                                                                <imageView userInteractionEnabled="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="rME-rK-LoO">
-                                                                    <rect key="frame" x="23" y="0.0" width="15" height="15"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucE-tY-IyB">
+                                                                    <rect key="frame" x="415" y="10" width="145" height="14"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="15" id="Hca-HM-duN"/>
-                                                                        <constraint firstAttribute="height" constant="15" id="oQO-4J-bpR"/>
+                                                                        <constraint firstAttribute="width" constant="145" id="A3u-cI-oNF"/>
                                                                     </constraints>
-                                                                </imageView>
-                                                                <imageView userInteractionEnabled="NO" alpha="0.0" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="aAZ-39-AJZ">
-                                                                    <rect key="frame" x="46" y="0.0" width="15" height="15"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-3g-Jwh">
+                                                                    <rect key="frame" x="10" y="48" width="92" height="12"/>
+                                                                    <subviews>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="HuP-kd-ri3">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
+                                                                        </imageView>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="rME-rK-LoO">
+                                                                            <rect key="frame" x="20" y="0.0" width="12" height="12"/>
+                                                                        </imageView>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="aAZ-39-AJZ">
+                                                                            <rect key="frame" x="40" y="0.0" width="12" height="12"/>
+                                                                        </imageView>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="z8D-Gp-sFV">
+                                                                            <rect key="frame" x="60" y="0.0" width="12" height="12"/>
+                                                                        </imageView>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="bXb-ds-TZf">
+                                                                            <rect key="frame" x="80" y="0.0" width="12" height="12"/>
+                                                                        </imageView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-ep-JCh">
+                                                                    <rect key="frame" x="465" y="46" width="95" height="14"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="15" id="grc-xb-kBr"/>
-                                                                        <constraint firstAttribute="height" constant="15" id="wsh-PV-sM0"/>
+                                                                        <constraint firstAttribute="width" constant="95" id="uq3-qU-4CS"/>
                                                                     </constraints>
-                                                                </imageView>
-                                                                <imageView userInteractionEnabled="NO" alpha="0.0" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="z8D-Gp-sFV">
-                                                                    <rect key="frame" x="69" y="0.0" width="15" height="15"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="15" id="511-qx-eTd"/>
-                                                                        <constraint firstAttribute="height" constant="15" id="jc9-ZP-FbL"/>
-                                                                    </constraints>
-                                                                </imageView>
-                                                                <imageView userInteractionEnabled="NO" alpha="0.0" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="bXb-ds-TZf">
-                                                                    <rect key="frame" x="92" y="0.0" width="15" height="15"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="15" id="0Co-6o-cCy"/>
-                                                                        <constraint firstAttribute="height" constant="15" id="v17-c6-wav"/>
-                                                                    </constraints>
-                                                                </imageView>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
-                                                        </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-ep-JCh">
-                                                            <rect key="frame" x="475" y="205" width="95" height="15"/>
+                                                            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="15" id="A54-hE-onz"/>
-                                                                <constraint firstAttribute="width" constant="95" id="jEl-BZ-Nnb"/>
+                                                                <constraint firstAttribute="trailing" secondItem="GFd-ep-JCh" secondAttribute="trailing" constant="10" id="8wd-T6-p09"/>
+                                                                <constraint firstAttribute="bottom" secondItem="iaV-3g-Jwh" secondAttribute="bottom" constant="10" id="LqH-MQ-ZvX"/>
+                                                                <constraint firstAttribute="bottom" secondItem="GFd-ep-JCh" secondAttribute="bottom" constant="10" id="QMC-cr-UEn"/>
+                                                                <constraint firstItem="VlI-sg-RdC" firstAttribute="top" secondItem="zXB-ol-xEg" secondAttribute="top" constant="10" id="TFG-nk-xuM"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ucE-tY-IyB" secondAttribute="trailing" constant="10" id="Yhi-KY-URh"/>
+                                                                <constraint firstItem="iaV-3g-Jwh" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" constant="10" id="Z3i-W5-xFx"/>
+                                                                <constraint firstAttribute="height" constant="70" id="aXb-zf-xfa"/>
+                                                                <constraint firstItem="ucE-tY-IyB" firstAttribute="top" secondItem="zXB-ol-xEg" secondAttribute="top" constant="10" id="lol-3d-pV9"/>
+                                                                <constraint firstItem="VlI-sg-RdC" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" constant="10" id="p6j-L0-pyo"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="GFd-ep-JCh" secondAttribute="bottom" constant="10" id="8vA-Xw-2hk"/>
-                                                        <constraint firstItem="VlI-sg-RdC" firstAttribute="top" secondItem="Hrf-yq-YN9" secondAttribute="bottom" constant="10" id="CiE-T2-L5Q"/>
-                                                        <constraint firstAttribute="bottom" secondItem="iaV-3g-Jwh" secondAttribute="bottom" constant="10" id="EF0-PH-cMF"/>
-                                                        <constraint firstItem="ucE-tY-IyB" firstAttribute="top" secondItem="Hrf-yq-YN9" secondAttribute="bottom" constant="10" id="Hz7-3U-5cM"/>
-                                                        <constraint firstItem="Hrf-yq-YN9" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" id="Pdx-ib-Tip"/>
-                                                        <constraint firstAttribute="trailing" secondItem="GFd-ep-JCh" secondAttribute="trailing" constant="10" id="TWk-Q8-VkR"/>
-                                                        <constraint firstItem="VlI-sg-RdC" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" constant="10" id="h1g-yV-NtF"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ucE-tY-IyB" secondAttribute="trailing" constant="10" id="jtz-Gz-mDH"/>
-                                                        <constraint firstItem="iaV-3g-Jwh" firstAttribute="leading" secondItem="zXB-ol-xEg" secondAttribute="leading" constant="10" id="kJO-lE-dvw"/>
-                                                        <constraint firstItem="Hrf-yq-YN9" firstAttribute="top" secondItem="zXB-ol-xEg" secondAttribute="top" id="rUA-vn-d7I"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Hrf-yq-YN9" secondAttribute="trailing" id="wcs-S5-wjT"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zXB-ol-xEg" secondAttribute="trailing" id="3rt-w9-QFa"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Hrf-yq-YN9" secondAttribute="trailing" id="VQk-Gm-Dhm"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Hrf-yq-YN9" secondAttribute="trailing" id="YW1-Y5-Apx"/>
+                                                        <constraint firstItem="zXB-ol-xEg" firstAttribute="leading" secondItem="4H3-mu-efp" secondAttribute="leading" id="YeO-Bv-U2U"/>
+                                                        <constraint firstItem="Hrf-yq-YN9" firstAttribute="leading" secondItem="4H3-mu-efp" secondAttribute="leading" id="YhT-VN-iAb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="zXB-ol-xEg" secondAttribute="bottom" id="a8g-Ne-6Rq"/>
+                                                        <constraint firstItem="Hrf-yq-YN9" firstAttribute="leading" secondItem="4H3-mu-efp" secondAttribute="leading" id="jBR-5E-ndK"/>
+                                                        <constraint firstItem="zXB-ol-xEg" firstAttribute="top" secondItem="Hrf-yq-YN9" secondAttribute="bottom" id="kKF-4r-uLH"/>
+                                                        <constraint firstItem="Hrf-yq-YN9" firstAttribute="top" secondItem="4H3-mu-efp" secondAttribute="top" id="wQP-Y6-QHS"/>
+                                                        <constraint firstItem="Hrf-yq-YN9" firstAttribute="top" secondItem="4H3-mu-efp" secondAttribute="top" id="yq4-8k-LTw"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="YW1-Y5-Apx"/>
+                                                            <exclude reference="jBR-5E-ndK"/>
+                                                            <exclude reference="yq4-8k-LTw"/>
+                                                        </mask>
+                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="zXB-ol-xEg" secondAttribute="bottom" id="1Pu-cl-M3q"/>
-                                                <constraint firstAttribute="trailing" secondItem="zXB-ol-xEg" secondAttribute="trailing" constant="10" id="30x-rg-759"/>
-                                                <constraint firstItem="zXB-ol-xEg" firstAttribute="top" secondItem="7uU-n7-Fk9" secondAttribute="top" constant="10" id="7by-bX-mng"/>
-                                                <constraint firstItem="zXB-ol-xEg" firstAttribute="leading" secondItem="7uU-n7-Fk9" secondAttribute="leading" constant="10" id="e1g-F5-IQw"/>
+                                                <constraint firstAttribute="trailing" secondItem="4H3-mu-efp" secondAttribute="trailing" constant="15" id="2fP-5C-ND2"/>
+                                                <constraint firstItem="4H3-mu-efp" firstAttribute="top" secondItem="7uU-n7-Fk9" secondAttribute="top" constant="10" id="X3a-Iy-qDG"/>
+                                                <constraint firstAttribute="bottom" secondItem="4H3-mu-efp" secondAttribute="bottom" id="i7x-F7-436"/>
+                                                <constraint firstItem="4H3-mu-efp" firstAttribute="leading" secondItem="7uU-n7-Fk9" secondAttribute="leading" constant="15" id="rHt-Bg-4l4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -137,6 +147,7 @@
                                             <outlet property="petShopDistanceLabel" destination="GFd-ep-JCh" id="4Cd-0l-QlF"/>
                                             <outlet property="petShopImageView" destination="Hrf-yq-YN9" id="H6Q-yS-1XN"/>
                                             <outlet property="petShopNameLabel" destination="VlI-sg-RdC" id="owa-wd-5p2"/>
+                                            <outlet property="petShopRoundedView" destination="4H3-mu-efp" id="5O5-UO-tPV"/>
                                             <outlet property="petShopView" destination="zXB-ol-xEg" id="NuU-HB-kzw"/>
                                         </connections>
                                     </tableViewCell>
@@ -145,10 +156,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="6Zd-C8-zIJ" firstAttribute="leading" secondItem="lqb-hA-YAJ" secondAttribute="leadingMargin" constant="-20" id="3kR-W3-zAm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6Zd-C8-zIJ" secondAttribute="trailing" constant="-20" id="FQk-Uj-76z"/>
-                            <constraint firstItem="0Yf-cr-gsv" firstAttribute="top" secondItem="6Zd-C8-zIJ" secondAttribute="bottom" id="QVp-Hx-UkT"/>
-                            <constraint firstItem="6Zd-C8-zIJ" firstAttribute="top" secondItem="j5t-Eq-tmd" secondAttribute="bottom" constant="-64" id="y1l-yT-Xyr"/>
+                            <constraint firstItem="0Yf-cr-gsv" firstAttribute="top" secondItem="6Zd-C8-zIJ" secondAttribute="bottom" id="ARO-5l-PPG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Zd-C8-zIJ" secondAttribute="trailing" constant="-20" id="fXu-fZ-TFd"/>
+                            <constraint firstItem="6Zd-C8-zIJ" firstAttribute="leading" secondItem="lqb-hA-YAJ" secondAttribute="leadingMargin" constant="-20" id="jNA-d4-bJ2"/>
+                            <constraint firstItem="6Zd-C8-zIJ" firstAttribute="top" secondItem="lqb-hA-YAJ" secondAttribute="topMargin" id="suL-4F-GuQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pet Shops" id="Zyr-rH-FXw">
@@ -180,9 +191,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G4d-vM-CpQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PoK-H7-Zl9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="PoK-H7-Zl9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.29411764705882354" green="0.0" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

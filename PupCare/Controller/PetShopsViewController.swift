@@ -22,6 +22,8 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
+        
         petShopsTableView.dataSource = self
         petShopsTableView.delegate = self
         

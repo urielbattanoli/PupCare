@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signUpWithFacebook(sender: AnyObject) {
-        UserManager.singInWithFacebook {
+        UserManager.sharedInstance.singInWithFacebook {
             let vcProfile : UIViewController! = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()
             vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
             

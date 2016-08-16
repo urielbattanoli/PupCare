@@ -9,9 +9,7 @@
 import UIKit
 
 class PromotionsTableViewCell: UITableViewCell {
-    
-    
-    
+
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var oldPrice: UILabel!
     @IBOutlet weak var petShopLabel: UILabel!
@@ -20,21 +18,24 @@ class PromotionsTableViewCell: UITableViewCell {
     @IBOutlet weak var newPriceLabel: UILabel!
     @IBOutlet weak var productDescriptionLabel: UILabel!
     @IBOutlet weak var discountPercentageLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    
+    var indexPath: NSIndexPath?
     
     var promotion: Promotion? {
-        didSet{
+        didSet {
             if let promotion = self.promotion {
             
                 self.productNameLabel.text = promotion.promotionName
                 self.oldPrice.text = NSNumber(float: promotion.lastPrice).numberToPrice()
                 self.newPriceLabel.text = NSNumber(float: promotion.newPrice).numberToPrice()
                 self.productDescriptionLabel.text = promotion.promotionDescription
-                self.newPriceLabel.textColor = Config.MainColors.PromotionColor
-                self.oldPrice.textColor = Config.MainColors.OldPriceColor
                 self.promotionPhoto.loadImage(promotion.promotionImage)
                 
                 self.discountPercentageLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2 / 2 * -1))
                 self.discountPercentageLabel.text = "\(Double(100 - (100 * promotion.newPrice / promotion.lastPrice)).roundToPlaces(0))%"
+                self.addToCartButton.addTarget(self, action: #selector(PromotionsTableViewCell.didPressAddToCart), forControlEvents: .TouchUpInside)
+                self.addToCartButton.tag = indexPath!.row
             }
         }
     }
@@ -42,11 +43,12 @@ class PromotionsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.containerView.layer.borderWidth = Config.BorderWidth
+        self.containerView.layer.borderColor = Config.MainColors.BorderColor.CGColor
+        self.containerView.layer.cornerRadius = 5
+        
         self.addToCartButton.clipsToBounds = true
         self.addToCartButton.layer.cornerRadius = 5
-        self.addToCartButton.backgroundColor = Config.MainColors.PromotionColor
-        
-        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -54,6 +56,12 @@ class PromotionsTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+ 
+    func didPressAddToCart() {
+        
     
+        Cart.sharedInstance.addToCart((self.promotion?.petshop)!, product: nil, promotion: self.promotion, quantity: 1)
+        
+    }
 }
 

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A286a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nds-my-ALX">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Add Card View Controller-->
+        <scene sceneID="8Pv-WX-aN7">
+            <objects>
+                <viewController id="nds-my-ALX" customClass="AddCardViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sCb-2Z-XeO"/>
+                        <viewControllerLayoutGuide type="bottom" id="3uu-AM-P04"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KxV-Hd-YYP" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-Bz-Rpu" customClass="UIControl">
+                                <rect key="frame" x="118" y="105" width="365" height="389"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZz-Yc-mx3" customClass="UIControl">
+                                        <rect key="frame" x="8" y="8" width="349" height="129"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uH-jv-cQC">
+                                                <rect key="frame" x="23" y="65" width="68" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOME NO CARTÃO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5c-U2-Skb">
+                                                <rect key="frame" x="23" y="94" width="251" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tb7-Sy-aa7">
+                                                <rect key="frame" x="275" y="83" width="66" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="6rH-iG-Jtv"/>
+                                                    <constraint firstAttribute="width" constant="66" id="IIW-in-A4Z"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000 0000 0000 0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dw-7o-zjg">
+                                                <rect key="frame" x="23" y="30" width="318" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.83659318364949486" green="0.83659318364949486" blue="0.83659318364949486" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="3dw-7o-zjg" firstAttribute="top" secondItem="BZz-Yc-mx3" secondAttribute="top" constant="30" id="5um-SF-vFY"/>
+                                            <constraint firstItem="q5c-U2-Skb" firstAttribute="top" secondItem="3uH-jv-cQC" secondAttribute="bottom" constant="8" id="6Qr-Lg-O0m"/>
+                                            <constraint firstItem="q5c-U2-Skb" firstAttribute="leading" secondItem="3uH-jv-cQC" secondAttribute="leading" id="JFV-Pz-R2d"/>
+                                            <constraint firstAttribute="bottom" secondItem="Tb7-Sy-aa7" secondAttribute="bottom" constant="8" id="R66-tJ-6jH"/>
+                                            <constraint firstItem="Tb7-Sy-aa7" firstAttribute="leading" secondItem="q5c-U2-Skb" secondAttribute="trailing" constant="1" id="Tpx-na-0St"/>
+                                            <constraint firstItem="3uH-jv-cQC" firstAttribute="leading" secondItem="3dw-7o-zjg" secondAttribute="leading" id="ZCW-Hg-uTE"/>
+                                            <constraint firstAttribute="height" constant="129" id="aLx-2U-HUY"/>
+                                            <constraint firstAttribute="trailing" secondItem="3dw-7o-zjg" secondAttribute="trailing" constant="8" id="eYE-Q6-rNj"/>
+                                            <constraint firstItem="3dw-7o-zjg" firstAttribute="leading" secondItem="BZz-Yc-mx3" secondAttribute="leading" constant="23" id="gTN-cE-Jt3"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tb7-Sy-aa7" secondAttribute="trailing" constant="8" id="q7h-kh-anM"/>
+                                            <constraint firstItem="3uH-jv-cQC" firstAttribute="top" secondItem="3dw-7o-zjg" secondAttribute="bottom" constant="14" id="rRg-hg-CV7"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="didPressOnView:" destination="nds-my-ALX" eventType="touchUpInside" id="xcj-L8-Xpi"/>
+                                        </connections>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número do cartão" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ugr-S1-doV">
+                                        <rect key="frame" x="24" y="173" width="319" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="didEditingChanged:" destination="nds-my-ALX" eventType="editingChanged" id="vkz-qJ-x8J"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data de vencimento" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uof-t4-8Yg">
+                                        <rect key="frame" x="24" y="217" width="319" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didPressDate:" destination="nds-my-ALX" eventType="editingDidBegin" id="CBo-n8-QfZ"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome no cartão" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VqJ-8O-Nae">
+                                        <rect key="frame" x="24" y="261" width="319" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didEditingChanged:" destination="nds-my-ALX" eventType="editingChanged" id="JsO-Iv-Sgy"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-Wj-N43">
+                                        <rect key="frame" x="24" y="322" width="319" height="30"/>
+                                        <color key="backgroundColor" red="0.3294117647" green="0.78039215689999997" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Cadastrar cartão">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didPressAddCard:" destination="nds-my-ALX" eventType="touchUpInside" id="nZE-CE-LEi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="BZz-Yc-mx3" firstAttribute="leading" secondItem="z1x-Bz-Rpu" secondAttribute="leading" constant="8" id="7ot-1Y-QHD"/>
+                                    <constraint firstAttribute="width" constant="365" id="Al6-X0-9dO"/>
+                                    <constraint firstItem="BZz-Yc-mx3" firstAttribute="top" secondItem="z1x-Bz-Rpu" secondAttribute="top" constant="8" id="CrE-tg-f0R"/>
+                                    <constraint firstAttribute="height" constant="389" id="N2d-lT-boc"/>
+                                    <constraint firstAttribute="trailing" secondItem="BZz-Yc-mx3" secondAttribute="trailing" constant="8" id="bGV-30-YJ0"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="didPressOnView:" destination="nds-my-ALX" eventType="touchUpInside" id="bqn-ov-JCS"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z1x-Bz-Rpu" firstAttribute="centerX" secondItem="KxV-Hd-YYP" secondAttribute="centerX" id="9fR-Rp-rVl"/>
+                            <constraint firstItem="z1x-Bz-Rpu" firstAttribute="centerY" secondItem="KxV-Hd-YYP" secondAttribute="centerY" id="mc5-YR-pdt"/>
+                        </constraints>
+                        <connections>
+                            <action selector="didPressOnView:" destination="nds-my-ALX" eventType="touchUpInside" id="Sxk-wk-FQ3"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="btAddCard" destination="TGy-Wj-N43" id="lDm-6z-WnE"/>
+                        <outlet property="imageBrandCard" destination="Tb7-Sy-aa7" id="6QK-yd-RLr"/>
+                        <outlet property="lblCardNumber" destination="3dw-7o-zjg" id="0Jw-cD-o3L"/>
+                        <outlet property="lblDateCard" destination="3uH-jv-cQC" id="N8K-8p-GWq"/>
+                        <outlet property="lblNameCard" destination="q5c-U2-Skb" id="IMJ-me-YUf"/>
+                        <outlet property="txtFieldCardNumber" destination="ugr-S1-doV" id="4AS-mr-Qki"/>
+                        <outlet property="txtFieldDateCard" destination="Uof-t4-8Yg" id="5yA-vP-9oX"/>
+                        <outlet property="txtFieldNameCard" destination="VqJ-8O-Nae" id="Jax-SO-6Ai"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mBq-53-GLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="254" y="327"/>
+        </scene>
+    </scenes>
+</document>

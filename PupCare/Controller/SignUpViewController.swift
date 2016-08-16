@@ -34,7 +34,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func didPressSignUp(sender: AnyObject) {
         if verifyFields() {
-            UserManager.singUpUser(name.text! , email: email.text!, password: password.text!, block: { (succeeded, message, userCreated) in
+            UserManager.sharedInstance.singUpUser(name.text! , email: email.text!, password: password.text!, block: { (succeeded, message, userCreated) in
                 if self.setAlertBody("",messageReceived: message) {
                     self.dismissViewControllerAnimated(false, completion: nil)
                 }
@@ -46,7 +46,7 @@ class SignUpViewController: UIViewController {
         if segue.identifier == "profileAfterSignUpSegue" {
             let profileVC = segue.destinationViewController.childViewControllers[0] as! MyProfileViewController
             
-            profileVC.user = sender as? User
+            profileVC.user = (sender as? User)!
             
         }
     }

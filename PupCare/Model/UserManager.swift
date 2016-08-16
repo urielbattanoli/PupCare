@@ -9,10 +9,15 @@
 import UIKit
 import Parse
 import ParseFacebookUtilsV4
+import FBSDKLoginKit
+import FBSDKCoreKit
+import FBSDKShareKit
 
 class UserManager: NSObject {
-
-    static func singUpUser(name : String, email: String, password: String, block: (Bool,String, User?)->())  {
+    
+    static let sharedInstance = UserManager()
+    
+    func singUpUser(name : String, email: String, password: String, block: (Bool,String, User?)->())  {
         
         let user = PFUser()
         
@@ -35,8 +40,8 @@ class UserManager: NSObject {
     }
     
     
-    static func singInUser(username: String, password:String, response:(usuario: User?)->()){
-      
+    func singInUser(username: String, password:String, response:(usuario: User?)->()){
+        
         PFUser.logInWithUsernameInBackground(username, password: password) { (user, error) in
             if user != nil {
                 let usuario = User(parseObject: user!)
@@ -48,7 +53,7 @@ class UserManager: NSObject {
         
     }
     
-    static func logOutUser(block: ()->()) {
+    func logOutUser(block: ()->()) {
         PFUser.logOutInBackgroundWithBlock { (error) in
             if error != nil {
                 
@@ -58,7 +63,7 @@ class UserManager: NSObject {
         }
     }
     
-    static func singInWithFacebook(block: ()->()){
+    func singInWithFacebook(block: ()->()){
         
         let permissions = ["public_profile","email"]
         
@@ -66,17 +71,46 @@ class UserManager: NSObject {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
                 if user.isNew {
-                    print("User signed up and logged in through Facebook!")
+                    UserManager.sharedInstance.saveAdditionalFacebookInformation({ 
+                        block()
+                    })
                 } else {
+                    block()
                     print("User logged in through Facebook!")
                 }
-                block()
             } else {
                 print("Uh oh. The user cancelled the Facebook login.")
             }
         }
     }
     
-    
-    
+    func saveAdditionalFacebookInformation(block: ()->()){
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, name, email, picture.type(large)"]).startWithCompletionHandler({ (connection, result, error) in
+                if error != nil {
+                    print("Error: \(error)")
+                }
+                else {
+                    print(result)
+                    
+                    let pictureObjects = result.valueForKey("picture")
+                    let pictureData = pictureObjects!.valueForKey("data")
+                    let pictureUrl = pictureData!.valueForKey("url") as! String
+                    let dataToPFFile = NSData(contentsOfURL: NSURL(string: pictureUrl)!)
+                    
+                    let userPicture = PFFile(data: dataToPFFile!)
+                    
+                    let currentUser = PFUser.currentUser()!
+                    currentUser["name"] = result.valueForKey("name")
+                    currentUser["email"] = result.valueForKey("email")
+                    currentUser["image"] = userPicture
+                    
+                    
+                    currentUser.saveInBackgroundWithBlock({ (true, error) in
+                        block()
+                    })
+                }
+            })
+        }
+    }
 }

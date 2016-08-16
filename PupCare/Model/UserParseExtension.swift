@@ -10,14 +10,20 @@ import UIKit
 import Parse
 
 extension User {
-
+    
     convenience init(parseObject: PFUser) {
         var data = [String : AnyObject]()
         
         data["userId"] = parseObject.objectId
-        data["name"] = parseObject["name"]
-//        data["photo"] = (parseObject["image"] as! PFFile).url
-        
+        if let name = parseObject["name"] as? String{
+            data["name"] = name
+        }
+        if let photo = parseObject["image"] as? PFFile{
+            data["photo"] = photo.url
+        }
+        if let email = parseObject["email"] as? String{
+            data["email"] = email
+        }
         self.init(data: data)
     }
 }

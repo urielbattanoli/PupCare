@@ -10,13 +10,23 @@ import UIKit
 
 class User: NSObject {
 
-    let userId: String
-    let name: String
-//    let photoUrl: String
+    var userId: String?
+    var name: String?
+    var photoUrl: String?
+    var email: String?
+    var addressList: [Address] = []
     
     init(data: [String : AnyObject]) {
-        self.userId = data["userId"] as! String
-        self.name = data["name"] as! String
-//        self.photoUrl = data["photo"] as! String
+        self.userId = data["userId"] as? String
+        
+        if let name = data["name"] as? String{
+            self.name = name
+        }
+        if let photo = data["photo"] as? String{
+            self.photoUrl = photo
+        }
+        if let email = data["email"] as? String{
+            self.email = email
+        }
     }
 }

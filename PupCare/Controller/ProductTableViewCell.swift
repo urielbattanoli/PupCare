@@ -23,7 +23,7 @@ class ProductTableViewCell: UITableViewCell {
                 self.photoImageView.loadImage(product.imageUrl)
                 self.lblName.text = product.name
                 self.lblDescription.text = product.descript
-                self.lblPrice.text = product.price
+                self.lblPrice.text = product.price.numberToPrice()
             }
         }
     }
