@@ -105,14 +105,16 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.ProductPhotoImageView.loadImage(product.imageUrl)
                 cell.ProductValueLabel.text = "\(product.price)"
                 cell.ProductNameLabel.text = product.name
+                cell.price = Float(product.price)
                 
             } else {
                 
                 let promotion = sections[indexPath.section].promotions[indexPath.row - 1 -
                     sections[indexPath.section].products.count]
                 cell.ProductNameLabel.text = promotion.promotionName
-                cell.ProductValueLabel.text = "\(promotion.lastPrice)"
+                cell.ProductValueLabel.text = "\(promotion.newPrice)"
                 cell.ProductPhotoImageView.loadImage(promotion.promotionImage)
+                cell.price = promotion.newPrice
                 cell.promotion = promotion
             }
             
@@ -122,8 +124,18 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.ProductQuantitySlider.tag = indexPath.section + 100
             cell.tagTeste = indexPath.section
             
+            let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(CartViewController.tableViewTap))
+            
+            gestureRecognizer.cancelsTouchesInView = false
+            
+            cell.ProductQuantitySlider.addGestureRecognizer(gestureRecognizer)
+            
+            
             break
         }
+        
+        
+        cell.indexPath = indexPath.row
         
         return cell
     }
@@ -137,7 +149,26 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(cell.FinishOrderQuantityLabel.text)
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("INDEX PATH\(indexPath.row)")
+    }
     
+    func tableViewTap (tapGesture: UIPanGestureRecognizer) {
+        let point: CGPoint = tapGesture.locationInView(self.CartTableView)
+        
+        let indexPath = self.CartTableView.indexPathForRowAtPoint(point)
+    
+        if indexPath == nil {
+            print("TAPPED OUTSIDE CELL")
+        } else {
+            let cell = self.CartTableView.cellForRowAtIndexPath(indexPath!)
+            
+            if let cell = cell as? CartTableViewCell {
+                print("TAPPED CELL\(cell.price)")
+            }
+            
+        }
+    }
     
     
     @IBAction func SliderValueChanged(sender: UISlider, forEvent event: UIEvent) {
@@ -145,12 +176,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if let finishCell = self.view.viewWithTag(sender.tag - 90) as? CartTableViewCell {
             if allTouches?.count > 0 {
+
+                
                 let phase = (allTouches?.first as UITouch!).phase
                 if phase == UITouchPhase.Began {
-//                    lastCount = Int(round(sender.value))
-//                    lastPrice = sender.value
-                    
-                    print(allTouches?.startIndex)
+                    if let touchView =  allTouches?.startIndex as? CartTableViewCell {
+                        print(touchView)
+                    }
                     
                     let a = Int(round(sender.value))
                     if a != 0 {
@@ -164,26 +196,15 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("BEGAN SLIDING: \(beganSliding)")
                     
                     if endedSliding > beganSliding {
-                        
                         finishCell.itensCount = finishCell.itensCount + (endedSliding - beganSliding)
                         finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
-                        
-                        
                     } else if endedSliding < beganSliding {
-                        
                         finishCell.itensCount = finishCell.itensCount - (beganSliding - endedSliding)
-                        
                         finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
-                        
-                        
                     }
-
-                    
                 }
-                
             }
-            
         }
-        
     }
+    
 }
