@@ -43,8 +43,8 @@ class PromotionsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.containerView.layer.borderWidth = Config.BorderWidth
-        self.containerView.layer.borderColor = Config.MainColors.BorderColor.CGColor
+        self.containerView.layer.borderWidth = 0.5
+        self.containerView.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).CGColor
         self.containerView.layer.cornerRadius = 5
         
         self.addToCartButton.clipsToBounds = true

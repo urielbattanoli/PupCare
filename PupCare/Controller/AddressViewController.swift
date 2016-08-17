@@ -9,7 +9,10 @@
 import UIKit
 import CoreLocation
 import SwiftyJSON
-import Parse
+
+@objc protocol AddAddressDelegate{
+    optional func addressAdded(address: Address)
+}
 
 class AddressViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -23,12 +26,10 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var addressNameTextView: TXTAttributedStyle!
     
     var searchZipTextField : UITextField!
-    
     var location : CLLocation?
-    
     let locationManager = CLLocationManager()
-    
     var address: Address?
+    weak var delegate : AddAddressDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,17 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        // Do any additional setup after loading the view.
+        
+        if let address = self.address{
+            self.streetTextView.text = address.street
+            self.numberTextView.text = "\(address.number)"
+            self.complementTextView.text = address.additionalInfo
+            self.zipTextView.text = address.zip
+            self.neighbourhoodTextView.text = address.neighbourhood
+            self.cityTextView.text = address.city
+            self.stateTextView.text = address.state
+            self.addressNameTextView.text = address.name
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,8 +86,6 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     private func tranformJSONToData(json : JSON) -> [String:AnyObject]{
         var addressData = [String:AnyObject]()
         
-        addressData["addressId"] = ""
-        addressData["name"] = ""
         addressData["street"] = json["logradouro"].string
         addressData["number"] = 0
         addressData["neighbourhood"] = json["bairro"].string
@@ -84,7 +93,16 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         addressData["city"] = json["localidade"].string
         addressData["zip"] = self.searchZipTextField.text!
         addressData["location"] = CLLocation()
+        
+        addressData["addressId"] = ""
+        addressData["name"] = ""
         addressData["additionalInfo"] = ""
+        
+        if let address = self.address{
+            addressData["addressId"] = address.addressId
+            addressData["name"] = address.name
+            addressData["additionalInfo"] = address.additionalInfo
+        }
         
         return addressData
     }
@@ -103,6 +121,14 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
             self.zipTextView.text = addressData["zip"] as? String
             self.cityTextView.text = addressData["city"] as? String
             self.stateTextView.text = addressData["state"] as? String
+            
+            var addressData = addressData
+            
+            if let address = self.address{
+                addressData["addressId"] = address.addressId
+                addressData["name"] = address.name
+                addressData["additionalInfo"] = address.additionalInfo
+            }
             
             self.address = Address(data: addressData)
             
@@ -178,7 +204,8 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
             completeAddressInformation()
             AddressManager.sharedInstance.saveUserNewAddress(self.address!, response: { (success, error) in
                 if success {
-                    self.dismissViewControllerAnimated(false, completion: nil)
+                    self.delegate?.addressAdded?(self.address!)
+                    self.navigationController?.popViewControllerAnimated(true)
                 }
             })
         }

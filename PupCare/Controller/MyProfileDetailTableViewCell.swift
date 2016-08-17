@@ -41,7 +41,7 @@ class MyProfileDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.viewBack.layer.borderColor = self.bottomConstraint == nil ? UIColor.lightGrayColor().CGColor : UIColor(red: 115, green: 40, blue: 115).CGColor
+        self.viewBack.layer.borderColor = self.bottomConstraint == nil ? UIColor.lightGrayColor().CGColor : UIColor(red: 205, green: 205, blue: 205).CGColor
         self.viewBack.layer.borderWidth = 1
     }
     

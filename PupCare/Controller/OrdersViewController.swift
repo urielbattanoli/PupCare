@@ -29,14 +29,15 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
-//            let data = ["orderId":"asd123asd24a",
-//                        "petShop": petshops![0],
-//                        "date": NSDate(),
-//                        "price": 145.00]
-//            let order = Order(data: data)
-//            self.oldOrders = [order]
-//        }
+        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
+            let data = ["orderId":"asd123asd24a",
+                        "petShop": petshops![0],
+                        "date": NSDate(),
+                        "price": 145.00]
+            let order = Order(data: data)
+            self.oldOrders = [order, order]
+            self.processingOrders = [order, order, order]
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,10 +93,10 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+        return 55
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 95
+        return 85
     }
 }

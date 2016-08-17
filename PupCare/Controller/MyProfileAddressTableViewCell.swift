@@ -32,7 +32,7 @@ class MyProfileAddressTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.viewBack.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.viewBack.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).CGColor
         self.viewBack.layer.borderWidth = 1
     }
 
