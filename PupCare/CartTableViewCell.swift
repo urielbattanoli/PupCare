@@ -20,7 +20,7 @@ class CartTableViewCell: UITableViewCell {
     var delegate: CartViewCellDelegate?
     var itensCount: Int = 0
     var price: Float = 0.0
-    
+    var indexPath: Int = 0
     
     // Finish Order
     @IBOutlet weak var FinishOrderButton: UIButton!
@@ -68,16 +68,14 @@ class CartTableViewCell: UITableViewCell {
             self.ProductValueLabel.text = "\(Float(product.price) * rounded)"
         }
         if let promotion = promotion {
-            self.ProductValueLabel.text = "\(Float(promotion.lastPrice) * rounded)"
+            self.ProductValueLabel.text = "\(Float(promotion.newPrice) * rounded)"
         }
     }
     
     @IBAction func cellSliderDidChange(sender: AnyObject) {
         delegate?.cellSliderDidChange(self)
     }
-
     
-
 }
 
 
