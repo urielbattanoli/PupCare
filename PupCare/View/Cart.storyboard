@@ -195,6 +195,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
+                                                        <action selector="SliderValueChanged:forEvent:" destination="Pya-gw-ci0" eventType="valueChanged" id="Ykm-1s-1cE"/>
                                                         <action selector="sliderChance:" destination="0um-Gh-9cG" eventType="valueChanged" id="aKE-dC-uGw"/>
                                                     </connections>
                                                 </slider>
@@ -204,7 +205,7 @@
                                                         <constraint firstAttribute="width" constant="50" id="3wM-aa-JnT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

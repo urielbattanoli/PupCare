@@ -8,20 +8,22 @@
 
 import UIKit
 
-class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CartViewCellDelegate {
     
     @IBOutlet weak var CartTableView: UITableView!
     
     
     var sections: [ProductCart] = []
-    
-    
+    var lastPrice:Float = 0.0
+    var beganSliding: Int = 0
+    var endedSliding: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.CartTableView.delegate = self
         self.CartTableView.dataSource = self
+        
         
         for (_, productCart) in Cart.sharedInstance.cartProduct.productList {
             sections.append(productCart)
@@ -46,7 +48,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var cell: CartTableViewCell
         
-        print("CURRENT ROW\(indexPath.row)")
         let lenght = sections[indexPath.section].products.count + sections[indexPath.section].promotions.count + 1
         
         switch indexPath.row {
@@ -65,18 +66,33 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.PetShopAddressLabel.text = petShop.address
             cell.PetShopNameLabel.text = petShop.name
             
+            cell.tagTeste = indexPath.section
+            
             break
         case lenght:
             
             cell = tableView.dequeueReusableCellWithIdentifier("CartConfirmation", forIndexPath: indexPath) as! CartTableViewCell
+            
+            cell.delegate = self
+            
             cell.FinishOrderButton.backgroundColor = Config.MainColors.BlueColor
             cell.FinishOrderButton.layer.cornerRadius = 5
             cell.FinishOrderButton.layer.masksToBounds = true
-
+            
             cell.FinishOrderPriceLabel.textColor = Config.MainColors.GreyColor
             cell.FinishOrderTotalPrice.textColor = Config.MainColors.GreyColor
             cell.FinishOrderItensCount.textColor = Config.MainColors.GreyColor
             cell.FinishOrderQuantityLabel.textColor = Config.MainColors.GreyColor
+            
+            var thisSection = sections[indexPath.section]
+            
+            let itensCount = thisSection.products.count + thisSection.promotions.count
+            cell.FinishOrderQuantityLabel.text = "\(itensCount)"
+            cell.itensCount = itensCount
+            
+            cell.tag = indexPath.section + 10
+            
+            print("TAG \(cell.tag)")
             
             break
         default:
@@ -103,15 +119,11 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.ProductNameLabel.textColor = Config.MainColors.GreyColor
             cell.ProductValueLabel.textColor = Config.MainColors.GreyColor
             cell.ProductQuantity.textColor = Config.MainColors.GreyColor
-            
+            cell.ProductQuantitySlider.tag = indexPath.section + 100
+            cell.tagTeste = indexPath.section
             
             break
         }
-        
-        print(sections[indexPath.section])
-        print("INDEX PATH: \(indexPath.row)")
-        
-        
         
         return cell
     }
@@ -120,16 +132,58 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         return sections.count
     }
     
+    func cellSliderDidChange(cell: CartTableViewCell) {
+        print("DELEGATE:")
+        print(cell.FinishOrderQuantityLabel.text)
+    }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+    
+    @IBAction func SliderValueChanged(sender: UISlider, forEvent event: UIEvent) {
+        let allTouches = event.allTouches()
+        
+        if let finishCell = self.view.viewWithTag(sender.tag - 90) as? CartTableViewCell {
+            if allTouches?.count > 0 {
+                let phase = (allTouches?.first as UITouch!).phase
+                if phase == UITouchPhase.Began {
+//                    lastCount = Int(round(sender.value))
+//                    lastPrice = sender.value
+                    
+                    print(allTouches?.startIndex)
+                    
+                    let a = Int(round(sender.value))
+                    if a != 0 {
+                        beganSliding = a
+                    }
+                }
+                if phase == UITouchPhase.Ended {
+                    endedSliding = Int(round(sender.value))
+                    
+                    print("ENDED SLIDING: \(endedSliding)")
+                    print("BEGAN SLIDING: \(beganSliding)")
+                    
+                    if endedSliding > beganSliding {
+                        
+                        finishCell.itensCount = finishCell.itensCount + (endedSliding - beganSliding)
+                        finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+                        
+                        
+                    } else if endedSliding < beganSliding {
+                        
+                        finishCell.itensCount = finishCell.itensCount - (beganSliding - endedSliding)
+                        
+                        finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+                        
+                        
+                    }
+
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
 }

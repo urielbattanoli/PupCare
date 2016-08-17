@@ -8,10 +8,19 @@
 
 import UIKit
 
+protocol CartViewCellDelegate {
+    func cellSliderDidChange(cell: CartTableViewCell)
+}
+
 class CartTableViewCell: UITableViewCell {
 
     var product: Product?
     var promotion: Promotion?
+    var tagTeste: Int?
+    var delegate: CartViewCellDelegate?
+    var itensCount: Int = 0
+    var price: Float = 0.0
+    
     
     // Finish Order
     @IBOutlet weak var FinishOrderButton: UIButton!
@@ -61,9 +70,14 @@ class CartTableViewCell: UITableViewCell {
         if let promotion = promotion {
             self.ProductValueLabel.text = "\(Float(promotion.lastPrice) * rounded)"
         }
-        
-        
+    }
+    
+    @IBAction func cellSliderDidChange(sender: AnyObject) {
+        delegate?.cellSliderDidChange(self)
     }
 
+    
+
 }
-//
+
+
