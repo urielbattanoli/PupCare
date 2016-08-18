@@ -60,9 +60,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.PetShopPhotoImageView.layer.masksToBounds = true
             cell.PetShopPhotoImageView.layer.cornerRadius = 10
             
-            cell.PetShopDistanceLabel.textColor = Config.MainColors.GreyColor
-            cell.PetShopAddressLabel.textColor = Config.MainColors.GreyColor
-            cell.PetShopNameLabel.textColor = Config.MainColors.GreyColor
+//            cell.PetShopDistanceLabel.textColor = Config.MainColors.GreyColor
+//            cell.PetShopAddressLabel.textColor = Config.MainColors.GreyColor
+//            cell.PetShopNameLabel.textColor = Config.MainColors.GreyColor
             cell.PetShopAddressLabel.text = petShop.address
             cell.PetShopNameLabel.text = petShop.name
             
@@ -75,14 +75,14 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.delegate = self
             
-            cell.FinishOrderButton.backgroundColor = Config.MainColors.BlueColor
+//            cell.FinishOrderButton.backgroundColor = Config.MainColors.BlueColor
             cell.FinishOrderButton.layer.cornerRadius = 5
             cell.FinishOrderButton.layer.masksToBounds = true
             
-            cell.FinishOrderPriceLabel.textColor = Config.MainColors.GreyColor
-            cell.FinishOrderTotalPrice.textColor = Config.MainColors.GreyColor
-            cell.FinishOrderItensCount.textColor = Config.MainColors.GreyColor
-            cell.FinishOrderQuantityLabel.textColor = Config.MainColors.GreyColor
+//            cell.FinishOrderPriceLabel.textColor = Config.MainColors.GreyColor
+//            cell.FinishOrderTotalPrice.textColor = Config.MainColors.GreyColor
+//            cell.FinishOrderItensCount.textColor = Config.MainColors.GreyColor
+//            cell.FinishOrderQuantityLabel.textColor = Config.MainColors.GreyColor
             
             cell.FinishOrderPriceLabel.text = "\(self.beganPrice)"
             cell.beganPrice = self.beganPrice
@@ -124,9 +124,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             self.beganPrice = self.beganPrice + (Float(beganSliding) * cell.price)
-            cell.ProductNameLabel.textColor = Config.MainColors.GreyColor
-            cell.ProductValueLabel.textColor = Config.MainColors.GreyColor
-            cell.ProductQuantity.textColor = Config.MainColors.GreyColor
+//            cell.ProductNameLabel.textColor = Config.MainColors.GreyColor
+//            cell.ProductValueLabel.textColor = Config.MainColors.GreyColor
+//            cell.ProductQuantity.textColor = Config.MainColors.GreyColor
             cell.ProductQuantitySlider.tag = indexPath.section + 100
             cell.tagTeste = indexPath.section
             
