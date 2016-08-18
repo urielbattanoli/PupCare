@@ -12,6 +12,11 @@ class CartTableViewCell: UITableViewCell {
 
     var product: Product?
     var promotion: Promotion?
+    var tagTeste: Int?
+    var itensCount: Int = 0
+    var price: Float = 0.0
+    var beganPrice: Float = 0.0
+    var indexPath: Int = 0
     
     // Finish Order
     @IBOutlet weak var FinishOrderButton: UIButton!
@@ -59,11 +64,10 @@ class CartTableViewCell: UITableViewCell {
             self.ProductValueLabel.text = "\(Float(product.price) * rounded)"
         }
         if let promotion = promotion {
-            self.ProductValueLabel.text = "\(Float(promotion.lastPrice) * rounded)"
+            self.ProductValueLabel.text = "\(Float(promotion.newPrice) * rounded)"
         }
-        
-        
     }
-
+    
 }
-//
+
+

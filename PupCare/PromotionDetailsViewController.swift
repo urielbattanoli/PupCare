@@ -14,7 +14,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
 
     var photos: [UIImage] = []
     var promotion: Promotion?
-    var promotionColor = Config.MainColors.BlueColor
+//    var promotionColor = Config.MainColors.BlueColor
     var downloader: ImageDownloader! = ImageDownloader(name: "downloadPromotionImages")
     
     
