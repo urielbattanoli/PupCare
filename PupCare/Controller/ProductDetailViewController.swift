@@ -50,15 +50,23 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
         
-        var itemView: UIImageView
+        var itemView: UIView
         
         if view == nil{
-            itemView = UIImageView(frame: CGRect(x: 0, y: 0, width: 225, height: 225))
-            itemView.loadImage((self.product?.imageUrl)!)
-            itemView.contentMode = .ScaleAspectFit
+            itemView = UIView(frame: CGRect(x: 0, y: 0, width: 225, height: 225))
+            itemView.layer.borderWidth = 5
+            itemView.layer.borderColor = UIColor(red: 115, green: 40, blue: 115).CGColor
+            itemView.layer.cornerRadius = 10
+            
+            let imageView = UIImageView(frame: CGRect(x: 20, y: 20, width: 185, height: 185))
+            imageView.loadImage((self.product?.imageUrl)!)
+            imageView.contentMode = .ScaleAspectFit
+            imageView.layer.cornerRadius = 10
+            
+            itemView.addSubview(imageView)
         }
         else{
-            itemView = view as! UIImageView
+            itemView = view!
         }
         
         return itemView

@@ -17,6 +17,9 @@ class MyProfileDetailTableViewCell: UITableViewCell {
     var string: String?{
         didSet{
             if let string = self.string{
+                if string == "Sair" {
+                    self.viewBack.layer.borderColor = UIColor.clearColor().CGColor
+                }
                 self.textField.text = string
             }
         }
@@ -38,7 +41,7 @@ class MyProfileDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.viewBack.layer.borderColor = self.bottomConstraint == nil ? UIColor.lightGrayColor().CGColor : UIColor(red: 84/255, green: 199/255, blue: 252/255, alpha: 1).CGColor
+        self.viewBack.layer.borderColor = self.bottomConstraint == nil ? UIColor.lightGrayColor().CGColor : UIColor(red: 205, green: 205, blue: 205).CGColor
         self.viewBack.layer.borderWidth = 1
     }
     

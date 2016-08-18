@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import Kingfisher
 
 extension NSNumber {
@@ -20,7 +21,7 @@ extension NSNumber {
     }
 }
 
-extension UIImageView{
+extension UIImageView {
     func loadImage(url: String){
         self.kf_showIndicatorWhenLoading = true
         self.kf_setImageWithURL(NSURL(string: url)!)
@@ -52,5 +53,15 @@ extension UIColor {
 extension String {
     func numberCardMask()-> String{
         return "**** **** **** \(self)"
+    }
+}
+
+extension NSDate {
+    func dateToString() -> String{
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale.currentLocale()
+        formatter.dateStyle = .ShortStyle
+        
+        return formatter.stringFromDate(self)
     }
 }

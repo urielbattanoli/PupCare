@@ -11,7 +11,7 @@ import Parse
 
 //Mark: Add card protocol
 
-class MyProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddCardDelegate {
+class MyProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddAddressDelegate {
     
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -19,8 +19,8 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: Variables
     private let numberOfSections = 3
     private let numberOfRowSection0 = 1
-    private let numberOfRowSection1 = 5
-    private var numberOfRowSection2 = 1
+    private var numberOfRowSection1 = 5
+    private let numberOfRowSection2 = 1
     private let numberOfRowSectionShrunk = 2
     
     var section1Expanded = false
@@ -37,7 +37,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
         self.user = User(parseObject: PFUser.currentUser()!)
         
         self.tableView.delegate = self
@@ -54,6 +54,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.numberOfRowSection1 = self.user.addressList.count + 5
         
         switch section {
         case 0:
@@ -139,8 +140,9 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         case 1 where indexPath.row > 2 && indexPath.row < self.numberOfRowSection1-1:
             if indexPath.row == self.numberOfRowSection1-2{
                 performSegueWithIdentifier("goToAddAddress", sender: nil)
+                return
             }
-            let address = self.user.addressList[indexPath.row]
+            let address = self.user.addressList[indexPath.row-3]
             performSegueWithIdentifier("goToAddAddress", sender: address)
         case 2:
             self.didPressLogOut()
@@ -180,13 +182,25 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
-        
         switch segue.identifier! {
         case "logInSegue":
             segue.destinationViewController.childViewControllers[0] as! LoginViewController
+        case "goToAddAddress":
+            let addressVC = segue.destinationViewController as! AddressViewController
+            addressVC.delegate = self
+            if let address = sender as? Address{
+                addressVC.address = address
+            }
         default:
             print("default prepareForSegue")
         }
+    }
+    
+    // MARK: Address delegate
+    func addressAdded(address: Address){
+        if !self.user.addressList.contains(address){
+            self.user.addressList.append(address)
+        }
+        self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
     }
 }

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A286a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RQp-fc-YnW">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Address View Controller-->
+        <scene sceneID="QYQ-kg-JP9">
+            <objects>
+                <viewController id="RQp-fc-YnW" customClass="AddressViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rTs-u4-Jwy"/>
+                        <viewControllerLayoutGuide type="bottom" id="jfb-3T-Wvu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qsU-mw-EtT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rua" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Low-Pl-W3U" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="81" width="580" height="45"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="XLQ-Ws-t6o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3b5-og-Tfh" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="134" width="80" height="45"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="QPt-xH-rVF"/>
+                                    <constraint firstAttribute="width" constant="80" id="zo8-vi-9dR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Estado" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0CV-vK-Fd7" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="285" y="240" width="305" height="45"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="H9k-Wr-KHC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cidade" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a7t-7J-HKT" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="240" width="265" height="45"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="265" id="Bwo-XI-zFq"/>
+                                    <constraint firstAttribute="width" priority="750" constant="265" id="g7G-vK-BEe"/>
+                                    <constraint firstAttribute="height" constant="45" id="jDd-wl-K1b"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="olO-Qe-Mz0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8a-dO-UEq" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="305" y="28" width="284.5" height="45"/>
+                                <color key="backgroundColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Fqx-z5-SsO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Buscar pelo CEP">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchAddressByZipCode:" destination="RQp-fc-YnW" eventType="touchUpInside" id="R3U-7M-Vba"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRi-v5-8HT" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="346" width="580" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="U5D-n2-DS7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Cadastrar Endereço">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveAddress:" destination="RQp-fc-YnW" eventType="touchUpInside" id="xPf-YJ-z3K"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dê um nome ao endereço (Ex: &quot;minha casa&quot;)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHk-dF-Rx9" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="293" width="580" height="45"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="U75-yS-OJc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qpg-YK-RcB" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="28" width="285" height="45"/>
+                                <color key="backgroundColor" red="0.45098039215686275" green="0.15686274509803921" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="bda-Dh-Nai"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Buscar pelo GPS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchAddressByCurrentLocation:" destination="RQp-fc-YnW" eventType="touchUpInside" id="Gvs-Bi-Db9"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CEP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6s6-4T-eO8" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="187" width="170" height="45"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="lXU-1s-LbU"/>
+                                    <constraint firstAttribute="height" constant="45" id="sSU-W9-yBq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Complemento" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZEd-VU-U1l" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="100" y="134" width="490" height="45"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="hr6-rL-gPj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bairro" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CnR-WI-TSR" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="190" y="187" width="400" height="45"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="UKR-Fe-tDc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0CV-vK-Fd7" secondAttribute="trailing" constant="10" id="0Nv-hy-Zsu"/>
+                            <constraint firstItem="6s6-4T-eO8" firstAttribute="top" secondItem="3b5-og-Tfh" secondAttribute="bottom" constant="8" id="11t-Ty-YKR"/>
+                            <constraint firstItem="gHk-dF-Rx9" firstAttribute="top" secondItem="a7t-7J-HKT" secondAttribute="bottom" constant="8" id="1nO-vt-Uve"/>
+                            <constraint firstItem="3b5-og-Tfh" firstAttribute="leading" secondItem="qsU-mw-EtT" secondAttribute="leading" constant="10" id="5s4-fj-5Vu"/>
+                            <constraint firstAttribute="trailing" secondItem="PRi-v5-8HT" secondAttribute="trailing" constant="10" id="A3M-3Q-bs9"/>
+                            <constraint firstItem="gHk-dF-Rx9" firstAttribute="leading" secondItem="qsU-mw-EtT" secondAttribute="leading" constant="10" id="BJD-y1-LL1"/>
+                            <constraint firstAttribute="trailing" secondItem="gHk-dF-Rx9" secondAttribute="trailing" constant="10" id="DxP-Oi-0sn"/>
+                            <constraint firstItem="PRi-v5-8HT" firstAttribute="top" secondItem="gHk-dF-Rx9" secondAttribute="bottom" constant="8" id="E4c-b9-sC3"/>
+                            <constraint firstItem="ZEd-VU-U1l" firstAttribute="leading" secondItem="3b5-og-Tfh" secondAttribute="trailing" constant="10" id="H09-8n-CDu"/>
+                            <constraint firstItem="Qpg-YK-RcB" firstAttribute="leading" secondItem="qsU-mw-EtT" secondAttribute="leading" constant="10" id="H0F-gp-ene"/>
+                            <constraint firstItem="3b5-og-Tfh" firstAttribute="top" secondItem="Low-Pl-W3U" secondAttribute="bottom" constant="8" id="HTK-6q-Xll"/>
+                            <constraint firstItem="u8a-dO-UEq" firstAttribute="leading" secondItem="Qpg-YK-RcB" secondAttribute="trailing" constant="10" id="Ioz-md-JbY"/>
+                            <constraint firstItem="Qpg-YK-RcB" firstAttribute="top" secondItem="rTs-u4-Jwy" secondAttribute="bottom" constant="8" id="NAO-iU-9ac"/>
+                            <constraint firstItem="ZEd-VU-U1l" firstAttribute="top" secondItem="Low-Pl-W3U" secondAttribute="bottom" constant="8" id="NE6-yL-Jnd"/>
+                            <constraint firstItem="Low-Pl-W3U" firstAttribute="leading" secondItem="qsU-mw-EtT" secondAttribute="leading" constant="10" id="PbL-RG-mJf"/>
+                            <constraint firstItem="CnR-WI-TSR" firstAttribute="centerY" secondItem="6s6-4T-eO8" secondAttribute="centerY" id="R8i-H4-9X9"/>
+                            <constraint firstAttribute="trailing" secondItem="CnR-WI-TSR" secondAttribute="trailing" constant="10" id="TcG-i1-wIO"/>
+                            <constraint firstItem="0CV-vK-Fd7" firstAttribute="centerY" secondItem="a7t-7J-HKT" secondAttribute="centerY" id="VFK-Ky-vhW"/>
+                            <constraint firstItem="Qpg-YK-RcB" firstAttribute="width" secondItem="u8a-dO-UEq" secondAttribute="width" id="Xhu-aJ-m3G"/>
+                            <constraint firstItem="CnR-WI-TSR" firstAttribute="leading" secondItem="6s6-4T-eO8" secondAttribute="trailing" constant="10" id="cUy-Tt-Qlf"/>
+                            <constraint firstItem="a7t-7J-HKT" firstAttribute="top" secondItem="6s6-4T-eO8" secondAttribute="bottom" constant="8" id="euL-3z-hcT"/>
+                            <constraint firstItem="0CV-vK-Fd7" firstAttribute="leading" secondItem="a7t-7J-HKT" secondAttribute="trailing" constant="10" id="huC-nz-EcS"/>
+                            <constraint firstItem="PRi-v5-8HT" firstAttribute="leading" secondItem="qsU-mw-EtT" secondAttribute="leading" constant="10" id="pMC-Qm-4WZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Low-Pl-W3U" secondAttribute="trailing" constant="10" id="pWk-4i-yol"/>
+                            <constraint firstItem="u8a-dO-UEq" firstAttribute="top" secondItem="rTs-u4-Jwy" secondAttribute="bottom" constant="8" id="qOm-Aa-Ml5"/>
+                            <constraint firstItem="Low-Pl-W3U" firstAttribute="top" secondItem="Qpg-YK-RcB" secondAttribute="bottom" constant="8" id="rx1-g3-75p"/>
+                            <constraint firstItem="a7t-7J-HKT" firstAttribute="leading" secondItem="qsU-mw-EtT" secondAttribute="leading" constant="10" id="spu-cs-RMw"/>
+                            <constraint firstItem="6s6-4T-eO8" firstAttribute="leading" secondItem="qsU-mw-EtT" secondAttribute="leading" constant="10" id="teJ-ed-eJX"/>
+                            <constraint firstAttribute="trailing" secondItem="ZEd-VU-U1l" secondAttribute="trailing" constant="10" id="vgZ-Wh-wfR"/>
+                            <constraint firstAttribute="trailing" secondItem="u8a-dO-UEq" secondAttribute="trailing" constant="10" id="yxY-mC-kIb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addressNameTextView" destination="gHk-dF-Rx9" id="SJU-kZ-FlI"/>
+                        <outlet property="cityTextView" destination="a7t-7J-HKT" id="Zbd-T4-6FA"/>
+                        <outlet property="complementTextView" destination="ZEd-VU-U1l" id="YUc-5X-qbB"/>
+                        <outlet property="neighbourhoodTextView" destination="CnR-WI-TSR" id="MUP-Gj-qVh"/>
+                        <outlet property="numberTextView" destination="3b5-og-Tfh" id="YZk-sA-dom"/>
+                        <outlet property="stateTextView" destination="0CV-vK-Fd7" id="SfT-c1-2Fe"/>
+                        <outlet property="streetTextView" destination="Low-Pl-W3U" id="bM0-jD-EnX"/>
+                        <outlet property="zipTextView" destination="6s6-4T-eO8" id="Dbu-mo-mmL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49Q-qz-69l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="695.5" y="419.5"/>
+        </scene>
+    </scenes>
+</document>

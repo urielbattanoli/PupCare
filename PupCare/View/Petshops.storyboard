@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G4d-vM-CpQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G4d-vM-CpQ">
     <dependencies>
         <development version="7000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -15,15 +15,15 @@
                         <viewControllerLayoutGuide type="bottom" id="0Yf-cr-gsv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lqb-hA-YAJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="240" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Zd-C8-zIJ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PetShopCell" id="sbS-cO-ctE" customClass="PetShopsTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="240"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbS-cO-ctE" id="7uU-n7-Fk9">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="239.5"/>
@@ -156,11 +156,23 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="0Yf-cr-gsv" firstAttribute="top" secondItem="6Zd-C8-zIJ" secondAttribute="bottom" id="1N7-5U-ef2"/>
                             <constraint firstItem="0Yf-cr-gsv" firstAttribute="top" secondItem="6Zd-C8-zIJ" secondAttribute="bottom" id="ARO-5l-PPG"/>
+                            <constraint firstItem="6Zd-C8-zIJ" firstAttribute="leading" secondItem="lqb-hA-YAJ" secondAttribute="leading" id="POS-B2-aRw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Zd-C8-zIJ" secondAttribute="trailing" constant="-20" id="fXu-fZ-TFd"/>
+                            <constraint firstAttribute="trailing" secondItem="6Zd-C8-zIJ" secondAttribute="trailing" id="h3F-f4-QhG"/>
                             <constraint firstItem="6Zd-C8-zIJ" firstAttribute="leading" secondItem="lqb-hA-YAJ" secondAttribute="leadingMargin" constant="-20" id="jNA-d4-bJ2"/>
                             <constraint firstItem="6Zd-C8-zIJ" firstAttribute="top" secondItem="lqb-hA-YAJ" secondAttribute="topMargin" id="suL-4F-GuQ"/>
+                            <constraint firstItem="6Zd-C8-zIJ" firstAttribute="top" secondItem="j5t-Eq-tmd" secondAttribute="bottom" id="xGv-lX-pA6"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fXu-fZ-TFd"/>
+                                <exclude reference="jNA-d4-bJ2"/>
+                                <exclude reference="suL-4F-GuQ"/>
+                                <exclude reference="ARO-5l-PPG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Pet Shops" id="Zyr-rH-FXw">
                         <barButtonItem key="rightBarButtonItem" title="Filtrar" id="WBE-rh-lt7">
@@ -191,9 +203,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G4d-vM-CpQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PoK-H7-Zl9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="PoK-H7-Zl9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.29411764705882354" green="0.0" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

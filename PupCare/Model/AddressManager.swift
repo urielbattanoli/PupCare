@@ -21,7 +21,7 @@ class AddressManager: NSObject {
         let urlTo = "https://viacep.com.br/ws/\(zip)/json/unicode/"
         Alamofire.request(.GET, urlTo).responseJSON { (response) in
             let json = JSON(data: response.data!)
-//            print(json)
+            print(json)
             jsonResponse(json: json, error: nil)
         }
     }
@@ -30,18 +30,21 @@ class AddressManager: NSObject {
         let addressPFObject = AddressManager.sharedInstance.tranformAddressToPFObject(address)
         
         addressPFObject.saveInBackgroundWithBlock { (success, error) in
-            return (success,error)
+            response(success,error)
         }
     }
     
     private func tranformAddressToPFObject(address: Address) -> PFObject {
         let addressAsPFObject = PFObject(className: "Address")
+        if address.addressId != "" {
+            addressAsPFObject["addressId"] = address.addressId
+        }
         addressAsPFObject["street"] = address.street
         addressAsPFObject["zip"] = address.zip
         addressAsPFObject["number"] = address.number
         addressAsPFObject["city"] = address.city
         addressAsPFObject["neighbourhood"] = address.neighbourhood
-        addressAsPFObject["location"] = address.location
+        addressAsPFObject["location"] = PFGeoPoint(location: address.location)
         addressAsPFObject["state"] = address.state
         addressAsPFObject["name"] = address.name
         
@@ -49,28 +52,25 @@ class AddressManager: NSObject {
     }
     
     func transformAddressToGeoPoint(address: Address, response:(geoPoint: CLLocationCoordinate2D)->()){
-        let addressString = "\(address.zip)"
+        let addressString = "\(address.street), \(address.number) \(address.city)"
+        print(addressString)
         CLGeocoder().geocodeAddressString(addressString, completionHandler: { (placemarks, error) in
             if error != nil {
-//                print(error)
+                print(error)
                 return
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
                 let location = placemark?.location
                 let coordinate = location?.coordinate
-//                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
-                if placemark?.areasOfInterest?.count > 0 {
-                    let areaOfInterest = placemark!.areasOfInterest![0]
-//                    print(areaOfInterest)
-                } else {
-//                    print("No area of interest found.")
-                }
+                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                
+                response(geoPoint: (location?.coordinate)!)
             }
         })
     }
     
-    func transformGeoPointToAddress(latitude: CLLocationDegrees, longitude: CLLocationDegrees, response:(address: Address)->()) {
+    func transformGeoPointToAddress(latitude: CLLocationDegrees, longitude: CLLocationDegrees, response:(data: [String:AnyObject])->()) {
         let location = CLLocation(latitude: latitude, longitude: longitude)
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
@@ -81,28 +81,22 @@ class AddressManager: NSObject {
                 let pm = placemarks![0]
                 let pmDict = pm.addressDictionary
                 
-                //DADOS NECESSÁRIOS PARA CRIAR UM ENDEREÇO
-//                print(pmDict!["FormattedAddressLines"]![1])
-//                print(pmDict!["FormattedAddressLines"]![2])
-//                print(pmDict!["FormattedAddressLines"]![3])
-//                print(pmDict!["FormattedAddressLines"]![4])
-                print(pmDict!["CountryCode"])
-                print(pmDict!["SubLocality"])
-                print(pmDict!["ZIP"])
-                print(pmDict!["Thoroughfare"])
-                print(pmDict!["PostCodeExtension"])
-//                print(pmDict!["CountryCode"])
-//                print(pmDict!["SubLocality"])
-//                print(pmDict!["ZIP"])
-//                print(pmDict!["Thoroughfare"])
-//                print(pmDict!["PostCodeExtension"])
+                var addressDict = [String:AnyObject]()
+                let cityState = (pmDict!["FormattedAddressLines"] as! [String])[2]
+                let city = cityState.substringFromIndex(cityState.startIndex).substringToIndex(cityState.endIndex.advancedBy(-5))
                 
-                if pm.areasOfInterest?.count > 0 {
-                    let areaOfInterest = pm.areasOfInterest?[0]
-//                    print(areaOfInterest!)
-                } else {
-//                    print("No area of interest found.")
-                }
+                addressDict["addressId"] = ""
+                addressDict["name"] = ""
+                addressDict["street"] = pmDict!["Thoroughfare"]
+                addressDict["number"] = 0
+                addressDict["additionalInfo"] = ""
+                addressDict["neighbourhood"] = pmDict!["SubLocality"]
+                addressDict["state"] = pmDict!["State"]
+                addressDict["city"] = city
+                addressDict["zip"] = "\(pmDict!["ZIP"]!)\(pmDict!["PostCodeExtension"]!)"
+                addressDict["location"] = CLLocation(latitude: latitude, longitude: longitude)
+                
+                response(data: addressDict)
             }
         })
     }

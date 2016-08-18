@@ -8,13 +8,14 @@
 
 import UIKit
 import Parse
+import CoreLocation
 
 extension Address {
     
     convenience init(parseObject: PFObject) {
         var data = [String : AnyObject]()
         
-        data["userId"] = parseObject.objectId
+        data["addressId"] = parseObject.objectId
         data["name"] = parseObject["name"] as! String
         data["street"] = parseObject["street"] as! String
         data["number"] = parseObject["number"] as! NSNumber
@@ -22,7 +23,9 @@ extension Address {
         data["state"] = parseObject["state"] as! String
         data["city"] = parseObject["city"] as! String
         data["zip"] = parseObject["zip"] as! String
-        data["location"] = parseObject["location"] as! PFGeoPoint        
+        data["additionalInfo"] = parseObject["additionalInfo"] as! String
+        let geoPoint = parseObject["location"] as! PFGeoPoint
+        data["location"] = CLLocation(latitude: geoPoint.latitude,longitude: geoPoint.longitude)
         
         self.init(data: data)
     }
