@@ -23,7 +23,12 @@ extension Address {
         data["state"] = parseObject["state"] as! String
         data["city"] = parseObject["city"] as! String
         data["zip"] = parseObject["zip"] as! String
-        data["additionalInfo"] = parseObject["additionalInfo"] as! String
+        if let additionalInfo = parseObject["additionalInfo"] as? String{
+            data["additionalInfo"] = additionalInfo
+        }
+        else{
+           data["additionalInfo"] = ""
+        }
         let geoPoint = parseObject["location"] as! PFGeoPoint
         data["location"] = CLLocation(latitude: geoPoint.latitude,longitude: geoPoint.longitude)
         

@@ -39,6 +39,7 @@ class AddressManager: NSObject {
         if address.addressId != "" {
             addressAsPFObject["addressId"] = address.addressId
         }
+        addressAsPFObject["userId"] = PFUser.currentUser()
         addressAsPFObject["street"] = address.street
         addressAsPFObject["zip"] = address.zip
         addressAsPFObject["number"] = address.number
@@ -99,5 +100,21 @@ class AddressManager: NSObject {
                 response(data: addressDict)
             }
         })
+    }
+    
+    func getAddressListFromUser(userId: String, block: ([Address])->()){
+        let param = ["userId" : userId]
+        PFCloud.callFunctionInBackground("getUserAddresses", withParameters: param) { (addresses, error) in
+            
+            var addressList = [Address]()
+            
+            if let addresses = addresses as? [PFObject]{
+                for address in addresses{
+                    let object = Address(parseObject: address)
+                    addressList.append(object)
+                }
+            }
+            block(addressList)
+        }
     }
 }

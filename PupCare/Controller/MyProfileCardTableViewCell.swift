@@ -33,7 +33,7 @@ class MyProfileCardTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.viewBack.layer.borderColor = UIColor.lightGrayColor().CGColor
-        self.viewBack.layer.borderWidth = 1
+        self.viewBack.layer.borderWidth = 0.5
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

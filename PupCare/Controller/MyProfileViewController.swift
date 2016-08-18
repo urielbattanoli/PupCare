@@ -40,6 +40,11 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
         self.user = User(parseObject: PFUser.currentUser()!)
         
+        AddressManager.sharedInstance.getAddressListFromUser(self.user.userId!) { (addresses) in
+            self.user.addressList = addresses
+            self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+        }
+        
         self.tableView.delegate = self
     }
     

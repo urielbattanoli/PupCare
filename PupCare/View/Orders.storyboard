@@ -184,11 +184,52 @@
                     <navigationItem key="navigationItem" title="Meus pedidos" id="ryR-bs-Gxh"/>
                     <connections>
                         <outlet property="tableView" destination="dCA-ho-iU6" id="fyn-eU-Ydv"/>
+                        <segue destination="2L3-Wm-Clf" kind="show" identifier="goToOrderDetail" id="78f-eb-2Gh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFW-Jl-VeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1176" y="235"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bYy-nQ-gOD">
+            <objects>
+                <viewController id="2L3-Wm-Clf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SmH-kG-Pdc"/>
+                        <viewControllerLayoutGuide type="bottom" id="a5b-mI-zKQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cOm-uQ-QqN">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4e6-f4-IYF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="105" id="U2e-ZT-jdy">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="105"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2e-ZT-jdy" id="QQ2-fn-m1q">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="104.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4e6-f4-IYF" firstAttribute="top" secondItem="SmH-kG-Pdc" secondAttribute="bottom" id="Cvi-Uo-Jkf"/>
+                            <constraint firstAttribute="trailing" secondItem="4e6-f4-IYF" secondAttribute="trailing" id="anM-KF-dQ7"/>
+                            <constraint firstItem="a5b-mI-zKQ" firstAttribute="top" secondItem="4e6-f4-IYF" secondAttribute="bottom" id="kQx-cU-qUZ"/>
+                            <constraint firstItem="4e6-f4-IYF" firstAttribute="leading" secondItem="cOm-uQ-QqN" secondAttribute="leading" id="wWn-M0-1mi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GCJ-QL-hsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1869" y="235"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zRd-zE-Vht">
