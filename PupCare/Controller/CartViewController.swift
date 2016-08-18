@@ -14,9 +14,12 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     var sections: [ProductCart] = []
-    var lastPrice:Float = 0.0
-    var beganSliding: Int = 0
+    var endedPrice: Float = 0.0
+    var beganPrice: Float = 0.0
+    var beganSliding: Int = 1
     var endedSliding: Int = 0
+    
+    var workingCell: CartTableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +31,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         for (_, productCart) in Cart.sharedInstance.cartProduct.productList {
             sections.append(productCart)
         }
-        
-        print(sections)
-        
         
     }
     
@@ -84,6 +84,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.FinishOrderItensCount.textColor = Config.MainColors.GreyColor
             cell.FinishOrderQuantityLabel.textColor = Config.MainColors.GreyColor
             
+            cell.FinishOrderPriceLabel.text = "\(self.beganPrice)"
+            cell.beganPrice = self.beganPrice
+            cell.price = self.beganPrice
+            
             var thisSection = sections[indexPath.section]
             
             let itensCount = thisSection.products.count + thisSection.promotions.count
@@ -116,8 +120,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.ProductPhotoImageView.loadImage(promotion.promotionImage)
                 cell.price = promotion.newPrice
                 cell.promotion = promotion
+                
             }
             
+            self.beganPrice = self.beganPrice + (Float(beganSliding) * cell.price)
             cell.ProductNameLabel.textColor = Config.MainColors.GreyColor
             cell.ProductValueLabel.textColor = Config.MainColors.GreyColor
             cell.ProductQuantity.textColor = Config.MainColors.GreyColor
@@ -125,11 +131,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.tagTeste = indexPath.section
             
             let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(CartViewController.tableViewTap))
-            
             gestureRecognizer.cancelsTouchesInView = false
-            
             cell.ProductQuantitySlider.addGestureRecognizer(gestureRecognizer)
             
+        
             
             break
         }
@@ -154,19 +159,19 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableViewTap (tapGesture: UIPanGestureRecognizer) {
+
         let point: CGPoint = tapGesture.locationInView(self.CartTableView)
-        
         let indexPath = self.CartTableView.indexPathForRowAtPoint(point)
-    
         if indexPath == nil {
             print("TAPPED OUTSIDE CELL")
         } else {
+            
             let cell = self.CartTableView.cellForRowAtIndexPath(indexPath!)
-            
             if let cell = cell as? CartTableViewCell {
-                print("TAPPED CELL\(cell.price)")
+//                print("TAPPED CELL\(cell.price)")
+                self.workingCell = cell
+                
             }
-            
         }
     }
     
@@ -180,13 +185,11 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let phase = (allTouches?.first as UITouch!).phase
                 if phase == UITouchPhase.Began {
-                    if let touchView =  allTouches?.startIndex as? CartTableViewCell {
-                        print(touchView)
-                    }
                     
                     let a = Int(round(sender.value))
                     if a != 0 {
                         beganSliding = a
+                        beganPrice = finishCell.beganPrice
                     }
                 }
                 if phase == UITouchPhase.Ended {
@@ -196,15 +199,48 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("BEGAN SLIDING: \(beganSliding)")
                     
                     if endedSliding > beganSliding {
+                        
                         finishCell.itensCount = finishCell.itensCount + (endedSliding - beganSliding)
                         finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+
                     } else if endedSliding < beganSliding {
-                        finishCell.itensCount = finishCell.itensCount - (beganSliding - endedSliding)
-                        finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+                        if endedSliding == 0 && beganSliding >= 1 {
+                            alertRemovedItem({ (shouldRemoveItem) in
+                                if shouldRemoveItem {
+                                    self.CartTableView.deleteRowsAtIndexPaths([self.CartTableView.indexPathForCell(finishCell)!], withRowAnimation: UITableViewRowAnimation.Fade)
+                                    
+                                }
+                            })
+                        } else {
+                            finishCell.itensCount = finishCell.itensCount - (beganSliding - endedSliding)
+                            finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+                        }
+                    }
+                    
+                    if let workingCell = workingCell {
+                        finishCell.price = finishCell.price - (Float(beganSliding) * workingCell.price) + (Float(endedSliding) * workingCell.price)
+                        
+                        finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
                     }
                 }
             }
         }
     }
+    
+    func alertRemovedItem(shouldRemoveItem: (Bool) -> Void) {
+        let alert = UIAlertController(title: "Carrinho", message: "Deseja remover este item do carrinho?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Continuar", style: .Default , handler: { action in
+            print("Deletou")
+            shouldRemoveItem(true)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .Cancel , handler: { action in
+            print("Cancelou")
+            shouldRemoveItem(false)
+        }))
+            
+            
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     
 }

@@ -20,6 +20,7 @@ class CartTableViewCell: UITableViewCell {
     var delegate: CartViewCellDelegate?
     var itensCount: Int = 0
     var price: Float = 0.0
+    var beganPrice: Float = 0.0
     var indexPath: Int = 0
     
     // Finish Order
