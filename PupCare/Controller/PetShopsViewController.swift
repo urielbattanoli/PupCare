@@ -81,7 +81,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.petShopAddressLabel.text = petShop.address
         cell.ranking = Int(petShop.ranking)
         cell.petShopImageView.loadImage(petShop.imageUrl)
-        
+//        cell.petShopDistanceLabel.text = 
         
         return cell
     }

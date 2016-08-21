@@ -186,25 +186,39 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                         finishCell.itensCount = finishCell.itensCount + (endedSliding - beganSliding)
                         finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+                        
+                        if let workingCell = workingCell {
+                            finishCell.price = finishCell.price - (Float(beganSliding) * workingCell.price) + (Float(endedSliding) * workingCell.price)
+                            
+                            finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                        }
 
                     } else if endedSliding < beganSliding {
                         if endedSliding == 0 && beganSliding >= 1 {
                             alertRemovedItem({ (shouldRemoveItem) in
+                                
                                 if shouldRemoveItem {
-                                    self.CartTableView.deleteRowsAtIndexPaths([self.CartTableView.indexPathForCell(finishCell)!], withRowAnimation: UITableViewRowAnimation.Fade)
+                                    //self.CartTableView.deleteRowsAtIndexPaths([self.CartTableView.indexPathForCell(finishCell)!], withRowAnimation: UITableViewRowAnimation.Fade)
+                                    print("REMOVE ITEM FROM CART")
+                                } else {
+                                    sender.value = 1
                                     
+//                                    finishCell.itensCount = finishCell.itensCount - (self.beganSliding - endedSliding)
+//                                    finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
                                 }
+                                
                             })
                         } else {
+
                             finishCell.itensCount = finishCell.itensCount - (beganSliding - endedSliding)
                             finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+                            
+                            if let workingCell = workingCell {
+                                finishCell.price = finishCell.price - (Float(beganSliding) * workingCell.price) + (Float(endedSliding) * workingCell.price)
+                                
+                                finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                            }
                         }
-                    }
-                    
-                    if let workingCell = workingCell {
-                        finishCell.price = finishCell.price - (Float(beganSliding) * workingCell.price) + (Float(endedSliding) * workingCell.price)
-                        
-                        finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
                     }
                 }
             }
