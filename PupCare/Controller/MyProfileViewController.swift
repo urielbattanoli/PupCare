@@ -38,7 +38,11 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
-        self.user = User(parseObject: PFUser.currentUser()!)
+        
+        if UserManager.sharedInstance.user == nil{
+            UserManager.sharedInstance.createUserByCurrentUser()
+        }
+        self.user = UserManager.sharedInstance.user
         
         AddressManager.sharedInstance.getAddressListFromUser(self.user.userId!) { (addresses) in
             self.user.addressList = addresses
@@ -111,6 +115,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             let addressCell = tableView.dequeueReusableCellWithIdentifier("cellAddress") as! MyProfileAddressTableViewCell
             if indexPath.row == self.numberOfRowSection1-2{
                 addressCell.setCorner()
+                addressCell.imageAddress.image = UIImage(named: "moreBt")
                 return addressCell
             }
             addressCell.address = self.user.addressList[indexPath.row-3]
@@ -133,6 +138,30 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.section == 1{
+            if indexPath.row > 2 && indexPath.row < self.numberOfRowSection1-2{
+                return true
+            }
+        }
+        return false
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        switch editingStyle {
+        case .Delete:
+            if indexPath.section == 1{
+                let address = self.user.addressList[indexPath.row-3]
+                AddressManager.sharedInstance.removeAddressFromParse(address)
+                self.user.addressList.removeAtIndex(indexPath.row-3)
+                self.numberOfRowSection1 -= 1
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+        default:
+            print("default commitEditing")
+        }
     }
     
     // MARK: Table View Delegate
@@ -167,6 +196,18 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             return 20
         }
         return 40
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteBt = UITableViewRowAction(style: .Default, title: "Remover") { (acton, indexPath) in
+            self.tableView.dataSource?.tableView!(
+                self.tableView,
+                commitEditingStyle: .Delete,
+                forRowAtIndexPath: indexPath)
+            return
+        }
+        deleteBt.backgroundColor = UIColor(red: 165, green: 22, blue: 25)
+        return [deleteBt]
     }
     
     // MARK: Functions

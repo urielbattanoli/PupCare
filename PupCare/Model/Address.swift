@@ -23,7 +23,7 @@ class Address: NSObject {
     var location : CLLocation
     
     init(data: [String : AnyObject]) {
-        self.addressId = data["addressId"] as! String
+        self.addressId = data["objectId"] as! String
         self.name = data["name"] as! String
         self.street = data["street"] as! String
         self.number = data["number"] as! NSNumber

@@ -15,7 +15,7 @@ extension Address {
     convenience init(parseObject: PFObject) {
         var data = [String : AnyObject]()
         
-        data["addressId"] = parseObject.objectId
+        data["objectId"] = parseObject.objectId
         data["name"] = parseObject["name"] as! String
         data["street"] = parseObject["street"] as! String
         data["number"] = parseObject["number"] as! NSNumber

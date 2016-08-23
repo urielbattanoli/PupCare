@@ -24,6 +24,10 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
         
+        if UserManager.sharedInstance.user == nil{
+            UserManager.sharedInstance.createUserByCurrentUser()
+        }
+        
         petShopsTableView.dataSource = self
         petShopsTableView.delegate = self
         
@@ -81,7 +85,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.petShopAddressLabel.text = petShop.address
         cell.ranking = Int(petShop.ranking)
         cell.petShopImageView.loadImage(petShop.imageUrl)
-        
+        cell.petShopDistanceLabel.text = "\(petShop.location.distanceFromLocation(UserManager.sharedInstance.user!.location)*1000)"
         
         return cell
     }

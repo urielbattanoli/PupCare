@@ -7,17 +7,16 @@
 //
 
 import UIKit
-import Parse
+import CoreLocation
 
 class PetShop: NSObject {
 
     var objectId: String = ""
     var name: String = ""
     var imageUrl: String = ""
-    var location = PFGeoPoint()
+    var location = CLLocation()
     var address: String = ""
     var neighbourhood: String = ""
-    var distance: Float = 0
     var products: [Product] = []
     var ranking: Float = 0
     
@@ -28,10 +27,9 @@ class PetShop: NSObject {
         self.objectId = data["objectId"] as! String
         self.name = data["name"] as! String
         self.imageUrl = data["photo"] as! String
-        self.location = data["location"] as! PFGeoPoint
+        self.location = data["location"] as! CLLocation
         self.address = data["address"] as! String
         self.neighbourhood = data["neighbourhood"] as! String
-//        self.distance = data["distance"] as! Float
         self.ranking = data["rating"] as! Float
     }
     
