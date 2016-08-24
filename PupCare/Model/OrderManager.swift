@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Alamofire
 import Parse
+import SwiftyJSON
 
 class OrderManager: NSObject {
     
@@ -28,6 +29,8 @@ class OrderManager: NSObject {
     private let ValidateCardNumberUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Card/ValidateCardNumber"
     private let StartTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/StartTransaction"
     private let GetTransactionByTrackIdUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/Find/"
+    private let ConfirmTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/ConfirmTransaction"
+    private let CancelTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/CancelTransaction"
     
     override init(){
         authorizationHeaderToIso = authorizationHeader.stringByReplacingPercentEscapesUsingEncoding(NSISOLatin1StringEncoding)!
@@ -50,7 +53,7 @@ class OrderManager: NSObject {
         }
     }
     
-    func chechIfCardIsValid(cardNumber : String){
+    func checkIfCardIsValid(cardNumber : String){
         let parameters = ["CardNumber":cardNumber]
         
         Alamofire.request(.POST, ValidateCardNumberUrl, parameters: parameters, headers: requestHeaders)
@@ -66,16 +69,62 @@ class OrderManager: NSObject {
     func startTransaction(value: Double, cardInfo: [String:AnyObject]){
         
         self.generateTrackId { (trackId) in
+            
             let parameters : [String:AnyObject] = ["PaymentType":"01","CurrencyCode":"986","Value":value,"TrackId":trackId,"Description":"PupCare Test Transaction","CardInfo":cardInfo]
             
             Alamofire.request(.POST, self.StartTransactionUrl, parameters: parameters, headers: self.requestHeaders)
                 .response { request, response, data, error in
                     print(request)
                     
-                    let dataToString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                    print("Start Transaction")
-                    print(dataToString!)
+                    let dataToJSON = JSON(data!)
+                    
+                    if dataToJSON["isApproved"].bool == true {
+                        
+                        //Ver se tem estoque
+                        
+                        if let cardBrand = cardInfo["CardBrand"] as? String{
+                            self.confirmTransaction(dataToJSON["TrackId"].string!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand)
+                        }
+                    } else {
+                        if let cardBrand = cardInfo["CardBrand"] as? String{
+                            self.cancelTransaction(dataToJSON["TrackId"].string!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand)
+                        }
+                    }
             }
+        }
+    }
+    
+    func confirmTransaction(trackId: String, acquirerTransactionId: String, cardBrand: String){
+        let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId,"PaymentType":"01","CardBrand":cardBrand, "TrackId":trackId]
+        
+        Alamofire.request(.POST, self.ConfirmTransactionUrl, parameters: parameters, headers: self.requestHeaders)
+            .response { request, response, data, error in
+                print(request)
+                let dataToJSON = JSON(data!)
+                
+                if dataToJSON["isApproved"].bool == true {
+                    print("Approved")
+                    //Remover do estoque
+                } else {
+                    print("Voided")
+                }
+        }
+    }
+    
+    func cancelTransaction(trackId: String, acquirerTransactionId: String, cardBrand: String){
+        let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId,"PaymentType":"01","CardBrand":cardBrand, "TrackId":trackId]
+        
+        Alamofire.request(.POST, self.CancelTransactionUrl, parameters: parameters, headers: self.requestHeaders)
+            .response { request, response, data, error in
+                print(request)
+                let dataToJSON = JSON(data!)
+                
+                if dataToJSON["isApproved"].bool == true {
+                    print("Approved")
+                    //Remover do estoque
+                } else {
+                    print("Voided")
+                }
         }
     }
     
