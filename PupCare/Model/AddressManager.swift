@@ -27,18 +27,19 @@ class AddressManager: NSObject {
     }
     
     func saveUserNewAddress(address: Address, response: (Bool, NSError?)->()){
-        let addressPFObject = AddressManager.sharedInstance.tranformAddressToPFObject(address)
+        let addressPFObject = AddressManager.sharedInstance.transformAddressToPFObject(address)
         
         addressPFObject.saveInBackgroundWithBlock { (success, error) in
             response(success,error)
         }
     }
     
-    private func tranformAddressToPFObject(address: Address) -> PFObject {
+    private func transformAddressToPFObject(address: Address) -> PFObject {
         let addressAsPFObject = PFObject(className: "Address")
         if address.addressId != "" {
-            addressAsPFObject["addressId"] = address.addressId
+            addressAsPFObject["objectId"] = address.addressId
         }
+        addressAsPFObject["userId"] = PFUser.currentUser()
         addressAsPFObject["street"] = address.street
         addressAsPFObject["zip"] = address.zip
         addressAsPFObject["number"] = address.number
@@ -85,7 +86,7 @@ class AddressManager: NSObject {
                 let cityState = (pmDict!["FormattedAddressLines"] as! [String])[2]
                 let city = cityState.substringFromIndex(cityState.startIndex).substringToIndex(cityState.endIndex.advancedBy(-5))
                 
-                addressDict["addressId"] = ""
+                addressDict["objectId"] = ""
                 addressDict["name"] = ""
                 addressDict["street"] = pmDict!["Thoroughfare"]
                 addressDict["number"] = 0
@@ -99,5 +100,30 @@ class AddressManager: NSObject {
                 response(data: addressDict)
             }
         })
+    }
+    
+    func getAddressListFromUser(userId: String, block: ([Address])->()){
+        let param = ["userId" : userId]
+        PFCloud.callFunctionInBackground("getUserAddresses", withParameters: param) { (addresses, error) in
+            
+            var addressList = [Address]()
+            
+            if let addresses = addresses as? [PFObject]{
+                for address in addresses{
+                    let object = Address(parseObject: address)
+                    addressList.append(object)
+                }
+            }
+            block(addressList)
+        }
+    }
+    
+    func removeAddressFromParse(address: Address){
+        let pfAddress = self.transformAddressToPFObject(address)
+        pfAddress.deleteInBackgroundWithBlock { (success, error) in
+            if !success{
+                print(error)
+            }
+        }
     }
 }

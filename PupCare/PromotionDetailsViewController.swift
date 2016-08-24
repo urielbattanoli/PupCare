@@ -11,12 +11,9 @@ import Kingfisher
 
 class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     @IBOutlet var carousel: iCarousel!
-
-    var photos: [UIImage] = []
-    var promotion: Promotion?
-//    var promotionColor = Config.MainColors.BlueColor
-    var downloader: ImageDownloader! = ImageDownloader(name: "downloadPromotionImages")
     
+    var photos: [String] = []
+    var promotion: Promotion?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -36,13 +33,11 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         
         self.view.clipsToBounds = true
         
-//        newPriceLabel.textColor = UIColor(CGColor: promotionColor.CGColor)
-        
         backgroundView.clipsToBounds = true
         backgroundView.layer.cornerRadius = 5
         backgroundView.layer.borderWidth = 0.5
-        backgroundView.layer.borderColor = Config.MainColors.BorderColor.CGColor
-    
+        backgroundView.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).CGColor
+        
     }
     
     func reloadDetails() {
@@ -51,27 +46,11 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         newPriceLabel.text = "Preço Atual: \(NSNumber(float: promotion!.newPrice).numberToPrice())"
         originalPriceLabel.text = "Preço Original: \(NSNumber(float: promotion!.lastPrice).numberToPrice())"
         
-        let group = dispatch_group_create()
-        
         for product in (promotion?.products)!  {
-
-            if let url = NSURL(string: product.imageUrl) {
-                dispatch_group_enter(group)
-                self.downloader.downloadImageWithURL(url, options: .None, progressBlock: { (receivedSize, totalSize) -> () in
-                    
-                    }, completionHandler:{(image,error,imageURL,data) -> () in
-                        if image != nil {
-                            self.photos.append(image!)
-                        }
-                        dispatch_group_leave(group)
-                })
-            }
+            self.photos.append(product.imageUrl)
         }
-        
-        dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
-            if self.photos.count > 0 {
-                self.carousel.reloadData()
-            }
+        if self.photos.count > 0 {
+            self.carousel.reloadData()
         }
     }
     
@@ -86,7 +65,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -97,28 +76,31 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     }
     
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
-        var itemView: UIImageView
-        
         //create new view if no view is available for recycling
-        if (view == nil)
-        {
-            itemView = UIImageView(frame:CGRect(x:0, y:0, width:225, height:225))
-            itemView.image = photos[index]
-            itemView.layer.borderWidth = 5
+        var itemView: UIView
+        
+        if view == nil{
+            itemView = UIView(frame: CGRect(x: 0, y: 0, width: 225, height: 225))
+            itemView.layer.borderWidth = 2.5
             itemView.layer.borderColor = UIColor(red: 115, green: 40, blue: 115).CGColor
             itemView.layer.cornerRadius = 10
-            itemView.contentMode = UIViewContentMode.ScaleAspectFit
+            
+            let imageView = UIImageView(frame: CGRect(x: 20, y: 20, width: 185, height: 185))
+            imageView.loadImage(self.photos[index])
+            imageView.contentMode = .ScaleAspectFit
+            imageView.layer.cornerRadius = 10
+            
+            itemView.addSubview(imageView)
         }
-        else
-        {
-            itemView = view as! UIImageView;
+        else{
+            itemView = view!
         }
-        return itemView
         
+        return itemView
     }
     
     func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-    
+        
         switch option {
         case .Wrap:
             return 1.0
@@ -127,19 +109,6 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         default:
             return value
         }
-    
+        
     }
-
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

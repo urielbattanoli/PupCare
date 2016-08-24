@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import CoreLocation
 
 extension PetShop {
     
@@ -18,9 +19,12 @@ extension PetShop {
         data["objectId"] = parseObject.objectId
         data["name"] = parseObject["name"] as! String
         data["photo"] = (parseObject["image"] as! PFFile).url
-        data["location"] = parseObject["location"] as! PFGeoPoint
         data["address"] = parseObject["address"] as! String
         data["neighbourhood"] = parseObject["neighbourhood"] as! String
+        
+        let petShopGeoPoint = parseObject["location"] as! PFGeoPoint
+        let petShopLocation = CLLocation(latitude: petShopGeoPoint.latitude, longitude: petShopGeoPoint.longitude)
+        data["location"] = petShopLocation
         
         
         data["rating"] = parseObject["rating"] as! Float

@@ -54,7 +54,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         
         if view == nil{
             itemView = UIView(frame: CGRect(x: 0, y: 0, width: 225, height: 225))
-            itemView.layer.borderWidth = 5
+            itemView.layer.borderWidth = 2.5
             itemView.layer.borderColor = UIColor(red: 115, green: 40, blue: 115).CGColor
             itemView.layer.cornerRadius = 10
             

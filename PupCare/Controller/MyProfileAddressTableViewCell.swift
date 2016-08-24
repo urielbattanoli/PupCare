@@ -17,7 +17,7 @@ class MyProfileAddressTableViewCell: UITableViewCell {
     var address: Address?{
         didSet{
             if let address = self.address{
-                self.lblAddress.text = "\(address.name)"
+                self.lblAddress.text = address.name.isEmpty ? address.street : "\(address.name)"
             }
         }
     }
@@ -33,7 +33,7 @@ class MyProfileAddressTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.viewBack.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).CGColor
-        self.viewBack.layer.borderWidth = 1
+        self.viewBack.layer.borderWidth = 0.5
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

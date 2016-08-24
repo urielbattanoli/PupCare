@@ -17,6 +17,8 @@ class UserManager: NSObject {
     
     static let sharedInstance = UserManager()
     
+    var user: User?
+    
     func singUpUser(name : String, email: String, password: String, block: (Bool,String, User?)->())  {
         
         let user = PFUser()
@@ -33,9 +35,10 @@ class UserManager: NSObject {
                 }
             }
             print("objId \(user.objectId)")
-            let userCreated = User(parseObject: user)
             
-            block(succeeded,"",userCreated)
+            self.user = User(parseObject: user)
+            
+            block(succeeded,"",self.user)
         }
     }
     
@@ -44,8 +47,8 @@ class UserManager: NSObject {
         
         PFUser.logInWithUsernameInBackground(username, password: password) { (user, error) in
             if user != nil {
-                let usuario = User(parseObject: user!)
-                response(usuario: usuario)
+                self.user = User(parseObject: user!)
+                response(usuario: self.user)
             } else {
                 response(usuario: nil)
             }
@@ -71,7 +74,8 @@ class UserManager: NSObject {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
                 if user.isNew {
-                    UserManager.sharedInstance.saveAdditionalFacebookInformation({ 
+                    UserManager.sharedInstance.saveAdditionalFacebookInformation({
+                        self.createUserByCurrentUser()
                         block()
                     })
                 } else {
@@ -107,10 +111,15 @@ class UserManager: NSObject {
                     
                     
                     currentUser.saveInBackgroundWithBlock({ (true, error) in
+                        self.createUserByCurrentUser()
                         block()
                     })
                 }
             })
         }
+    }
+    
+    func createUserByCurrentUser(){
+        self.user = User(parseObject: PFUser.currentUser()!)
     }
 }
