@@ -79,6 +79,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.FinishOrderQuantityLabel.text = "\(thisSection.totalQuantity)"
             cell.itensCount = itensCount
             
+            cell.petShop = thisSection.petShop
             cell.tag = indexPath.section + 10
             
             print("TAG \(cell.tag)")
@@ -202,7 +203,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                         
                         
-                        
                         // DIMINUIU VALOR NO SLIDER
                     } else if endedSliding < beganSliding {
                         // VALOR MENOR QUE O MINIMO
@@ -278,6 +278,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
     
     
 }

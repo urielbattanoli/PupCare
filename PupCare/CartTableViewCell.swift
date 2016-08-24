@@ -12,7 +12,7 @@ class CartTableViewCell: UITableViewCell {
 
     var productInCart: ProductInCart?
     var promotionInCart: PromotionInCart?
-//    var petShop: PetShop?
+    var petShop: PetShop?
     
     var petShopInCart: PetshopInCart?
     
@@ -79,6 +79,21 @@ class CartTableViewCell: UITableViewCell {
             self.promotionInCart?.quantity = Int(rounded)
         }
     }
+    
+    @IBAction func FinishPetShopOrder(sender: AnyObject) {
+        
+        let petShop = Cart.sharedInstance.cartDict.petShopList[(self.petShop!.objectId)]
+        
+        for products in petShop!.productsInCart {
+            print(products.product.name)
+        }
+        for promotions in petShop!.promotionsInCart {
+            print(promotions.promotion.promotionName)
+        }
+    }
+    
+    
+    
     
 }
 
