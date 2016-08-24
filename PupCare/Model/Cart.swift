@@ -56,7 +56,12 @@ class PetshopInCart {
                     Cart.sharedInstance.cartDict.petShopList[petShopId]!.updatePrice()
                     
                     if newQuantity == 0 {
-                        // REMOVER PRODUTO
+                        Cart.sharedInstance.cartDict.petShopList[petShopId]!.productsInCart.removeAtIndex(index)
+                        
+                        if Cart.sharedInstance.cartDict.petShopList[petShopId]!.totalQuantity == 0 {
+                            print("REMOVEU TUDO")
+                            Cart.sharedInstance.cartDict.petShopList.removeValueForKey(petShopId)
+                        }
                     }
                 }
             }
@@ -69,14 +74,27 @@ class PetshopInCart {
                     Cart.sharedInstance.cartDict.petShopList[petShopId]!.updatePrice()
                     
                     if newQuantity == 0 {
-                        // REMOVER PRODUTO
+                        Cart.sharedInstance.cartDict.petShopList[petShopId]!.promotionsInCart.removeAtIndex(index)
+                        
+                        if Cart.sharedInstance.cartDict.petShopList[petShopId]!.totalQuantity == 0 {
+                            Cart.sharedInstance.cartDict.petShopList.removeValueForKey(petShopId)
+                        }
                     }
                 }
             }
         }
+     
         
         
     }
+    
+    
+//    func removeFromCart (petShop: String, product: Product?, promotion: Promotion?) -> Int {
+//        
+//            Cart.sharedInstance.cartDict[petShop].
+//        
+//        return 0
+//    }
     
     
     
@@ -155,7 +173,7 @@ class Cart: NSObject {
                     
                     Cart.sharedInstance.cartDict.petShopList[pet]?.promotionsInCart.append(PromotionInCart(promotion: promotion, quantity: quantity))
                     
-//                    print(Cart.sharedInstance.cartDict.petShopList)
+                    
                     
                     return 1
                 }
@@ -181,35 +199,11 @@ class Cart: NSObject {
             Cart.sharedInstance.cartDict.petShopList[petShop.objectId] = newPetShop
             Cart.sharedInstance.cartDict.petShopList[petShop.objectId]?.updatePrice()
         }
-        
-//        print(Cart.sharedInstance.cartDict.petShopList)
-        
-        //        if Cart.sharedInstance.cartProduct.productList.count > 0 {
-        //            Cart.sharedInstance.showCartView()
-        //        }
-        
-        return 0
-    }
-    
-    
-    func removeFromCart (petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int) -> Int {
-        
-//        Cart.sharedInstance.cartDict[petShop.objectId]
-        
-        
-        
-        
         return 0
     }
     
     func showCartView() {
-        //        var tab: UITabBarController = UITabBarController()
-        //        var cgrect = CGRectMake(tab.tabBar.frame.size.height , tab.tabBar.frame.size.height, tab.tabBar.frame.size.width, 40)
-        //
-        //        var view = UIView(frame: cgrect)
-        //        view.backgroundColor = UIColor.redColor()
-        //
-        //        UIApplication.sharedApplication().keyWindow?.addSubview(view)
+
     }
     
     

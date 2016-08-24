@@ -218,19 +218,16 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                             alertRemovedItem({ (shouldRemoveItem) in
                                 if shouldRemoveItem {
                                     
-//                                    print("REMOVE ITEM FROM CART")
+//                                 print("REMOVE ITEM FROM CART")
                                     let object = self.workingCell!.petShopInCart!.petShop!.objectId
                                     
                                     Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: self.endedSliding)
                                     
+                                    self.CartTableView.reloadData()
+                                    
                                 } else {
                                     
                                     self.workingCell!.itensCount = 1
-//                                    if let product = self.workingCell!.productInCart {
-//                                        self.workingCell!.beganPrice = Double(product.product.price)
-//                                    } else if let promotion = self.workingCell!.promotionInCart {
-//                                        self.workingCell!.beganPrice = Double(promotion.promotion.newPrice)
-//                                    }
                                     self.workingCell!.ProductQuantity.text = "\(self.workingCell!.itensCount)"
                                     self.workingCell!.ProductValueLabel.text = "\(self.workingCell!.beganPrice)"
                                     
