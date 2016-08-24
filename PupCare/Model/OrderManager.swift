@@ -53,20 +53,25 @@ class OrderManager: NSObject {
         }
     }
     
-    func checkIfCardIsValid(cardNumber : String){
+    func checkIfCardIsValid(cardNumber : String, callback: (Int) -> Void) {
         let parameters = ["CardNumber":cardNumber]
         
         Alamofire.request(.POST, ValidateCardNumberUrl, parameters: parameters, headers: requestHeaders)
             .response { request, response, data, error in
                 print(request)
+                let dataToJSON = JSON(data: data!)
                 
-                let dataToString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("Valid Card Number")
-                print(dataToString!)
+                if dataToJSON["IsValid"].bool == true {
+                    
+                    let cardBrand: Int = (dataToJSON["CardBrand"].int)!
+                    callback(cardBrand)
+                    
+                }
+                
         }
     }
     
-    func startTransaction(value: Double, cardInfo: [String:AnyObject]){
+    func startTransaction(value: Double, cardInfo: [String:AnyObject], callback: (Bool,String) -> Void){
         
         self.generateTrackId { (trackId) in
             
@@ -76,55 +81,58 @@ class OrderManager: NSObject {
                 .response { request, response, data, error in
                     print(request)
                     
-                    let dataToJSON = JSON(data!)
+                    let dataToJSON = JSON(data: data!)
                     
-                    if dataToJSON["isApproved"].bool == true {
-                        
-                        //Ver se tem estoque
-                        
-                        if let cardBrand = cardInfo["CardBrand"] as? String{
-                            self.confirmTransaction(dataToJSON["TrackId"].string!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand)
-                        }
-                    } else {
-                        if let cardBrand = cardInfo["CardBrand"] as? String{
-                            self.cancelTransaction(dataToJSON["TrackId"].string!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand)
+                    //Ver se tem estoque
+                    
+                    if let cardBrand = cardInfo["CardBrand"] as? String{
+                        if dataToJSON["IsApproved"].bool == true {
+                            self.confirmTransaction(dataToJSON["TrackId"].string!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
+                                callback(success, message)
+                            })
+                        } else {
+                            self.cancelTransaction(dataToJSON["TrackId"].string!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
+                                callback(success, message)
+                            })
                         }
                     }
             }
         }
     }
     
-    func confirmTransaction(trackId: String, acquirerTransactionId: String, cardBrand: String){
+    func confirmTransaction(trackId: String, acquirerTransactionId: String, cardBrand: String, callback: (Bool,String) -> Void){
         let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId,"PaymentType":"01","CardBrand":cardBrand, "TrackId":trackId]
         
         Alamofire.request(.POST, self.ConfirmTransactionUrl, parameters: parameters, headers: self.requestHeaders)
             .response { request, response, data, error in
                 print(request)
-                let dataToJSON = JSON(data!)
+                let dataToJSON = JSON(data: data!)
                 
-                if dataToJSON["isApproved"].bool == true {
+                if dataToJSON["IsConfirmed"].bool == true {
                     print("Approved")
-                    //Remover do estoque
                 } else {
                     print("Voided")
                 }
+                
+                callback(dataToJSON["IsConfirmed"].bool!,dataToJSON["Message"].string!)
         }
     }
     
-    func cancelTransaction(trackId: String, acquirerTransactionId: String, cardBrand: String){
+    func cancelTransaction(trackId: String, acquirerTransactionId: String, cardBrand: String, callback: (Bool,String) -> ()){
         let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId,"PaymentType":"01","CardBrand":cardBrand, "TrackId":trackId]
         
         Alamofire.request(.POST, self.CancelTransactionUrl, parameters: parameters, headers: self.requestHeaders)
             .response { request, response, data, error in
                 print(request)
-                let dataToJSON = JSON(data!)
+                let dataToJSON = JSON(data: data!)
                 
-                if dataToJSON["isApproved"].bool == true {
-                    print("Approved")
-                    //Remover do estoque
+                if dataToJSON["IsRefunded"].bool == true {
+                    print("Refunded")
                 } else {
                     print("Voided")
                 }
+                
+                callback(dataToJSON["IsConfirmed"].bool!,dataToJSON["Message"].string!)
         }
     }
     

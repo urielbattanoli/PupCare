@@ -84,12 +84,44 @@ class CartTableViewCell: UITableViewCell {
         
         let petShop = Cart.sharedInstance.cartDict.petShopList[(self.petShop!.objectId)]
         
-        for products in petShop!.productsInCart {
-            print(products.product.name)
+        var cartao: [String: AnyObject] = [:]
+        cartao["CardNumber"] = "4012001038166662"
+        cartao["CVV"] = "456"
+        cartao["ExpirationYear"] = 2017
+        cartao["ExpirantionMonth"] = 04
+        cartao["CardHolderName"] = "Rebecca Sommers"
+        cartao["CardHolderDocumentId"] = "24676662718"
+        cartao["CardHolderBirthday"] = "1990-01-01"
+        
+        OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (cardBrand) in
+            cartao["CardBrand"] = cardBrand
+            
+            OrderManager.sharedInstance.startTransaction(petShop!.totalPrice, cardInfo: cartao, callback: { (success,message) in
+                if message == "Captured" {
+//                    let alert = UIAlertController(title: "Compra", message: "Compra Confirmada!", preferredStyle: UIAlertControllerStyle.Alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .Default , handler: { action in
+//                        
+//                    }))
+                    
+//                    presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    
+                }
+                
+                
+
+            })
         }
-        for promotions in petShop!.promotionsInCart {
-            print(promotions.promotion.promotionName)
-        }
+        
+        
+        
+        
+//        for products in petShop!.productsInCart {
+//            print(products.product.name)
+//        }
+//        for promotions in petShop!.promotionsInCart {
+//            print(promotions.promotion.promotionName)
+//        }
     }
     
     
