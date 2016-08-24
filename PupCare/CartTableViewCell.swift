@@ -10,12 +10,16 @@ import UIKit
 
 class CartTableViewCell: UITableViewCell {
 
-    var product: Product?
-    var promotion: Promotion?
+    var productInCart: ProductInCart?
+    var promotionInCart: PromotionInCart?
+//    var petShop: PetShop?
+    
+    var petShopInCart: PetshopInCart?
+    
     var tagTeste: Int?
     var itensCount: Int = 0
-    var price: Float = 0.0
-    var beganPrice: Float = 0.0
+    var price: Double = 0.0
+    var beganPrice: Double = 0.0
     var indexPath: Int = 0
     
     // Finish Order
@@ -60,11 +64,19 @@ class CartTableViewCell: UITableViewCell {
         
         self.ProductQuantity.text = "\(rounded)"
         
-        if let product = product {
-            self.ProductValueLabel.text = "\(Float(product.price) * rounded)"
+        if productInCart != nil {
+            self.ProductValueLabel.text = "\(Float(productInCart!.product.price) * rounded)"
+            self.productInCart?.quantity = Int(rounded)
+            
+            if let object = petShopInCart!.productsInCart.indexOf({$0.product == productInCart?.product}) {
+                
+              print(object)
+            }
+            
         }
-        if let promotion = promotion {
-            self.ProductValueLabel.text = "\(Float(promotion.newPrice) * rounded)"
+        if promotionInCart != nil {
+            self.ProductValueLabel.text = "\(Float(promotionInCart!.promotion.newPrice) * rounded)"
+            self.promotionInCart?.quantity = Int(rounded)
         }
     }
     

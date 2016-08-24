@@ -13,9 +13,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var CartTableView: UITableView!
     
     
-    var sections: [ProductCart] = []
-    var endedPrice: Float = 0.0
-    var beganPrice: Float = 0.0
+    var sections: [PetshopInCart] = []
+    var endedPrice: Double = 0.0
+    var beganPrice: Double = 0.0
     var beganSliding: Int = 1
     var endedSliding: Int = 0
     
@@ -28,10 +28,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.CartTableView.dataSource = self
         
         
-        for (_, productCart) in Cart.sharedInstance.cartProduct.productList {
-            sections.append(productCart)
+        for (_, petShop) in Cart.sharedInstance.cartDict.petShopList {
+            sections.append(petShop)
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,14 +40,14 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (sections[section].products.count + sections[section].promotions.count + 2)
+        return (sections[section].productsInCart.count + sections[section].promotionsInCart.count + 2)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell: CartTableViewCell
         
-        let lenght = sections[indexPath.section].products.count + sections[indexPath.section].promotions.count + 1
+        let lenght = sections[indexPath.section].productsInCart.count + sections[indexPath.section].promotionsInCart.count + 1
         
         switch indexPath.row {
         case 0:
@@ -56,11 +55,11 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell = tableView.dequeueReusableCellWithIdentifier("CartPetShop", forIndexPath: indexPath) as! CartTableViewCell
             
             let petShop = sections[indexPath.section].petShop
-            cell.PetShopPhotoImageView.loadImage(petShop.imageUrl)
+            cell.PetShopPhotoImageView.loadImage(petShop!.imageUrl)
             cell.PetShopPhotoImageView.layer.masksToBounds = true
             cell.PetShopPhotoImageView.layer.cornerRadius = 10
-            cell.PetShopAddressLabel.text = petShop.address
-            cell.PetShopNameLabel.text = petShop.name
+            cell.PetShopAddressLabel.text = petShop!.address
+            cell.PetShopNameLabel.text = petShop!.name
             
             cell.tagTeste = indexPath.section
             
@@ -68,17 +67,16 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         case lenght:
             
             cell = tableView.dequeueReusableCellWithIdentifier("CartConfirmation", forIndexPath: indexPath) as! CartTableViewCell
-    
+            
+            let thisSection = sections[indexPath.section]
             cell.FinishOrderButton.layer.cornerRadius = 5
             cell.FinishOrderButton.layer.masksToBounds = true
-            cell.FinishOrderPriceLabel.text = "\(self.beganPrice)"
-            cell.beganPrice = self.beganPrice
-            cell.price = self.beganPrice
+            cell.FinishOrderPriceLabel.text = "\(thisSection.totalPrice)"
+            cell.beganPrice = thisSection.totalPrice
+            cell.price = thisSection.totalPrice
             
-            var thisSection = sections[indexPath.section]
-            
-            let itensCount = thisSection.products.count + thisSection.promotions.count
-            cell.FinishOrderQuantityLabel.text = "\(itensCount)"
+            let itensCount = thisSection.totalQuantity
+            cell.FinishOrderQuantityLabel.text = "\(thisSection.totalQuantity)"
             cell.itensCount = itensCount
             
             cell.tag = indexPath.section + 10
@@ -88,37 +86,47 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             break
         default:
             cell = tableView.dequeueReusableCellWithIdentifier("CartProduct", forIndexPath: indexPath) as! CartTableViewCell
+            let section = sections[indexPath.section]
             
-            if indexPath.row <= sections[indexPath.section].products.count {
+            
+            if indexPath.row <= section.productsInCart.count {
                 
-                let product = sections[indexPath.section].products[indexPath.row - 1]
-                cell.product = sections[indexPath.section].products[indexPath.row - 1]
-                cell.ProductPhotoImageView.loadImage(product.imageUrl)
-                cell.ProductValueLabel.text = "\(product.price)"
-                cell.ProductNameLabel.text = product.name
-                cell.price = Float(product.price)
+                let productInCart = section.productsInCart[indexPath.row - 1]
+                cell.productInCart = productInCart
+                cell.ProductPhotoImageView.loadImage(productInCart.product.imageUrl)
+                cell.ProductValueLabel.text = "\(Double(productInCart.product.price) * Double(productInCart.quantity))"
+                cell.ProductQuantitySlider.value = Float(productInCart.quantity)
+                cell.ProductQuantity.text = "\(productInCart.quantity)"
+                cell.ProductNameLabel.text = productInCart.product.name
+                cell.price = Double(productInCart.product.price)
+                cell.beganPrice = Double(productInCart.product.price)
                 
             } else {
                 
-                let promotion = sections[indexPath.section].promotions[indexPath.row - 1 -
-                    sections[indexPath.section].products.count]
-                cell.ProductNameLabel.text = promotion.promotionName
-                cell.ProductValueLabel.text = "\(promotion.newPrice)"
-                cell.ProductPhotoImageView.loadImage(promotion.promotionImage)
-                cell.price = promotion.newPrice
-                cell.promotion = promotion
+                let productsCount: Int = section.productsInCart.count
+                let promotionInCart = section.promotionsInCart[indexPath.row - 1 - productsCount]
+                cell.ProductNameLabel.text = promotionInCart.promotion.promotionName
+                cell.ProductValueLabel.text = "\(Double(promotionInCart.promotion.newPrice) * Double(promotionInCart.quantity))"
+                cell.ProductQuantitySlider.value = Float(promotionInCart.quantity)
+                cell.ProductQuantity.text = "\(promotionInCart.quantity)"
+                cell.ProductPhotoImageView.loadImage(promotionInCart.promotion.promotionImage)
+                cell.price = Double(promotionInCart.promotion.newPrice)
+                cell.beganPrice = Double(promotionInCart.promotion.newPrice)
+                cell.promotionInCart = promotionInCart
                 
             }
             
-            self.beganPrice = self.beganPrice + (Float(beganSliding) * cell.price)
+            self.beganPrice = self.beganPrice + (Double(beganSliding) * cell.price)
             cell.ProductQuantitySlider.tag = indexPath.section + 100
+            
             cell.tagTeste = indexPath.section
+            cell.petShopInCart = section
             
             let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(CartViewController.tableViewTap))
             gestureRecognizer.cancelsTouchesInView = false
             cell.ProductQuantitySlider.addGestureRecognizer(gestureRecognizer)
             
-        
+            
             
             break
         }
@@ -132,18 +140,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sections.count
     }
-    
-    func cellSliderDidChange(cell: CartTableViewCell) {
-        print("DELEGATE:")
-        print(cell.FinishOrderQuantityLabel.text)
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("INDEX PATH\(indexPath.row)")
-    }
+    //
+    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //        print("INDEX PATH\(indexPath.row)")
+    //    }
     
     func tableViewTap (tapGesture: UIPanGestureRecognizer) {
-
+        
         let point: CGPoint = tapGesture.locationInView(self.CartTableView)
         let indexPath = self.CartTableView.indexPathForRowAtPoint(point)
         if indexPath == nil {
@@ -152,7 +155,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             let cell = self.CartTableView.cellForRowAtIndexPath(indexPath!)
             if let cell = cell as? CartTableViewCell {
-//                print("TAPPED CELL\(cell.price)")
+                //                print("TAPPED CELL\(cell.price)")
                 self.workingCell = cell
                 
             }
@@ -165,56 +168,95 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if let finishCell = self.view.viewWithTag(sender.tag - 90) as? CartTableViewCell {
             if allTouches?.count > 0 {
-
                 
                 let phase = (allTouches?.first as UITouch!).phase
+                
+                // GUARDA VALORES INICIAIS
                 if phase == UITouchPhase.Began {
-                    
                     let a = Int(round(sender.value))
                     if a != 0 {
                         beganSliding = a
                         beganPrice = finishCell.beganPrice
                     }
                 }
+                
+                // TERMINOU DE MEXER NO SLIDER
                 if phase == UITouchPhase.Ended {
                     endedSliding = Int(round(sender.value))
-                    
                     print("ENDED SLIDING: \(endedSliding)")
                     print("BEGAN SLIDING: \(beganSliding)")
                     
+                    // AUMENTOU VALOR NO SLIDER
                     if endedSliding > beganSliding {
-                        
                         finishCell.itensCount = finishCell.itensCount + (endedSliding - beganSliding)
                         finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
                         
                         if let workingCell = workingCell {
-                            finishCell.price = finishCell.price - (Float(beganSliding) * workingCell.price) + (Float(endedSliding) * workingCell.price)
-                            
+                            finishCell.price = finishCell.price - (Double(beganSliding) * workingCell.price) + (Double(endedSliding) * workingCell.price)
                             finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                            
+                            
+                            let object = workingCell.petShopInCart!.petShop!.objectId
+                            
+                                Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
                         }
-
+                        
+                        
+                        
+                        // DIMINUIU VALOR NO SLIDER
                     } else if endedSliding < beganSliding {
+                        // VALOR MENOR QUE O MINIMO
                         if endedSliding == 0 && beganSliding >= 1 {
-                            alertRemovedItem({ (shouldRemoveItem) in
+                            
+                            if finishCell.itensCount > 0 {
+                                finishCell.price = finishCell.price - (Double(beganSliding) * workingCell!.price)
+                                finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
                                 
+                                finishCell.itensCount = finishCell.itensCount - (beganSliding - endedSliding)
+                                finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+                            }
+                            alertRemovedItem({ (shouldRemoveItem) in
                                 if shouldRemoveItem {
-                                    //self.CartTableView.deleteRowsAtIndexPaths([self.CartTableView.indexPathForCell(finishCell)!], withRowAnimation: UITableViewRowAnimation.Fade)
-                                    print("REMOVE ITEM FROM CART")
+                                    
+//                                    print("REMOVE ITEM FROM CART")
+                                    let object = self.workingCell!.petShopInCart!.petShop!.objectId
+                                    
+                                    Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: self.endedSliding)
+                                    
                                 } else {
+                                    
+                                    self.workingCell!.itensCount = 1
+//                                    if let product = self.workingCell!.productInCart {
+//                                        self.workingCell!.beganPrice = Double(product.product.price)
+//                                    } else if let promotion = self.workingCell!.promotionInCart {
+//                                        self.workingCell!.beganPrice = Double(promotion.promotion.newPrice)
+//                                    }
+                                    self.workingCell!.ProductQuantity.text = "\(self.workingCell!.itensCount)"
+                                    self.workingCell!.ProductValueLabel.text = "\(self.workingCell!.beganPrice)"
+                                    
+                                    finishCell.price = finishCell.price + self.workingCell!.price
+                                    finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                                    
+                                    finishCell.itensCount = finishCell.itensCount + 1
+                                    finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+                                    
                                     sender.value = 1
                                     
-//                                    finishCell.itensCount = finishCell.itensCount - (self.beganSliding - endedSliding)
-//                                    finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
+                                    let object = self.workingCell!.petShopInCart!.petShop!.objectId
+                                    
+                                    Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: 1)
+                                    
                                 }
-                                
                             })
+                            
+                            // APENAS DIMINUIU
                         } else {
-
+                            
                             finishCell.itensCount = finishCell.itensCount - (beganSliding - endedSliding)
                             finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
                             
                             if let workingCell = workingCell {
-                                finishCell.price = finishCell.price - (Float(beganSliding) * workingCell.price) + (Float(endedSliding) * workingCell.price)
+                                finishCell.price = finishCell.price - (Double(beganSliding) * workingCell.price) + (Double(endedSliding) * workingCell.price)
                                 
                                 finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
                             }
@@ -235,8 +277,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Cancelou")
             shouldRemoveItem(false)
         }))
-            
-            
+        
+        
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
