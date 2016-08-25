@@ -239,7 +239,7 @@
                                         <rect key="frame" x="0.0" y="208" width="600" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Yk-LC-7aG" id="cM1-8o-n2Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="109.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wl-ua-gtA">
@@ -258,12 +258,6 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantidade total de itens: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qya-Tp-fZK">
                                                     <rect key="frame" x="10" y="10" width="176" height="17"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" red="1" green="0.72549019607843135" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor total da sua compra: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iir-6C-Cyu">
-                                                    <rect key="frame" x="10" y="27" width="179" height="17"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" red="1" green="0.72549019607843135" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -288,31 +282,44 @@
                                                     <color key="textColor" red="1" green="0.72549019607843135" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bed-Lz-h0G">
-                                                    <rect key="frame" x="290" y="66" width="20" height="20"/>
+                                                <activityIndicatorView opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bed-Lz-h0G">
+                                                    <rect key="frame" x="278" y="55" width="45" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="72b-nF-oJx"/>
+                                                        <constraint firstAttribute="width" constant="45" id="h6O-Bm-Jt9"/>
+                                                    </constraints>
                                                 </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor total da sua compra: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iir-6C-Cyu">
+                                                    <rect key="frame" x="10" y="27" width="179" height="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" red="1" green="0.72549019607843135" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="7wl-ua-gtA" firstAttribute="leading" secondItem="cM1-8o-n2Q" secondAttribute="leading" constant="10" id="0Xt-Lf-Bgn"/>
                                                 <constraint firstItem="Bew-Eh-vYx" firstAttribute="top" secondItem="faN-mn-Ty8" secondAttribute="bottom" id="2OV-CC-W5R"/>
                                                 <constraint firstItem="faN-mn-Ty8" firstAttribute="top" secondItem="cM1-8o-n2Q" secondAttribute="top" constant="10" id="8gc-wV-Edj"/>
                                                 <constraint firstAttribute="trailing" secondItem="7wl-ua-gtA" secondAttribute="trailing" constant="10" id="ABb-Df-P5X"/>
+                                                <constraint firstAttribute="bottom" secondItem="bed-Lz-h0G" secondAttribute="bottom" constant="10" id="Dun-yF-c0K"/>
                                                 <constraint firstItem="iir-6C-Cyu" firstAttribute="top" secondItem="qya-Tp-fZK" secondAttribute="bottom" id="Gil-PQ-5p8"/>
                                                 <constraint firstItem="7wl-ua-gtA" firstAttribute="top" secondItem="iir-6C-Cyu" secondAttribute="bottom" constant="10" id="HsS-n8-jpO"/>
                                                 <constraint firstItem="7wl-ua-gtA" firstAttribute="top" secondItem="Bew-Eh-vYx" secondAttribute="bottom" constant="10" id="JGF-XB-Xzo"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bew-Eh-vYx" secondAttribute="trailing" constant="10" id="cGh-85-taX"/>
-                                                <constraint firstItem="bed-Lz-h0G" firstAttribute="centerY" secondItem="cM1-8o-n2Q" secondAttribute="centerY" id="dMS-Xs-PVs"/>
                                                 <constraint firstItem="7wl-ua-gtA" firstAttribute="top" secondItem="Bew-Eh-vYx" secondAttribute="bottom" constant="10" id="ezd-8t-W0c"/>
+                                                <constraint firstAttribute="bottom" secondItem="bed-Lz-h0G" secondAttribute="bottom" constant="22" id="ffC-4n-hrk"/>
                                                 <constraint firstAttribute="bottom" secondItem="7wl-ua-gtA" secondAttribute="bottom" constant="10" id="het-Df-k1z"/>
                                                 <constraint firstItem="qya-Tp-fZK" firstAttribute="leading" secondItem="cM1-8o-n2Q" secondAttribute="leading" constant="10" id="nUn-da-tYn"/>
                                                 <constraint firstItem="Bew-Eh-vYx" firstAttribute="trailing" secondItem="cM1-8o-n2Q" secondAttribute="trailingMargin" constant="10" id="o8u-Lj-amq"/>
                                                 <constraint firstItem="qya-Tp-fZK" firstAttribute="top" secondItem="cM1-8o-n2Q" secondAttribute="top" constant="10" id="pEJ-rd-TRi"/>
                                                 <constraint firstItem="iir-6C-Cyu" firstAttribute="leading" secondItem="cM1-8o-n2Q" secondAttribute="leading" constant="10" id="urD-0y-hee"/>
                                                 <constraint firstAttribute="trailing" secondItem="faN-mn-Ty8" secondAttribute="trailing" constant="10" id="xwP-Xf-wX1"/>
+                                                <constraint firstItem="bed-Lz-h0G" firstAttribute="centerX" secondItem="cM1-8o-n2Q" secondAttribute="centerX" id="zbK-xH-YaV"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="ezd-8t-W0c"/>
+                                                    <exclude reference="ffC-4n-hrk"/>
                                                     <exclude reference="o8u-Lj-amq"/>
                                                 </mask>
                                             </variation>

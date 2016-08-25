@@ -49,8 +49,7 @@ class CartTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -96,9 +95,11 @@ class CartTableViewCell: UITableViewCell {
         cartao["CardHolderBirthday"] = "1990-01-01"
         
         
-        self.FinishOrderButton.enabled = false
-        self.FinishOrderLoader.hidden = false
+        
+        self.FinishOrderLoader.alpha = 1
         self.FinishOrderLoader.startAnimating()
+        
+        self.FinishOrderButton.enabled = false
         
         
         
@@ -117,6 +118,11 @@ class CartTableViewCell: UITableViewCell {
                     
 //                    presentViewController(alert, animated: true, completion: nil)
                 } else {
+                    self.FinishOrderButton.enabled = true
+                    
+                    self.FinishOrderLoader.alpha = 0.0
+                    self.FinishOrderLoader.stopAnimating()
+                    self.FinishOrderLoader.hidden = true
                     
                 }
                 
