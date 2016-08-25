@@ -39,6 +39,7 @@
 		7A7036F81D42A0CA005FAB68 /* AddressParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */; };
 		7A7036FA1D4641D4005FAB68 /* AddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F91D4641D4005FAB68 /* AddressManager.swift */; };
 		7A9E9B8A1D36CE9700AC978C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E9B891D36CE9700AC978C /* SignUpViewController.swift */; };
+		7ACDCC0E1D63435B003F299B /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACDCC0D1D63435B003F299B /* OrderManager.swift */; };
 		A400B4751D34311100051363 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A400B4741D34311100051363 /* Profile.storyboard */; };
 		A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400B4761D34324300051363 /* MyProfileViewController.swift */; };
 		A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */; };
@@ -133,6 +134,7 @@
 		7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParseExtension.swift; sourceTree = "<group>"; };
 		7A7036F91D4641D4005FAB68 /* AddressManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressManager.swift; path = Model/AddressManager.swift; sourceTree = "<group>"; };
 		7A9E9B891D36CE9700AC978C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controller/SignUpViewController.swift; sourceTree = "<group>"; };
+		7ACDCC0D1D63435B003F299B /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderManager.swift; path = Model/OrderManager.swift; sourceTree = "<group>"; };
 		7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCareTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8744664412D2A7E02501B9E5 /* Pods-PupCareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PupCareTests/Pods-PupCareTests.debug.xcconfig"; sourceTree = "<group>"; };
 		97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -496,6 +498,7 @@
 			isa = PBXGroup;
 			children = (
 				A4CAA5271D5E5BEB0053EDEA /* Order.swift */,
+				7ACDCC0D1D63435B003F299B /* OrderManager.swift */,
 				A4CAA5291D5E5C090053EDEA /* OrderParseExtension.swift */,
 			);
 			name = Order;
@@ -987,6 +990,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ACDCC0E1D63435B003F299B /* OrderManager.swift in Sources */,
 				7A11BEBF1D62024800134ED8 /* AddressViewController.swift in Sources */,
 				7A7036F81D42A0CA005FAB68 /* AddressParseExtension.swift in Sources */,
 				7A9E9B8A1D36CE9700AC978C /* SignUpViewController.swift in Sources */,
