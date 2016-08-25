@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CHU-iL-Vjl" id="AAr-8T-3UW">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Foto da pet" translatesAutoresizingMaskIntoConstraints="NO" id="QVj-mM-zvu">
@@ -159,7 +159,7 @@
                                         <rect key="frame" x="0.0" y="118" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0um-Gh-9cG" id="ra7-9k-yv5">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bravo-formula" translatesAutoresizingMaskIntoConstraints="NO" id="5si-hy-PzY">
@@ -288,6 +288,9 @@
                                                     <color key="textColor" red="1" green="0.72549019607843135" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bed-Lz-h0G">
+                                                    <rect key="frame" x="290" y="66" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="7wl-ua-gtA" firstAttribute="leading" secondItem="cM1-8o-n2Q" secondAttribute="leading" constant="10" id="0Xt-Lf-Bgn"/>
@@ -298,6 +301,7 @@
                                                 <constraint firstItem="7wl-ua-gtA" firstAttribute="top" secondItem="iir-6C-Cyu" secondAttribute="bottom" constant="10" id="HsS-n8-jpO"/>
                                                 <constraint firstItem="7wl-ua-gtA" firstAttribute="top" secondItem="Bew-Eh-vYx" secondAttribute="bottom" constant="10" id="JGF-XB-Xzo"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bew-Eh-vYx" secondAttribute="trailing" constant="10" id="cGh-85-taX"/>
+                                                <constraint firstItem="bed-Lz-h0G" firstAttribute="centerY" secondItem="cM1-8o-n2Q" secondAttribute="centerY" id="dMS-Xs-PVs"/>
                                                 <constraint firstItem="7wl-ua-gtA" firstAttribute="top" secondItem="Bew-Eh-vYx" secondAttribute="bottom" constant="10" id="ezd-8t-W0c"/>
                                                 <constraint firstAttribute="bottom" secondItem="7wl-ua-gtA" secondAttribute="bottom" constant="10" id="het-Df-k1z"/>
                                                 <constraint firstItem="qya-Tp-fZK" firstAttribute="leading" secondItem="cM1-8o-n2Q" secondAttribute="leading" constant="10" id="nUn-da-tYn"/>
@@ -317,6 +321,7 @@
                                         <connections>
                                             <outlet property="FinishOrderButton" destination="7wl-ua-gtA" id="JFb-1W-QP0"/>
                                             <outlet property="FinishOrderItensCount" destination="qya-Tp-fZK" id="9bc-hF-Msf"/>
+                                            <outlet property="FinishOrderLoader" destination="bed-Lz-h0G" id="zfp-Ur-ksl"/>
                                             <outlet property="FinishOrderPriceLabel" destination="Bew-Eh-vYx" id="DLX-ib-bKY"/>
                                             <outlet property="FinishOrderQuantityLabel" destination="faN-mn-Ty8" id="eWy-I2-uEZ"/>
                                             <outlet property="FinishOrderTotalPrice" destination="iir-6C-Cyu" id="kAY-uF-vGl"/>

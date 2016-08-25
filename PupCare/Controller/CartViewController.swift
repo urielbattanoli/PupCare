@@ -82,6 +82,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.petShop = thisSection.petShop
             cell.tag = indexPath.section + 10
             
+//            cell.FinishOrderLoader.frame.
+            
             print("TAG \(cell.tag)")
             
             break
