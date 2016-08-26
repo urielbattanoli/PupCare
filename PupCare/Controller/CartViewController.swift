@@ -84,7 +84,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.petShop = thisSection.petShop
             cell.tag = indexPath.section + 10
             
-//            cell.FinishOrderLoader.frame.
+        
+            cell.FinishOrderButton.setTitle("Finalizar compra para esta Pet Shop", forState: UIControlState.Normal)
+            cell.FinishOrderButton.setTitle("", forState: UIControlState.Disabled)
             
             print("TAG \(cell.tag)")
             
@@ -130,8 +132,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(CartViewController.tableViewTap))
             gestureRecognizer.cancelsTouchesInView = false
             cell.ProductQuantitySlider.addGestureRecognizer(gestureRecognizer)
-            
-            
             
             break
         }

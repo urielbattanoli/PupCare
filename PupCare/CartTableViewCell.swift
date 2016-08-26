@@ -55,6 +55,7 @@ class CartTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -99,14 +100,37 @@ class CartTableViewCell: UITableViewCell {
 //        cartao["CardHolderDocumentId"] = "24676662718"
 //        cartao["CardHolderBirthday"] = "1990-01-01"
         
-        self.FinishOrderButton.enabled = false
-        self.FinishOrderLoader.hidden = false
+        
+        
+        self.FinishOrderLoader.alpha = 1
         self.FinishOrderLoader.startAnimating()
+        
+        self.FinishOrderButton.enabled = false
+        
+        
         
         OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (cardBrand) in
             cartao["CardBrand"] = cardBrand
             
             OrderManager.sharedInstance.startTransaction(petShop!.totalPrice, cardInfo: cartao, callback: { (success,message) in
+                if message == "Captured" {
+//                    let alert = UIAlertController(title: "Compra", message: "Compra Confirmada!", preferredStyle: UIAlertControllerStyle.Alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .Default , handler: { action in
+//                        
+//                    }))
+                    
+//                    presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    self.FinishOrderButton.enabled = true
+                    
+                    self.FinishOrderLoader.alpha = 0.0
+                    self.FinishOrderLoader.stopAnimating()
+                    self.FinishOrderLoader.hidden = true
+                    
+                }
+                
+                
+
                 self.transactionDelegate?.didFinishTransaction(success, message: message)
             })
         }
