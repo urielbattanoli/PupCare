@@ -10,15 +10,29 @@ import UIKit
 import CoreLocation
 import Parse
 
-class InitialViewController: UIViewController {
-
+class InitialViewController: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setObject(-1, forKey: "location")
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
-        performSegueWithIdentifier("goToPetShops", sender: nil)
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.delegate = self
+        
+        
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse){
+            performSegueWithIdentifier("goToPetShops", sender: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +40,13 @@ class InitialViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: LocationManager delegate
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.AuthorizedWhenInUse{
+            performSegueWithIdentifier("goToPetShops", sender: nil)
+        }
+    }
 
     /*
     // MARK: - Navigation

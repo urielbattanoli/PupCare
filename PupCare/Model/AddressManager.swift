@@ -36,8 +36,8 @@ class AddressManager: NSObject {
     
     private func transformAddressToPFObject(address: Address) -> PFObject {
         let addressAsPFObject = PFObject(className: "Address")
-        if address.addressId != "" {
-            addressAsPFObject["objectId"] = address.addressId
+        if address.addressId.isEmpty {
+            addressAsPFObject.objectId = address.addressId
         }
         addressAsPFObject["userId"] = PFUser.currentUser()
         addressAsPFObject["street"] = address.street
