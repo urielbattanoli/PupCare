@@ -8,8 +8,12 @@
 
 import UIKit
 
-class CartTableViewCell: UITableViewCell {
+protocol TransactionProtocol: class {
+    func didFinishTransaction(confirmed: Bool, message: String)
+}
 
+class CartTableViewCell: UITableViewCell {
+    
     var productInCart: ProductInCart?
     var promotionInCart: PromotionInCart?
     var petShop: PetShop?
@@ -21,6 +25,8 @@ class CartTableViewCell: UITableViewCell {
     var price: Double = 0.0
     var beganPrice: Double = 0.0
     var indexPath: Int = 0
+    
+    weak var transactionDelegate : TransactionProtocol?
     
     // Finish Order
     @IBOutlet weak var FinishOrderButton: UIButton!
@@ -46,19 +52,17 @@ class CartTableViewCell: UITableViewCell {
     @IBOutlet weak var PetShopPhotoImageView: UIImageView!
     
     
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     @IBAction func sliderChance(sender: UISlider) {
         let rounded = round(sender.value)
         
@@ -72,7 +76,7 @@ class CartTableViewCell: UITableViewCell {
             
             if let object = petShopInCart!.productsInCart.indexOf({$0.product == productInCart?.product}) {
                 
-              print(object)
+                print(object)
             }
             
         }
@@ -90,55 +94,23 @@ class CartTableViewCell: UITableViewCell {
         cartao["CardNumber"] = "4012001038166662"
         cartao["CVV"] = "456"
         cartao["ExpirationYear"] = 2017
-        cartao["ExpirantionMonth"] = 04
+        cartao["ExpirationMonth"] = 04
         cartao["CardHolderName"] = "Rebecca Sommers"
-        cartao["CardHolderDocumentId"] = "24676662718"
-        cartao["CardHolderBirthday"] = "1990-01-01"
-        
+//        cartao["CardHolderDocumentId"] = "24676662718"
+//        cartao["CardHolderBirthday"] = "1990-01-01"
         
         self.FinishOrderButton.enabled = false
         self.FinishOrderLoader.hidden = false
         self.FinishOrderLoader.startAnimating()
         
-        
-        
         OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (cardBrand) in
             cartao["CardBrand"] = cardBrand
             
-            
-            
-            
             OrderManager.sharedInstance.startTransaction(petShop!.totalPrice, cardInfo: cartao, callback: { (success,message) in
-                if message == "Captured" {
-//                    let alert = UIAlertController(title: "Compra", message: "Compra Confirmada!", preferredStyle: UIAlertControllerStyle.Alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .Default , handler: { action in
-//                        
-//                    }))
-                    
-//                    presentViewController(alert, animated: true, completion: nil)
-                } else {
-                    
-                }
-                
-                
-
+                self.transactionDelegate?.didFinishTransaction(success, message: message)
             })
         }
-        
-        
-        
-        
-//        for products in petShop!.productsInCart {
-//            print(products.product.name)
-//        }
-//        for promotions in petShop!.promotionsInCart {
-//            print(promotions.promotion.promotionName)
-//        }
     }
-    
-    
-    
-    
 }
 
 

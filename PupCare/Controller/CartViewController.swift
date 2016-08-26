@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TransactionProtocol {
     
     @IBOutlet weak var CartTableView: UITableView!
     
@@ -20,6 +20,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     var endedSliding: Int = 0
     
     var workingCell: CartTableViewCell?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.PetShopPhotoImageView.layer.cornerRadius = 10
             cell.PetShopAddressLabel.text = petShop!.address
             cell.PetShopNameLabel.text = petShop!.name
-            
             cell.tagTeste = indexPath.section
             
             break
@@ -78,6 +78,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             let itensCount = thisSection.totalQuantity
             cell.FinishOrderQuantityLabel.text = "\(thisSection.totalQuantity)"
             cell.itensCount = itensCount
+            
+            cell.transactionDelegate = self
             
             cell.petShop = thisSection.petShop
             cell.tag = indexPath.section + 10
@@ -264,6 +266,18 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
+    }
+    
+    func didFinishTransaction(confirmed: Bool, message: String) {
+        let alert = UIAlertController(title: message, message: "Teste", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Continuar", style: .Default , handler: { action in
+            print("Deletou")
+        }))
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .Cancel , handler: { action in
+            print("Cancelou")
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func alertRemovedItem(shouldRemoveItem: (Bool) -> Void) {
