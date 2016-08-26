@@ -65,3 +65,19 @@ extension NSDate {
         return formatter.stringFromDate(self)
     }
 }
+
+extension UIToolbar{
+    func buttonDone(target: UIViewController, action: Selector){
+        self.frame = CGRectMake(0, 0, 320, 50)
+        self.barStyle = UIBarStyle.Default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Pronto", style: UIBarButtonItemStyle.Done, target: target, action: action)
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        self.items = items
+        self.sizeToFit()
+    }
+}
