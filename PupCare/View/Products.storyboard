@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A286a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QvA-Vn-voF">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QvA-Vn-voF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -66,10 +66,10 @@
                                                                 <rect key="frame" x="21" y="0.0" width="17" height="20"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tBJ-mi-cAj">
-                                                                <rect key="frame" x="41" y="0.0" width="17" height="20"/>
+                                                                <rect key="frame" x="42" y="0.0" width="17" height="20"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICX-cH-0Ps">
-                                                                <rect key="frame" x="62" y="0.0" width="17" height="20"/>
+                                                                <rect key="frame" x="63" y="0.0" width="16" height="20"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Eq-k5-TDq">
                                                                 <rect key="frame" x="83" y="0.0" width="17" height="20"/>
@@ -102,48 +102,22 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nzr-gK-hS4">
-                                <rect key="frame" x="0.0" y="110" width="600" height="490"/>
+                                <rect key="frame" x="0.0" y="152" width="600" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Farejar" id="71V-jr-saJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellHeader" rowHeight="50" id="PFP-Km-trO" customClass="ProductHeaderTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PFP-Km-trO" id="n8Z-BI-ZMO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U0s-oj-epb">
-                                                    <rect key="frame" x="18" y="11" width="564" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="121" id="2VX-Hn-aR6"/>
-                                                    </constraints>
-                                                    <segments>
-                                                        <segment title="Produtos"/>
-                                                        <segment title="Serviços"/>
-                                                    </segments>
-                                                    <color key="tintColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="2VX-Hn-aR6"/>
-                                                        </mask>
-                                                    </variation>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="U0s-oj-epb" secondAttribute="trailing" constant="10" id="PIi-MJ-N1p"/>
-                                                <constraint firstItem="U0s-oj-epb" firstAttribute="centerY" secondItem="n8Z-BI-ZMO" secondAttribute="centerY" id="aY0-En-D0H"/>
-                                                <constraint firstItem="U0s-oj-epb" firstAttribute="leading" secondItem="n8Z-BI-ZMO" secondAttribute="leadingMargin" constant="10" id="jn4-EV-uJS"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="segmentedControl" destination="U0s-oj-epb" id="DOC-34-KhT"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellProduct" rowHeight="90" id="lcq-hQ-Tqs" customClass="ProductTableViewCell" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="78" width="600" height="90"/>
+                                        <rect key="frame" x="0.0" y="72" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lcq-hQ-Tqs" id="Ml4-Eg-PoG">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AB2-J2-7Kz">
@@ -215,13 +189,32 @@
                                     <outlet property="delegate" destination="QvA-Vn-voF" id="1W7-tb-QJl"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U0s-oj-epb">
+                                <rect key="frame" x="10" y="117" width="580" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="2VX-Hn-aR6"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Produtos"/>
+                                    <segment title="Serviços"/>
+                                </segments>
+                                <color key="tintColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2VX-Hn-aR6"/>
+                                    </mask>
+                                </variation>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gC4-MF-ZnG" secondAttribute="trailing" constant="10" id="1bt-Rn-Tne"/>
                             <constraint firstItem="xvl-aE-u1X" firstAttribute="top" secondItem="Nzr-gK-hS4" secondAttribute="bottom" id="5qO-mw-aox"/>
-                            <constraint firstItem="Nzr-gK-hS4" firstAttribute="top" secondItem="gC4-MF-ZnG" secondAttribute="bottom" constant="10" id="P3U-hX-hjk"/>
+                            <constraint firstItem="U0s-oj-epb" firstAttribute="top" secondItem="gC4-MF-ZnG" secondAttribute="bottom" constant="17" id="7Fn-ev-XDd"/>
+                            <constraint firstAttribute="trailing" secondItem="U0s-oj-epb" secondAttribute="trailing" constant="10" id="Fl5-6R-RQm"/>
                             <constraint firstItem="Nzr-gK-hS4" firstAttribute="leading" secondItem="2XF-ok-nat" secondAttribute="leading" id="UJs-CZ-Kpn"/>
+                            <constraint firstItem="U0s-oj-epb" firstAttribute="leading" secondItem="2XF-ok-nat" secondAttribute="leading" constant="10" id="beP-T8-gFk"/>
+                            <constraint firstItem="Nzr-gK-hS4" firstAttribute="top" secondItem="U0s-oj-epb" secondAttribute="bottom" constant="7" id="kQI-eK-8Xx"/>
                             <constraint firstItem="gC4-MF-ZnG" firstAttribute="leading" secondItem="2XF-ok-nat" secondAttribute="leading" constant="10" id="pmB-Gc-FEq"/>
                             <constraint firstAttribute="trailing" secondItem="Nzr-gK-hS4" secondAttribute="trailing" id="qlU-7a-IIT"/>
                             <constraint firstItem="gC4-MF-ZnG" firstAttribute="top" secondItem="Kmz-pu-hhp" secondAttribute="bottom" constant="10" id="scT-Vp-3xR"/>
@@ -234,11 +227,22 @@
                         <outlet property="petShopImage" destination="yi1-i7-jfJ" id="yQn-sq-Ukf"/>
                         <outlet property="petShopName" destination="OJt-Cs-TMc" id="sXt-aJ-tK1"/>
                         <outlet property="petShopNeighbourhood" destination="rkh-rk-Qfb" id="4mW-B6-IEF"/>
+                        <outlet property="searchBar" destination="71V-jr-saJ" id="wRt-S5-AWp"/>
+                        <outlet property="searchDisplayController" destination="fus-DI-vBO" id="yKp-PV-CbZ"/>
+                        <outlet property="segmentedControl" destination="U0s-oj-epb" id="fQR-DU-Hjv"/>
                         <outlet property="tableView" destination="Nzr-gK-hS4" id="Sjr-j3-WzR"/>
                         <segue destination="MlZ-j5-beG" kind="show" identifier="goToDetail" id="1Cc-yW-ZZt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5g-N4-2wP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="fus-DI-vBO">
+                    <connections>
+                        <outlet property="delegate" destination="QvA-Vn-voF" id="PTQ-BI-cZb"/>
+                        <outlet property="searchContentsController" destination="QvA-Vn-voF" id="4Rt-Rd-jhq"/>
+                        <outlet property="searchResultsDataSource" destination="QvA-Vn-voF" id="uEo-zd-cAm"/>
+                        <outlet property="searchResultsDelegate" destination="QvA-Vn-voF" id="1XH-6a-3Gu"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2840" y="639"/>
         </scene>

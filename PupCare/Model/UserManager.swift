@@ -120,6 +120,40 @@ class UserManager: NSObject {
     }
     
     func createUserByCurrentUser(){
-        self.user = User(parseObject: PFUser.currentUser()!)
+        if let pfUser = PFUser.currentUser(){
+            self.user = User(parseObject: pfUser)
+        }
+    }
+    
+    func getLocationToSearch()->CLLocation? {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let locationType = defaults.objectForKey("location") as? Int{
+            
+            // -1 is currentLocation
+            // >0 is to get in address user list
+            
+            if locationType == -1 {
+                if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse){
+                    let locationManager = CLLocationManager()
+                    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                    
+                    locationManager.startUpdatingLocation()
+                    
+                    return locationManager.location!
+                }
+                else{
+                    return nil
+                }
+                
+            }
+            else if locationType>0{
+                if let user = self.user{
+                    let address = user.addressList[locationType-1]
+                    return address.location
+                }
+            }
+        }
+        return nil
     }
 }

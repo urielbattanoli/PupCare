@@ -16,7 +16,6 @@ class User: NSObject {
     var photoUrl: String?
     var email: String?
     var addressList: [Address] = []
-    var location = CLLocation()
     
     init(data: [String : AnyObject]) {
         self.userId = data["userId"] as? String
