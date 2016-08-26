@@ -71,7 +71,7 @@ class OrderManager: NSObject {
         }
     }
     
-    func startTransaction(value: Double, cardInfo: [String:AnyObject], callback: (Bool,String) -> Void){
+    func startTransaction(value: Double, cardInfo: [String:AnyObject], callback: (String) -> Void){
         
         self.generateTrackId { (trackId) in
             
@@ -88,11 +88,11 @@ class OrderManager: NSObject {
                     if let cardBrand = cardInfo["CardBrand"] as? Int{
                         if dataToJSON["IsApproved"].bool == true {
                             self.confirmTransaction(trackId, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
-                                callback(success, message)
+                                callback(message)
                             })
                         } else {
                             self.cancelTransaction(trackId, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
-                                callback(success, message)
+                                callback(message)
                             })
                         }
                     }

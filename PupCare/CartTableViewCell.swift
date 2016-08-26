@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TransactionProtocol: class {
-    func didFinishTransaction(confirmed: Bool, message: String)
+    func didFinishTransaction(message: String)
 }
 
 class CartTableViewCell: UITableViewCell {
@@ -55,7 +55,7 @@ class CartTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -97,8 +97,8 @@ class CartTableViewCell: UITableViewCell {
         cartao["ExpirationYear"] = 2017
         cartao["ExpirationMonth"] = 04
         cartao["CardHolderName"] = "Rebecca Sommers"
-//        cartao["CardHolderDocumentId"] = "24676662718"
-//        cartao["CardHolderBirthday"] = "1990-01-01"
+        //        cartao["CardHolderDocumentId"] = "24676662718"
+        //        cartao["CardHolderBirthday"] = "1990-01-01"
         
         
         
@@ -107,33 +107,26 @@ class CartTableViewCell: UITableViewCell {
         
         self.FinishOrderButton.enabled = false
         
-        
-        
-        OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (cardBrand) in
-            cartao["CardBrand"] = cardBrand
-            
-            OrderManager.sharedInstance.startTransaction(petShop!.totalPrice, cardInfo: cartao, callback: { (success,message) in
-                if message == "Captured" {
-//                    let alert = UIAlertController(title: "Compra", message: "Compra Confirmada!", preferredStyle: UIAlertControllerStyle.Alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .Default , handler: { action in
-//                        
-//                    }))
-                    
-//                    presentViewController(alert, animated: true, completion: nil)
-                } else {
-                    self.FinishOrderButton.enabled = true
-                    
-                    self.FinishOrderLoader.alpha = 0.0
-                    self.FinishOrderLoader.stopAnimating()
-                    self.FinishOrderLoader.hidden = true
-                    
-                }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+            OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (cardBrand) in
+                cartao["CardBrand"] = cardBrand
                 
-                
+                OrderManager.sharedInstance.startTransaction(petShop!.totalPrice, cardInfo: cartao, callback: { (message) in
+                    
+                    self.transactionDelegate?.didFinishTransaction(message)
+                    
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.FinishOrderButton.enabled = true
+                        
+                        self.FinishOrderLoader.alpha = 0.0
+                        self.FinishOrderLoader.stopAnimating()
+                        self.FinishOrderLoader.hidden = true
+                    }
+                })
+            }
 
-                self.transactionDelegate?.didFinishTransaction(success, message: message)
-            })
         }
+        
     }
 }
 

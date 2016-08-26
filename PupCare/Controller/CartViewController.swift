@@ -268,14 +268,28 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func didFinishTransaction(confirmed: Bool, message: String) {
-        let alert = UIAlertController(title: message, message: "Teste", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Continuar", style: .Default , handler: { action in
-            print("Deletou")
-        }))
-        alert.addAction(UIAlertAction(title: "Cancelar", style: .Cancel , handler: { action in
-            print("Cancelou")
-        }))
+    func didFinishTransaction(message: String) {
+        print(message)
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        switch message {
+        case "Captured":
+            alert.title = "Pagamento Efetuado"
+            alert.message = "Sua compra foi realizada com sucesso, aguarde a entrega."
+            alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .Cancel, handler: { (action) in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .Default, handler: { (action) in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+        case "Voided":
+            alert.title = "Falha no Pagamento"
+            alert.message = "Ocorreu algum problema na hora de confirmar o pagamento. Revise seus dados"
+            alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .Cancel, handler: { (action) in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }))
+        default:
+            break
+        }
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
