@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="cat-and-dog-pics" translatesAutoresizingMaskIntoConstraints="NO" id="u3t-69-178">
-                                <rect key="frame" x="113" y="319" width="375" height="326"/>
+                                <rect key="frame" x="113" y="313" width="375" height="326"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="u3t-69-178" secondAttribute="height" multiplier="375:326" id="Gv0-jU-vb4"/>
@@ -111,7 +111,7 @@
                             <constraint firstItem="mxN-gP-aHq" firstAttribute="top" secondItem="mU2-bp-yUB" secondAttribute="bottom" constant="-14" id="26e-gF-Rzw"/>
                             <constraint firstItem="u3t-69-178" firstAttribute="centerX" secondItem="tTl-2G-NkY" secondAttribute="centerX" constant="0.5" id="4Bq-vv-GDG"/>
                             <constraint firstItem="F9N-J9-eKl" firstAttribute="top" secondItem="A3H-Cw-gyR" secondAttribute="bottom" constant="15" id="77v-GH-XJI"/>
-                            <constraint firstItem="u3t-69-178" firstAttribute="top" secondItem="tTl-2G-NkY" secondAttribute="bottom" constant="-32" id="Cwb-AY-cue"/>
+                            <constraint firstItem="u3t-69-178" firstAttribute="top" secondItem="tTl-2G-NkY" secondAttribute="bottom" constant="-38" id="Cwb-AY-cue"/>
                             <constraint firstAttribute="trailing" secondItem="tTl-2G-NkY" secondAttribute="trailing" constant="50" id="D3n-DE-vvH"/>
                             <constraint firstItem="mxN-gP-aHq" firstAttribute="top" secondItem="mU2-bp-yUB" secondAttribute="bottom" constant="6" id="EDh-XI-mGs"/>
                             <constraint firstItem="F9N-J9-eKl" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leading" constant="50" id="ICf-fa-eIL"/>
@@ -122,7 +122,7 @@
                             <constraint firstItem="tTl-2G-NkY" firstAttribute="trailing" secondItem="kjj-pQ-4j2" secondAttribute="trailing" constant="-50" id="Utm-zO-LU0"/>
                             <constraint firstItem="A3H-Cw-gyR" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leading" constant="50" id="jbZ-aQ-Flb"/>
                             <constraint firstItem="A3H-Cw-gyR" firstAttribute="top" secondItem="mxN-gP-aHq" secondAttribute="bottom" constant="18" id="pvZ-SP-erz"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="u3t-69-178" secondAttribute="bottom" constant="-45" id="uym-70-lNq"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="u3t-69-178" secondAttribute="bottom" constant="-39" id="uym-70-lNq"/>
                             <constraint firstAttribute="trailing" secondItem="F9N-J9-eKl" secondAttribute="trailing" constant="50" id="woi-HQ-MH7"/>
                         </constraints>
                         <variation key="default">
