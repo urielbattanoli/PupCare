@@ -52,6 +52,8 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
             self.stateTextView.text = address.state
             self.addressNameTextView.text = address.name
         }
+        
+        self.addButtonDoneOnKeyboard()
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,6 +111,24 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         return addressData
+    }
+    
+    private func addButtonDoneOnKeyboard(){
+        let doneToolbar = UIToolbar()
+        doneToolbar.buttonDone(self, action: #selector(AddressViewController.dismissKeyboard))
+        
+        self.zipTextView.inputAccessoryView = doneToolbar
+        self.addressNameTextView.inputAccessoryView = doneToolbar
+        self.streetTextView.inputAccessoryView = doneToolbar
+        self.cityTextView.inputAccessoryView = doneToolbar
+        self.complementTextView.inputAccessoryView = doneToolbar
+        self.stateTextView.inputAccessoryView = doneToolbar
+        self.numberTextView.inputAccessoryView = doneToolbar
+        self.neighbourhoodTextView.inputAccessoryView = doneToolbar
+    }
+    
+    func dismissKeyboard(){
+        self.view.endEditing(true)
     }
     
     @IBAction func searchAddressByCurrentLocation(sender: AnyObject) {

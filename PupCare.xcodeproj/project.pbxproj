@@ -43,7 +43,6 @@
 		A400B4751D34311100051363 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A400B4741D34311100051363 /* Profile.storyboard */; };
 		A400B4771D34324300051363 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A400B4761D34324300051363 /* MyProfileViewController.swift */; };
 		A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */; };
-		A40B341D1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */; };
 		A40B341F1D30270F00BCC240 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341E1D30270F00BCC240 /* Extensions.swift */; };
 		A420BBB21D4154D7004F4C1B /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A420BBB11D4154D7004F4C1B /* ProductDetail.storyboard */; };
 		A420BBB51D46890E004F4C1B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420BBB41D46890E004F4C1B /* Card.swift */; };
@@ -141,7 +140,6 @@
 		A400B4741D34311100051363 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = View/Profile.storyboard; sourceTree = "<group>"; };
 		A400B4761D34324300051363 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileViewController.swift; path = Controller/MyProfileViewController.swift; sourceTree = "<group>"; };
 		A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductTableViewController.swift; path = Controller/ProductTableViewController.swift; sourceTree = "<group>"; };
-		A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductHeaderTableViewCell.swift; path = Controller/ProductHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		A40B341E1D30270F00BCC240 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Model/Extensions.swift; sourceTree = "<group>"; };
 		A420BBB11D4154D7004F4C1B /* ProductDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProductDetail.storyboard; path = View/ProductDetail.storyboard; sourceTree = "<group>"; };
 		A420BBB41D46890E004F4C1B /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Model/Card.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				A43C9E8B1D34416300D6D0D8 /* ProductDetailViewController.swift */,
-				A40B341C1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift */,
 				A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */,
 				A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */,
 			);
@@ -532,6 +529,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3311D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCare" */;
 			buildPhases = (
+				2114551FF2455569C59B050F /* 📦 Check Pods Manifest.lock */,
 				4F5E67E3554E5E14D34C3903 /* [CP] Check Pods Manifest.lock */,
 				0CB42F44DFD31EEF33C26145 /* [CP] Check Pods Manifest.lock */,
 				6FD4D5EEE2C1A8F7C954863A /* [CP] Check Pods Manifest.lock */,
@@ -560,6 +558,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3341D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCareTests" */;
 			buildPhases = (
+				1A19A2BD5199AA75E62E24BA /* 📦 Check Pods Manifest.lock */,
 				78739C84F840103B85F61317 /* [CP] Check Pods Manifest.lock */,
 				01D566CC89C08DA6B5712182 /* [CP] Check Pods Manifest.lock */,
 				EF1AA9539EC77E2CBF7FE417 /* [CP] Check Pods Manifest.lock */,
@@ -721,6 +720,36 @@
 			inputPaths = (
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1A19A2BD5199AA75E62E24BA /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2114551FF2455569C59B050F /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1008,7 +1037,6 @@
 				A475E3501D1854D800FB66C3 /* PromotionsViewController.swift in Sources */,
 				A42331C01D2ACE5400CFF8DA /* ProductParseExtension.swift in Sources */,
 				A40B341B1D2C4C3D00BCC240 /* ProductTableViewController.swift in Sources */,
-				A40B341D1D2ED50400BCC240 /* ProductHeaderTableViewCell.swift in Sources */,
 				A475E34E1D18548900FB66C3 /* OrdersViewController.swift in Sources */,
 				71C1B4481D2EC08000CDDA20 /* PromotionParseExtension.swift in Sources */,
 				71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */,

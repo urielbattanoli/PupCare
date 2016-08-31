@@ -85,8 +85,9 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.petShopAddressLabel.text = petShop.address
         cell.ranking = Int(petShop.ranking)
         cell.petShopImageView.loadImage(petShop.imageUrl)
-        cell.petShopDistanceLabel.text = "\((petShop.location.distanceFromLocation(UserManager.sharedInstance.user!.location)/1000).roundToPlaces(2)) km"
-        
+        if let location = UserManager.sharedInstance.getLocationToSearch(){
+            cell.petShopDistanceLabel.text = "\((petShop.location.distanceFromLocation(location)/1000).roundToPlaces(2)) km"
+        }
         return cell
     }
     

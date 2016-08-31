@@ -277,6 +277,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             alert.message = "Sua compra foi realizada com sucesso, aguarde a entrega."
             alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .Cancel, handler: { (action) in
                 alert.dismissViewControllerAnimated(true, completion: nil)
+                self.tabBarController?.selectedIndex = 2
             }))
             alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .Default, handler: { (action) in
                 alert.dismissViewControllerAnimated(true, completion: nil)

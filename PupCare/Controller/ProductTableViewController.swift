@@ -8,16 +8,17 @@
 
 import UIKit
 
-class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProductTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate {
     
     // MARK: outlets
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var petShopImage: UIImageView!
     @IBOutlet weak var petShopName: UILabel!
     @IBOutlet weak var petShopAdress: UILabel!
     @IBOutlet weak var petShopNeighbourhood: UILabel!
     @IBOutlet weak var petShopDistance: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: Variables
     var petShop: PetShop?
@@ -29,19 +30,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     var filteredProducts: [Product] = []
-    
-    var searchController: UISearchController?{
-        didSet{
-            self.searchController?.hidesNavigationBarDuringPresentation = false
-            self.searchController?.searchResultsUpdater = self
-            self.searchController?.dimsBackgroundDuringPresentation = false
-            self.searchController?.searchBar.tintColor = UIColor(red: 115, green: 40, blue: 115)
-            self.searchController?.searchBar.barTintColor = UIColor.whiteColor()
-            self.searchController?.searchBar.placeholder = "Farejar"
-            definesPresentationContext = true
-            self.tableView.tableHeaderView = searchController!.searchBar
-        }
-    }
     
     var refreshControl: UIRefreshControl?{
         didSet{
@@ -58,22 +46,38 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         self.title = "Detalhes da Pet Shop"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
         
-        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchBar.delegate = self
+        if let searchField = self.searchBar.valueForKey("searchField") as? UITextField{
+            searchField.backgroundColor = self.searchBar.backgroundColor
+            searchField.textColor = UIColor.whiteColor()
+            self.searchBar.barTintColor = UIColor.whiteColor()
+            self.searchBar.backgroundColor = UIColor.whiteColor()
+            
+            if let placeholder = searchField.valueForKey("placeholderLabel") as? UILabel{
+                placeholder.textColor = UIColor.whiteColor()
+            }
+        }
+        
+        
         self.refreshControl = UIRefreshControl()
         self.tableView.tableFooterView = UIView()
         
-        if let petshop = self.petShop{
-            self.petShopName.text = petshop.name
-            self.petShopAdress.text = petshop.address
-            self.petShopImage.loadImage(petShop!.imageUrl)
-            self.petShopDistance.text = "calcular"
-            self.petShopNeighbourhood.text = petshop.neighbourhood
-            if petshop.products.count > 0{
-                self.products = petshop.products
+        if let petShop = self.petShop{
+            self.petShopName.text = petShop.name
+            self.petShopAdress.text = petShop.address
+            self.petShopImage.loadImage(petShop.imageUrl)
+            self.petShopNeighbourhood.text = petShop.neighbourhood
+            
+            if let location = UserManager.sharedInstance.getLocationToSearch(){
+                self.petShopDistance.text = "\((petShop.location.distanceFromLocation(location)/1000).roundToPlaces(2)) km"
+            }
+            
+            if petShop.products.count > 0{
+                self.products = petShop.products
             }
             else{
-                ProductManager.getProductList((petShop?.objectId)!, block: { (products) in
-                    petshop.products = products
+                ProductManager.getProductList(petShop.objectId, block: { (products) in
+                    petShop.products = products
                     self.products = products
                 })
             }
@@ -81,16 +85,8 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     // MARK: Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableCellWithIdentifier("cellHeader") as! ProductHeaderTableViewCell
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.searchController!.active && searchController!.searchBar.text != "" {
+        if  !(self.searchBar.text?.isEmpty)! {
             return self.filteredProducts.count ?? 0
         }
         else{
@@ -101,7 +97,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellProduct", forIndexPath: indexPath) as! ProductTableViewCell
         
-        if searchController!.active && searchController!.searchBar.text != "" {
+        if !(self.searchBar.text?.isEmpty)! {
             cell.product = self.filteredProducts[indexPath.row]
         } else {
             cell.product = self.products![indexPath.row]
@@ -111,10 +107,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     // MARK: Table view delegate
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
-    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 90
     }
@@ -123,6 +115,17 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         performSegueWithIdentifier("goToDetail", sender: self.products![indexPath.row])
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    // MARK: SearchBar delegate
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filterProductsForSearchText(searchText)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.filterProductsForSearchText("")
+        self.view.endEditing(true)
     }
     
     // MARK: Functions
@@ -141,8 +144,13 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         self.tableView.reloadData()
+        
+        if searchText.isEmpty{
+            searchBar.showsCancelButton = false
+        }else{
+            searchBar.showsCancelButton = true
+        }
     }
-    
     
     func reloadProducts() {
         ProductManager.getProductList((petShop?.objectId)!) { (products) in
