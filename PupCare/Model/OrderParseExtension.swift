@@ -12,7 +12,13 @@ import Parse
 extension Order {
 
     convenience init(parseObject: PFObject) {
-        let data: [String : AnyObject] = [:]
+        var data: [String : AnyObject] = [:]
+        
+        data["orderId"] = parseObject.objectId
+        data["petShop"] = PetShop(parseObject: parseObject["petShopId"] as! PFObject)
+        data["date"] = parseObject["createdAt"] as! NSDate
+        data["price"] = parseObject["price"] as! NSNumber
+        data["trackId"] = parseObject["trackId"] as! String
         
         self.init(data: data)
     }

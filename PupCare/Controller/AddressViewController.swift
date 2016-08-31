@@ -100,12 +100,12 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         addressData["zip"] = self.searchZipTextField.text!
         addressData["location"] = CLLocation()
         
-        addressData["addressId"] = ""
+        addressData["objectId"] = ""
         addressData["name"] = ""
         addressData["additionalInfo"] = ""
         
         if let address = self.address{
-            addressData["addressId"] = address.addressId
+            addressData["objectId"] = address.addressId
             addressData["name"] = address.name
             addressData["additionalInfo"] = address.additionalInfo
         }
@@ -151,7 +151,7 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
                 var addressData = addressData
                 
                 if let address = self.address{
-                    addressData["addressId"] = address.addressId
+                    addressData["objectId"] = address.addressId
                     addressData["name"] = address.name
                     addressData["additionalInfo"] = address.additionalInfo
                 }

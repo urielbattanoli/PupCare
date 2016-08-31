@@ -9,71 +9,52 @@
 import UIKit
 
 class OrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: Variables
-    var processingOrders: [Order] = []{
+    var orders: [Order] = []{
         didSet{
             self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
-        }
-    }
-    var oldOrders: [Order] = []{
-        didSet{
-            self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
         }
     }
     
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
             let data = ["orderId":"asd123asd24a",
                         "petShop": petshops![0],
                         "date": NSDate(),
-                        "price": 145.00]
+                        "price": 145.00,
+                        "trackId": "3293jsdijsbd"]
             let order = Order(data: data)
-            self.oldOrders = [order, order]
-            self.processingOrders = [order, order, order]
+            self.orders = [order, order, order]
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     //MARK: TableView data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return self.processingOrders.count
-        case 1:
-            return self.oldOrders.count
-        default:
-            print("numbersOfRows default")
-            return 0
-        }
+        return self.orders.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("orderCell") as! OrderTableViewCell
         
-        switch indexPath.section {
-        case 0:
-            cell.order = self.processingOrders[indexPath.row]
-        case 1:
-            cell.order = self.oldOrders[indexPath.row]
-        default:
-            print("cellForRow default")
-        }
+        cell.order = self.orders[indexPath.row]
+        cell.petShopDetailBT.addTarget(self, action: #selector(OrdersViewController.didPressDetailBT), forControlEvents: .TouchUpInside)
+        cell.petShopDetailBT.tag = indexPath.row
         
         return cell
     }
@@ -81,14 +62,9 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     //MARK: TableView delegate
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCellWithIdentifier("headerCell") as! OrderHeaderTableViewCell
-        switch section {
-        case 0:
-            cell.titleLabel.text = "Em andamento"
-        case 1:
-            cell.titleLabel.text = "Histórico de pedidos"
-        default:
-            print("viewForHeader default")
-        }
+        
+        cell.titleLabel.text = "Histórico de pedidos"
+        
         return cell.contentView
     }
     
@@ -98,5 +74,19 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 85
+    }
+    
+    // MARK: Functions
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToOrderDetail"{
+            let orderDetailVC = segue.destinationViewController as! OrderDetailViewController
+            orderDetailVC.order = sender as? Order
+        }
+    }
+    
+    func didPressDetailBT(sender: AnyObject) {
+        if let detailBT = sender as? UIButton{
+            self.performSegueWithIdentifier("goToOrderDetail", sender: self.orders[detailBT.tag])
+        }
     }
 }

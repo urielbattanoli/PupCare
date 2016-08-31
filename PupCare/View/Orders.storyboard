@@ -106,8 +106,8 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iqJ-nH-upG" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                                            <rect key="frame" x="470" y="18" width="95" height="45"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iqJ-nH-upG" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                                            <rect key="frame" x="470" y="15" width="95" height="45"/>
                                                             <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="90S-tD-hs0"/>
@@ -162,6 +162,7 @@
                                             <outlet property="orderCodLbl" destination="F6T-0H-c8J" id="7zj-Mf-fIM"/>
                                             <outlet property="orderDateLbl" destination="XAL-FA-0bI" id="V79-Nf-b2p"/>
                                             <outlet property="orderPriceLbl" destination="aww-G7-bht" id="8Zx-rX-8g5"/>
+                                            <outlet property="petShopDetailBT" destination="iqJ-nH-upG" id="rcL-vx-oZd"/>
                                             <outlet property="petShopImage" destination="Y0O-gB-Vec" id="4Z0-Lh-7Ak"/>
                                             <outlet property="petshopNameLbl" destination="fqN-yz-yle" id="tqc-ni-f0P"/>
                                             <outlet property="viewBackground" destination="Dhs-0m-rgY" id="82m-WP-hMm"/>
@@ -191,10 +192,10 @@
             </objects>
             <point key="canvasLocation" x="1176" y="235"/>
         </scene>
-        <!--View Controller-->
+        <!--Order Detail View Controller-->
         <scene sceneID="bYy-nQ-gOD">
             <objects>
-                <viewController id="2L3-Wm-Clf" sceneMemberID="viewController">
+                <viewController id="2L3-Wm-Clf" customClass="OrderDetailViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SmH-kG-Pdc"/>
                         <viewControllerLayoutGuide type="bottom" id="a5b-mI-zKQ"/>
@@ -211,7 +212,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2e-ZT-jdy" id="QQ2-fn-m1q">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="104.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
