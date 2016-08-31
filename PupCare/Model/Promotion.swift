@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class Promotion: NSObject {
     
@@ -21,6 +20,7 @@ class Promotion: NSObject {
     var newPrice: Float = 0
     var initialDate: NSDate = NSDate()
     var finalDate: NSDate = NSDate()
+    var photos: [String] = []
     
     init(data: [String: AnyObject]) {
         

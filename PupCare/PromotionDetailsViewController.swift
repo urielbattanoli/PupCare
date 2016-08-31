@@ -11,8 +11,7 @@ import Kingfisher
 
 class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     @IBOutlet var carousel: iCarousel!
-    
-    var photos: [String] = []
+
     var promotion: Promotion?
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -20,11 +19,13 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     @IBOutlet weak var originalPriceLabel: UILabel!
     @IBOutlet weak var newPriceLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var AddToCartButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.clipsToBounds = true
-        self.loadPromotion()
+        
+        
         
         carousel.delegate = self
         carousel.dataSource = self
@@ -37,31 +38,56 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         backgroundView.layer.cornerRadius = 5
         backgroundView.layer.borderWidth = 0.5
         backgroundView.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).CGColor
-        
+     
+        self.AddToCartButton.clipsToBounds = true
+        self.AddToCartButton.layer.cornerRadius = 5
     }
     
-    func reloadDetails() {
+    override func viewWillAppear(animated: Bool) {
+        if promotion != nil {
+            self.reloadDetails()
+            self.reloadPhotos()
+            
+        } else {
+            self.loadPromotion()
+        }
+    }
+    
+    private func reloadDetails() {
         titleLabel.text = promotion!.promotionName
         subtitleLabel.text = promotion!.promotionDescription
         newPriceLabel.text = "Preço Atual: \(NSNumber(float: promotion!.newPrice).numberToPrice())"
         originalPriceLabel.text = "Preço Original: \(NSNumber(float: promotion!.lastPrice).numberToPrice())"
         
-        for product in (promotion?.products)!  {
-            self.photos.append(product.imageUrl)
-        }
-        if self.photos.count > 0 {
-            self.carousel.reloadData()
-        }
     }
     
-    func loadPromotion() {
+    
+    private func reloadPhotos() -> Bool {
+        
+        self.carousel.reloadData()
+        if self.promotion?.photos.count > 0 {
+            self.carousel.reloadData()
+            return true
+        }
+        
+        PromotionManager.getPromotionDetails(promotion!, response: { (promotionDetails, error) in
+            for product in promotionDetails!.products  {
+                if !self.promotion!.photos.contains(product.imageUrl) {
+                    self.promotion!.photos.append(product.imageUrl)
+                }
+            }
+            self.carousel.reloadData()
+        })
+        
+        return true
+    }
+    
+    private func loadPromotion() {
         PromotionManager.getPromotionDetails(promotion!) { (promotionDetails, error) in
             if error == nil {
                 self.promotion = promotionDetails as Promotion!
-                
-                print("PROMO")
-                print(self.promotion!)
                 self.reloadDetails()
+                self.reloadPhotos()
             }
         }
     }
@@ -72,7 +98,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     }
     
     func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
-        return photos.count
+        return promotion!.photos.count
     }
     
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
@@ -86,7 +112,8 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
             itemView.layer.cornerRadius = 10
             
             let imageView = UIImageView(frame: CGRect(x: 20, y: 20, width: 185, height: 185))
-            imageView.loadImage(self.photos[index])
+            imageView.loadImage(self.promotion!.photos[index])
+            
             imageView.contentMode = .ScaleAspectFit
             imageView.layer.cornerRadius = 10
             
@@ -103,7 +130,11 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         
         switch option {
         case .Wrap:
-            return 1.0
+            if self.promotion!.photos.count > 1 {
+                return 1.0
+            } else {
+                return 0
+            }
         case .Spacing:
             return value * 1.1
         default:
@@ -111,4 +142,12 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         }
         
     }
+    
+    
+    @IBAction func AddPromotionToCart(sender: AnyObject) {
+        
+        Cart.sharedInstance.addToCart((self.promotion?.petshop)!, product: nil, promotion: self.promotion, quantity: 1)
+    }
+    
+    
 }
