@@ -36,6 +36,7 @@ class PromotionManager: NSObject {
         
         PFCloud.callFunctionInBackground("getPromotionDetails", withParameters: params) { (details, error) in
             
+            promotion.products.removeAll()
             for product in (details as? [PFObject])! {
                 if let petShopProduct = product["petShopProductId"] as? PFObject {
                     promotion.products.append(Product(parseObject: petShopProduct))
