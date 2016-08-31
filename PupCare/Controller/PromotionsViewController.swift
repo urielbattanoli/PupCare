@@ -57,6 +57,8 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
             if error == nil {
                 print(promotions!)
                 self.allPromotions = promotions!
+
+                
                 self.promotionsTableView.reloadData()
             }
         }
