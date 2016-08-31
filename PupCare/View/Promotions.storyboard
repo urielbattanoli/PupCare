@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eGH-64-Dyd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eGH-64-Dyd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -296,6 +296,20 @@
                                     <constraint firstAttribute="height" constant="50" id="Hb8-5D-ipo"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddV-Bx-qnI">
+                                <rect key="frame" x="10" y="416" width="580" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Ns4-ej-Wrr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="Adicionar produto ao carrinho">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="AddPromotionToCart:" destination="sdt-Jl-Yfj" eventType="touchUpInside" id="8bx-Tu-a2Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -304,10 +318,13 @@
                             <constraint firstItem="UWp-cs-514" firstAttribute="top" secondItem="PbY-UM-ZWG" secondAttribute="bottom" constant="10" id="96u-ro-NqR"/>
                             <constraint firstItem="M6l-k4-aCS" firstAttribute="leading" secondItem="bNT-CE-41W" secondAttribute="leading" id="Aod-mP-6L0"/>
                             <constraint firstItem="g2T-8k-m89" firstAttribute="top" secondItem="7iH-rj-PSn" secondAttribute="bottom" constant="20" id="JQ0-Qd-gT0"/>
+                            <constraint firstItem="ddV-Bx-qnI" firstAttribute="leading" secondItem="bNT-CE-41W" secondAttribute="leading" constant="10" id="LBt-V0-mYo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="M6l-k4-aCS" secondAttribute="trailing" constant="-20" id="O78-xw-RWN"/>
                             <constraint firstItem="M6l-k4-aCS" firstAttribute="leading" secondItem="bNT-CE-41W" secondAttribute="leadingMargin" constant="-20" id="OsV-f9-68z"/>
                             <constraint firstItem="UWp-cs-514" firstAttribute="centerX" secondItem="bNT-CE-41W" secondAttribute="centerX" id="dqs-nl-7Mg"/>
+                            <constraint firstItem="7iH-rj-PSn" firstAttribute="top" secondItem="ddV-Bx-qnI" secondAttribute="bottom" constant="10" id="ito-UE-qtl"/>
                             <constraint firstAttribute="trailing" secondItem="M6l-k4-aCS" secondAttribute="trailing" id="kcv-lP-ggF"/>
+                            <constraint firstAttribute="trailing" secondItem="ddV-Bx-qnI" secondAttribute="trailing" constant="10" id="nOt-GB-2uM"/>
                             <constraint firstItem="PbY-UM-ZWG" firstAttribute="centerX" secondItem="bNT-CE-41W" secondAttribute="centerX" id="wxa-EB-nqc"/>
                             <constraint firstItem="M6l-k4-aCS" firstAttribute="top" secondItem="emu-xt-liG" secondAttribute="bottom" constant="20" id="xqO-a3-wJU"/>
                             <constraint firstItem="7iH-rj-PSn" firstAttribute="centerX" secondItem="bNT-CE-41W" secondAttribute="centerX" id="xyG-TA-b0e"/>
@@ -321,6 +338,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="AddToCartButton" destination="ddV-Bx-qnI" id="pEL-Hb-ADz"/>
                         <outlet property="backgroundView" destination="7iH-rj-PSn" id="74f-Ec-pbS"/>
                         <outlet property="carousel" destination="M6l-k4-aCS" id="hKr-b7-Th6"/>
                         <outlet property="newPriceLabel" destination="Rzl-dT-if0" id="1DI-xt-l98"/>
