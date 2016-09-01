@@ -266,6 +266,7 @@
                             <constraint firstItem="BVC-Be-Pin" firstAttribute="top" secondItem="4nm-XQ-7RZ" secondAttribute="bottom" constant="8" id="tsM-lQ-naa"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="passwordTextField" destination="N7C-dx-AH9" id="LAZ-6C-I0g"/>
                         <outlet property="usernameTextField" destination="5a6-CS-BSK" id="UFc-Gq-atS"/>
@@ -449,6 +450,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="email" destination="EbY-1e-GLP" id="huz-4g-Lhi"/>
                         <outlet property="name" destination="ojT-Xp-Hq0" id="5G4-6U-f9B"/>
@@ -476,6 +478,6 @@
         <image name="cat-and-dog-pics" width="375" height="326"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hu9-ij-AGM"/>
+        <segue reference="bE8-pn-eR8"/>
     </inferredMetricsTieBreakers>
 </document>
