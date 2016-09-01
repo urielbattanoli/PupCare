@@ -56,6 +56,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             if let placeholder = searchField.valueForKey("placeholderLabel") as? UILabel{
                 placeholder.textColor = UIColor.whiteColor()
             }
+            self.hideKeyboardWhenTappedAround()
         }
         
         
