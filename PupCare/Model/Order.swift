@@ -14,11 +14,14 @@ class Order: NSObject {
     let petShop: PetShop
     let orderDate: NSDate
     let price: NSNumber
+    let trackId: String
+    let products: [Product] = []
     
     init(data: [String : AnyObject]) {
         self.orderId = data["orderId"] as! String
         self.petShop = data["petShop"] as! PetShop
         self.orderDate = data["date"] as! NSDate
         self.price = data["price"] as! NSNumber
+        self.trackId = data["trackId"] as! String
     }
 }

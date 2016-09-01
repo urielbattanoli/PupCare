@@ -17,6 +17,7 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var orderCodLbl: UILabel!
     @IBOutlet weak var orderDateLbl: UILabel!
     @IBOutlet weak var orderPriceLbl: UILabel!
+    @IBOutlet weak var petShopDetailBT: BTNAttributedStyle!
     
     //MARK: Variables
     var order: Order?{

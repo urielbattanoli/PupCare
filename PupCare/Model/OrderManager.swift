@@ -157,4 +157,23 @@ class OrderManager: NSObject {
             response(trackId.objectId!)
         }
     }
+    
+    func getOrderList(block: ([Order])->()) {
+        let params = ["userId" : PFUser.currentUser()!]
+        PFCloud.callFunctionInBackground("getUserOrders", withParameters: params) { (objects, error) in
+            var orders = [Order]()
+            if let error = error{
+                print(error)
+                block(orders)
+            }
+            else{
+                if let objects = objects as? [PFObject]{
+                    for object in objects{
+                        orders.append(Order(parseObject: object))
+                    }
+                    block(orders)
+                }
+            }
+        }
+    }
 }

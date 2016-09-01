@@ -46,7 +46,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         
         AddressManager.sharedInstance.getAddressListFromUser(self.user.userId!) { (addresses) in
             self.user.addressList = addresses
-            self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+            self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Fade)
         }
         
         self.tableView.delegate = self
@@ -170,7 +170,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         switch indexPath.section {
         case 1 where indexPath.row == 0:
             self.section1Expanded = !self.section1Expanded
-            self.tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
+            self.tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Fade)
         case 1 where indexPath.row > 2 && indexPath.row < self.numberOfRowSection1-1:
             if indexPath.row == self.numberOfRowSection1-2{
                 performSegueWithIdentifier("goToAddAddress", sender: nil)
@@ -247,6 +247,6 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         if !self.user.addressList.contains(address){
             self.user.addressList.append(address)
         }
-        self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+        self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Fade)
     }
 }
