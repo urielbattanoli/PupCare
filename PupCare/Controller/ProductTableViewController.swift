@@ -30,6 +30,8 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     var filteredProducts: [Product] = []
+    var tap: UITapGestureRecognizer!
+    
     
     var refreshControl: UIRefreshControl?{
         didSet{
@@ -42,6 +44,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         
         self.title = "Detalhes da Pet Shop"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
@@ -56,7 +59,6 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             if let placeholder = searchField.valueForKey("placeholderLabel") as? UILabel{
                 placeholder.textColor = UIColor.whiteColor()
             }
-            self.hideKeyboardWhenTappedAround()
         }
         
         
@@ -127,6 +129,18 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         searchBar.text = ""
         self.filterProductsForSearchText("")
         self.view.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        
+        view.addGestureRecognizer(tap)
+    }
+    override func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        view.removeGestureRecognizer(tap)
     }
     
     // MARK: Functions
