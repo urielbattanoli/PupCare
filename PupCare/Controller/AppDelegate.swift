@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         ParseManager.InitParse(launchOptions)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         return true
     }

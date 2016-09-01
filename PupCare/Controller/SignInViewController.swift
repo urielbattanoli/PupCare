@@ -29,7 +29,6 @@ class SignInViewController: UIViewController {
         self.navigationController?.navigationBarHidden = false
     }
     
-    
     @IBAction func signInAction(sender: AnyObject) {
         let username = usernameTextField.text
         let password = passwordTextField.text
