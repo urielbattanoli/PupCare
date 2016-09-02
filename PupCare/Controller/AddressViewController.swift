@@ -54,6 +54,7 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         self.addButtonDoneOnKeyboard()
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func didReceiveMemoryWarning() {
@@ -115,7 +116,6 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     
     private func addButtonDoneOnKeyboard(){
         let doneToolbar = UIToolbar()
-        doneToolbar.buttonDone(self, action: #selector(AddressViewController.dismissKeyboard))
         
         self.zipTextView.inputAccessoryView = doneToolbar
         self.addressNameTextView.inputAccessoryView = doneToolbar
@@ -125,10 +125,6 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         self.stateTextView.inputAccessoryView = doneToolbar
         self.numberTextView.inputAccessoryView = doneToolbar
         self.neighbourhoodTextView.inputAccessoryView = doneToolbar
-    }
-    
-    func dismissKeyboard(){
-        self.view.endEditing(true)
     }
     
     @IBAction func searchAddressByCurrentLocation(sender: AnyObject) {
