@@ -58,6 +58,9 @@
 		A43C9E9B1D3688FA00D6D0D8 /* UserParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E9A1D3688FA00D6D0D8 /* UserParseExtension.swift */; };
 		A440AF9B1D2AF2EC005B6CBC /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A440AF9A1D2AF2EC005B6CBC /* ProductManager.swift */; };
 		A45B7E401D5E5D5C004EDC50 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B7E3F1D5E5D5C004EDC50 /* OrderTableViewCell.swift */; };
+		A4631C2E1D78BE6600365439 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACDCC0D1D63435B003F299B /* OrderManager.swift */; };
+		A4631C2F1D78BF7A00365439 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAA5271D5E5BEB0053EDEA /* Order.swift */; };
+		A4631C301D78BF7D00365439 /* OrderParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAA5291D5E5C090053EDEA /* OrderParseExtension.swift */; };
 		A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A475E3101D0A9B3A00FB66C3 /* PupCare.xcdatamodeld */; };
 		A475E3141D0A9B3A00FB66C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A475E3131D0A9B3A00FB66C3 /* Assets.xcassets */; };
 		A475E3171D0A9B3A00FB66C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E3151D0A9B3A00FB66C3 /* LaunchScreen.storyboard */; };
@@ -286,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				A43C9E8B1D34416300D6D0D8 /* ProductDetailViewController.swift */,
-				A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */,
 				A40B341A1D2C4C3D00BCC240 /* ProductTableViewController.swift */,
 			);
 			name = Product;
@@ -295,7 +297,6 @@
 		7A7036ED1D41306A005FAB68 /* PetShop */ = {
 			isa = PBXGroup;
 			children = (
-				71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */,
 				A475E3491D18545D00FB66C3 /* PetShopsViewController.swift */,
 			);
 			name = PetShop;
@@ -360,6 +361,15 @@
 				A420BBB41D46890E004F4C1B /* Card.swift */,
 			);
 			name = Card;
+			sourceTree = "<group>";
+		};
+		A424966D1D79DCCB00D5327F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */,
+				A4869DCC1D2595AB0076EC37 /* ProductTableViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		A42751A41D47E89A00B083C6 /* Card */ = {
@@ -478,6 +488,7 @@
 		A475E33C1D148F2600FB66C3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A424966D1D79DCCB00D5327F /* Cells */,
 				A475E3451D1490AA00FB66C3 /* AppDelegate.swift */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
 				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
@@ -1084,7 +1095,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4631C2E1D78BE6600365439 /* OrderManager.swift in Sources */,
 				7A04ECB01D356BCA00270189 /* CloudCodeTests.swift in Sources */,
+				A4631C301D78BF7D00365439 /* OrderParseExtension.swift in Sources */,
+				A4631C2F1D78BF7A00365439 /* Order.swift in Sources */,
 				A475E3221D0A9B3B00FB66C3 /* PupCareTests.swift in Sources */,
 				715100771D341129003A6817 /* ParseManager.swift in Sources */,
 			);

@@ -90,6 +90,15 @@ class CloudCodeTests: XCTestCase {
         waitForExpectationsWithTimeout(expectationTime, handler: nil)
     }
     
+    func testOrderQuery(){
+        let expectation : XCTestExpectation = expectationWithDescription("Order query completed with no errors")
+        OrderManager.sharedInstance.getOrderList { (orders) in
+            XCTAssertNotNil(orders)
+            expectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(expectationTime, handler: nil)
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {

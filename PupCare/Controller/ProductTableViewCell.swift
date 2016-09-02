@@ -16,6 +16,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
     
+    @IBOutlet weak var lblQuant: UILabel!
     //MARK: Variables
     var product: Product?{
         didSet{

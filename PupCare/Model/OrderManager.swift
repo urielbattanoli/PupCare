@@ -159,7 +159,7 @@ class OrderManager: NSObject {
     }
     
     func getOrderList(block: ([Order])->()) {
-        let params = ["userId" : PFUser.currentUser()!]
+        let params = ["userId" : PFUser.currentUser()!.objectId!]
         PFCloud.callFunctionInBackground("getUserOrders", withParameters: params) { (objects, error) in
             var orders = [Order]()
             if let error = error{
