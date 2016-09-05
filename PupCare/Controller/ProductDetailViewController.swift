@@ -26,6 +26,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         super.viewDidLoad()
         
         self.title = "Detalhes do produto"
+        
 
         
         self.carousel.delegate = self
@@ -33,7 +34,6 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         self.carousel.type = .Rotary
         
         self.carousel.userInteractionEnabled = false
-        
         
         if let product = self.product{
             self.lblName.text = product.name
