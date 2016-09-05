@@ -37,7 +37,6 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
         
         if UserManager.sharedInstance.user == nil{
             UserManager.sharedInstance.createUserByCurrentUser()
