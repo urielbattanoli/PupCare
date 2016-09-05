@@ -41,6 +41,31 @@ class OrderManager: NSObject {
                           "X-ApiKey":apiKeyHeader]
     }
     
+    func saveOrder(order: [String:AnyObject], callback: (PFObject)->()){
+        let orderAsPfObject = PFObject(className: "Order")
+        orderAsPfObject.setObject(PFUser.currentUser()!, forKey: "userId")
+        orderAsPfObject["userId"] = PFUser.currentUser()
+        orderAsPfObject["trackId"] = order["trackId"] as! PFObject
+        orderAsPfObject["price"] = order["price"]
+        orderAsPfObject["petShopId"] = PFObject(withoutDataWithClassName: "PetShop", objectId: order["petShop"] as? String)
+        
+        orderAsPfObject.saveInBackgroundWithBlock { (success, error) in
+            callback(orderAsPfObject)
+        }
+    }
+    
+    func saveProductsFromOrder(data: [String:AnyObject]){
+        let orderProductAsPfObject = PFObject(className: "Order_Product")
+        orderProductAsPfObject["orderId"] = data["orderId"]
+        orderProductAsPfObject["productId"] = data["productId"]
+        orderProductAsPfObject["quantity"] = data["quantity"]
+        orderProductAsPfObject["price"] = data["price"]
+        
+        orderProductAsPfObject.saveInBackground()
+        
+    }
+    
+    
     func getAvailableCardBrands(){
         print(requestHeaders)
         Alamofire.request(.GET, GetCardBrandUrl, parameters: nil, headers: requestHeaders)
@@ -71,11 +96,11 @@ class OrderManager: NSObject {
         }
     }
     
-    func startTransaction(value: Double, cardInfo: [String:AnyObject], callback: (String) -> Void){
+    func startTransaction(value: Double, cardInfo: [String:AnyObject], callback: (String,PFObject) -> Void){
         
         self.generateTrackId { (trackId) in
             
-            let parameters : [String:AnyObject] = ["PaymentType":"01","CurrencyCode":"986","Value":value,"TrackId":trackId,"Description":"PupCare Test Transaction","CardInfo":cardInfo]
+            let parameters : [String:AnyObject] = ["PaymentType":"01","CurrencyCode":"986","Value":value,"TrackId":trackId.objectId!,"Description":"PupCare Test Transaction","CardInfo":cardInfo]
             
             Alamofire.request(.POST, self.StartTransactionUrl, parameters: parameters, headers: self.requestHeaders)
                 .response { request, response, data, error in
@@ -87,12 +112,13 @@ class OrderManager: NSObject {
                     
                     if let cardBrand = cardInfo["CardBrand"] as? Int{
                         if dataToJSON["IsApproved"].bool == true {
-                            self.confirmTransaction(trackId, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
-                                callback(message)
+                            self.confirmTransaction(trackId.objectId!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
+                                
+                                callback(message,trackId)
                             })
                         } else {
-                            self.cancelTransaction(trackId, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
-                                callback(message)
+                            self.cancelTransaction(trackId.objectId!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
+                                callback(message,trackId)
                             })
                         }
                     }
@@ -150,11 +176,11 @@ class OrderManager: NSObject {
         }
     }
     
-    func generateTrackId(response:(String)->()){
+    func generateTrackId(response:(PFObject)->()){
         let trackId = PFObject(className: "TrackTransaction")
         
         trackId.saveInBackgroundWithBlock { (success, error) in
-            response(trackId.objectId!)
+            response(trackId)
         }
     }
     

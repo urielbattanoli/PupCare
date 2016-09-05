@@ -24,7 +24,7 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
+        PetShopManager.sharedInstance.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
             let data = ["orderId":"asd123asd24a",
                         "petShop": petshops![0],
                         "date": NSDate(),

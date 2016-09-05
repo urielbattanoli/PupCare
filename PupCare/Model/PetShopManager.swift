@@ -11,7 +11,9 @@ import Parse
 
 class PetShopManager: NSObject {
     
-    static func getNearPetShops(latitude: Float, longitude: Float, withinKilometers: Float, response: (petshops: [PetShop]?, error: NSError?) -> ()) {
+    static let sharedInstance = PetShopManager()
+    
+    func getNearPetShops(latitude: Float, longitude: Float, withinKilometers: Float, response: (petshops: [PetShop]?, error: NSError?) -> ()) {
         PFCloud.callFunctionInBackground("getNearPetShopList", withParameters: ["lat": latitude,"lng":longitude, "maxDistance":withinKilometers]) { (petshops, error) in
             var result: [PetShop] = []
             if let petshops = petshops as? [PFObject] {
@@ -24,4 +26,12 @@ class PetShopManager: NSObject {
             response(petshops: result, error: error)
         }
     }
+    
+    func petShopAsPfObject(petShop : PetShop) -> PFObject{
+        let petShopAsPfObject = PFObject(className: "PetShop")
+        petShopAsPfObject["objectId"] = petShop.objectId
+        
+        return petShopAsPfObject
+    }
+    
 }
