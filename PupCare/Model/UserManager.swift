@@ -140,7 +140,7 @@ class UserManager: NSObject {
                     
                     locationManager.startUpdatingLocation()
                     
-                    return locationManager.location!
+                    return CLLocation()
                 }
                 else{
                     return nil

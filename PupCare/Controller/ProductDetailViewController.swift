@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
 
@@ -25,6 +26,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         super.viewDidLoad()
         
         self.title = "Detalhes do produto"
+        
 
         
         self.carousel.delegate = self
@@ -33,13 +35,72 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         
         self.carousel.userInteractionEnabled = false
         
-        
         if let product = self.product{
             self.lblName.text = product.name
             self.lblDescription.text = product.descript
         }
-        self.hideKeyboardWhenTappedAround()
+        
+        configureSlider()
     }
+    
+    func configureSlider() {
+        
+        let image = UIImage(named:"insideRetangle")
+        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4)
+        
+        image?.resizableImageWithCapInsets(myInsets)
+        
+        sliderQnt.setMinimumTrackImage(image, forState: UIControlState.Normal)
+        sliderQnt.setMaximumTrackImage(UIImage(named:"outsideRetangle"), forState: UIControlState.Normal)
+        sliderQnt.setThumbImage(UIImage(named: "oval"), forState: UIControlState.Normal)
+        sliderQnt.setThumbImage(UIImage(named: "oval"), forState: UIControlState.Highlighted)
+        
+        sliderQnt.maximumValue = 10
+        sliderQnt.minimumValue = 0
+        
+        
+        
+    }
+    
+    
+    @IBAction func SliderValueChanged(sender: UISlider) {
+        
+        let rounded = round(sender.value)
+        
+        sender.value = rounded
+    }
+    
+//    
+//    func addTextToImage(image: UIImage, text: String) -> UIImage {
+//        let w = image.size.width
+//        let h = image.size.height
+//        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.None.rawValue)
+//        var colorSpace: CGColorSpaceRef = CGColorSpaceCreateDeviceRGB()!;
+//        
+//        var context: CGContextRef = CGBitmapContextCreate(nil, Int(w), Int(h), 8, 4*Int(w), colorSpace, CGImageAlphaInfo.NoneSkipFirst.rawValue)!
+//        
+//        CGContextDrawImage(context, CGRectMake(0, 0, w, h), image.CGImage)
+//        
+//        let font = UIFont.systemFontOfSize(0.0)
+//        let fontName = font.fontName as NSString
+//        let cgFont = CGFontCreateWithFontName(fontName);
+//        
+//        let copiedFont = CGFontCreateCopyWithVariations(cgFont, nil)
+//        
+//        CGContextSetFont(context, copiedFont)
+//        CGContextSetTextDrawingMode(context, .Fill)
+//        CGContextSetRGBFillColor(context, 255, 255, 255, 1)
+//        CGContextSetTextPosition(context, 3, 8)
+//        
+//        let imgCombined:CGImageRef = CGBitmapContextCreateImage(context)!
+//        
+//        let image = UIImage(CGImage: imgCombined)
+//        
+//        return image
+//        
+//        
+//    }
+    
     
     // Mark: iCarousel
     func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
@@ -48,6 +109,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         }
         return 0
     }
+    
     
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
         

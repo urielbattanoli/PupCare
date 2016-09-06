@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A313a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sSH-9v-m9q">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sSH-9v-m9q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -134,7 +134,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="1eV-qN-Llo"/>
+                    <navigationItem key="navigationItem" id="uWY-42-NzV">
+                        <barButtonItem key="backBarButtonItem" title="Voltar" id="vfW-Fc-Lt6"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="kaf-6p-qMD" kind="show" identifier="signInSegue" id="sGs-Hd-RmG"/>
                         <segue destination="b6i-YU-n2n" kind="show" identifier="signUpSegue" id="VBr-NT-8Wf"/>
@@ -173,7 +175,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5a6-CS-BSK" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="30" y="237" width="540" height="40"/>
+                                <rect key="frame" x="10" y="237" width="580" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="355" id="Zmo-GD-bHL"/>
                                     <constraint firstAttribute="height" constant="40" id="l4i-E5-3am"/>
@@ -202,7 +204,7 @@
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7C-dx-AH9" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="30" y="287" width="540" height="40"/>
+                                <rect key="frame" x="10" y="287" width="580" height="40"/>
                                 <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -222,7 +224,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nm-XQ-7RZ" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="70" y="337" width="460" height="45"/>
+                                <rect key="frame" x="50" y="337" width="500" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Nak-Yx-opK"/>
@@ -252,19 +254,31 @@
                             <constraint firstItem="4nm-XQ-7RZ" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leadingMargin" constant="50" id="0IO-4f-uRk"/>
                             <constraint firstItem="P6n-PW-2d8" firstAttribute="centerX" secondItem="I5W-Dh-eIV" secondAttribute="centerX" id="0r8-aa-PjZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4nm-XQ-7RZ" secondAttribute="trailing" constant="50" id="4lY-EZ-u1C"/>
+                            <constraint firstAttribute="trailing" secondItem="4nm-XQ-7RZ" secondAttribute="trailing" constant="50" id="5Jk-HN-zNq"/>
                             <constraint firstItem="5a6-CS-BSK" firstAttribute="top" secondItem="P6n-PW-2d8" secondAttribute="bottom" constant="30" id="AcT-Zu-Obc"/>
                             <constraint firstItem="N7C-dx-AH9" firstAttribute="height" secondItem="5a6-CS-BSK" secondAttribute="height" id="BLZ-zg-jUR"/>
                             <constraint firstItem="4nm-XQ-7RZ" firstAttribute="top" secondItem="N7C-dx-AH9" secondAttribute="bottom" constant="10" id="ByF-Rc-czi"/>
                             <constraint firstItem="BVC-Be-Pin" firstAttribute="height" secondItem="4nm-XQ-7RZ" secondAttribute="height" id="Fof-Pg-T3l"/>
+                            <constraint firstItem="5a6-CS-BSK" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leading" constant="10" id="G6d-oO-PxW"/>
                             <constraint firstItem="P6n-PW-2d8" firstAttribute="top" secondItem="ibe-lE-HP1" secondAttribute="bottom" constant="8" id="HqX-KG-5pr"/>
                             <constraint firstItem="N7C-dx-AH9" firstAttribute="width" secondItem="5a6-CS-BSK" secondAttribute="width" id="L1S-aY-PIN"/>
                             <constraint firstItem="N7C-dx-AH9" firstAttribute="top" secondItem="5a6-CS-BSK" secondAttribute="bottom" constant="10" id="O7r-1l-VxJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5a6-CS-BSK" secondAttribute="trailing" constant="10" id="ORS-xH-1hj"/>
                             <constraint firstItem="N7C-dx-AH9" firstAttribute="centerX" secondItem="5a6-CS-BSK" secondAttribute="centerX" id="TsT-Re-cGR"/>
+                            <constraint firstAttribute="trailing" secondItem="5a6-CS-BSK" secondAttribute="trailing" constant="10" id="ZfA-va-ho4"/>
                             <constraint firstItem="BVC-Be-Pin" firstAttribute="centerX" secondItem="4nm-XQ-7RZ" secondAttribute="centerX" id="aFs-4B-eX9"/>
+                            <constraint firstItem="4nm-XQ-7RZ" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leading" constant="50" id="foQ-ym-LUy"/>
                             <constraint firstItem="5a6-CS-BSK" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leadingMargin" constant="10" id="g65-Ye-FWu"/>
                             <constraint firstItem="BVC-Be-Pin" firstAttribute="top" secondItem="4nm-XQ-7RZ" secondAttribute="bottom" constant="8" id="tsM-lQ-naa"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ORS-xH-1hj"/>
+                                <exclude reference="g65-Ye-FWu"/>
+                                <exclude reference="0IO-4f-uRk"/>
+                                <exclude reference="4lY-EZ-u1C"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
@@ -289,7 +303,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome Completo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ojT-Xp-Hq0" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="30" y="187" width="540" height="40"/>
+                                <rect key="frame" x="10" y="187" width="580" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="355" id="A66-YZ-8uK"/>
                                     <constraint firstAttribute="height" constant="40" id="x4t-Cr-lQ5"/>
@@ -318,7 +332,7 @@
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1R2-Di-UDP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="31" y="287" width="540" height="40"/>
+                                <rect key="frame" x="11" y="287" width="580" height="40"/>
                                 <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -338,7 +352,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha novamente" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-sd-WNE" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="31" y="337" width="540" height="40"/>
+                                <rect key="frame" x="11" y="337" width="580" height="40"/>
                                 <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -358,7 +372,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EbY-1e-GLP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="31" y="237" width="540" height="40"/>
+                                <rect key="frame" x="11" y="237" width="580" height="40"/>
                                 <color key="textColor" red="0.27972632650000001" green="0.72905308010000003" blue="0.98291677239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -390,7 +404,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onn-fw-d2O" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="70" y="387" width="460" height="45"/>
+                                <rect key="frame" x="50" y="387" width="500" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.72549019607843135" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="JDN-Wy-MVd"/>
@@ -423,30 +437,50 @@
                             <constraint firstItem="zFh-Sv-rPi" firstAttribute="top" secondItem="t45-OX-XtD" secondAttribute="bottom" constant="11" id="1e4-jd-Ajt"/>
                             <constraint firstItem="EbY-1e-GLP" firstAttribute="height" secondItem="ojT-Xp-Hq0" secondAttribute="height" id="5gT-rf-d35"/>
                             <constraint firstItem="1R2-Di-UDP" firstAttribute="centerX" secondItem="EbY-1e-GLP" secondAttribute="centerX" id="5zC-p5-3WY"/>
+                            <constraint firstAttribute="trailing" secondItem="EbY-1e-GLP" secondAttribute="trailing" constant="10" id="7hz-jx-xkj"/>
                             <constraint firstItem="onn-fw-d2O" firstAttribute="centerX" secondItem="qbh-sd-WNE" secondAttribute="centerX" id="BUF-CX-ynq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ojT-Xp-Hq0" secondAttribute="trailing" constant="10" id="CZz-yX-plr"/>
                             <constraint firstItem="EbY-1e-GLP" firstAttribute="top" secondItem="ojT-Xp-Hq0" secondAttribute="bottom" constant="10" id="DrL-Et-IMa"/>
                             <constraint firstItem="EbY-1e-GLP" firstAttribute="width" secondItem="ojT-Xp-Hq0" secondAttribute="width" id="G5f-te-AuT"/>
+                            <constraint firstAttribute="trailing" secondItem="onn-fw-d2O" secondAttribute="trailing" constant="50" id="LUG-9I-yDi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="onn-fw-d2O" secondAttribute="trailing" constant="50" id="OzW-tS-O9A"/>
                             <constraint firstItem="zFh-Sv-rPi" firstAttribute="centerX" secondItem="fgz-4q-M9o" secondAttribute="centerX" constant="-1" id="Qmh-yt-4v6"/>
                             <constraint firstItem="ojT-Xp-Hq0" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leadingMargin" constant="10" id="TeT-p6-VbN"/>
                             <constraint firstItem="1R2-Di-UDP" firstAttribute="top" secondItem="EbY-1e-GLP" secondAttribute="bottom" constant="10" id="Tyn-g0-vRg"/>
+                            <constraint firstItem="1R2-Di-UDP" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leading" constant="10" id="VQn-Q3-hE6"/>
+                            <constraint firstItem="EbY-1e-GLP" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leading" constant="10" id="VpG-SN-Fag"/>
                             <constraint firstItem="qbh-sd-WNE" firstAttribute="height" secondItem="1R2-Di-UDP" secondAttribute="height" id="XTq-1m-5eW"/>
                             <constraint firstItem="qbh-sd-WNE" firstAttribute="top" secondItem="1R2-Di-UDP" secondAttribute="bottom" constant="10" id="YIb-if-fsv"/>
+                            <constraint firstItem="ojT-Xp-Hq0" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leading" constant="10" id="aD4-RP-1XF"/>
                             <constraint firstItem="qbh-sd-WNE" firstAttribute="centerX" secondItem="1R2-Di-UDP" secondAttribute="centerX" id="aHO-Tq-bwK"/>
                             <constraint firstItem="onn-fw-d2O" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leadingMargin" constant="50" id="b8c-x6-XJb"/>
+                            <constraint firstAttribute="trailing" secondItem="qbh-sd-WNE" secondAttribute="trailing" constant="10" id="bwT-YP-lsw"/>
                             <constraint firstItem="1R2-Di-UDP" firstAttribute="height" secondItem="EbY-1e-GLP" secondAttribute="height" id="heE-UZ-Zg7"/>
+                            <constraint firstAttribute="trailing" secondItem="ojT-Xp-Hq0" secondAttribute="trailing" constant="10" id="ica-mU-Mad"/>
                             <constraint firstItem="qbh-sd-WNE" firstAttribute="width" secondItem="1R2-Di-UDP" secondAttribute="width" id="ja8-4a-TCa"/>
+                            <constraint firstAttribute="trailing" secondItem="1R2-Di-UDP" secondAttribute="trailing" constant="10" id="mft-PL-DON"/>
                             <constraint firstItem="1R2-Di-UDP" firstAttribute="width" secondItem="EbY-1e-GLP" secondAttribute="width" id="nI1-wZ-ZWA"/>
                             <constraint firstItem="ojT-Xp-Hq0" firstAttribute="top" secondItem="zFh-Sv-rPi" secondAttribute="bottom" constant="15" id="nOM-Bt-OV7"/>
                             <constraint firstItem="ojT-Xp-Hq0" firstAttribute="centerX" secondItem="zFh-Sv-rPi" secondAttribute="centerX" constant="0.5" id="oEV-hb-Ue3"/>
+                            <constraint firstItem="onn-fw-d2O" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leading" constant="50" id="oT0-q1-aLP"/>
                             <constraint firstItem="onn-fw-d2O" firstAttribute="top" secondItem="qbh-sd-WNE" secondAttribute="bottom" constant="10" id="qbK-FP-YMR"/>
+                            <constraint firstItem="qbh-sd-WNE" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leading" constant="10" id="rJ4-v1-hFq"/>
                             <constraint firstItem="EbY-1e-GLP" firstAttribute="centerX" secondItem="ojT-Xp-Hq0" secondAttribute="centerX" constant="1" id="tES-hy-d7a"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="CZz-yX-plr"/>
+                                <exclude reference="TeT-p6-VbN"/>
                                 <exclude reference="oEV-hb-Ue3"/>
+                                <exclude reference="7hz-jx-xkj"/>
+                                <exclude reference="VpG-SN-Fag"/>
+                                <exclude reference="VQn-Q3-hE6"/>
+                                <exclude reference="mft-PL-DON"/>
+                                <exclude reference="bwT-YP-lsw"/>
+                                <exclude reference="rJ4-v1-hFq"/>
                                 <exclude reference="BUF-CX-ynq"/>
+                                <exclude reference="OzW-tS-O9A"/>
+                                <exclude reference="b8c-x6-XJb"/>
                             </mask>
                         </variation>
                     </view>
@@ -478,6 +512,6 @@
         <image name="cat-and-dog-pics" width="375" height="326"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bE8-pn-eR8"/>
+        <segue reference="Hu9-ij-AGM"/>
     </inferredMetricsTieBreakers>
 </document>
