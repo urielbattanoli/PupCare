@@ -16,9 +16,10 @@ extension Order {
         
         data["orderId"] = parseObject.objectId
         data["petShop"] = PetShop(parseObject: parseObject["petShopId"] as! PFObject)
-        data["date"] = parseObject["createdAt"] as! NSDate
+        data["date"] = parseObject.createdAt
         data["price"] = parseObject["price"] as! NSNumber
-        data["trackId"] = parseObject["trackId"] as! String
+        data["trackId"] = (parseObject["trackId"] as! PFObject).objectId
+        data["shipment"] = parseObject["shipment"] as! NSNumber
         
         self.init(data: data)
     }
