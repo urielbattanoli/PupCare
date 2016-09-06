@@ -25,6 +25,9 @@ class ProductTableViewCell: UITableViewCell {
                 self.lblName.text = product.name
                 self.lblDescription.text = product.descript
                 self.lblPrice.text = product.price.numberToPrice()
+                if let qntLbl = self.lblQuant{
+                    qntLbl.text = "\(product.stock)"
+                }
             }
         }
     }

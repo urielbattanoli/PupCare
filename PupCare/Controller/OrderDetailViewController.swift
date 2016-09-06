@@ -12,15 +12,7 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     
-    var order: Order?{
-        didSet{
-            if let order = self.order{
-                OrderManager.sharedInstance.getOrderProducts(order, block: { (products) in
-                    order.products = products
-                })
-            }
-        }
-    }
+    var order: Order?
     var numberOfRowInsection = 4
     
     override func viewDidLoad() {
@@ -28,7 +20,16 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         self.tableView.tableFooterView = UIView()
         
-        self.numberOfRowInsection += self.order?.products.count ?? 0
+        if self.order?.products.count==0{
+            OrderManager.sharedInstance.getOrderProducts(self.order!, block: { (products) in
+                self.order!.products = products
+                self.numberOfRowInsection += products.count ?? 0
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+            })
+        }
+        else{
+            self.numberOfRowInsection += self.order?.products.count ?? 0
+        }
     }
     
     override func didReceiveMemoryWarning() {
