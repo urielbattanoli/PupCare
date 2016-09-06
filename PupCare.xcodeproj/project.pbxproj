@@ -13,6 +13,8 @@
 		7117600B1D3FDDD8002452CA /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7117600A1D3FDDD8002452CA /* iCarousel.m */; };
 		711760101D3FED08002452CA /* PromotionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */; };
 		7118ED3E1D4BD901000CCB1E /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7118ED3D1D4BD901000CCB1E /* Cart.swift */; };
+		7123153E1D79D6A500F98666 /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7123153B1D79D6A500F98666 /* ASValuePopUpView.m */; };
+		7123153F1D79D6A500F98666 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7123153D1D79D6A500F98666 /* ASValueTrackingSlider.m */; };
 		715100761D341129003A6817 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715100751D341129003A6817 /* ParseManager.swift */; };
 		715100771D341129003A6817 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715100751D341129003A6817 /* ParseManager.swift */; };
 		717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717247711D2C1BC600BD694D /* PetShopParseExtension.swift */; };
@@ -117,6 +119,10 @@
 		7117600C1D3FDF17002452CA /* PupCare-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PupCare-Bridging-Header.h"; path = "Model/PupCare-Bridging-Header.h"; sourceTree = "<group>"; };
 		7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionDetailsViewController.swift; sourceTree = "<group>"; };
 		7118ED3D1D4BD901000CCB1E /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cart.swift; path = Model/Cart.swift; sourceTree = "<group>"; };
+		7123153A1D79D6A500F98666 /* ASValuePopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValuePopUpView.h; sourceTree = "<group>"; };
+		7123153B1D79D6A500F98666 /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValuePopUpView.m; sourceTree = "<group>"; };
+		7123153C1D79D6A500F98666 /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
+		7123153D1D79D6A500F98666 /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValueTrackingSlider.m; sourceTree = "<group>"; };
 		715100751D341129003A6817 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseManager.swift; path = Model/ParseManager.swift; sourceTree = "<group>"; };
 		717247711D2C1BC600BD694D /* PetShopParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopParseExtension.swift; path = Model/PetShopParseExtension.swift; sourceTree = "<group>"; };
 		71AC43DF1D4A7E3F00C9BD31 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartViewController.swift; path = Controller/CartViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +246,17 @@
 				7118ED3D1D4BD901000CCB1E /* Cart.swift */,
 			);
 			name = Cart;
+			sourceTree = "<group>";
+		};
+		712315391D79D69B00F98666 /* TrackingSlider */ = {
+			isa = PBXGroup;
+			children = (
+				7123153A1D79D6A500F98666 /* ASValuePopUpView.h */,
+				7123153B1D79D6A500F98666 /* ASValuePopUpView.m */,
+				7123153C1D79D6A500F98666 /* ASValueTrackingSlider.h */,
+				7123153D1D79D6A500F98666 /* ASValueTrackingSlider.m */,
+			);
+			name = TrackingSlider;
 			sourceTree = "<group>";
 		};
 		71AC43DE1D4A7DED00C9BD31 /* Cart */ = {
@@ -535,6 +552,7 @@
 		D329FF60092A948C369EA991 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				712315391D79D69B00F98666 /* TrackingSlider */,
 				711760081D3FDDD8002452CA /* iCarousel */,
 				97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */,
 				7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */,
@@ -1093,8 +1111,10 @@
 				7A37C7B41D38261D00FBE13F /* LoginViewController.swift in Sources */,
 				A475E3461D1490AA00FB66C3 /* AppDelegate.swift in Sources */,
 				A43C9E941D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift in Sources */,
+				7123153E1D79D6A500F98666 /* ASValuePopUpView.m in Sources */,
 				A4CAA30C1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift in Sources */,
 				A475E3121D0A9B3A00FB66C3 /* PupCare.xcdatamodeld in Sources */,
+				7123153F1D79D6A500F98666 /* ASValueTrackingSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

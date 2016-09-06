@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uYQ-Cz-XyU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uYQ-Cz-XyU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Product Detail View Controller-->
@@ -28,44 +29,37 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pacote de ração para cães adultos de grande porte." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7f-t2-EnE">
-                                        <rect key="frame" x="188" y="295" width="225" height="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7f-t2-EnE">
+                                        <rect key="frame" x="188" y="295" width="225" height="98"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="OBz-Ni-hZi"/>
                                             <constraint firstAttribute="height" constant="100" id="aUV-LM-P94"/>
+                                            <constraint firstAttribute="height" constant="100" id="dWx-kg-7On"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="225" id="kmW-YA-9rM"/>
                                         </constraints>
+                                        <string key="text">Pacote de ração para cães adultos de grande porte. Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson.</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="aUV-LM-P94"/>
+                                                <exclude reference="dWx-kg-7On"/>
                                             </mask>
                                         </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantidade:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9S-sE-zRU">
-                                        <rect key="frame" x="188" y="338" width="225" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="225" id="kLZ-eV-aTQ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="dx2-yx-M2a">
-                                        <rect key="frame" x="186" y="365" width="229" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="225" id="WJe-39-Ao1"/>
-                                        </constraints>
-                                    </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yj2-6X-6CT" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="188" y="420" width="225" height="45"/>
+                                        <rect key="frame" x="187" y="498" width="225" height="45"/>
                                         <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="LiX-m0-0nR"/>
                                             <constraint firstAttribute="width" constant="225" id="MlI-hA-TR4"/>
+                                            <constraint firstAttribute="height" constant="45" id="S0A-yP-8Nh"/>
+                                            <constraint firstAttribute="width" constant="225" id="g45-BO-DyM"/>
+                                            <constraint firstAttribute="height" constant="45" id="gOC-Fu-h8b"/>
+                                            <constraint firstAttribute="width" constant="225" id="vTb-Hi-zxc"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Adicionar ao carrinho">
                                             <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -74,6 +68,14 @@
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="LiX-m0-0nR"/>
+                                                <exclude reference="MlI-hA-TR4"/>
+                                                <exclude reference="S0A-yP-8Nh"/>
+                                                <exclude reference="vTb-Hi-zxc"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="AddToCartButton:" destination="uYQ-Cz-XyU" eventType="touchUpInside" id="4ds-9y-TcC"/>
                                         </connections>
@@ -85,24 +87,65 @@
                                             <constraint firstAttribute="height" constant="225" id="x5b-mJ-tlP"/>
                                         </constraints>
                                     </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="dx2-yx-M2a" customClass="ASValueTrackingSlider">
+                                        <rect key="frame" x="186" y="453" width="229" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="225" id="TkM-k0-kS4"/>
+                                            <constraint firstAttribute="width" constant="225" id="WJe-39-Ao1"/>
+                                            <constraint firstAttribute="height" constant="30" id="z0n-rd-8rJ"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="WJe-39-Ao1"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="SliderValueChanged:" destination="uYQ-Cz-XyU" eventType="valueChanged" id="Ik6-Fa-jBM"/>
+                                        </connections>
+                                    </slider>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="dx2-yx-M2a" firstAttribute="trailing" secondItem="j9S-sE-zRU" secondAttribute="trailing" id="1xD-mK-Bxf"/>
-                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="130" id="9fe-lf-VDq"/>
+                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="0NP-lN-a4r"/>
+                                    <constraint firstItem="dx2-yx-M2a" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="4jn-oe-GoL"/>
                                     <constraint firstAttribute="trailing" secondItem="9Wq-d9-mWu" secondAttribute="trailing" id="AAG-2O-tJI"/>
-                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="top" secondItem="dx2-yx-M2a" secondAttribute="bottom" constant="25" id="Ptc-ui-Ekl"/>
+                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="ATv-iF-eoW"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="Eed-Pm-0VU"/>
+                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="top" secondItem="dx2-yx-M2a" secondAttribute="bottom" constant="10" id="M0D-sy-stS"/>
+                                    <constraint firstItem="dx2-yx-M2a" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="Tlh-4g-ZJh"/>
+                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="X0Y-6T-anP"/>
                                     <constraint firstItem="6UP-3d-Wmu" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="bDZ-hs-jB1"/>
-                                    <constraint firstItem="j9S-sE-zRU" firstAttribute="centerX" secondItem="J7f-t2-EnE" secondAttribute="centerX" id="cKN-UW-1IG"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="dhe-4H-aGc"/>
+                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="fZ7-xz-bXJ"/>
+                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="top" secondItem="dx2-yx-M2a" secondAttribute="bottom" constant="15" id="gev-bD-MqX"/>
+                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="hwG-Jd-85W"/>
                                     <constraint firstItem="J7f-t2-EnE" firstAttribute="top" secondItem="6UP-3d-Wmu" secondAttribute="bottom" constant="10" id="jO1-0M-5YW"/>
-                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="j9S-sE-zRU" secondAttribute="centerX" id="jt0-Pn-Rg7"/>
+                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="48" id="jQT-Bf-bY3"/>
+                                    <constraint firstItem="dx2-yx-M2a" firstAttribute="top" secondItem="J7f-t2-EnE" secondAttribute="bottom" constant="60" id="jX0-Jn-upG"/>
+                                    <constraint firstAttribute="height" constant="580" id="jlv-c0-5o0"/>
+                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="kDC-at-Nir"/>
+                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="kmP-Gf-lgl"/>
                                     <constraint firstItem="9Wq-d9-mWu" firstAttribute="top" secondItem="Xc3-61-EQI" secondAttribute="top" constant="15" id="lK5-xn-06R"/>
-                                    <constraint firstItem="dx2-yx-M2a" firstAttribute="centerX" secondItem="J7f-t2-EnE" secondAttribute="centerX" id="mbh-of-lvA"/>
-                                    <constraint firstItem="j9S-sE-zRU" firstAttribute="top" secondItem="J7f-t2-EnE" secondAttribute="bottom" constant="10" id="sHv-S0-GUd"/>
-                                    <constraint firstItem="dx2-yx-M2a" firstAttribute="top" secondItem="j9S-sE-zRU" secondAttribute="bottom" constant="10" id="t0m-m8-9tn"/>
+                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="nWb-hO-4xv"/>
                                     <constraint firstItem="6UP-3d-Wmu" firstAttribute="top" secondItem="9Wq-d9-mWu" secondAttribute="bottom" constant="25" id="vMd-LJ-MbR"/>
                                     <constraint firstItem="9Wq-d9-mWu" firstAttribute="leading" secondItem="Xc3-61-EQI" secondAttribute="leading" id="vzH-kP-t5E"/>
                                     <constraint firstItem="J7f-t2-EnE" firstAttribute="centerX" secondItem="6UP-3d-Wmu" secondAttribute="centerX" id="x3c-ab-gnC"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="jlv-c0-5o0"/>
+                                        <exclude reference="Tlh-4g-ZJh"/>
+                                        <exclude reference="0NP-lN-a4r"/>
+                                        <exclude reference="ATv-iF-eoW"/>
+                                        <exclude reference="Eed-Pm-0VU"/>
+                                        <exclude reference="M0D-sy-stS"/>
+                                        <exclude reference="dhe-4H-aGc"/>
+                                        <exclude reference="fZ7-xz-bXJ"/>
+                                        <exclude reference="hwG-Jd-85W"/>
+                                        <exclude reference="jQT-Bf-bY3"/>
+                                        <exclude reference="kDC-at-Nir"/>
+                                        <exclude reference="kmP-Gf-lgl"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
