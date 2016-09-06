@@ -69,7 +69,7 @@
                                                                 <rect key="frame" x="42" y="0.0" width="17" height="20"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICX-cH-0Ps">
-                                                                <rect key="frame" x="63" y="0.0" width="16" height="20"/>
+                                                                <rect key="frame" x="63" y="0.0" width="17" height="20"/>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Eq-k5-TDq">
                                                                 <rect key="frame" x="83" y="0.0" width="17" height="20"/>
@@ -102,7 +102,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nzr-gK-hS4">
-                                <rect key="frame" x="0.0" y="152" width="600" height="448"/>
+                                <rect key="frame" x="0.0" y="117" width="600" height="483"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Farejar" id="71V-jr-saJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -117,7 +117,7 @@
                                         <rect key="frame" x="0.0" y="72" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lcq-hQ-Tqs" id="Ml4-Eg-PoG">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AB2-J2-7Kz">
@@ -189,7 +189,7 @@
                                     <outlet property="delegate" destination="QvA-Vn-voF" id="1W7-tb-QJl"/>
                                 </connections>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U0s-oj-epb">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U0s-oj-epb">
                                 <rect key="frame" x="10" y="117" width="580" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="121" id="2VX-Hn-aR6"/>
@@ -209,12 +209,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gC4-MF-ZnG" secondAttribute="trailing" constant="10" id="1bt-Rn-Tne"/>
+                            <constraint firstItem="Nzr-gK-hS4" firstAttribute="top" secondItem="gC4-MF-ZnG" secondAttribute="bottom" constant="17" id="2rH-AI-WCn"/>
                             <constraint firstItem="xvl-aE-u1X" firstAttribute="top" secondItem="Nzr-gK-hS4" secondAttribute="bottom" id="5qO-mw-aox"/>
                             <constraint firstItem="U0s-oj-epb" firstAttribute="top" secondItem="gC4-MF-ZnG" secondAttribute="bottom" constant="17" id="7Fn-ev-XDd"/>
                             <constraint firstAttribute="trailing" secondItem="U0s-oj-epb" secondAttribute="trailing" constant="10" id="Fl5-6R-RQm"/>
                             <constraint firstItem="Nzr-gK-hS4" firstAttribute="leading" secondItem="2XF-ok-nat" secondAttribute="leading" id="UJs-CZ-Kpn"/>
                             <constraint firstItem="U0s-oj-epb" firstAttribute="leading" secondItem="2XF-ok-nat" secondAttribute="leading" constant="10" id="beP-T8-gFk"/>
-                            <constraint firstItem="Nzr-gK-hS4" firstAttribute="top" secondItem="U0s-oj-epb" secondAttribute="bottom" constant="7" id="kQI-eK-8Xx"/>
                             <constraint firstItem="gC4-MF-ZnG" firstAttribute="leading" secondItem="2XF-ok-nat" secondAttribute="leading" constant="10" id="pmB-Gc-FEq"/>
                             <constraint firstAttribute="trailing" secondItem="Nzr-gK-hS4" secondAttribute="trailing" id="qlU-7a-IIT"/>
                             <constraint firstItem="gC4-MF-ZnG" firstAttribute="top" secondItem="Kmz-pu-hhp" secondAttribute="bottom" constant="10" id="scT-Vp-3xR"/>

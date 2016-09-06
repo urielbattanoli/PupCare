@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbS-cO-ctE" id="7uU-n7-Fk9">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H3-mu-efp">
@@ -174,13 +174,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Pet Shops" id="Zyr-rH-FXw">
-                        <barButtonItem key="rightBarButtonItem" title="Filtrar" id="WBE-rh-lt7">
-                            <connections>
-                                <action selector="filterButton:" destination="XVJ-ha-5t3" id="HJS-XC-Z2h"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Pet Shops" id="Zyr-rH-FXw"/>
                     <connections>
                         <outlet property="petShopsTableView" destination="6Zd-C8-zIJ" id="mUA-2e-KxT"/>
                         <segue destination="OiA-xe-TCP" kind="show" identifier="Products" id="0Uf-cl-EIw"/>
