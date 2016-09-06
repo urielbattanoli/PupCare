@@ -38,6 +38,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
             self.lblName.text = product.name
             self.lblDescription.text = product.descript
         }
+        self.hideKeyboardWhenTappedAround()
     }
     
     // Mark: iCarousel

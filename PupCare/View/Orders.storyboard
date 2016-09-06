@@ -458,7 +458,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="leftLbl" destination="Xt2-3C-9WR" id="318-hw-vbg"/>
-                                            <outlet property="rightLbl" destination="oji-vN-iNn" id="owy-pm-uJr"/>
                                             <outlet property="rigthLbl" destination="oji-vN-iNn" id="IzQ-Zx-FsF"/>
                                         </connections>
                                     </tableViewCell>

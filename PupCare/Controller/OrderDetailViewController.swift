@@ -53,7 +53,7 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
             //quant
             let cell = tableView.dequeueReusableCellWithIdentifier("bottomCell") as! CustomTableViewCell
             cell.leftLbl.text = "Quantidade total de produtos:"
-            cell.rigthLbl.text = "\(self.order?.totalQuantity)"
+            cell.rigthLbl.text = "\(self.order!.totalQuantity)"
             return cell
             
         case self.numberOfRowInsection-2:

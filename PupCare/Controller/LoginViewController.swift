@@ -19,6 +19,11 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = .Default
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
     
     override func didReceiveMemoryWarning() {

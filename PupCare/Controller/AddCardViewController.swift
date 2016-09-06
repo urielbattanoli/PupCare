@@ -45,6 +45,7 @@ class AddCardViewController: UIViewController {
             self.lblNameCard.text = card.name
             self.btAddCard.setTitle("Salvar mudanças", forState: .Normal)
         }
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,10 +92,6 @@ class AddCardViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    @IBAction func didPressOnView(sender: UIControl) {
-        self.dismissKeyboard()
-    }
-    
     //MARK: Functions
     func editCard(){
         if let card = self.card{
@@ -111,9 +108,5 @@ class AddCardViewController: UIViewController {
                 card.name = self.lblNameCard.text!
             }
         }
-    }
-    
-    func dismissKeyboard(){
-        self.view.endEditing(true)
     }
 }
