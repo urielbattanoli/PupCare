@@ -12,7 +12,15 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     
-    var order: Order?
+    var order: Order?{
+        didSet{
+            if let order = self.order{
+                OrderManager.sharedInstance.getOrderProducts(order, block: { (products) in
+                    order.products = products
+                })
+            }
+        }
+    }
     var numberOfRowInsection = 4
     
     override func viewDidLoad() {
@@ -39,20 +47,28 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
             //pet shop infos
             let cell = tableView.dequeueReusableCellWithIdentifier("petShopCell") as! PetShopsTableViewCell
             cell.petShop = self.order?.petShop
-            
             return cell
             
         case self.numberOfRowInsection-3:
             //quant
-            return tableView.dequeueReusableCellWithIdentifier("bottomCell")!
+            let cell = tableView.dequeueReusableCellWithIdentifier("bottomCell") as! CustomTableViewCell
+            cell.leftLbl.text = "Quantidade total de produtos:"
+            cell.rigthLbl.text = "\(self.order?.totalQuantity)"
+            return cell
             
         case self.numberOfRowInsection-2:
             //delivery
-            return tableView.dequeueReusableCellWithIdentifier("bottomCell")!
+            let cell = tableView.dequeueReusableCellWithIdentifier("bottomCell") as! CustomTableViewCell
+            cell.leftLbl.text = "Frete:"
+            cell.rigthLbl.text = self.order?.shipment.numberToPrice()
+            return cell
             
         case self.numberOfRowInsection-1:
             //price
-            return tableView.dequeueReusableCellWithIdentifier("bottomCell")!
+            let cell = tableView.dequeueReusableCellWithIdentifier("bottomCell") as! CustomTableViewCell
+            cell.leftLbl.text = "Valor total do pedido:"
+            cell.rigthLbl.text = self.order?.price.numberToPrice()
+            return cell
             
         default:
             //product list

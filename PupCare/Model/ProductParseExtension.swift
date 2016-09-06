@@ -16,7 +16,13 @@ extension Product{
         
         //PetShop_Product
         data["price"] = parseObject["price"] as! NSNumber
-        data["stock"] = parseObject["stockCount"] as! NSNumber
+        
+        if let stock = parseObject["stockCount"] as? NSNumber{
+            data["stock"] = stock
+        }
+        else if let quantity = parseObject["quantity"] as? NSNumber{
+            data["stock"] = quantity
+        }
         
         //Product
         let product = parseObject["productId"] as! PFObject

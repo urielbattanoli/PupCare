@@ -15,7 +15,18 @@ class Order: NSObject {
     let orderDate: NSDate
     let price: NSNumber
     let trackId: String
-    let products: [Product] = []
+    let shipment: NSNumber
+    var totalQuantity = 0
+    
+    var products: [Product] = []{
+        didSet{
+            var totalQuantity = 0
+            for product in products{
+                totalQuantity += product.stock.integerValue
+            }
+            self.totalQuantity = totalQuantity
+        }
+    }
     
     init(data: [String : AnyObject]) {
         self.orderId = data["orderId"] as! String
@@ -23,5 +34,6 @@ class Order: NSObject {
         self.orderDate = data["date"] as! NSDate
         self.price = data["price"] as! NSNumber
         self.trackId = data["trackId"] as! String
+        self.shipment = data["shipment"] as! NSNumber
     }
 }

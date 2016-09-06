@@ -94,7 +94,11 @@ class CloudCodeTests: XCTestCase {
         let expectation : XCTestExpectation = expectationWithDescription("Order query completed with no errors")
         OrderManager.sharedInstance.getOrderList { (orders) in
             XCTAssertNotNil(orders)
-            expectation.fulfill()
+            
+            OrderManager.sharedInstance.getOrderProducts(orders[0], block: { (products) in
+                XCTAssertNotNil(products)
+                expectation.fulfill()
+            })
         }
         waitForExpectationsWithTimeout(expectationTime, handler: nil)
     }

@@ -176,4 +176,23 @@ class OrderManager: NSObject {
             }
         }
     }
+    
+    func getOrderProducts(order: Order, block: ([Product])->()) {
+        let params = ["orderId" : order.orderId]
+        PFCloud.callFunctionInBackground("getOrderProducts", withParameters: params) { (objects, error) in
+            var products = [Product]()
+            if let error = error{
+                print(error)
+                block(products)
+            }
+            else{
+                if let objects = objects as? [PFObject]{
+                    for object in objects{
+                        products.append(Product(parseObject: object))
+                    }
+                    block(products)
+                }
+            }
+        }
+    }
 }
