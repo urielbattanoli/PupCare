@@ -200,7 +200,7 @@ class OrderManager: NSObject {
     }
     
     func getOrderList(block: ([Order])->()) {
-        let params = ["userId" : PFUser.currentUser()!]
+        let params = ["userId" : PFUser.currentUser()!.objectId!]
         PFCloud.callFunctionInBackground("getUserOrders", withParameters: params) { (objects, error) in
             var orders = [Order]()
             if let error = error{
@@ -213,6 +213,25 @@ class OrderManager: NSObject {
                         orders.append(Order(parseObject: object))
                     }
                     block(orders)
+                }
+            }
+        }
+    }
+    
+    func getOrderProducts(order: Order, block: ([Product])->()) {
+        let params = ["orderId" : order.orderId]
+        PFCloud.callFunctionInBackground("getOrderProducts", withParameters: params) { (objects, error) in
+            var products = [Product]()
+            if let error = error{
+                print(error)
+                block(products)
+            }
+            else{
+                if let objects = objects as? [PFObject]{
+                    for object in objects{
+                        products.append(Product(parseObject: object))
+                    }
+                    block(products)
                 }
             }
         }
