@@ -27,12 +27,6 @@ class CloudCodeTests: XCTestCase {
         super.tearDown()
     }
     
-    func testFacebookLogin(){
-        UserManager.singInWithFacebook { 
-            <#code#>
-        }
-    }
-    
     func testPromotionsQuery(){
         let expectation: XCTestExpectation = expectationWithDescription("Promotions query completed with no errors")
         
@@ -86,6 +80,40 @@ class CloudCodeTests: XCTestCase {
             XCTAssertNotNil(petshops)
             expectation.fulfill()
         }
+        
+        waitForExpectationsWithTimeout(expectationTime, handler: nil)
+    }
+    
+    func testTransactionsFlow(){
+        let transactionExpectation : XCTestExpectation = expectationWithDescription("Transaction flow completed with no errors")
+        let cardExpectation : XCTestExpectation = expectationWithDescription("CardNumber completed with no errors")
+        let trackExpectation : XCTestExpectation = expectationWithDescription("TrackGen completed with no errors")
+        
+        
+        var cartao: [String: AnyObject] = [:]
+        cartao["CardHolderName"] = "Rebecca Sommers"
+        cartao["CardNumber"] = "4012001038166662"
+        cartao["CVV"] = "456"
+        cartao["ExpirationYear"] = 2017
+        cartao["ExpirationMonth"] = 04
+        
+        OrderManager.sharedInstance.generateTrackId { (object) in
+            XCTAssertNotNil(object)
+            trackExpectation.fulfill()
+        }
+        
+        OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"]) { (result) in
+            XCTAssertNotNil(result)
+            cartao["CardBrand"] = result
+            cardExpectation.fulfill()
+        }
+        
+        OrderManager.sharedInstance.startTransaction(40.0, cardInfo: cartao) { (message, object) in
+            XCTAssertEqual(message, "Confirmed")
+            transactionExpectation.fulfill()
+        }
+        
+        
         
         waitForExpectationsWithTimeout(expectationTime, handler: nil)
     }

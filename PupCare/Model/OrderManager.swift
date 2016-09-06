@@ -48,6 +48,8 @@ class OrderManager: NSObject {
         orderAsPfObject["trackId"] = order["trackId"] as! PFObject
         orderAsPfObject["price"] = order["price"]
         orderAsPfObject["petShopId"] = PFObject(withoutDataWithClassName: "PetShop", objectId: order["petShop"] as? String)
+        orderAsPfObject["shipment"] = order["shipment"]
+        
         
         orderAsPfObject.saveInBackgroundWithBlock { (success, error) in
             callback(orderAsPfObject)
@@ -56,12 +58,25 @@ class OrderManager: NSObject {
     
     func saveProductsFromOrder(data: [String:AnyObject]){
         let orderProductAsPfObject = PFObject(className: "Order_Product")
-        orderProductAsPfObject["orderId"] = data["orderId"]
-        orderProductAsPfObject["productId"] = data["productId"]
+        orderProductAsPfObject["orderId"] = data["orderId"] as! PFObject
+        orderProductAsPfObject["productId"] = PFObject(withoutDataWithClassName: "Product", objectId: data["productId"] as? String)
         orderProductAsPfObject["quantity"] = data["quantity"]
         orderProductAsPfObject["price"] = data["price"]
         
-        orderProductAsPfObject.saveInBackground()
+        orderProductAsPfObject.saveInBackgroundWithBlock { (success, error) in
+            print("salvou")
+        }
+    }
+    
+    func savePromotionsFromOrder(data: [String:AnyObject]){
+        let orderPromotionAsPfObject = PFObject(className: "Order_Promotion")
+        orderPromotionAsPfObject["orderId"] = data["orderId"] as! PFObject
+        orderPromotionAsPfObject["promotionId"] = PFObject(withoutDataWithClassName: "Promotion", objectId: data["promotionId"] as? String)
+        orderPromotionAsPfObject["price"] = data["price"]
+        
+        orderPromotionAsPfObject.saveInBackgroundWithBlock { (success, error) in
+            print("salvou")
+        }
         
     }
     
