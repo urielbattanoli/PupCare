@@ -18,16 +18,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     var beganPrice: Double = 0.0
     var beganSliding: Int = 1
     var endedSliding: Int = 0
-    
     var workingCell: CartTableViewCell?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.CartTableView.delegate = self
         self.CartTableView.dataSource = self
-        
         
         for (_, petShop) in Cart.sharedInstance.cartDict.petShopList {
             sections.append(petShop)
@@ -41,7 +38,18 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (sections[section].productsInCart.count + sections[section].promotionsInCart.count + 2)
+        let itensCount = sections[section].productsInCart.count + sections[section].promotionsInCart.count + 2
+        if (itensCount > 2) {
+            return (sections[section].productsInCart.count + sections[section].promotionsInCart.count + 2)
+        } else {
+            if (sections.count == 1) {
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
+                return 0
+            } else {
+                return 0
+            }
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -168,6 +176,11 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    @IBAction func backButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     @IBAction func SliderValueChanged(sender: UISlider, forEvent event: UIEvent) {
         let allTouches = event.allTouches()
         
@@ -228,6 +241,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: self.endedSliding)
                                     
                                     self.CartTableView.reloadData()
+                                    
+                                    
                                     
                                 } else {
                                     
