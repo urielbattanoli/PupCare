@@ -11,6 +11,7 @@ pod 'ParseFacebookUtilsV4', '~> 1.11.1'
 pod 'Kingfisher', '~> 2.4'
 pod 'Alamofire', '~> 3.4'
 pod 'SwiftyJSON'
+pod 'CardIO'
 end
 
 target 'PupCareTests' do
