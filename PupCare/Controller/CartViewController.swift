@@ -153,10 +153,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sections.count
     }
-    //
-    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    //        print("INDEX PATH\(indexPath.row)")
-    //    }
     
     func tableViewTap (tapGesture: UIPanGestureRecognizer) {
         

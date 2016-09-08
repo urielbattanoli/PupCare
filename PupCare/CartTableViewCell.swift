@@ -88,19 +88,12 @@ class CartTableViewCell: UITableViewCell {
     }
     
     @IBAction func FinishPetShopOrder(sender: AnyObject) {
-        
-        let petShop = Cart.sharedInstance.cartDict.petShopList[(self.petShop!.objectId)]
-        
         var cartao: [String: AnyObject] = [:]
+        cartao["CardHolderName"] = "Rebecca Sommers"
         cartao["CardNumber"] = "4012001038166662"
         cartao["CVV"] = "456"
         cartao["ExpirationYear"] = 2017
         cartao["ExpirationMonth"] = 04
-        cartao["CardHolderName"] = "Rebecca Sommers"
-        //        cartao["CardHolderDocumentId"] = "24676662718"
-        //        cartao["CardHolderBirthday"] = "1990-01-01"
-        
-        
         
         self.FinishOrderLoader.alpha = 1
         self.FinishOrderLoader.startAnimating()
@@ -111,7 +104,41 @@ class CartTableViewCell: UITableViewCell {
             OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (cardBrand) in
                 cartao["CardBrand"] = cardBrand
                 
-                OrderManager.sharedInstance.startTransaction(petShop!.totalPrice, cardInfo: cartao, callback: { (message) in
+                OrderManager.sharedInstance.startTransaction(self.price, cardInfo: cartao, callback: { (message, trackId) in
+                    
+                    var data = [String:AnyObject]()
+                    data["orderId"] = ""
+                    data["date"] = NSDate()
+                    data["trackId"] = trackId
+                    data["price"] = self.price
+                    data["shipment"] = 10
+                    data["petShop"] = self.petShop?.objectId
+
+                    OrderManager.sharedInstance.saveOrder(data, callback: { (orderId) in
+                        
+                        
+                        
+                        for product in (Cart.sharedInstance.cartDict.petShopList[self.petShop!.objectId]?.productsInCart)! {
+                            var data = [String:AnyObject]()
+                            
+                            data["orderId"] = orderId
+                            data["productId"] = product.product.objectId
+                            data["quantity"] = product.quantity
+                            data["price"] = product.product.price
+                             
+                            OrderManager.sharedInstance.saveProductsFromOrder(data)
+                        }
+                        
+                        for promotion in (Cart.sharedInstance.cartDict.petShopList[self.petShop!.objectId]?.promotionsInCart)! {
+                            var data = [String:AnyObject]()
+                            
+                            data["orderId"] = orderId
+                            data["promotionId"] = promotion.promotion.objectId
+                            data["price"] = promotion.promotion.newPrice
+                            
+                            OrderManager.sharedInstance.savePromotionsFromOrder(data)
+                        }
+                    })
                     
                     self.transactionDelegate?.didFinishTransaction(message)
                     
