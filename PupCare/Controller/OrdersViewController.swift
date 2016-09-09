@@ -24,8 +24,10 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        OrderManager.sharedInstance.getOrderList { (orders) in
-            self.orders = orders
+        if UserManager.sharedInstance.user != nil{
+            OrderManager.sharedInstance.getOrderList { (orders) in
+                self.orders = orders
+            }
         }
     }
     
