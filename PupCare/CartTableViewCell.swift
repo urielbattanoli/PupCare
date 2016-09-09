@@ -88,6 +88,22 @@ class CartTableViewCell: UITableViewCell {
     }
     
     @IBAction func FinishPetShopOrder(sender: AnyObject) {
+        let petShop = Cart.sharedInstance.cartDict.petShopList[(self.petShop!.objectId)]
+
+        
+        var dick: [String: AnyObject] = [:]
+        
+        dick["orderId"] = ""
+        dick["petShop"] = petShop?.petShop
+        dick["date"] = NSDate()
+        dick["price"] = petShop?.totalPrice
+        dick["trackId"] = ""
+        dick["shipment"] = 0
+        dick["products"] = petShop!.productsInCart as? AnyObject
+        dick["promotions"] = petShop!.promotionsInCart as? AnyObject
+        
+        let order = Order(data: dick)
+        
         var cartao: [String: AnyObject] = [:]
         cartao["CardHolderName"] = "Rebecca Sommers"
         cartao["CardNumber"] = "4012001038166662"
