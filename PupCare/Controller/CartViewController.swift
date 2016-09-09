@@ -279,33 +279,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func didFinishTransaction(message: String) {
-        print(message)
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-        switch message {
-        case "Captured":
-            alert.title = "Pagamento Efetuado"
-            alert.message = "Sua compra foi realizada com sucesso, aguarde a entrega."
-            alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .Cancel, handler: { (action) in
-                alert.dismissViewControllerAnimated(true, completion: nil)
-                self.tabBarController?.selectedIndex = 2
-            }))
-            alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .Default, handler: { (action) in
-                alert.dismissViewControllerAnimated(true, completion: nil)
-            }))
-        case "Voided":
-            alert.title = "Falha no Pagamento"
-            alert.message = "Ocorreu algum problema na hora de confirmar o pagamento. Revise seus dados"
-            alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .Cancel, handler: { (action) in
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }))
-        default:
-            break
-        }
-        
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
     func alertRemovedItem(shouldRemoveItem: (Bool) -> Void) {
         let alert = UIAlertController(title: "Carrinho", message: "Deseja remover este item do carrinho?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Continuar", style: .Default , handler: { action in
@@ -321,6 +294,15 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func goToOrderResumeWithOrder(petShop: PetshopInCart){
+        self.performSegueWithIdentifier("goToOrderResume", sender: petShop)
+    }
     
-    
+    //MARK: Prepare for segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToOrderResume"{
+            let vc = segue.destinationViewController as! OrderResumeViewController
+            vc.petShopInCard = sender as? PetshopInCart
+        }
+    }
 }

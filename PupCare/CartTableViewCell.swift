@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TransactionProtocol: class {
-    func didFinishTransaction(message: String)
+    func goToOrderResumeWithOrder(petShop: PetshopInCart)
 }
 
 class CartTableViewCell: UITableViewCell {
@@ -89,87 +89,7 @@ class CartTableViewCell: UITableViewCell {
     
     @IBAction func FinishPetShopOrder(sender: AnyObject) {
         let petShop = Cart.sharedInstance.cartDict.petShopList[(self.petShop!.objectId)]
-
-        
-        var dick: [String: AnyObject] = [:]
-        
-        dick["orderId"] = ""
-        dick["petShop"] = petShop?.petShop
-        dick["date"] = NSDate()
-        dick["price"] = petShop?.totalPrice
-        dick["trackId"] = ""
-        dick["shipment"] = 0
-        dick["products"] = petShop!.productsInCart as? AnyObject
-        dick["promotions"] = petShop!.promotionsInCart as? AnyObject
-        
-        let order = Order(data: dick)
-        
-        var cartao: [String: AnyObject] = [:]
-        cartao["CardHolderName"] = "Rebecca Sommers"
-        cartao["CardNumber"] = "4012001038166662"
-        cartao["CVV"] = "456"
-        cartao["ExpirationYear"] = 2017
-        cartao["ExpirationMonth"] = 04
-        
-        self.FinishOrderLoader.alpha = 1
-        self.FinishOrderLoader.startAnimating()
-        
-        self.FinishOrderButton.enabled = false
-        
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
-            OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (cardBrand) in
-                cartao["CardBrand"] = cardBrand
-                
-                OrderManager.sharedInstance.startTransaction(self.price, cardInfo: cartao, callback: { (message, trackId) in
-                    
-                    var data = [String:AnyObject]()
-                    data["orderId"] = ""
-                    data["date"] = NSDate()
-                    data["trackId"] = trackId
-                    data["price"] = self.price
-                    data["shipment"] = 10
-                    data["petShop"] = self.petShop?.objectId
-
-                    OrderManager.sharedInstance.saveOrder(data, callback: { (orderId) in
-                        
-                        
-                        
-                        for product in (Cart.sharedInstance.cartDict.petShopList[self.petShop!.objectId]?.productsInCart)! {
-                            var data = [String:AnyObject]()
-                            
-                            data["orderId"] = orderId
-                            data["productId"] = product.product.objectId
-                            data["quantity"] = product.quantity
-                            data["price"] = product.product.price
-                             
-                            OrderManager.sharedInstance.saveProductsFromOrder(data)
-                        }
-                        
-                        for promotion in (Cart.sharedInstance.cartDict.petShopList[self.petShop!.objectId]?.promotionsInCart)! {
-                            var data = [String:AnyObject]()
-                            
-                            data["orderId"] = orderId
-                            data["promotionId"] = promotion.promotion.objectId
-                            data["price"] = promotion.promotion.newPrice
-                            
-                            OrderManager.sharedInstance.savePromotionsFromOrder(data)
-                        }
-                    })
-                    
-                    self.transactionDelegate?.didFinishTransaction(message)
-                    
-                    dispatch_async(dispatch_get_main_queue()){
-                        self.FinishOrderButton.enabled = true
-                        
-                        self.FinishOrderLoader.alpha = 0.0
-                        self.FinishOrderLoader.stopAnimating()
-                        self.FinishOrderLoader.hidden = true
-                    }
-                })
-            }
-
-        }
-        
+        self.transactionDelegate?.goToOrderResumeWithOrder(petShop!)
     }
 }
 

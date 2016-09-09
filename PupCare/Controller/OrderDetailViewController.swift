@@ -76,6 +76,7 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
             let product = self.order?.products[indexPath.row-1]
             let cell = tableView.dequeueReusableCellWithIdentifier("productCell") as! ProductTableViewCell
             cell.product = product
+            cell.lblQuant.text = "\(product!.stock) itens comprados"
             
             return cell
         }

@@ -28,15 +28,30 @@ class ProductTableViewCell: UITableViewCell {
                 if self.lblDescription != nil{
                     self.lblDescription.text = product.descript
                 }
-                if self.lblQuant != nil{
-                    self.lblQuant.text = "\(product.stock)"
-                }
+                
                 if self.lblTotal != nil{
-                    self.lblTotal.text = NSNumber(double: (product.price.doubleValue * product.stock.doubleValue)).numberToPrice()
+                    self.lblTotal.text = self.lblTotal.text!+NSNumber(double: (product.price.doubleValue * product.stock.doubleValue)).numberToPrice()
                 }
                 
                 self.lblName.text = product.name
-                self.lblPrice.text = product.price.numberToPrice()
+                self.lblPrice.text = self.lblPrice.text!+product.price.numberToPrice()
+            }
+        }
+    }
+    
+    var promotion: Promotion?{
+        didSet{
+            if let promotion = self.promotion{
+                
+                if self.photoImageView != nil{
+                    self.photoImageView.loadImage(promotion.promotionImage)
+                }
+                if self.lblDescription != nil{
+                    self.lblDescription.text = promotion.promotionDescription
+                }
+
+                self.lblName.text = promotion.promotionName
+                self.lblPrice.text = self.lblPrice.text!+NSNumber(double: Double(promotion.newPrice)).numberToPrice()
             }
         }
     }

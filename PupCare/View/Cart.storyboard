@@ -363,10 +363,10 @@
             </objects>
             <point key="canvasLocation" x="888" y="57"/>
         </scene>
-        <!--Order Resume View Controller-->
+        <!--Finalizar compra-->
         <scene sceneID="M2e-ZN-tqq">
             <objects>
-                <viewController id="8IY-Vd-0BO" customClass="OrderResumeViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Finalizar compra" id="8IY-Vd-0BO" customClass="OrderResumeViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z1D-Ha-f85"/>
                         <viewControllerLayoutGuide type="bottom" id="FCB-Jw-9FR"/>
@@ -389,27 +389,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvJ-Qj-mWg">
-                                                    <rect key="frame" x="0.0" y="13" width="600" height="20"/>
+                                                    <rect key="frame" x="0.0" y="18" width="600" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cML-69-IF2">
-                                                    <rect key="frame" x="0.0" y="45" width="600" height="10"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="10" id="aNT-fv-79l"/>
-                                                    </constraints>
-                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="CvJ-Qj-mWg" firstAttribute="centerY" secondItem="Sif-PQ-VVq" secondAttribute="centerY" constant="-4.5" id="AkI-r9-9mm"/>
-                                                <constraint firstAttribute="trailing" secondItem="cML-69-IF2" secondAttribute="trailing" id="amA-8N-vbC"/>
+                                                <constraint firstItem="CvJ-Qj-mWg" firstAttribute="centerY" secondItem="Sif-PQ-VVq" secondAttribute="centerY" id="AkI-r9-9mm"/>
                                                 <constraint firstAttribute="trailing" secondItem="CvJ-Qj-mWg" secondAttribute="trailing" id="bvk-ZU-yG9"/>
                                                 <constraint firstItem="CvJ-Qj-mWg" firstAttribute="leading" secondItem="Sif-PQ-VVq" secondAttribute="leading" id="ucd-wM-jdw"/>
-                                                <constraint firstAttribute="bottom" secondItem="cML-69-IF2" secondAttribute="bottom" id="umf-1F-0qT"/>
-                                                <constraint firstItem="cML-69-IF2" firstAttribute="leading" secondItem="Sif-PQ-VVq" secondAttribute="leading" id="vuH-Tu-dFD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -680,20 +670,20 @@
                                                     <color key="textColor" red="0.56862745100000001" green="0.56862745100000001" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Qnt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQi-RD-DNI">
-                                                    <rect key="frame" x="524" y="37" width="66" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantidade: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQi-RD-DNI">
+                                                    <rect key="frame" x="520" y="37" width="70" height="14"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.56862745100000001" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5l-K1-Ixi">
-                                                    <rect key="frame" x="517" y="56" width="73" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor unitário: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5l-K1-Ixi">
+                                                    <rect key="frame" x="513" y="56" width="77" height="14"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.56862745100000001" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3l-un-VTL">
-                                                    <rect key="frame" x="564" y="75" width="26" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3l-un-VTL">
+                                                    <rect key="frame" x="557" y="75" width="33" height="14"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.56862745100000001" green="0.56862745100000001" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -719,6 +709,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8IY-Vd-0BO" id="rTI-JB-sbd"/>
+                                    <outlet property="delegate" destination="8IY-Vd-0BO" id="fAe-fm-ft5"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -745,6 +739,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="5wj-gf-Gkn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.29411764705882354" green="0.0" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
