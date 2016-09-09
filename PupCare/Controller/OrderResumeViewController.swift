@@ -12,6 +12,8 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
 
     @IBOutlet weak var tableView: UITableView!
     
+    var numberOfRowSection1 = 4
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,15 +28,51 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
     
     //MARK: Tableview data source
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.numberOfRowSection1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("petShopCell")
-        return cell!
+        
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("headerCell") as! CustomTableViewCell
+            cell.firstLbl.text = "Resumo do seu pedido"
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("petShopCell") as! PetShopsTableViewCell
+            //cell.petShop = ????
+            return cell
+        case self.numberOfRowSection1-2:
+            let cell = tableView.dequeueReusableCellWithIdentifier("customCell") as! CustomTableViewCell
+            //cell.firstLbl.text = quantidades total de itens
+            //cell.secondLbl.text = valor total do pedido
+            return cell
+        case self.numberOfRowSection1-1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("finisheCell") as! CustomTableViewCell
+            cell.finisheBt.addTarget(self, action: #selector(OrderResumeViewController.didPressFinisheBt), forControlEvents: .TouchUpInside)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("productCell") as! ProductTableViewCell
+            //cell.product = product
+            return cell
+        }
     }
     
     //MARK: Tableview delegate
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 45
+        case 1:
+            return 90
+        case self.numberOfRowSection1-2:
+            return 60
+        case self.numberOfRowSection1-1:
+            return 65
+        default:
+            return 60
+        }
+    }
     
     //MARK: CardIO delegate
     func scanCard(sender: AnyObject) {

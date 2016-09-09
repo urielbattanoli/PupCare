@@ -17,17 +17,26 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var lblPrice: UILabel!
     
     @IBOutlet weak var lblQuant: UILabel!
+    @IBOutlet weak var lblTotal: UILabel!
     //MARK: Variables
     var product: Product?{
         didSet{
             if let product = self.product{
-                self.photoImageView.loadImage(product.imageUrl)
-                self.lblName.text = product.name
-                self.lblDescription.text = product.descript
-                self.lblPrice.text = product.price.numberToPrice()
-                if let qntLbl = self.lblQuant{
-                    qntLbl.text = "\(product.stock)"
+                if self.photoImageView != nil{
+                    self.photoImageView.loadImage(product.imageUrl)
                 }
+                if self.lblDescription != nil{
+                    self.lblDescription.text = product.descript
+                }
+                if self.lblQuant != nil{
+                    self.lblQuant.text = "\(product.stock)"
+                }
+                if self.lblTotal != nil{
+                    self.lblTotal.text = NSNumber(double: (product.price.doubleValue * product.stock.doubleValue)).numberToPrice()
+                }
+                
+                self.lblName.text = product.name
+                self.lblPrice.text = product.price.numberToPrice()
             }
         }
     }
@@ -36,11 +45,11 @@ class ProductTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
