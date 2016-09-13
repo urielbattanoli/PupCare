@@ -84,6 +84,7 @@
 		A48DC9E01D62475E001E802C /* OrderHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48DC9DF1D62475E001E802C /* OrderHeaderTableViewCell.swift */; };
 		A49877151D4F7CFC00DD4F02 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */; };
 		A49D9C391D774CB100664FF2 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D9C381D774CB100664FF2 /* OrderDetailViewController.swift */; };
+		A4BE9F541D81E8E300F5BB81 /* OrderResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE9F531D81E8E300F5BB81 /* OrderResumeViewController.swift */; };
 		A4CAA30C1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAA30B1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift */; };
 		A4CAA5281D5E5BEB0053EDEA /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAA5271D5E5BEB0053EDEA /* Order.swift */; };
 		A4CAA52A1D5E5C090053EDEA /* OrderParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAA5291D5E5C090053EDEA /* OrderParseExtension.swift */; };
@@ -197,6 +198,7 @@
 		A48DC9DF1D62475E001E802C /* OrderHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderHeaderTableViewCell.swift; path = Controller/OrderHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthYearPickerView.swift; path = Model/MonthYearPickerView.swift; sourceTree = "<group>"; };
 		A49D9C381D774CB100664FF2 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDetailViewController.swift; path = Controller/OrderDetailViewController.swift; sourceTree = "<group>"; };
+		A4BE9F531D81E8E300F5BB81 /* OrderResumeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderResumeViewController.swift; path = Controller/OrderResumeViewController.swift; sourceTree = "<group>"; };
 		A4CAA30B1D5CA9A10053EDEA /* MyProfileAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileAddressTableViewCell.swift; path = Controller/MyProfileAddressTableViewCell.swift; sourceTree = "<group>"; };
 		A4CAA5271D5E5BEB0053EDEA /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = Model/Order.swift; sourceTree = "<group>"; };
 		A4CAA5291D5E5C090053EDEA /* OrderParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderParseExtension.swift; path = Model/OrderParseExtension.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				A48DC9DF1D62475E001E802C /* OrderHeaderTableViewCell.swift */,
 				A475E34D1D18548900FB66C3 /* OrdersViewController.swift */,
 				A45B7E3F1D5E5D5C004EDC50 /* OrderTableViewCell.swift */,
+				A4BE9F531D81E8E300F5BB81 /* OrderResumeViewController.swift */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -1087,6 +1090,7 @@
 				A49877151D4F7CFC00DD4F02 /* MonthYearPickerView.swift in Sources */,
 				A475E3481D18535000FB66C3 /* InitialViewController.swift in Sources */,
 				A420BBB51D46890E004F4C1B /* Card.swift in Sources */,
+				A4BE9F541D81E8E300F5BB81 /* OrderResumeViewController.swift in Sources */,
 				A43C9E991D3688EA00D6D0D8 /* UserManager.swift in Sources */,
 				A43C9E8C1D34416300D6D0D8 /* ProductDetailViewController.swift in Sources */,
 				A42751A61D47E8BC00B083C6 /* AddCardViewController.swift in Sources */,
