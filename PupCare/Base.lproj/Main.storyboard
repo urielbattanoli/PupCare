@@ -28,7 +28,7 @@
         <!--Main Tab View Controller-->
         <scene sceneID="tsa-Fy-EWU">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="pnC-qX-X5v" customClass="MainTabViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabIdentifier" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pnC-qX-X5v" customClass="MainTabViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="qPL-2x-OZI">
                         <autoresizingMask key="autoresizingMask"/>
@@ -41,6 +41,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCC-ne-ESW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1467" y="480"/>
+        </scene>
+        <!--Cart Over View Controller-->
+        <scene sceneID="kht-dF-Vem">
+            <objects>
+                <viewController storyboardIdentifier="CartOverView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZEe-lP-z8e" customClass="CartOverViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="udF-6c-lvt"/>
+                        <viewControllerLayoutGuide type="bottom" id="1zE-DZ-lI7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vfR-9n-GQ3" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 itens" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XnV-Nu-f1s">
+                                <rect key="frame" x="511" y="15" width="74" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="som-bV-kma"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="1" green="0.67843137249999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: R$ 999,99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oaj-t4-HTB">
+                                <rect key="frame" x="459" y="41" width="126" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="126" id="zZN-Ou-pWL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="1" green="0.67843137249999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezj-lD-LAg">
+                                <rect key="frame" x="15" y="15" width="185" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.67843137249999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="185" id="OAk-4D-exp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Ver seu carrinho">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="C9Z-g4-T0D" kind="show" id="Lpa-fi-hYi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Oaj-t4-HTB" secondAttribute="trailing" constant="15" id="3ET-7a-UCh"/>
+                            <constraint firstAttribute="bottom" secondItem="Oaj-t4-HTB" secondAttribute="bottom" constant="15" id="8Yv-z5-3Mb"/>
+                            <constraint firstAttribute="bottom" secondItem="ezj-lD-LAg" secondAttribute="bottom" constant="15" id="Crv-Sh-eRj"/>
+                            <constraint firstAttribute="trailing" secondItem="XnV-Nu-f1s" secondAttribute="trailing" constant="15" id="Uqv-en-KBO"/>
+                            <constraint firstItem="XnV-Nu-f1s" firstAttribute="top" secondItem="vfR-9n-GQ3" secondAttribute="top" constant="15" id="eie-mJ-kvK"/>
+                            <constraint firstItem="ezj-lD-LAg" firstAttribute="leading" secondItem="vfR-9n-GQ3" secondAttribute="leading" constant="15" id="gwA-vk-bXx"/>
+                            <constraint firstItem="ezj-lD-LAg" firstAttribute="top" secondItem="vfR-9n-GQ3" secondAttribute="top" constant="15" id="yM6-KU-D82"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="75"/>
+                    <connections>
+                        <outlet property="ItensCountLabel" destination="XnV-Nu-f1s" id="361-xw-933"/>
+                        <outlet property="ShowCartButton" destination="ezj-lD-LAg" id="XgH-N3-2NR"/>
+                        <outlet property="TotalPriceLabel" destination="Oaj-t4-HTB" id="E8i-Ix-zZs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xva-10-vbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1467" y="1006.5"/>
+        </scene>
+        <!--Cart-->
+        <scene sceneID="HoL-6G-cSe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Cart" id="C9Z-g4-T0D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDQ-az-3sz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1467.5" y="1230"/>
         </scene>
     </scenes>
 </document>

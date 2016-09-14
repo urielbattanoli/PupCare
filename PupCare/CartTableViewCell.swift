@@ -132,8 +132,6 @@ class CartTableViewCell: UITableViewCell {
 
                     OrderManager.sharedInstance.saveOrder(data, callback: { (orderId) in
                         
-                        
-                        
                         for product in (Cart.sharedInstance.cartDict.petShopList[self.petShop!.objectId]?.productsInCart)! {
                             var data = [String:AnyObject]()
                             
