@@ -8,38 +8,59 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
 import CoreLocation
 import Parse
 import AddressBookUI
+import Gloss
+
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class AddressManager: NSObject {
     
     static let sharedInstance = AddressManager()
     
-    func getZipInformation(zip: String, jsonResponse: (json: JSON?, error: NSError?) -> ()) {
+    func getZipInformation(_ zip: String, jsonResponse: @escaping (_ json: JSON?, _ error: Error?) -> ()) {
         let urlTo = "https://viacep.com.br/ws/\(zip)/json/unicode/"
-        Alamofire.request(.GET, urlTo).responseJSON { (response) in
-            let json = JSON(data: response.data!)
-            print(json)
-            jsonResponse(json: json, error: nil)
-        }
-    }
-    
-    func saveUserNewAddress(address: Address, response: (Bool, NSError?)->()){
-        let addressPFObject = AddressManager.sharedInstance.transformAddressToPFObject(address)
         
-        addressPFObject.saveInBackgroundWithBlock { (success, error) in
-            response(success,error)
+        Alamofire.request(urlTo).responseJSON { (response) in
+            if let json = response.result.value as? JSON{
+                jsonResponse(json, nil)
+            }
         }
     }
     
-    private func transformAddressToPFObject(address: Address) -> PFObject {
+    func saveUserNewAddress(_ address: Address, response: @escaping (Bool, Error?)->()){
+        let addressPFObject = AddressManager.sharedInstance.transformAddressToPFObject(address)
+        addressPFObject.saveInBackground { (suc, err) in
+            response(suc, err)
+        }
+    }
+    
+    fileprivate func transformAddressToPFObject(_ address: Address) -> PFObject {
         let addressAsPFObject = PFObject(className: "Address")
         if !address.addressId.isEmpty {
             addressAsPFObject.objectId = address.addressId
         }
-        addressAsPFObject["userId"] = PFUser.currentUser()
+        addressAsPFObject["userId"] = PFUser.current()
         addressAsPFObject["street"] = address.street
         addressAsPFObject["zip"] = address.zip
         addressAsPFObject["number"] = address.number
@@ -52,7 +73,7 @@ class AddressManager: NSObject {
         return addressAsPFObject
     }
     
-    func transformAddressToGeoPoint(address: Address, response:(geoPoint: CLLocationCoordinate2D)->()){
+    func transformAddressToGeoPoint(_ address: Address, response:@escaping (_ geoPoint: CLLocationCoordinate2D)->()){
         let addressString = "\(address.street), \(address.number) \(address.city)"
         print(addressString)
         CLGeocoder().geocodeAddressString(addressString, completionHandler: { (placemarks, error) in
@@ -66,12 +87,12 @@ class AddressManager: NSObject {
                 let coordinate = location?.coordinate
                 print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
                 
-                response(geoPoint: (location?.coordinate)!)
+                response((location?.coordinate)!)
             }
         })
     }
     
-    func transformGeoPointToAddress(latitude: CLLocationDegrees, longitude: CLLocationDegrees, response:(data: [String:AnyObject])->()) {
+    func transformGeoPointToAddress(_ latitude: CLLocationDegrees, longitude: CLLocationDegrees, response:@escaping (_ data: [String:AnyObject])->()) {
         let location = CLLocation(latitude: latitude, longitude: longitude)
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
@@ -84,27 +105,27 @@ class AddressManager: NSObject {
                 
                 var addressDict = [String:AnyObject]()
                 let cityState = (pmDict!["FormattedAddressLines"] as! [String])[2]
-                let city = cityState.substringFromIndex(cityState.startIndex).substringToIndex(cityState.endIndex.advancedBy(-5))
+                let city = cityState.substring(from: cityState.startIndex).substring(to: cityState.characters.index(cityState.endIndex, offsetBy: -5))
                 
-                addressDict["objectId"] = ""
-                addressDict["name"] = ""
-                addressDict["street"] = pmDict!["Thoroughfare"]
-                addressDict["number"] = 0
-                addressDict["additionalInfo"] = ""
-                addressDict["neighbourhood"] = pmDict!["SubLocality"]
-                addressDict["state"] = pmDict!["State"]
-                addressDict["city"] = city
-                addressDict["zip"] = "\(pmDict!["ZIP"]!)\(pmDict!["PostCodeExtension"]!)"
+                addressDict["objectId"] = "" as AnyObject?
+                addressDict["name"] = "" as AnyObject?
+                addressDict["street"] = pmDict!["Thoroughfare"] as AnyObject?
+                addressDict["number"] = 0 as AnyObject?
+                addressDict["additionalInfo"] = "" as AnyObject?
+                addressDict["neighbourhood"] = pmDict!["SubLocality"] as AnyObject?
+                addressDict["state"] = pmDict!["State"] as AnyObject?
+                addressDict["city"] = city as AnyObject?
+                addressDict["zip"] = "\(pmDict!["ZIP"]!)\(pmDict!["PostCodeExtension"]!)" as AnyObject?
                 addressDict["location"] = CLLocation(latitude: latitude, longitude: longitude)
                 
-                response(data: addressDict)
+                response(addressDict)
             }
         })
     }
     
-    func getAddressListFromUser(userId: String, block: ([Address])->()){
+    func getAddressListFromUser(_ userId: String, block: @escaping ([Address])->()){
         let param = ["userId" : userId]
-        PFCloud.callFunctionInBackground("getUserAddresses", withParameters: param) { (addresses, error) in
+        PFCloud.callFunction(inBackground: "getUserAddresses", withParameters: param) { (addresses, error) in
             
             var addressList = [Address]()
             
@@ -118,9 +139,9 @@ class AddressManager: NSObject {
         }
     }
     
-    func removeAddressFromParse(address: Address){
+    func removeAddressFromParse(_ address: Address){
         let pfAddress = self.transformAddressToPFObject(address)
-        pfAddress.deleteInBackgroundWithBlock { (success, error) in
+        pfAddress.deleteInBackground { (success, error) in
             if !success{
                 print(error)
             }

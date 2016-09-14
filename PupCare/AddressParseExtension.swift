@@ -15,19 +15,19 @@ extension Address {
     convenience init(parseObject: PFObject) {
         var data = [String : AnyObject]()
         
-        data["objectId"] = parseObject.objectId
-        data["name"] = parseObject["name"] as! String
-        data["street"] = parseObject["street"] as! String
+        data["objectId"] = parseObject.objectId as AnyObject?
+        data["name"] = parseObject["name"] as! String as AnyObject?
+        data["street"] = parseObject["street"] as! String as AnyObject?
         data["number"] = parseObject["number"] as! NSNumber
-        data["neighbourhood"] = parseObject["neighbourhood"] as! String
-        data["state"] = parseObject["state"] as! String
-        data["city"] = parseObject["city"] as! String
-        data["zip"] = parseObject["zip"] as! String
+        data["neighbourhood"] = parseObject["neighbourhood"] as! String as AnyObject?
+        data["state"] = parseObject["state"] as! String as AnyObject?
+        data["city"] = parseObject["city"] as! String as AnyObject?
+        data["zip"] = parseObject["zip"] as! String as AnyObject?
         if let additionalInfo = parseObject["additionalInfo"] as? String{
-            data["additionalInfo"] = additionalInfo
+            data["additionalInfo"] = additionalInfo as AnyObject?
         }
         else{
-           data["additionalInfo"] = ""
+           data["additionalInfo"] = "" as AnyObject?
         }
         let geoPoint = parseObject["location"] as! PFGeoPoint
         data["location"] = CLLocation(latitude: geoPoint.latitude,longitude: geoPoint.longitude)

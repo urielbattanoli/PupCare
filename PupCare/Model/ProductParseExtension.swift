@@ -27,11 +27,11 @@ extension Product{
         //Product
         let product = parseObject["productId"] as! PFObject
         
-        data["objectId"] = product.objectId
-        data["name"] = product["name"] as! String
-        data["imageUrl"] = (product["image"] as! PFFile).url
-        data["description"] = product["descript"] as! String
-        data["brand"] = product["brand"] as! String
+        data["objectId"] = product.objectId as AnyObject?
+        data["name"] = product["name"] as! String as AnyObject?
+        data["imageUrl"] = (product["image"] as! PFFile).url as AnyObject?
+        data["description"] = product["descript"] as! String as AnyObject?
+        data["brand"] = product["brand"] as! String as AnyObject?
         
         self.init(data: data)
     }

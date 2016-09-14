@@ -11,10 +11,10 @@ import Parse
 
 class ProductManager: NSObject {
     
-    static func getProductList(petShopId: String, block: ([Product])->()) {
+    static func getProductList(_ petShopId: String, block: @escaping ([Product])->()) {
         let params = ["petShopId" : petShopId]
         print(petShopId)
-        PFCloud.callFunctionInBackground("getProductList", withParameters: params) { (objects, error) in
+        PFCloud.callFunction(inBackground: "getProductList", withParameters: params) { (objects, error) in
             var products = [Product]()
             if let error = error{
                 print(error)

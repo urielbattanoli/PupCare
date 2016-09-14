@@ -16,18 +16,18 @@ extension PetShop {
         var data = [String : AnyObject]()
         
         print(parseObject["name"] as! String)
-        data["objectId"] = parseObject.objectId
-        data["name"] = parseObject["name"] as! String
-        data["photo"] = (parseObject["image"] as! PFFile).url
-        data["address"] = parseObject["address"] as! String
-        data["neighbourhood"] = parseObject["neighbourhood"] as! String
+        data["objectId"] = parseObject.objectId as AnyObject?
+        data["name"] = parseObject["name"] as! String as AnyObject?
+        data["photo"] = (parseObject["image"] as! PFFile).url as AnyObject?
+        data["address"] = parseObject["address"] as! String as AnyObject?
+        data["neighbourhood"] = parseObject["neighbourhood"] as! String as AnyObject?
         
         let petShopGeoPoint = parseObject["location"] as! PFGeoPoint
         let petShopLocation = CLLocation(latitude: petShopGeoPoint.latitude, longitude: petShopGeoPoint.longitude)
         data["location"] = petShopLocation
         
         
-        data["rating"] = parseObject["rating"] as! Float
+        data["rating"] = parseObject["rating"] as! Float as AnyObject?
         
         
         self.init(data: data)

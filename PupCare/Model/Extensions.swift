@@ -13,26 +13,31 @@ import Kingfisher
 extension NSNumber {
     func numberToPrice() -> String {
         
-        let formatter = NSNumberFormatter()
-        formatter.locale = NSLocale.currentLocale()
-        formatter.numberStyle = .CurrencyStyle
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
         
-        return formatter.stringFromNumber(self.doubleValue)!
+        return formatter.string(from: NSNumber(value : self.doubleValue))!
     }
 }
 
 extension UIImageView {
-    func loadImage(url: String){
-        self.kf_showIndicatorWhenLoading = true
-        self.kf_setImageWithURL(NSURL(string: url)!)
+    func loadImage(_ url: String){
+        let urlToKf = URL(string: url)
+        self.kf_indicatorType = .activity
+        self.kf_setImage(with: urlToKf, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
     }
 }
 
-extension Double {
+extension Float {
     /// Rounds the double to decimal places value
-    func roundToPlaces(places:Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return round(self * divisor) / divisor
+    mutating func roundToPlaces(_ places:Int) -> Float {
+        let divisor = pow(10.0, Float(places))
+        
+        var mult = self * divisor
+        mult = mult / divisor
+        
+        return roundf(Float(mult))
     }
 }
 
@@ -56,23 +61,23 @@ extension String {
     }
 }
 
-extension NSDate {
+extension Date {
     func dateToString() -> String{
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale.currentLocale()
-        formatter.dateStyle = .ShortStyle
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateStyle = .short
         
-        return formatter.stringFromDate(self)
+        return formatter.string(from: self)
     }
 }
 
 extension UIToolbar{
-    func buttonDone(target: UIViewController, action: Selector){
-        self.frame = CGRectMake(0, 0, 320, 50)
-        self.barStyle = UIBarStyle.Default
+    func buttonDone(_ target: UIViewController, action: Selector){
+        self.frame = CGRect(x: 0, y: 0, width: 320, height: 50)
+        self.barStyle = UIBarStyle.default
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Pronto", style: UIBarButtonItemStyle.Done, target: target, action: action)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Pronto", style: UIBarButtonItemStyle.done, target: target, action: action)
         
         var items = [UIBarButtonItem]()
         items.append(flexSpace)

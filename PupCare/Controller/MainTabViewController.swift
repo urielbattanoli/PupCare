@@ -15,7 +15,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         self.delegate = self
-        self.tabBar.tintColor = UIColor.whiteColor()
+        self.tabBar.tintColor = UIColor.white
         
         //Promotions ViewController
         let vcPromotions = UIStoryboard(name: "Promotions", bundle: nil).instantiateInitialViewController()!
@@ -32,7 +32,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         //Profile ViewController
         var vcProfile = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
         
-        if PFUser.currentUser() != nil{
+        if PFUser.current() != nil{
             vcProfile = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()!
         }
         vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: UIImage(named: "userIconPressed"))

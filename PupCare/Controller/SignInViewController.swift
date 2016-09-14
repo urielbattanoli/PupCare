@@ -25,11 +25,11 @@ class SignInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = false
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
-    @IBAction func signInAction(sender: AnyObject) {
+    @IBAction func signInAction(_ sender: AnyObject) {
         let username = usernameTextField.text
         let password = passwordTextField.text
         
@@ -52,7 +52,7 @@ class SignInViewController: UIViewController {
         }
     }
     
-    private func verifyFields() -> Bool{
+    fileprivate func verifyFields() -> Bool{
         
         if passwordTextField.text == ""{
             return setAlertBody("password")
@@ -62,9 +62,9 @@ class SignInViewController: UIViewController {
         return setAlertBody("")
     }
     
-    private func setAlertBody(field : String) -> Bool{
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
-        let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+    fileprivate func setAlertBody(_ field : String) -> Bool{
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(cancel)
         
         switch field {
@@ -77,7 +77,7 @@ class SignInViewController: UIViewController {
         default:
             return true
         }
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         return false
     }
     

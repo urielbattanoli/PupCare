@@ -36,7 +36,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     var refreshControl: UIRefreshControl?{
         didSet{
             self.refreshControl?.attributedTitle = NSAttributedString(string: "Puxe para Atualizar")
-            self.refreshControl?.addTarget(self, action: #selector(ProductTableViewController.reloadProducts), forControlEvents: .ValueChanged)
+            self.refreshControl?.addTarget(self, action: #selector(ProductTableViewController.reloadProducts), for: .valueChanged)
             self.tableView.addSubview(self.refreshControl!)
         }
     }
@@ -47,17 +47,17 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         self.tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         
         self.title = "Detalhes da Pet Shop"
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
         
         self.searchBar.delegate = self
-        if let searchField = self.searchBar.valueForKey("searchField") as? UITextField{
+        if let searchField = self.searchBar.value(forKey: "searchField") as? UITextField{
             searchField.backgroundColor = self.searchBar.backgroundColor
-            searchField.textColor = UIColor.whiteColor()
-            self.searchBar.barTintColor = UIColor.whiteColor()
-            self.searchBar.backgroundColor = UIColor.whiteColor()
+            searchField.textColor = UIColor.white
+            self.searchBar.barTintColor = UIColor.white
+            self.searchBar.backgroundColor = UIColor.white
             
-            if let placeholder = searchField.valueForKey("placeholderLabel") as? UILabel{
-                placeholder.textColor = UIColor.whiteColor()
+            if let placeholder = searchField.value(forKey: "placeholderLabel") as? UILabel{
+                placeholder.textColor = UIColor.white
             }
         }
         
@@ -72,7 +72,10 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             self.petShopNeighbourhood.text = petShop.neighbourhood
             
             if let location = UserManager.sharedInstance.getLocationToSearch(){
-                self.petShopDistance.text = "\((petShop.location.distanceFromLocation(location)/1000).roundToPlaces(2)) km"
+                var distance = Float(petShop.location.distance(from: location))
+                distance = distance / 1000
+                
+                self.petShopDistance.text = "\(distance.roundToPlaces(2)) km"
             }
             
             if petShop.products.count > 0{
@@ -88,50 +91,50 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     // MARK: Table view data source
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  !(self.searchBar.text?.isEmpty)! {
-            return self.filteredProducts.count ?? 0
+            return self.filteredProducts.count 
         }
         else{
             return self.products?.count ?? 0
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellProduct", forIndexPath: indexPath) as! ProductTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellProduct", for: indexPath) as! ProductTableViewCell
         
         if !(self.searchBar.text?.isEmpty)! {
-            cell.product = self.filteredProducts[indexPath.row]
+            cell.product = self.filteredProducts[(indexPath as NSIndexPath).row]
         } else {
-            cell.product = self.products![indexPath.row]
+            cell.product = self.products![(indexPath as NSIndexPath).row]
         }
         
         return cell
     }
     
     // MARK: Table view delegate
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("goToDetail", sender: self.products![indexPath.row])
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToDetail", sender: self.products![(indexPath as NSIndexPath).row])
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     // MARK: SearchBar delegate
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.filterProductsForSearchText(searchText)
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         self.filterProductsForSearchText("")
         self.view.endEditing(true)
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
         view.addGestureRecognizer(tap)
     }
@@ -139,23 +142,23 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         view.endEditing(true)
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         view.removeGestureRecognizer(tap)
     }
     
     // MARK: Functions
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetail"{
-            let productDetail = segue.destinationViewController as! ProductDetailViewController
+            let productDetail = segue.destination as! ProductDetailViewController
             
             productDetail.product = sender as? Product
             productDetail.petshop = self.petShop
         }
     }
     
-    func filterProductsForSearchText(searchText: String, scope: String = "All") {
+    func filterProductsForSearchText(_ searchText: String, scope: String = "All") {
         self.filteredProducts = products!.filter { product in
-            return product.name.lowercaseString.containsString(searchText.lowercaseString)
+            return product.name.lowercased().contains(searchText.lowercased())
         }
         
         self.tableView.reloadData()
@@ -176,7 +179,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
 }
 
 extension ProductTableViewController: UISearchResultsUpdating{
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         filterProductsForSearchText(searchController.searchBar.text!)
     }
 }

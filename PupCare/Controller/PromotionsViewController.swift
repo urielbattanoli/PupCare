@@ -23,7 +23,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         self.promotionsTableView.delegate = self
         self.promotionsTableView.dataSource = self
         
-        self.promotionsTableView.separatorStyle = .None
+        self.promotionsTableView.separatorStyle = .none
         
         reloadPromotions()
         
@@ -39,16 +39,16 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PromotionsCell", forIndexPath: indexPath) as! PromotionsTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PromotionsCell", for: indexPath) as! PromotionsTableViewCell
         
         cell.indexPath = indexPath
-        cell.promotion = self.allPromotions[indexPath.row]
+        cell.promotion = self.allPromotions[(indexPath as NSIndexPath).row]
         
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allPromotions.count
     }
     
@@ -64,9 +64,9 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("PromotionDetails", sender: self.allPromotions[indexPath.row])
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "PromotionDetails", sender: self.allPromotions[(indexPath as NSIndexPath).row])
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     /*
@@ -74,10 +74,10 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     */
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "PromotionDetails" {
-            let promotionDetails = segue.destinationViewController as! PromotionDetailsViewController
+            let promotionDetails = segue.destination as! PromotionDetailsViewController
             
             promotionDetails.promotion = sender as? Promotion
         }

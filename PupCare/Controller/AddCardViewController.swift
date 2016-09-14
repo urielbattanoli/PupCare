@@ -8,7 +8,7 @@
 
 import UIKit
 @objc protocol AddCardDelegate {
-    optional func cardDidAdded(card: Card)
+    @objc optional func cardDidAdded(_ card: Card)
 }
 
 class AddCardViewController: UIViewController {
@@ -43,7 +43,7 @@ class AddCardViewController: UIViewController {
             self.lblCardNumber.text = card.number.numberCardMask()
             self.lblDateCard.text = card.expirationDate
             self.lblNameCard.text = card.name
-            self.btAddCard.setTitle("Salvar mudanças", forState: .Normal)
+            self.btAddCard.setTitle("Salvar mudanças", for: UIControlState())
         }
         self.hideKeyboardWhenTappedAround()
     }
@@ -54,7 +54,7 @@ class AddCardViewController: UIViewController {
     }
     
     //MARK: Actions
-    @IBAction func didEditingChanged(textField: UITextField) {
+    @IBAction func didEditingChanged(_ textField: UITextField) {
         switch textField {
         case self.txtFieldCardNumber:
             self.lblCardNumber.text = textField.text//?.numberCardMask()
@@ -65,7 +65,7 @@ class AddCardViewController: UIViewController {
         }
     }
     
-    @IBAction func didPressDate(textField: UITextField) {
+    @IBAction func didPressDate(_ textField: UITextField) {
         let datePickerView = MonthYearPickerView()
         datePickerView.onDateSelected = {(month: Int, year: Int) in
             let date = String(format: "%02d/%d", month, year)
@@ -76,7 +76,7 @@ class AddCardViewController: UIViewController {
         textField.inputView = datePickerView
     }
     
-    @IBAction func didPressAddCard(sender: AnyObject) {
+    @IBAction func didPressAddCard(_ sender: AnyObject) {
         var newCard: Card!
         if let card = self.card{
             self.editCard()
@@ -86,10 +86,10 @@ class AddCardViewController: UIViewController {
             let data = ["number":self.txtFieldCardNumber.text!,
                         "expirationDate":self.lblDateCard.text!,
                         "name":self.lblNameCard.text!]
-            newCard = Card(data: data)
+            newCard = Card(data: data as [String : AnyObject])
         }
         self.delegate?.cardDidAdded?(newCard)
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: Functions

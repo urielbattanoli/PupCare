@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TransactionProtocol: class {
-    func goToOrderResumeWithOrder(petShop: PetshopInCart)
+    func goToOrderResumeWithOrder(_ petShop: PetshopInCart)
 }
 
 class CartTableViewCell: UITableViewCell {
@@ -58,13 +58,13 @@ class CartTableViewCell: UITableViewCell {
         
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
     
-    @IBAction func sliderChance(sender: UISlider) {
+    @IBAction func sliderChance(_ sender: UISlider) {
         let rounded = round(sender.value)
         
         sender.value = rounded
@@ -75,7 +75,7 @@ class CartTableViewCell: UITableViewCell {
             self.ProductValueLabel.text = "\(Float(productInCart!.product.price) * rounded)"
             self.productInCart?.quantity = Int(rounded)
             
-            if let object = petShopInCart!.productsInCart.indexOf({$0.product == productInCart?.product}) {
+            if let object = petShopInCart!.productsInCart.index(where: {$0.product == productInCart?.product}) {
                 
                 print(object)
             }
@@ -87,7 +87,7 @@ class CartTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func FinishPetShopOrder(sender: AnyObject) {
+    @IBAction func FinishPetShopOrder(_ sender: AnyObject) {
         let petShop = Cart.sharedInstance.cartDict.petShopList[(self.petShop!.objectId)]
         self.transactionDelegate?.goToOrderResumeWithOrder(petShop!)
     }

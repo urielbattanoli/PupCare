@@ -33,7 +33,9 @@ class PetShopsTableViewCell: UITableViewCell {
                 self.petShopAddressLabel.text = petShop.address
                 self.petShopImageView.loadImage(petShop.imageUrl)
                 if let location = UserManager.sharedInstance.getLocationToSearch(){
-                    self.petShopDistanceLabel.text = "\((petShop.location.distanceFromLocation(location)/1000).roundToPlaces(2)) km"
+                    var distance = Float(petShop.location.distance(from: location))
+                    distance = distance / 1000
+                    self.petShopDistanceLabel.text = "\(distance.roundToPlaces(2)) km"
                 }
                 self.ranking = Int(petShop.ranking)
             }
@@ -47,12 +49,12 @@ class PetShopsTableViewCell: UITableViewCell {
         if self.petShopRoundedView != nil {
             self.petShopRoundedView.layer.cornerRadius = 10
             self.petShopRoundedView.layer.borderWidth = 0.5
-            self.petShopRoundedView.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).CGColor
+            self.petShopRoundedView.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).cgColor
             self.petShopRoundedView.clipsToBounds = true
         }
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state

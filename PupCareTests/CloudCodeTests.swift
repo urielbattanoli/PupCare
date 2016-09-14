@@ -12,7 +12,7 @@ import XCTest
 
 class CloudCodeTests: XCTestCase {
     
-    private let expectationTime : NSTimeInterval = 10.0
+    fileprivate let expectationTime : TimeInterval = 10.0
     
     override func setUp() {
         super.setUp()
@@ -28,18 +28,18 @@ class CloudCodeTests: XCTestCase {
     }
     
     func testPromotionsQuery(){
-        let expectation: XCTestExpectation = expectationWithDescription("Promotions query completed with no errors")
+        let expectation: XCTestExpectation = self.expectation(description: "Promotions query completed with no errors")
         
         PromotionManager.getPromotionsList(10, longitude: 10, withinKilometers: 10) { (promotions, error) in
             XCTAssertNotNil(promotions)
             expectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(expectationTime, handler: nil)
+        waitForExpectations(timeout: expectationTime, handler: nil)
     }
     
     func testPromotionDetailsQuery(){
-        let expectation: XCTestExpectation = expectationWithDescription("Promotion Details query completed with no errors")
+        let expectation: XCTestExpectation = self.expectation(description: "Promotion Details query completed with no errors")
         
         var promotion : Promotion?
         
@@ -52,11 +52,11 @@ class CloudCodeTests: XCTestCase {
             })
         }
         
-        waitForExpectationsWithTimeout(expectationTime, handler: nil)
+        waitForExpectations(timeout: expectationTime, handler: nil)
     }
 
     func testProductQuery(){
-        let expectation : XCTestExpectation = expectationWithDescription("Product query completed with no errors")
+        let expectation : XCTestExpectation = self.expectation(description: "Product query completed with no errors")
         
         var petshop : PetShop?
         
@@ -70,22 +70,22 @@ class CloudCodeTests: XCTestCase {
             }
         }
         
-        waitForExpectationsWithTimeout(expectationTime, handler: nil)
+        waitForExpectations(timeout: expectationTime, handler: nil)
     }
     
     func testNearbyPetShopQuery(){
-        let expectation : XCTestExpectation = expectationWithDescription("PetShop query completed with no errors")
+        let expectation : XCTestExpectation = self.expectation(description: "PetShop query completed with no errors")
         
         PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
             XCTAssertNotNil(petshops)
             expectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(expectationTime, handler: nil)
+        waitForExpectations(timeout: expectationTime, handler: nil)
     }
     
     func testOrderQuery(){
-        let expectation : XCTestExpectation = expectationWithDescription("Order query completed with no errors")
+        let expectation : XCTestExpectation = self.expectation(description: "Order query completed with no errors")
         OrderManager.sharedInstance.getOrderList { (orders) in
             XCTAssertNotNil(orders)
             
@@ -94,21 +94,21 @@ class CloudCodeTests: XCTestCase {
                 expectation.fulfill()
             })
         }
-        waitForExpectationsWithTimeout(expectationTime, handler: nil)
+        waitForExpectations(timeout: expectationTime, handler: nil)
     }
     
     func testTransactionsFlow(){
-        let transactionExpectation : XCTestExpectation = expectationWithDescription("Transaction flow completed with no errors")
-        let cardExpectation : XCTestExpectation = expectationWithDescription("CardNumber completed with no errors")
-        let trackExpectation : XCTestExpectation = expectationWithDescription("TrackGen completed with no errors")
+        let transactionExpectation : XCTestExpectation = expectation(description: "Transaction flow completed with no errors")
+        let cardExpectation : XCTestExpectation = expectation(description: "CardNumber completed with no errors")
+        let trackExpectation : XCTestExpectation = expectation(description: "TrackGen completed with no errors")
         
         
         var cartao: [String: AnyObject] = [:]
-        cartao["CardHolderName"] = "Rebecca Sommers"
-        cartao["CardNumber"] = "4012001038166662"
-        cartao["CVV"] = "456"
-        cartao["ExpirationYear"] = 2017
-        cartao["ExpirationMonth"] = 04
+        cartao["CardHolderName"] = "Rebecca Sommers" as AnyObject?
+        cartao["CardNumber"] = "4012001038166662" as AnyObject?
+        cartao["CVV"] = "456" as AnyObject?
+        cartao["ExpirationYear"] = 2017 as AnyObject?
+        cartao["ExpirationMonth"] = 04 as AnyObject?
         
         OrderManager.sharedInstance.generateTrackId { (object) in
             XCTAssertNotNil(object)
@@ -128,12 +128,12 @@ class CloudCodeTests: XCTestCase {
         
         
         
-        waitForExpectationsWithTimeout(expectationTime, handler: nil)
+        waitForExpectations(timeout: expectationTime, handler: nil)
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
