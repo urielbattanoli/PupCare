@@ -20,6 +20,7 @@
 		717247721D2C1BC600BD694D /* PetShopParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717247711D2C1BC600BD694D /* PetShopParseExtension.swift */; };
 		71AC43E01D4A7E3F00C9BD31 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC43DF1D4A7E3F00C9BD31 /* CartViewController.swift */; };
 		71AC43E21D4A8A2D00C9BD31 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC43E11D4A8A2D00C9BD31 /* CartTableViewCell.swift */; };
+		71B9CFBA1D8330EB0014DAB5 /* CartOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9CFB91D8330EB0014DAB5 /* CartOverView.swift */; };
 		71BBC2561D25A89200194861 /* PetShopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */; };
 		71C1B4441D2EB8A300CDDA20 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4431D2EB8A300CDDA20 /* Promotion.swift */; };
 		71C1B4461D2EB91300CDDA20 /* PetShopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */; };
@@ -27,7 +28,6 @@
 		71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */; };
 		71C1B44C1D30062000CDDA20 /* PromotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B44B1D30062000CDDA20 /* PromotionManager.swift */; };
 		71D722C81D47EE4800035392 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D722C71D47EE4800035392 /* Config.swift */; };
-		71E40A3B1D5D0B8100B44FAE /* CartResume.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71E40A3A1D5D0B8100B44FAE /* CartResume.xib */; };
 		71E40A3D1D5D0CE500B44FAE /* CartResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E40A3C1D5D0CE500B44FAE /* CartResume.swift */; };
 		71ED9C111D26D42000DA14DA /* PetShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9C101D26D42000DA14DA /* PetShop.swift */; };
 		7A0050411D383556003B89C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */; };
@@ -127,6 +127,7 @@
 		717247711D2C1BC600BD694D /* PetShopParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopParseExtension.swift; path = Model/PetShopParseExtension.swift; sourceTree = "<group>"; };
 		71AC43DF1D4A7E3F00C9BD31 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartViewController.swift; path = Controller/CartViewController.swift; sourceTree = "<group>"; };
 		71AC43E11D4A8A2D00C9BD31 /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		71B9CFB91D8330EB0014DAB5 /* CartOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartOverView.swift; sourceTree = "<group>"; };
 		71BBC2551D25A89200194861 /* PetShopsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopsTableViewCell.swift; path = Controller/PetShopsTableViewCell.swift; sourceTree = "<group>"; };
 		71C1B4431D2EB8A300CDDA20 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Model/Promotion.swift; sourceTree = "<group>"; };
 		71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShopManager.swift; path = Model/PetShopManager.swift; sourceTree = "<group>"; };
@@ -134,7 +135,6 @@
 		71C1B4491D2ECEE700CDDA20 /* PromotionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionsTableViewCell.swift; path = Controller/PromotionsTableViewCell.swift; sourceTree = "<group>"; };
 		71C1B44B1D30062000CDDA20 /* PromotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionManager.swift; path = Model/PromotionManager.swift; sourceTree = "<group>"; };
 		71D722C71D47EE4800035392 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Model/Config.swift; sourceTree = "<group>"; };
-		71E40A3A1D5D0B8100B44FAE /* CartResume.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CartResume.xib; path = View/CartResume.xib; sourceTree = "<group>"; };
 		71E40A3C1D5D0CE500B44FAE /* CartResume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartResume.swift; path = View/CartResume.swift; sourceTree = "<group>"; };
 		71ED9C101D26D42000DA14DA /* PetShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetShop.swift; path = Model/PetShop.swift; sourceTree = "<group>"; };
 		7A04ECAF1D356BCA00270189 /* CloudCodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCodeTests.swift; sourceTree = "<group>"; };
@@ -262,6 +262,7 @@
 		71AC43DE1D4A7DED00C9BD31 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				71B9CFB91D8330EB0014DAB5 /* CartOverView.swift */,
 				71E40A3C1D5D0CE500B44FAE /* CartResume.swift */,
 				71AC43E11D4A8A2D00C9BD31 /* CartTableViewCell.swift */,
 				71AC43DF1D4A7E3F00C9BD31 /* CartViewController.swift */,
@@ -494,7 +495,6 @@
 				7A11BEBC1D6201F500134ED8 /* Address.storyboard */,
 				A42751A21D47E87500B083C6 /* Card.storyboard */,
 				A475E3411D14905200FB66C3 /* Cart.storyboard */,
-				71E40A3A1D5D0B8100B44FAE /* CartResume.xib */,
 				A475E3151D0A9B3A00FB66C3 /* LaunchScreen.storyboard */,
 				39AC64BA1D2C32E400477F05 /* Login.Storyboard */,
 				A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */,
@@ -699,7 +699,6 @@
 				A4869DC91D2595090076EC37 /* Products.storyboard in Resources */,
 				A475E33E1D148FEB00FB66C3 /* Petshops.storyboard in Resources */,
 				39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */,
-				71E40A3B1D5D0B8100B44FAE /* CartResume.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1103,6 +1102,7 @@
 				715100761D341129003A6817 /* ParseManager.swift in Sources */,
 				71E40A3D1D5D0CE500B44FAE /* CartResume.swift in Sources */,
 				A4869DCD1D2595AB0076EC37 /* ProductTableViewCell.swift in Sources */,
+				71B9CFBA1D8330EB0014DAB5 /* CartOverView.swift in Sources */,
 				A42751A11D47E29E00B083C6 /* MyProfileCardTableViewCell.swift in Sources */,
 				7A7036EB1D40117E005FAB68 /* SignInViewController.swift in Sources */,
 				71C1B4461D2EB91300CDDA20 /* PetShopManager.swift in Sources */,
