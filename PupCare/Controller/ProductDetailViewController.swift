@@ -21,13 +21,14 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     // Mark: Variables
     var product: Product?
     var petshop: PetShop?
+    var CartDelegate: CartProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Detalhes do produto"
         
-
+        
         
         self.carousel.delegate = self
         self.carousel.dataSource = self
@@ -41,6 +42,10 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         }
         
         configureSlider()
+        
+        if let top = self.parentViewController?.parentViewController as? MainTabViewController {
+            self.CartDelegate = top
+        }
     }
     
     func configureSlider() {
@@ -58,7 +63,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         sliderQnt.maximumValue = 10
         sliderQnt.minimumValue = 0
         
-        
+        sliderQnt.value = 1
         
     }
     
@@ -143,7 +148,10 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     }
 
     @IBAction func AddToCartButton(sender: AnyObject) {
-        Cart.sharedInstance.addToCart(self.petshop!, product: self.product, promotion: nil, quantity: 1)
+        Cart.sharedInstance.addToCart(self.petshop!, product: self.product, promotion: nil, quantity: Int(sliderQnt.value))
+        
+        self.CartDelegate?.ShowCart()
+        self.CartDelegate?.UpdateView(Cart.sharedInstance.getTotalItemsAndPrice())
     }
     
     

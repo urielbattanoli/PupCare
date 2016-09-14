@@ -20,6 +20,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     var endedSliding: Int = 0
     var workingCell: CartTableViewCell?
     
+    var CartDelegate: CartProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,14 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         for (_, petShop) in Cart.sharedInstance.cartDict.petShopList {
             sections.append(petShop)
         }
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if let view = storyBoard.instantiateViewControllerWithIdentifier("MainTabIdentifier") as? MainTabViewController {
+            
+            self.CartDelegate = view
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,8 +53,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             return (sections[section].productsInCart.count + sections[section].promotionsInCart.count + 2)
         } else {
             if (sections.count == 1) {
-                self.dismissViewControllerAnimated(true, completion: nil)
-                
+//                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(true, completion: {
+                    self.CartDelegate?.HideCart()
+                })
                 return 0
             } else {
                 return 0
@@ -215,7 +227,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
                         }
                         
-                        
                         // DIMINUIU VALOR NO SLIDER
                     } else if endedSliding < beganSliding {
                         // VALOR MENOR QUE O MINIMO
@@ -230,16 +241,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                             }
                             alertRemovedItem({ (shouldRemoveItem) in
                                 if shouldRemoveItem {
-                                    
 //                                 print("REMOVE ITEM FROM CART")
                                     let object = self.workingCell!.petShopInCart!.petShop!.objectId
                                     
                                     Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: self.endedSliding)
                                     
                                     self.CartTableView.reloadData()
-                                    
-                                    
-                                    
+
                                 } else {
                                     
                                     self.workingCell!.itensCount = 1

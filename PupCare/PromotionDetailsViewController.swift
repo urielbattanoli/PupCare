@@ -20,6 +20,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     @IBOutlet weak var newPriceLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var AddToCartButton: UIButton!
+    var CartDelegate: CartProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,10 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
      
         self.AddToCartButton.clipsToBounds = true
         self.AddToCartButton.layer.cornerRadius = 5
+        
+        if let top = self.parentViewController?.parentViewController as? MainTabViewController {
+            self.CartDelegate = top
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -147,6 +152,8 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     @IBAction func AddPromotionToCart(sender: AnyObject) {
         
         Cart.sharedInstance.addToCart((self.promotion?.petshop)!, product: nil, promotion: self.promotion, quantity: 1)
+        CartDelegate?.ShowCart()
+        CartDelegate?.UpdateView(Cart.sharedInstance.getTotalItemsAndPrice())
     }
     
     

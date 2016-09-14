@@ -22,6 +22,8 @@ class PromotionsTableViewCell: UITableViewCell {
     
     var indexPath: NSIndexPath?
     
+    var CartDelegate: CartProtocol?
+    
     var promotion: Promotion? {
         didSet {
             if let promotion = self.promotion {
@@ -49,6 +51,7 @@ class PromotionsTableViewCell: UITableViewCell {
         
         self.addToCartButton.clipsToBounds = true
         self.addToCartButton.layer.cornerRadius = 5
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -59,9 +62,13 @@ class PromotionsTableViewCell: UITableViewCell {
  
     func didPressAddToCart() {
         
-    
         Cart.sharedInstance.addToCart((self.promotion?.petshop)!, product: nil, promotion: self.promotion, quantity: 1)
         
+        self.CartDelegate?.ShowCart()
+        self.CartDelegate?.UpdateView(Cart.sharedInstance.getTotalItemsAndPrice())
     }
+    
+    
+    
 }
 
