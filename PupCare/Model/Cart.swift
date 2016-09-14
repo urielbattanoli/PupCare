@@ -88,36 +88,6 @@ class PetshopInCart {
         
     }
     
-    
-//    func removeFromCart (petShop: String, product: Product?, promotion: Promotion?) -> Int {
-//        
-//            Cart.sharedInstance.cartDict[petShop].
-//        
-//        return 0
-//    }
-    
-    
-    
-//
-//    func removeProduct(product:Product, quantity: Int) {
-//        
-//    }
-//    
-//    func removePromotion(promotion:Promotion, quantity: Int) {
-//        for (index, promotionInCart) in self.promotionsInCart.enumerate() {
-//            if promotionInCart.promotion.isEqual(promotion) {
-//                if promotionInCart.quantity <= quantity {
-//                    self.promotionsInCart.removeAtIndex(index)
-//                    // VERIFICAR SE PRECISA REMOVER OS ESQUEMA DO CARRIN
-//                } else {
-//                    self.promotionsInCart[index].quantity = promotionInCart.quantity - quantity
-//                }
-//            }
-//        }
-//    }
-    
-    
-    
     init() {
         
     }
@@ -152,15 +122,15 @@ class Cart: NSObject {
                     for (index, var productInCart) in cartDict.productsInCart.enumerate() {
                         if product == productInCart.product {
                             productInCart.quantity = productInCart.quantity + quantity
+                            
                             Cart.sharedInstance.cartDict.petShopList[pet]?.productsInCart[index] = productInCart
+                            Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
+                            return 1
                         }
                     }
-                    Cart.sharedInstance.cartDict.petShopList[pet]?.productsInCart.append(ProductInCart(product: product, quantity: quantity))
-                    Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
                     return 1
                 }
                 if let promotion = promotion {
-                    
                     for (index, var promotionInCart) in cartDict.promotionsInCart.enumerate() {
                         if promotion == promotionInCart.promotion {
                             promotionInCart.quantity = promotionInCart.quantity + quantity
@@ -172,9 +142,7 @@ class Cart: NSObject {
                     }
                     
                     Cart.sharedInstance.cartDict.petShopList[pet]?.promotionsInCart.append(PromotionInCart(promotion: promotion, quantity: quantity))
-                    
-                    
-                    
+                
                     return 1
                 }
             }
@@ -202,9 +170,16 @@ class Cart: NSObject {
         return 0
     }
     
-    func showCartView() {
-
+    func getTotalItemsAndPrice() -> (Int,Double) {
+        var totalPrice: Double = 0
+        var totalItems: Int = 0
+        for petShop in Cart.sharedInstance.cartDict.petShopList {
+            totalPrice = totalPrice + petShop.1.totalPrice
+            totalItems = totalItems + petShop.1.totalQuantity
+        }
+        return (totalItems, totalPrice)
     }
+    
     
     
     
