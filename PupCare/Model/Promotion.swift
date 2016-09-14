@@ -18,8 +18,8 @@ class Promotion: NSObject {
     var promotionDescription: String = ""
     var lastPrice: Float = 0
     var newPrice: Float = 0
-    var initialDate: NSDate = NSDate()
-    var finalDate: NSDate = NSDate()
+    var initialDate: Date = Date()
+    var finalDate: Date = Date()
     var photos: [String] = []
     
     init(data: [String: AnyObject]) {
@@ -31,8 +31,8 @@ class Promotion: NSObject {
         self.promotionDescription = data["promotionDescription"] as! String
         self.lastPrice = data["lastPrice"] as! Float
         self.newPrice = data["newPrice"] as! Float
-        self.initialDate = data["initialDate"] as! NSDate
-        self.finalDate = data["finalDate"] as! NSDate
+        self.initialDate = data["initialDate"] as! Date
+        self.finalDate = data["finalDate"] as! Date
         
     }
     

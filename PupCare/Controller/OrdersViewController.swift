@@ -16,7 +16,7 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     //MARK: Variables
     var orders: [Order] = []{
         didSet{
-            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+            self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }
     }
     
@@ -37,52 +37,52 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     //MARK: TableView data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.orders.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("orderCell") as! OrderTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "orderCell") as! OrderTableViewCell
         
-        cell.order = self.orders[indexPath.row]
-        cell.petShopDetailBT.addTarget(self, action: #selector(OrdersViewController.didPressDetailBT), forControlEvents: .TouchUpInside)
-        cell.petShopDetailBT.tag = indexPath.row
+        cell.order = self.orders[(indexPath as NSIndexPath).row]
+        cell.petShopDetailBT.addTarget(self, action: #selector(OrdersViewController.didPressDetailBT), for: .touchUpInside)
+        cell.petShopDetailBT.tag = (indexPath as NSIndexPath).row
         
         return cell
     }
     
     //MARK: TableView delegate
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCellWithIdentifier("headerCell") as! OrderHeaderTableViewCell
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! OrderHeaderTableViewCell
         
         cell.titleLabel.text = "Histórico de pedidos"
         
         return cell.contentView
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 55
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
     }
     
     // MARK: Functions
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToOrderDetail"{
-            let orderDetailVC = segue.destinationViewController as! OrderDetailViewController
+            let orderDetailVC = segue.destination as! OrderDetailViewController
             orderDetailVC.order = sender as? Order
         }
     }
     
-    func didPressDetailBT(sender: AnyObject) {
+    func didPressDetailBT(_ sender: AnyObject) {
         if let detailBT = sender as? UIButton{
-            self.performSegueWithIdentifier("goToOrderDetail", sender: self.orders[detailBT.tag])
+            self.performSegue(withIdentifier: "goToOrderDetail", sender: self.orders[detailBT.tag])
         }
     }
 }

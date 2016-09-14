@@ -9,6 +9,27 @@
 import UIKit
 import Kingfisher
 
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+
 class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     @IBOutlet var carousel: iCarousel!
 
@@ -29,7 +50,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         
         carousel.delegate = self
         carousel.dataSource = self
-        carousel.type = .Linear
+        carousel.type = .linear
         carousel.clipsToBounds = true
         
         self.view.clipsToBounds = true
@@ -37,13 +58,13 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         backgroundView.clipsToBounds = true
         backgroundView.layer.cornerRadius = 5
         backgroundView.layer.borderWidth = 0.5
-        backgroundView.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).CGColor
+        backgroundView.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).cgColor
      
         self.AddToCartButton.clipsToBounds = true
         self.AddToCartButton.layer.cornerRadius = 5
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if promotion != nil {
             self.reloadDetails()
             self.reloadPhotos()
@@ -53,16 +74,16 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         }
     }
     
-    private func reloadDetails() {
+    fileprivate func reloadDetails() {
         titleLabel.text = promotion!.promotionName
         subtitleLabel.text = promotion!.promotionDescription
-        newPriceLabel.text = "Preço Atual: \(NSNumber(float: promotion!.newPrice).numberToPrice())"
-        originalPriceLabel.text = "Preço Original: \(NSNumber(float: promotion!.lastPrice).numberToPrice())"
+        newPriceLabel.text = "Preço Atual: \(NSNumber(value: promotion!.newPrice as Float).numberToPrice())"
+        originalPriceLabel.text = "Preço Original: \(NSNumber(value: promotion!.lastPrice as Float).numberToPrice())"
         
     }
     
     
-    private func reloadPhotos() -> Bool {
+    fileprivate func reloadPhotos() -> Bool {
         
         self.carousel.reloadData()
         if self.promotion?.photos.count > 0 {
@@ -82,7 +103,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         return true
     }
     
-    private func loadPromotion() {
+    fileprivate func loadPromotion() {
         PromotionManager.getPromotionDetails(promotion!) { (promotionDetails, error) in
             if error == nil {
                 self.promotion = promotionDetails as Promotion!
@@ -97,24 +118,24 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
+    func numberOfItems(in carousel: iCarousel) -> Int {
         return promotion!.photos.count
     }
     
-    func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         //create new view if no view is available for recycling
         var itemView: UIView
         
         if view == nil{
             itemView = UIView(frame: CGRect(x: 0, y: 0, width: 225, height: 225))
             itemView.layer.borderWidth = 2.5
-            itemView.layer.borderColor = UIColor(red: 115, green: 40, blue: 115).CGColor
+            itemView.layer.borderColor = UIColor(red: 115, green: 40, blue: 115).cgColor
             itemView.layer.cornerRadius = 10
             
             let imageView = UIImageView(frame: CGRect(x: 20, y: 20, width: 185, height: 185))
             imageView.loadImage(self.promotion!.photos[index])
             
-            imageView.contentMode = .ScaleAspectFit
+            imageView.contentMode = .scaleAspectFit
             imageView.layer.cornerRadius = 10
             
             itemView.addSubview(imageView)
@@ -126,16 +147,16 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         return itemView
     }
     
-    func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         
         switch option {
-        case .Wrap:
+        case .wrap:
             if self.promotion!.photos.count > 1 {
                 return 1.0
             } else {
                 return 0
             }
-        case .Spacing:
+        case .spacing:
             return value * 1.1
         default:
             return value
@@ -144,7 +165,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     }
     
     
-    @IBAction func AddPromotionToCart(sender: AnyObject) {
+    @IBAction func AddPromotionToCart(_ sender: AnyObject) {
         
         Cart.sharedInstance.addToCart((self.promotion?.petshop)!, product: nil, promotion: self.promotion, quantity: 1)
     }

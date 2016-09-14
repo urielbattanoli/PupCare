@@ -8,10 +8,36 @@
 
 import UIKit
 import CoreLocation
-import SwiftyJSON
+import Gloss
+
+struct AddressJson : Decodable{
+ 
+    let cep : String!
+    let logradouro : String!
+    let complemento : String!
+    let bairro : String!
+    let localidade : String!
+    let uf : String!
+    let unidade : String!
+    let ibge : String!
+    let gia : String!
+    
+    init?(json : JSON){
+        self.cep = "cep" <~~ json
+        self.logradouro = "logradouro" <~~ json
+        self.complemento = "complemento" <~~ json
+        self.bairro = "bairro" <~~ json
+        self.localidade = "localidade" <~~ json
+        self.uf = "uf" <~~ json
+        self.unidade = "unidade" <~~ json
+        self.ibge = "ibge" <~~ json
+        self.gia = "gia" <~~ json
+    }
+}
+
 
 @objc protocol AddAddressDelegate{
-    optional func addressAdded(address: Address)
+    @objc optional func addressAdded(_ address: Address)
 }
 
 class AddressViewController: UIViewController, CLLocationManagerDelegate {
@@ -62,19 +88,19 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    private func configAlertTextView(textField: UITextField){
+    fileprivate func configAlertTextView(_ textField: UITextField){
         textField.placeholder = "Ex: 90008890"
-        textField.textAlignment = .Center
+        textField.textAlignment = .center
         searchZipTextField = textField
     }
     
-    private func filledAllRequiredFields() -> Bool{
-        if self.streetTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
-            self.numberTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
-            self.zipTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
-            self.cityTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
-            self.stateTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "" ||
-            self.neighbourhoodTextView.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == ""
+    fileprivate func filledAllRequiredFields() -> Bool{
+        if self.streetTextView.text?.trimmingCharacters(in: CharacterSet.whitespaces) == "" ||
+            self.numberTextView.text?.trimmingCharacters(in: CharacterSet.whitespaces) == "" ||
+            self.zipTextView.text?.trimmingCharacters(in: CharacterSet.whitespaces) == "" ||
+            self.cityTextView.text?.trimmingCharacters(in: CharacterSet.whitespaces) == "" ||
+            self.stateTextView.text?.trimmingCharacters(in: CharacterSet.whitespaces) == "" ||
+            self.neighbourhoodTextView.text?.trimmingCharacters(in: CharacterSet.whitespaces) == ""
         {
             return false
         }
@@ -82,39 +108,41 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         return true
     }
     
-    private func disabletTextFieldInteraction(){
-        self.streetTextView.userInteractionEnabled = false
-        self.neighbourhoodTextView.userInteractionEnabled = false
-        self.zipTextView.userInteractionEnabled = false
-        self.cityTextView.userInteractionEnabled = false
-        self.stateTextView.userInteractionEnabled = false
+    fileprivate func disabletTextFieldInteraction(){
+        self.streetTextView.isUserInteractionEnabled = false
+        self.neighbourhoodTextView.isUserInteractionEnabled = false
+        self.zipTextView.isUserInteractionEnabled = false
+        self.cityTextView.isUserInteractionEnabled = false
+        self.stateTextView.isUserInteractionEnabled = false
     }
     
-    private func tranformJSONToData(json : JSON) -> [String:AnyObject]{
+    fileprivate func tranformJSONToData(_ json : JSON) -> [String:AnyObject]{
+        let addressJson = AddressJson(json: json)!
+        
         var addressData = [String:AnyObject]()
         
-        addressData["street"] = json["logradouro"].string
-        addressData["number"] = 0
-        addressData["neighbourhood"] = json["bairro"].string
-        addressData["state"] = json["uf"].string
-        addressData["city"] = json["localidade"].string
-        addressData["zip"] = self.searchZipTextField.text!
+        addressData["street"] = addressJson.logradouro as AnyObject?
+        addressData["number"] = 0 as AnyObject?
+        addressData["neighbourhood"] = addressJson.bairro as AnyObject?
+        addressData["state"] = addressJson.uf as AnyObject?
+        addressData["city"] = addressJson.localidade as AnyObject?
+        addressData["zip"] = self.searchZipTextField.text! as AnyObject?
         addressData["location"] = CLLocation()
         
-        addressData["objectId"] = ""
-        addressData["name"] = ""
-        addressData["additionalInfo"] = ""
+        addressData["objectId"] = "" as AnyObject?
+        addressData["name"] = "" as AnyObject?
+        addressData["additionalInfo"] = "" as AnyObject?
         
         if let address = self.address{
-            addressData["objectId"] = address.addressId
-            addressData["name"] = address.name
-            addressData["additionalInfo"] = address.additionalInfo
+            addressData["objectId"] = address.addressId as AnyObject?
+            addressData["name"] = address.name as AnyObject?
+            addressData["additionalInfo"] = address.additionalInfo as AnyObject?
         }
         
         return addressData
     }
     
-    private func addButtonDoneOnKeyboard(){
+    fileprivate func addButtonDoneOnKeyboard(){
         let doneToolbar = UIToolbar()
         
         self.zipTextView.inputAccessoryView = doneToolbar
@@ -127,9 +155,9 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         self.neighbourhoodTextView.inputAccessoryView = doneToolbar
     }
     
-    @IBAction func searchAddressByCurrentLocation(sender: AnyObject) {
+    @IBAction func searchAddressByCurrentLocation(_ sender: AnyObject) {
         
-        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse){
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
             locationManager.startUpdatingLocation()
             
             let latitude = locationManager.location?.coordinate.latitude
@@ -147,9 +175,9 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
                 var addressData = addressData
                 
                 if let address = self.address{
-                    addressData["objectId"] = address.addressId
-                    addressData["name"] = address.name
-                    addressData["additionalInfo"] = address.additionalInfo
+                    addressData["objectId"] = address.addressId as AnyObject?
+                    addressData["name"] = address.name as AnyObject?
+                    addressData["additionalInfo"] = address.additionalInfo as AnyObject?
                 }
                 
                 self.address = Address(data: addressData)
@@ -165,36 +193,38 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func showAlertWhenDontAuthorization(){
-        let alert = UIAlertController(title: "Serviço de localização desativado", message: "Por favor, ative o serviço de localização nos ajustes do seu aparelho", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Serviço de localização desativado", message: "Por favor, ative o serviço de localização nos ajustes do seu aparelho", preferredStyle: .alert)
         
-        let settingsBt = UIAlertAction(title: "Ir aos Ajustes", style: .Default, handler: { (action) in
-            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+        let settingsBt = UIAlertAction(title: "Ir aos Ajustes", style: .default, handler: { (action) in
+            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
         })
         
-        let cancelBt = UIAlertAction(title: "Cancelar", style: .Cancel, handler: { (action) in
-            alert.dismissViewControllerAnimated(true, completion: nil)
+        let cancelBt = UIAlertAction(title: "Cancelar", style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
         })
         
         alert.addAction(cancelBt)
         alert.addAction(settingsBt)
         
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func searchAddressByZipCode(sender: AnyObject) {
-        let alert = UIAlertController(title: "Buscar endereço pelo CEP", message: "Digite o cep sem hífen", preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler(configAlertTextView)
-        alert.addAction(UIAlertAction(title: "Done", style: .Default, handler:{ (UIAlertAction) in
+    @IBAction func searchAddressByZipCode(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Buscar endereço pelo CEP", message: "Digite o cep sem hífen", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: configAlertTextView)
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler:{ (UIAlertAction) in
             
             AddressManager.sharedInstance.getZipInformation(self.searchZipTextField.text!, jsonResponse: { (json, error) in
                 
+                let addressJson = AddressJson(json: json!)!
+                
                 self.disabletTextFieldInteraction()
                 
-                self.streetTextView.text = json!["logradouro"].string
-                self.neighbourhoodTextView.text = json!["bairro"].string
+                self.streetTextView.text = addressJson.logradouro //json!["logradouro"].string
+                self.neighbourhoodTextView.text = addressJson.bairro// !["bairro"].string
                 self.zipTextView.text = self.searchZipTextField.text!
-                self.cityTextView.text = json!["localidade"].string
-                self.stateTextView.text = json!["uf"].string
+                self.cityTextView.text = addressJson.localidade// !["localidade"].string
+                self.stateTextView.text = addressJson.uf// json!["uf"].string
                 
                 self.address = Address(data: self.tranformJSONToData(json!))
                 
@@ -208,8 +238,8 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
             })
             
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler:nil))
-        self.presentViewController(alert, animated: true, completion: {
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:nil))
+        self.present(alert, animated: true, completion: {
         })
     }
     
@@ -218,7 +248,7 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
             address?.street = street
         }
         if let number = Int(numberTextView.text!){
-            address?.number = NSNumber(integer: number)
+            address?.number = NSNumber(value: number as Int)
         }
         if let additionalInfo = complementTextView.text {
             address?.additionalInfo = additionalInfo
@@ -240,13 +270,13 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    @IBAction func saveAddress(sender: AnyObject) {
+    @IBAction func saveAddress(_ sender: AnyObject) {
         if filledAllRequiredFields() {
             completeAddressInformation()
             AddressManager.sharedInstance.saveUserNewAddress(self.address!, response: { (success, error) in
                 if success {
                     self.delegate?.addressAdded?(self.address!)
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 }
             })
         }

@@ -26,32 +26,32 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = false
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     
     
-    @IBAction func didPressSignUp(sender: AnyObject) {
+    @IBAction func didPressSignUp(_ sender: AnyObject) {
         if verifyFields() {
             UserManager.sharedInstance.singUpUser(name.text! , email: email.text!, password: password.text!, block: { (succeeded, message, userCreated) in
                 if self.setAlertBody("",messageReceived: message) {
-                    self.dismissViewControllerAnimated(false, completion: nil)
+                    self.dismiss(animated: false, completion: nil)
                 }
             })
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileAfterSignUpSegue" {
-            let profileVC = segue.destinationViewController.childViewControllers[0] as! MyProfileViewController
+            let profileVC = segue.destination.childViewControllers[0] as! MyProfileViewController
             
             profileVC.user = (sender as? User)!
             
         }
     }
     
-    private func verifyFields() -> Bool{
+    fileprivate func verifyFields() -> Bool{
         
         if password.text != passwordConfirmation.text {
             return setAlertBody("password")
@@ -63,9 +63,9 @@ class SignUpViewController: UIViewController {
         return setAlertBody("")
     }
     
-    private func setAlertBody(field : String) -> Bool{
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
-        let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+    fileprivate func setAlertBody(_ field : String) -> Bool{
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(cancel)
         
         switch field {
@@ -78,22 +78,22 @@ class SignUpViewController: UIViewController {
         default:
             return true
         }
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         return false
     }
     
-    private func setAlertBody(field : String, messageReceived: String) -> Bool{
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
-        let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+    fileprivate func setAlertBody(_ field : String, messageReceived: String) -> Bool{
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(cancel)
 
         switch field {
-        case "signUp" where messageReceived.containsString("username"):
+        case "signUp" where messageReceived.contains("username"):
             alert.message = "E-mail já cadastrado"
         default:
             return true
         }
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         return false
     }
 }

@@ -30,7 +30,7 @@ class ProductTableViewCell: UITableViewCell {
                 }
                 
                 if self.lblTotal != nil{
-                    self.lblTotal.text = self.lblTotal.text!+NSNumber(double: (product.price.doubleValue * product.stock.doubleValue)).numberToPrice()
+                    self.lblTotal.text = self.lblTotal.text!+NSNumber(value: (product.price.doubleValue * product.stock.doubleValue) as Double).numberToPrice()
                 }
                 
                 self.lblName.text = product.name
@@ -51,7 +51,7 @@ class ProductTableViewCell: UITableViewCell {
                 }
 
                 self.lblName.text = promotion.promotionName
-                self.lblPrice.text = self.lblPrice.text!+NSNumber(double: Double(promotion.newPrice)).numberToPrice()
+                self.lblPrice.text = self.lblPrice.text!+NSNumber(value: Double(promotion.newPrice) as Double).numberToPrice()
             }
         }
     }
@@ -61,7 +61,7 @@ class ProductTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state

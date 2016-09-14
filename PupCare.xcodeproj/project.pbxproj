@@ -570,7 +570,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3311D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCare" */;
 			buildPhases = (
-				2114551FF2455569C59B050F /* 📦 Check Pods Manifest.lock */,
+				2114551FF2455569C59B050F /* [CP] Check Pods Manifest.lock */,
 				4F5E67E3554E5E14D34C3903 /* [CP] Check Pods Manifest.lock */,
 				0CB42F44DFD31EEF33C26145 /* [CP] Check Pods Manifest.lock */,
 				6FD4D5EEE2C1A8F7C954863A /* [CP] Check Pods Manifest.lock */,
@@ -599,7 +599,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A475E3341D0A9B3B00FB66C3 /* Build configuration list for PBXNativeTarget "PupCareTests" */;
 			buildPhases = (
-				1A19A2BD5199AA75E62E24BA /* 📦 Check Pods Manifest.lock */,
+				1A19A2BD5199AA75E62E24BA /* [CP] Check Pods Manifest.lock */,
 				78739C84F840103B85F61317 /* [CP] Check Pods Manifest.lock */,
 				01D566CC89C08DA6B5712182 /* [CP] Check Pods Manifest.lock */,
 				EF1AA9539EC77E2CBF7FE417 /* [CP] Check Pods Manifest.lock */,
@@ -648,18 +648,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = PupCare;
 				TargetAttributes = {
 					A475E3051D0A9B3A00FB66C3 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 5CB58H6L4R;
+						LastSwiftMigration = 0800;
 					};
 					A475E31C1D0A9B3B00FB66C3 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 5CB58H6L4R;
+						LastSwiftMigration = 0800;
 						TestTargetID = A475E3051D0A9B3A00FB66C3;
 					};
 					A475E3271D0A9B3B00FB66C3 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 5CB58H6L4R;
+						LastSwiftMigration = 0800;
 						TestTargetID = A475E3051D0A9B3A00FB66C3;
 					};
 				};
@@ -768,14 +774,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		1A19A2BD5199AA75E62E24BA /* 📦 Check Pods Manifest.lock */ = {
+		1A19A2BD5199AA75E62E24BA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -783,14 +789,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		2114551FF2455569C59B050F /* 📦 Check Pods Manifest.lock */ = {
+		2114551FF2455569C59B050F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1195,8 +1201,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1242,8 +1250,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1263,6 +1273,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "PupCare/Model/PupCare-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1272,13 +1283,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AB0AC7D08F3CCBE82BDDF13 /* Pods-PupCare.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5CB58H6L4R;
 				INFOPLIST_FILE = PupCare/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./PupCare/Model/PupCare-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1286,13 +1300,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0493F2875AEB302E7CCF3B2B /* Pods-PupCare.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5CB58H6L4R;
 				INFOPLIST_FILE = PupCare/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./PupCare/Model/PupCare-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1300,11 +1317,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8744664412D2A7E02501B9E5 /* Pods-PupCareTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5CB58H6L4R;
 				INFOPLIST_FILE = PupCareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCareTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PupCare.app/PupCare";
 			};
 			name = Debug;
@@ -1313,11 +1333,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DDD843DED49D52DA47654117 /* Pods-PupCareTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5CB58H6L4R;
 				INFOPLIST_FILE = PupCareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCareTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PupCare.app/PupCare";
 			};
 			name = Release;
@@ -1325,10 +1348,12 @@
 		A475E3381D0A9B3B00FB66C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 5CB58H6L4R;
 				INFOPLIST_FILE = PupCareUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCareUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PupCare;
 			};
 			name = Debug;
@@ -1336,10 +1361,12 @@
 		A475E3391D0A9B3B00FB66C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 5CB58H6L4R;
 				INFOPLIST_FILE = PupCareUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pupcare.PupCareUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PupCare;
 			};
 			name = Release;
