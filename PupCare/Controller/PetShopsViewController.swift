@@ -22,7 +22,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
         
         if UserManager.sharedInstance.user == nil{
             UserManager.sharedInstance.createUserByCurrentUser()
@@ -31,11 +31,11 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         petShopsTableView.dataSource = self
         petShopsTableView.delegate = self
         
-        petShopsTableView.separatorStyle = .None
+        petShopsTableView.separatorStyle = .none
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Puxe para atualizar")
-        refreshControl.addTarget(self, action: #selector(PetShopsViewController.reloadPetShops), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(PetShopsViewController.reloadPetShops), for: UIControlEvents.valueChanged)
         
         petShopsTableView.addSubview(refreshControl)
         
@@ -54,9 +54,9 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func filterPetShopsForSearchText(searchText: String, scope: String = "All") {
+    func filterPetShopsForSearchText(_ searchText: String, scope: String = "All") {
         filteredPetShops = allPetShops.filter { petShop in
-            return petShop.name.lowercaseString.containsString(searchText.lowercaseString)
+            return petShop.name.lowercased().contains(searchText.lowercased())
         }
         
         petShopsTableView.reloadData()
@@ -70,15 +70,15 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("PetShopCell", forIndexPath: indexPath) as! PetShopsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PetShopCell", for: indexPath) as! PetShopsTableViewCell
         
         let petShop: PetShop!
-        if searchController.active && searchController.searchBar.text != "" {
-            petShop = filteredPetShops[indexPath.row]
+        if searchController.isActive && searchController.searchBar.text != "" {
+            petShop = filteredPetShops[(indexPath as NSIndexPath).row]
         } else {
-            petShop = allPetShops[indexPath.row]
+            petShop = allPetShops[(indexPath as NSIndexPath).row]
         }
         
         cell.petShopNameLabel.text = petShop.name
@@ -86,13 +86,13 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.ranking = Int(petShop.ranking)
         cell.petShopImageView.loadImage(petShop.imageUrl)
         if let location = UserManager.sharedInstance.getLocationToSearch(){
-            cell.petShopDistanceLabel.text = "\((petShop.location.distanceFromLocation(location)/1000).roundToPlaces(2)) km"
+            cell.petShopDistanceLabel.text = "\((petShop.location.distance(from: location)/1000).roundToPlaces(2)) km"
         }
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active && searchController.searchBar.text != "" {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
             return filteredPetShops.count
         } else {
             return allPetShops.count
@@ -100,7 +100,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    @IBAction func filterButton(sender: AnyObject) {
+    @IBAction func filterButton(_ sender: AnyObject) {
         
         
     }
@@ -116,14 +116,14 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         })
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("Products", sender:  self.allPetShops[indexPath.row])
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Products", sender:  self.allPetShops[(indexPath as NSIndexPath).row])
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Products" {
-            let productsViewController = segue.destinationViewController as! ProductTableViewController
+            let productsViewController = segue.destination as! ProductTableViewController
             
             productsViewController.petShop = sender as? PetShop
         }
@@ -131,7 +131,7 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 extension PetShopsViewController: UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         filterPetShopsForSearchText(searchController.searchBar.text!)
         
     }

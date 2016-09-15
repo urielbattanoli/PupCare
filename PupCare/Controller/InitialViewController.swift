@@ -20,20 +20,20 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        defaults.setObject(-1, forKey: "location")
+        defaults.set(-1, forKey: "location")
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.delegate = self
         
         
-        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse){
-            performSegueWithIdentifier("goToPetShops", sender: nil)
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
+            performSegue(withIdentifier: "goToPetShops", sender: nil)
         }
     }
 
@@ -44,9 +44,9 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate {
     
     
     // MARK: LocationManager delegate
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.AuthorizedWhenInUse{
-            performSegueWithIdentifier("goToPetShops", sender: nil)
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.authorizedWhenInUse{
+            performSegue(withIdentifier: "goToPetShops", sender: nil)
         }
     }
 

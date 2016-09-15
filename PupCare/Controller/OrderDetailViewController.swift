@@ -24,7 +24,7 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
             OrderManager.sharedInstance.getOrderProducts(self.order!, block: { (products) in
                 self.order!.products = products
                 self.numberOfRowInsection += products.count ?? 0
-                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+                self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             })
         }
         else{
@@ -38,43 +38,43 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     // MARK: Tableview data source
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.numberOfRowInsection
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.row {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch (indexPath as NSIndexPath).row {
         case 0:
             //pet shop infos
-            let cell = tableView.dequeueReusableCellWithIdentifier("petShopCell") as! PetShopsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "petShopCell") as! PetShopsTableViewCell
             cell.petShop = self.order?.petShop
             return cell
             
         case self.numberOfRowInsection-3:
             //quant
-            let cell = tableView.dequeueReusableCellWithIdentifier("bottomCell") as! CustomTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "bottomCell") as! CustomTableViewCell
             cell.leftLbl.text = "Quantidade total de produtos:"
             cell.rigthLbl.text = "\(self.order!.totalQuantity)"
             return cell
             
         case self.numberOfRowInsection-2:
             //delivery
-            let cell = tableView.dequeueReusableCellWithIdentifier("bottomCell") as! CustomTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "bottomCell") as! CustomTableViewCell
             cell.leftLbl.text = "Frete:"
             cell.rigthLbl.text = self.order?.shipment.numberToPrice()
             return cell
             
         case self.numberOfRowInsection-1:
             //price
-            let cell = tableView.dequeueReusableCellWithIdentifier("bottomCell") as! CustomTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "bottomCell") as! CustomTableViewCell
             cell.leftLbl.text = "Valor total do pedido:"
             cell.rigthLbl.text = self.order?.price.numberToPrice()
             return cell
             
         default:
             //product list
-            let product = self.order?.products[indexPath.row-1]
-            let cell = tableView.dequeueReusableCellWithIdentifier("productCell") as! ProductTableViewCell
+            let product = self.order?.products[(indexPath as NSIndexPath).row-1]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "productCell") as! ProductTableViewCell
             cell.product = product
             
             return cell
@@ -82,11 +82,11 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     // MARK: Tableview delegate
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).row == 0{
             return 90
         }
-        if indexPath.row > self.numberOfRowInsection-4{
+        if (indexPath as NSIndexPath).row > self.numberOfRowInsection-4{
             return 40
         }
         return 105

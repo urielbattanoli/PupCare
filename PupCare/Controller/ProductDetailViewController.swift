@@ -32,9 +32,9 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         
         self.carousel.delegate = self
         self.carousel.dataSource = self
-        self.carousel.type = .Rotary
+        self.carousel.type = .rotary
         
-        self.carousel.userInteractionEnabled = false
+        self.carousel.isUserInteractionEnabled = false
         
         if let product = self.product{
             self.lblName.text = product.name
@@ -43,7 +43,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         
         configureSlider()
         
-        if let top = self.parentViewController?.parentViewController as? MainTabViewController {
+        if let top = self.parent?.parent as? MainTabViewController {
             self.CartDelegate = top
         }
     }
@@ -53,12 +53,12 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         let image = UIImage(named:"insideRetangle")
         let myInsets : UIEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4)
         
-        image?.resizableImageWithCapInsets(myInsets)
+        image?.resizableImage(withCapInsets: myInsets)
         
-        sliderQnt.setMinimumTrackImage(image, forState: UIControlState.Normal)
-        sliderQnt.setMaximumTrackImage(UIImage(named:"outsideRetangle"), forState: UIControlState.Normal)
-        sliderQnt.setThumbImage(UIImage(named: "oval"), forState: UIControlState.Normal)
-        sliderQnt.setThumbImage(UIImage(named: "oval"), forState: UIControlState.Highlighted)
+        sliderQnt.setMinimumTrackImage(image, for: UIControlState())
+        sliderQnt.setMaximumTrackImage(UIImage(named:"outsideRetangle"), for: UIControlState())
+        sliderQnt.setThumbImage(UIImage(named: "oval"), for: UIControlState())
+        sliderQnt.setThumbImage(UIImage(named: "oval"), for: UIControlState.highlighted)
         
         sliderQnt.maximumValue = 10
         sliderQnt.minimumValue = 0
@@ -68,7 +68,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     }
     
     
-    @IBAction func SliderValueChanged(sender: UISlider) {
+    @IBAction func SliderValueChanged(_ sender: UISlider) {
         
         let rounded = round(sender.value)
         
@@ -108,7 +108,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     
     
     // Mark: iCarousel
-    func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
+    func numberOfItems(in carousel: iCarousel) -> Int {
         if self.product != nil{
             return 1
         }
@@ -116,19 +116,19 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     }
     
     
-    func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         
         var itemView: UIView
         
         if view == nil{
             itemView = UIView(frame: CGRect(x: 0, y: 0, width: 225, height: 225))
             itemView.layer.borderWidth = 2.5
-            itemView.layer.borderColor = UIColor(red: 115, green: 40, blue: 115).CGColor
+            itemView.layer.borderColor = UIColor(red: 115, green: 40, blue: 115).cgColor
             itemView.layer.cornerRadius = 10
             
             let imageView = UIImageView(frame: CGRect(x: 20, y: 20, width: 185, height: 185))
             imageView.loadImage((self.product?.imageUrl)!)
-            imageView.contentMode = .ScaleAspectFit
+            imageView.contentMode = .scaleAspectFit
             imageView.layer.cornerRadius = 10
             
             itemView.addSubview(imageView)
@@ -140,14 +140,14 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         return itemView
     }
     
-    func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-        if option == .Spacing{
+    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        if option == .spacing{
             return value * 1.1
         }
         return value
     }
 
-    @IBAction func AddToCartButton(sender: AnyObject) {
+    @IBAction func AddToCartButton(_ sender: AnyObject) {
         Cart.sharedInstance.addToCart(self.petshop!, product: self.product, promotion: nil, quantity: Int(sliderQnt.value))
         
         self.CartDelegate?.ShowCart()

@@ -18,7 +18,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         super.viewDidLoad()
         
         self.delegate = self
-        self.tabBar.tintColor = UIColor.whiteColor()
+        self.tabBar.tintColor = UIColor.white
         
         //Promotions ViewController
         let vcPromotions = UIStoryboard(name: "Promotions", bundle: nil).instantiateInitialViewController()!
@@ -35,7 +35,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         //Profile ViewController
         var vcProfile = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
         
-        if PFUser.currentUser() != nil{
+        if PFUser.current() != nil{
             vcProfile = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()!
         }
         vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: UIImage(named: "userIconPressed"))
@@ -44,7 +44,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        controller = storyBoard.instantiateViewControllerWithIdentifier("CartOverView")
+        controller = storyBoard.instantiateViewController(withIdentifier: "CartOverView")
         controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
         
         self.addChildViewController(controller)
@@ -62,7 +62,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         
         self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 75)
         
-        UIView.animateWithDuration(0.2, delay: 0, options: .TransitionCurlUp, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCurlUp, animations: {
             self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
             
             }, completion: nil)
@@ -101,7 +101,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         
     }
     
-    func UpdateView(totalItensAndPrice:(Int,Double)) {
+    func UpdateView(_ totalItensAndPrice:(Int,Double)) {
         (self.controller as! CartOverViewController).updateInfo(totalItensAndPrice)
     }
     
@@ -121,6 +121,6 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
 protocol CartProtocol {
     func ShowCart()
     func HideCart()
-    func UpdateView(totalItensAndPrice:(Int,Double))
+    func UpdateView(_ totalItensAndPrice:(Int,Double))
     
 }

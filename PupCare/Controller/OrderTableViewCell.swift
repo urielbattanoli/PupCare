@@ -36,11 +36,11 @@ class OrderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.viewBackground.layer.cornerRadius = 5
-        self.viewBackground.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).CGColor
+        self.viewBackground.layer.borderColor = UIColor(red: 205, green: 205, blue: 205).cgColor
         self.viewBackground.layer.borderWidth = 0.5
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state

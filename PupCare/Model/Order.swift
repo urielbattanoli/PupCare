@@ -12,7 +12,7 @@ class Order: NSObject {
 
     let orderId: String
     let petShop: PetShop
-    let orderDate: NSDate
+    let orderDate: Date
     let price: NSNumber
     let trackId: String
     let shipment: NSNumber
@@ -22,7 +22,7 @@ class Order: NSObject {
         didSet{
             var totalQuantity = 0
             for product in products{
-                totalQuantity += product.stock.integerValue
+                totalQuantity += product.stock.intValue
             }
             self.totalQuantity = totalQuantity
         }
@@ -31,7 +31,7 @@ class Order: NSObject {
     init(data: [String : AnyObject]) {
         self.orderId = data["orderId"] as! String
         self.petShop = data["petShop"] as! PetShop
-        self.orderDate = data["date"] as! NSDate
+        self.orderDate = data["date"] as! Date
         self.price = data["price"] as! NSNumber
         self.trackId = data["trackId"] as! String
         self.shipment = data["shipment"] as! NSNumber

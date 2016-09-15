@@ -17,11 +17,11 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Variables
-    private let numberOfSections = 3
-    private let numberOfRowSection0 = 1
-    private var numberOfRowSection1 = 5
-    private let numberOfRowSection2 = 1
-    private let numberOfRowSectionShrunk = 2
+    fileprivate let numberOfSections = 3
+    fileprivate let numberOfRowSection0 = 1
+    fileprivate var numberOfRowSection1 = 5
+    fileprivate let numberOfRowSection2 = 1
+    fileprivate let numberOfRowSectionShrunk = 2
     
     var section1Expanded = false
     var section2Expanded = false
@@ -45,7 +45,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         
         AddressManager.sharedInstance.getAddressListFromUser(self.user.userId!) { (addresses) in
             self.user.addressList = addresses
-            self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Fade)
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .fade)
         }
         
         self.tableView.delegate = self
@@ -57,11 +57,11 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // MARK: Table View Data Source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.numberOfSections
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.numberOfRowSection1 = self.user.addressList.count + 5
         
         switch section {
@@ -77,19 +77,19 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         return self.numberOfRowSectionShrunk
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let separator = tableView.dequeueReusableCellWithIdentifier("cellSeparator")!
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellProfileDetail") as! MyProfileDetailTableViewCell
-        let section = tableView.dequeueReusableCellWithIdentifier("cellProfileSection") as! MyProfileDetailTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let separator = tableView.dequeueReusableCell(withIdentifier: "cellSeparator")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellProfileDetail") as! MyProfileDetailTableViewCell
+        let section = tableView.dequeueReusableCell(withIdentifier: "cellProfileSection") as! MyProfileDetailTableViewCell
         
-        switch indexPath.section {
+        switch (indexPath as NSIndexPath).section {
         case 0:
-            let profile = tableView.dequeueReusableCellWithIdentifier("cellProfile") as! MyProfileTableViewCell
+            let profile = tableView.dequeueReusableCell(withIdentifier: "cellProfile") as! MyProfileTableViewCell
             profile.photoUrl = user.photoUrl
             self.imageProfile = profile.imageProfile
             return profile
             
-        case 1 where indexPath.row == 0:
+        case 1 where (indexPath as NSIndexPath).row == 0:
             section.string = "Dados Pessoais"
             
             if !self.section1Expanded{
@@ -101,35 +101,35 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             section.setCorner()
             return section
             
-        case 1 where indexPath.row == 1:
+        case 1 where (indexPath as NSIndexPath).row == 1:
             if !self.section1Expanded{
                 return separator
             }
             cell.string = self.user.name
             
-        case 1 where indexPath.row == 2:
+        case 1 where (indexPath as NSIndexPath).row == 2:
             cell.string = self.user.email
             
-        case 1 where indexPath.row > 2 && indexPath.row < self.numberOfRowSection1-1:
-            let addressCell = tableView.dequeueReusableCellWithIdentifier("cellAddress") as! MyProfileAddressTableViewCell
-            if indexPath.row == self.numberOfRowSection1-2{
+        case 1 where (indexPath as NSIndexPath).row > 2 && (indexPath as NSIndexPath).row < self.numberOfRowSection1-1:
+            let addressCell = tableView.dequeueReusableCell(withIdentifier: "cellAddress") as! MyProfileAddressTableViewCell
+            if (indexPath as NSIndexPath).row == self.numberOfRowSection1-2{
                 addressCell.setCorner()
                 addressCell.imageAddress.image = UIImage(named: "moreBt")
                 return addressCell
             }
-            addressCell.address = self.user.addressList[indexPath.row-3]
+            addressCell.address = self.user.addressList[(indexPath as NSIndexPath).row-3]
             return addressCell
             
-        case 1 where indexPath.row == self.numberOfRowSection1-1:
+        case 1 where (indexPath as NSIndexPath).row == self.numberOfRowSection1-1:
             return separator
             
-        case 2 where indexPath.row == 0:
-            let logOut = tableView.dequeueReusableCellWithIdentifier("cellLogOut") as! MyProfileDetailTableViewCell
+        case 2 where (indexPath as NSIndexPath).row == 0:
+            let logOut = tableView.dequeueReusableCell(withIdentifier: "cellLogOut") as! MyProfileDetailTableViewCell
             logOut.string = "Sair"
             logOut.setCorner()
             
             return logOut
-        case 2 where indexPath.row == 1:
+        case 2 where (indexPath as NSIndexPath).row == 1:
             return separator
             
         default:
@@ -139,24 +139,24 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if indexPath.section == 1{
-            if indexPath.row > 2 && indexPath.row < self.numberOfRowSection1-2{
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if (indexPath as NSIndexPath).section == 1{
+            if (indexPath as NSIndexPath).row > 2 && (indexPath as NSIndexPath).row < self.numberOfRowSection1-2{
                 return true
             }
         }
         return false
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
-        case .Delete:
-            if indexPath.section == 1{
-                let address = self.user.addressList[indexPath.row-3]
+        case .delete:
+            if (indexPath as NSIndexPath).section == 1{
+                let address = self.user.addressList[(indexPath as NSIndexPath).row-3]
                 AddressManager.sharedInstance.removeAddressFromParse(address)
-                self.user.addressList.removeAtIndex(indexPath.row-3)
+                self.user.addressList.remove(at: (indexPath as NSIndexPath).row-3)
                 self.numberOfRowSection1 -= 1
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
         default:
             print("default commitEditing")
@@ -164,19 +164,19 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // MARK: Table View Delegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        switch indexPath.section {
-        case 1 where indexPath.row == 0:
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch (indexPath as NSIndexPath).section {
+        case 1 where (indexPath as NSIndexPath).row == 0:
             self.section1Expanded = !self.section1Expanded
-            self.tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Fade)
-        case 1 where indexPath.row > 2 && indexPath.row < self.numberOfRowSection1-1:
-            if indexPath.row == self.numberOfRowSection1-2{
-                performSegueWithIdentifier("goToAddAddress", sender: nil)
+            self.tableView.reloadSections(IndexSet(integer: (indexPath as NSIndexPath).section), with: .fade)
+        case 1 where (indexPath as NSIndexPath).row > 2 && (indexPath as NSIndexPath).row < self.numberOfRowSection1-1:
+            if (indexPath as NSIndexPath).row == self.numberOfRowSection1-2{
+                performSegue(withIdentifier: "goToAddAddress", sender: nil)
                 return
             }
-            let address = self.user.addressList[indexPath.row-3]
-            performSegueWithIdentifier("goToAddAddress", sender: address)
+            let address = self.user.addressList[(indexPath as NSIndexPath).row-3]
+            performSegue(withIdentifier: "goToAddAddress", sender: address)
         case 2:
             self.didPressLogOut()
         default:
@@ -184,25 +184,25 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).section == 0{
             return 255
         }
-        else if indexPath.row == 0{
+        else if (indexPath as NSIndexPath).row == 0{
             return 45
         }
-        else if (indexPath.section == 1 && indexPath.row == numberOfRowSection1-1)||(indexPath.section == 2 && indexPath.row == self.numberOfRowSection2-1) || (!self.section1Expanded && indexPath.section == 1) || (!self.section2Expanded && indexPath.section == 2){
+        else if ((indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row == numberOfRowSection1-1)||((indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == self.numberOfRowSection2-1) || (!self.section1Expanded && (indexPath as NSIndexPath).section == 1) || (!self.section2Expanded && (indexPath as NSIndexPath).section == 2){
             return 20
         }
         return 40
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let deleteBt = UITableViewRowAction(style: .Default, title: "Remover") { (acton, indexPath) in
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteBt = UITableViewRowAction(style: .default, title: "Remover") { (acton, indexPath) in
             self.tableView.dataSource?.tableView!(
                 self.tableView,
-                commitEditingStyle: .Delete,
-                forRowAtIndexPath: indexPath)
+                commit: .delete,
+                forRowAt: indexPath)
             return
         }
         deleteBt.backgroundColor = UIColor(red: 165, green: 22, blue: 25)
@@ -210,7 +210,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // MARK: Functions
-    func didPressPhoto(obj: AnyObject) {
+    func didPressPhoto(_ obj: AnyObject) {
         print(obj)
     }
     
@@ -226,12 +226,12 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "logInSegue":
-            segue.destinationViewController.childViewControllers[0] as! LoginViewController
+            segue.destination.childViewControllers[0] as! LoginViewController
         case "goToAddAddress":
-            let addressVC = segue.destinationViewController as! AddressViewController
+            let addressVC = segue.destination as! AddressViewController
             addressVC.delegate = self
             if let address = sender as? Address{
                 addressVC.address = address
@@ -242,10 +242,10 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // MARK: Address delegate
-    func addressAdded(address: Address){
+    func addressAdded(_ address: Address){
         if !self.user.addressList.contains(address){
             self.user.addressList.append(address)
         }
-        self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Fade)
+        self.tableView.reloadSections(IndexSet(integer: 1), with: .fade)
     }
 }

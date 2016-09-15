@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TransactionProtocol: class {
-    func didFinishTransaction(message: String)
+    func didFinishTransaction(_ message: String)
 }
 
 class CartTableViewCell: UITableViewCell {
@@ -58,13 +58,13 @@ class CartTableViewCell: UITableViewCell {
         
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
     
-    @IBAction func sliderChance(sender: UISlider) {
+    @IBAction func sliderChance(_ sender: UISlider) {
         let rounded = round(sender.value)
         
         sender.value = rounded
@@ -75,7 +75,7 @@ class CartTableViewCell: UITableViewCell {
             self.ProductValueLabel.text = "\(Float(productInCart!.product.price) * rounded)"
             self.productInCart?.quantity = Int(rounded)
             
-            if let object = petShopInCart!.productsInCart.indexOf({$0.product == productInCart?.product}) {
+            if let object = petShopInCart!.productsInCart.index(where: {$0.product == productInCart?.product}) {
                 
                 print(object)
             }
@@ -87,36 +87,36 @@ class CartTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func FinishPetShopOrder(sender: AnyObject) {
+    @IBAction func FinishPetShopOrder(_ sender: AnyObject) {
         let petShop = Cart.sharedInstance.cartDict.petShopList[(self.petShop!.objectId)]
 
         
         var dick: [String: AnyObject] = [:]
         
-        dick["orderId"] = ""
+        dick["orderId"] = "" as AnyObject?
         dick["petShop"] = petShop?.petShop
-        dick["date"] = NSDate()
-        dick["price"] = petShop?.totalPrice
-        dick["trackId"] = ""
-        dick["shipment"] = 0
+        dick["date"] = Date() as AnyObject?
+        dick["price"] = petShop?.totalPrice as AnyObject?
+        dick["trackId"] = "" as AnyObject?
+        dick["shipment"] = 0 as AnyObject?
         dick["products"] = petShop!.productsInCart as? AnyObject
         dick["promotions"] = petShop!.promotionsInCart as? AnyObject
         
         let order = Order(data: dick)
         
         var cartao: [String: AnyObject] = [:]
-        cartao["CardHolderName"] = "Rebecca Sommers"
-        cartao["CardNumber"] = "4012001038166662"
-        cartao["CVV"] = "456"
-        cartao["ExpirationYear"] = 2017
-        cartao["ExpirationMonth"] = 04
+        cartao["CardHolderName"] = "Rebecca Sommers" as AnyObject?
+        cartao["CardNumber"] = "4012001038166662" as AnyObject?
+        cartao["CVV"] = "456" as AnyObject?
+        cartao["ExpirationYear"] = 2017 as AnyObject?
+        cartao["ExpirationMonth"] = 04 as AnyObject?
         
         self.FinishOrderLoader.alpha = 1
         self.FinishOrderLoader.startAnimating()
         
-        self.FinishOrderButton.enabled = false
+        self.FinishOrderButton.isEnabled = false
         
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (cardBrand) in
                 cartao["CardBrand"] = cardBrand
                 
@@ -124,7 +124,7 @@ class CartTableViewCell: UITableViewCell {
                     
                     var data = [String:AnyObject]()
                     data["orderId"] = ""
-                    data["date"] = NSDate()
+                    data["date"] = Date()
                     data["trackId"] = trackId
                     data["price"] = self.price
                     data["shipment"] = 10
@@ -156,12 +156,12 @@ class CartTableViewCell: UITableViewCell {
                     
                     self.transactionDelegate?.didFinishTransaction(message)
                     
-                    dispatch_async(dispatch_get_main_queue()){
-                        self.FinishOrderButton.enabled = true
+                    DispatchQueue.main.async{
+                        self.FinishOrderButton.isEnabled = true
                         
                         self.FinishOrderLoader.alpha = 0.0
                         self.FinishOrderLoader.stopAnimating()
-                        self.FinishOrderLoader.hidden = true
+                        self.FinishOrderLoader.isHidden = true
                     }
                 })
             }

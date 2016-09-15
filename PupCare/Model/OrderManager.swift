@@ -16,65 +16,65 @@ class OrderManager: NSObject {
     
     static let sharedInstance = OrderManager()
     
-    private let authorizationHeader : String = "pupcare:0tx#8yKY"
-    private var authorizationHeaderToIso : String
-    private var authorizationHeaderData : NSData
-    private var authorizationHeaderDataToBase64 : String
+    fileprivate let authorizationHeader : String = "pupcare:0tx#8yKY"
+    fileprivate var authorizationHeaderToIso : String
+    fileprivate var authorizationHeaderData : Data
+    fileprivate var authorizationHeaderDataToBase64 : String
     
-    private let apiKeyHeader : String = "mHr2b6dCnHIAUpwZD562LD7Ksvc7wfFpslwlKS83AyARL/Hi"
+    fileprivate let apiKeyHeader : String = "mHr2b6dCnHIAUpwZD562LD7Ksvc7wfFpslwlKS83AyARL/Hi"
     
-    private var requestHeaders : [String:String]
+    fileprivate var requestHeaders : [String:String]
     
-    private let GetCardBrandUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Card/GetAvailableCardBrands"
-    private let ValidateCardNumberUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Card/ValidateCardNumber"
-    private let StartTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/StartTransaction"
-    private let GetTransactionByTrackIdUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/Find/"
-    private let ConfirmTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/ConfirmTransaction"
-    private let CancelTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/CancelTransaction"
+    fileprivate let GetCardBrandUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Card/GetAvailableCardBrands"
+    fileprivate let ValidateCardNumberUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Card/ValidateCardNumber"
+    fileprivate let StartTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/StartTransaction"
+    fileprivate let GetTransactionByTrackIdUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/Find/"
+    fileprivate let ConfirmTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/ConfirmTransaction"
+    fileprivate let CancelTransactionUrl = "https://www.gatewaypaycode.com.br/Teste/WebApi/api/Transaction/CancelTransaction"
     
     override init(){
-        authorizationHeaderToIso = authorizationHeader.stringByReplacingPercentEscapesUsingEncoding(NSISOLatin1StringEncoding)!
-        authorizationHeaderData = authorizationHeaderToIso.dataUsingEncoding(NSISOLatin1StringEncoding)!
-        authorizationHeaderDataToBase64 = authorizationHeaderData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+        authorizationHeaderToIso = authorizationHeader.replacingPercentEscapes(using: String.Encoding.isoLatin1)!
+        authorizationHeaderData = authorizationHeaderToIso.data(using: String.Encoding.isoLatin1)!
+        authorizationHeaderDataToBase64 = authorizationHeaderData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         
         requestHeaders = ["Authorization":"Basic \(authorizationHeaderDataToBase64)",
                           "X-ApiKey":apiKeyHeader]
     }
     
-    func saveOrder(order: [String:AnyObject], callback: (PFObject)->()){
+    func saveOrder(_ order: [String:AnyObject], callback: @escaping (PFObject)->()){
         let orderAsPfObject = PFObject(className: "Order")
-        orderAsPfObject.setObject(PFUser.currentUser()!, forKey: "userId")
-        orderAsPfObject["userId"] = PFUser.currentUser()
+        orderAsPfObject.setObject(PFUser.current()!, forKey: "userId")
+        orderAsPfObject["userId"] = PFUser.current()
         orderAsPfObject["trackId"] = order["trackId"] as! PFObject
         orderAsPfObject["price"] = order["price"]
         orderAsPfObject["petShopId"] = PFObject(withoutDataWithClassName: "PetShop", objectId: order["petShop"] as? String)
         orderAsPfObject["shipment"] = order["shipment"]
         
         
-        orderAsPfObject.saveInBackgroundWithBlock { (success, error) in
+        orderAsPfObject.saveInBackground { (success, error) in
             callback(orderAsPfObject)
         }
     }
     
-    func saveProductsFromOrder(data: [String:AnyObject]){
+    func saveProductsFromOrder(_ data: [String:AnyObject]){
         let orderProductAsPfObject = PFObject(className: "Order_Product")
         orderProductAsPfObject["orderId"] = data["orderId"] as! PFObject
         orderProductAsPfObject["productId"] = PFObject(withoutDataWithClassName: "Product", objectId: data["productId"] as? String)
         orderProductAsPfObject["quantity"] = data["quantity"]
         orderProductAsPfObject["price"] = data["price"]
         
-        orderProductAsPfObject.saveInBackgroundWithBlock { (success, error) in
+        orderProductAsPfObject.saveInBackground { (success, error) in
             print("salvou")
         }
     }
     
-    func savePromotionsFromOrder(data: [String:AnyObject]){
+    func savePromotionsFromOrder(_ data: [String:AnyObject]){
         let orderPromotionAsPfObject = PFObject(className: "Order_Promotion")
         orderPromotionAsPfObject["orderId"] = data["orderId"] as! PFObject
         orderPromotionAsPfObject["promotionId"] = PFObject(withoutDataWithClassName: "Promotion", objectId: data["promotionId"] as? String)
         orderPromotionAsPfObject["price"] = data["price"]
         
-        orderPromotionAsPfObject.saveInBackgroundWithBlock { (success, error) in
+        orderPromotionAsPfObject.saveInBackground { (success, error) in
             print("salvou")
         }
         
@@ -93,7 +93,7 @@ class OrderManager: NSObject {
         }
     }
     
-    func checkIfCardIsValid(cardNumber : String, callback: (Int) -> Void) {
+    func checkIfCardIsValid(_ cardNumber : String, callback: @escaping (Int) -> Void) {
         let parameters = ["CardNumber":cardNumber]
         
         Alamofire.request(.POST, ValidateCardNumberUrl, parameters: parameters, headers: requestHeaders)
@@ -111,11 +111,11 @@ class OrderManager: NSObject {
         }
     }
     
-    func startTransaction(value: Double, cardInfo: [String:AnyObject], callback: (String,PFObject) -> Void){
+    func startTransaction(_ value: Double, cardInfo: [String:AnyObject], callback: @escaping (String,PFObject) -> Void){
         
         self.generateTrackId { (trackId) in
             
-            let parameters : [String:AnyObject] = ["PaymentType":"01","CurrencyCode":"986","Value":value,"TrackId":trackId.objectId!,"Description":"PupCare Test Transaction","CardInfo":cardInfo]
+            let parameters : [String:AnyObject] = ["PaymentType":"01" as AnyObject,"CurrencyCode":"986" as AnyObject,"Value":value as AnyObject,"TrackId":trackId.objectId! as AnyObject,"Description":"PupCare Test Transaction" as AnyObject,"CardInfo":cardInfo as AnyObject]
             
             Alamofire.request(.POST, self.StartTransactionUrl, parameters: parameters, headers: self.requestHeaders)
                 .response { request, response, data, error in
@@ -141,8 +141,8 @@ class OrderManager: NSObject {
         }
     }
     
-    func confirmTransaction(trackId: String, acquirerTransactionId: String, cardBrand: Int, callback: (Bool,String) -> Void){
-        let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId,"PaymentType":"01","CardBrand":cardBrand, "TrackId":trackId]
+    func confirmTransaction(_ trackId: String, acquirerTransactionId: String, cardBrand: Int, callback: @escaping (Bool,String) -> Void){
+        let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId as AnyObject,"PaymentType":"01" as AnyObject,"CardBrand":cardBrand as AnyObject, "TrackId":trackId as AnyObject]
         
         Alamofire.request(.POST, self.ConfirmTransactionUrl, parameters: parameters, headers: self.requestHeaders)
             .response { request, response, data, error in
@@ -159,8 +159,8 @@ class OrderManager: NSObject {
         }
     }
     
-    func cancelTransaction(trackId: String, acquirerTransactionId: String, cardBrand: Int, callback: (Bool,String) -> ()){
-        let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId,"PaymentType":"01","CardBrand":cardBrand, "TrackId":trackId]
+    func cancelTransaction(_ trackId: String, acquirerTransactionId: String, cardBrand: Int, callback: @escaping (Bool,String) -> ()){
+        let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId as AnyObject,"PaymentType":"01" as AnyObject,"CardBrand":cardBrand as AnyObject, "TrackId":trackId as AnyObject]
         
         Alamofire.request(.POST, self.CancelTransactionUrl, parameters: parameters, headers: self.requestHeaders)
             .response { request, response, data, error in
@@ -177,7 +177,7 @@ class OrderManager: NSObject {
         }
     }
     
-    func getTransactionByTrackId(trackId : String){
+    func getTransactionByTrackId(_ trackId : String){
         
         let transactionUrl = "\(GetTransactionByTrackIdUrl)\(trackId)"
         
@@ -191,17 +191,17 @@ class OrderManager: NSObject {
         }
     }
     
-    func generateTrackId(response:(PFObject)->()){
+    func generateTrackId(_ response:@escaping (PFObject)->()){
         let trackId = PFObject(className: "TrackTransaction")
         
-        trackId.saveInBackgroundWithBlock { (success, error) in
+        trackId.saveInBackground { (success, error) in
             response(trackId)
         }
     }
     
-    func getOrderList(block: ([Order])->()) {
-        let params = ["userId" : PFUser.currentUser()!.objectId!]
-        PFCloud.callFunctionInBackground("getUserOrders", withParameters: params) { (objects, error) in
+    func getOrderList(_ block: @escaping ([Order])->()) {
+        let params = ["userId" : PFUser.current()!.objectId!]
+        PFCloud.callFunction(inBackground: "getUserOrders", withParameters: params) { (objects, error) in
             var orders = [Order]()
             if let error = error{
                 print(error)
@@ -218,9 +218,9 @@ class OrderManager: NSObject {
         }
     }
     
-    func getOrderProducts(order: Order, block: ([Product])->()) {
+    func getOrderProducts(_ order: Order, block: @escaping ([Product])->()) {
         let params = ["orderId" : order.orderId]
-        PFCloud.callFunctionInBackground("getOrderProducts", withParameters: params) { (objects, error) in
+        PFCloud.callFunction(inBackground: "getOrderProducts", withParameters: params) { (objects, error) in
             var products = [Product]()
             if let error = error{
                 print(error)

@@ -18,14 +18,14 @@ class MyProfileDetailTableViewCell: UITableViewCell {
         didSet{
             if let string = self.string{
                 if string == "Sair" {
-                    self.viewBack.layer.borderColor = UIColor.clearColor().CGColor
+                    self.viewBack.layer.borderColor = UIColor.clear.cgColor
                 }
                 self.textField.text = string
             }
         }
     }
     
-    func changeConstraintSize(size: CGFloat) {
+    func changeConstraintSize(_ size: CGFloat) {
         if let constraint = self.bottomConstraint{
             constraint.constant = size
         }
@@ -41,11 +41,11 @@ class MyProfileDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.viewBack.layer.borderColor = self.bottomConstraint == nil ? UIColor(red: 205, green: 205, blue: 205).CGColor : UIColor(red: 115, green: 40, blue: 115).CGColor
+        self.viewBack.layer.borderColor = self.bottomConstraint == nil ? UIColor(red: 205, green: 205, blue: 205).cgColor : UIColor(red: 115, green: 40, blue: 115).cgColor
         self.viewBack.layer.borderWidth = 0.5
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state

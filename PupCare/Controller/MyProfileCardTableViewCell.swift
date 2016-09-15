@@ -32,11 +32,11 @@ class MyProfileCardTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.viewBack.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.viewBack.layer.borderColor = UIColor.lightGray.cgColor
         self.viewBack.layer.borderWidth = 0.5
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

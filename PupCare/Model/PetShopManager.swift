@@ -13,8 +13,8 @@ class PetShopManager: NSObject {
     
     static let sharedInstance = PetShopManager()
     
-    func getNearPetShops(latitude: Float, longitude: Float, withinKilometers: Float, response: (petshops: [PetShop]?, error: NSError?) -> ()) {
-        PFCloud.callFunctionInBackground("getNearPetShopList", withParameters: ["lat": latitude,"lng":longitude, "maxDistance":withinKilometers]) { (petshops, error) in
+    func getNearPetShops(_ latitude: Float, longitude: Float, withinKilometers: Float, response: @escaping (_ petshops: [PetShop]?, _ error: NSError?) -> ()) {
+        PFCloud.callFunction(inBackground: "getNearPetShopList", withParameters: ["lat": latitude,"lng":longitude, "maxDistance":withinKilometers]) { (petshops, error) in
             var result: [PetShop] = []
             if let petshops = petshops as? [PFObject] {
                 for petshop in petshops {
@@ -23,11 +23,11 @@ class PetShopManager: NSObject {
                 }
             } 
             print(result)
-            response(petshops: result, error: error)
+            response(result, error as NSError?)
         }
     }
     
-    func petShopAsPfObject(petShop : PetShop) -> PFObject{
+    func petShopAsPfObject(_ petShop : PetShop) -> PFObject{
         let petShopAsPfObject = PFObject(className: "PetShop")
         petShopAsPfObject["objectId"] = petShop.objectId
         

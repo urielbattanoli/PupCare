@@ -39,28 +39,28 @@ class PetshopInCart {
         }
     }
     
-    func addProduct(product:Product, quantity: Int) {
+    func addProduct(_ product:Product, quantity: Int) {
         self.productsInCart.append(ProductInCart(product: product, quantity: quantity))
     }
-    func addPromotion(promotion:Promotion, quantity: Int) {
+    func addPromotion(_ promotion:Promotion, quantity: Int) {
         self.promotionsInCart.append(PromotionInCart(promotion: promotion, quantity: quantity))
     }
     
-    func updateQuantity(product: ProductInCart?, promotion: PromotionInCart?, petShopId: String, newQuantity: Int) {
+    func updateQuantity(_ product: ProductInCart?, promotion: PromotionInCart?, petShopId: String, newQuantity: Int) {
         
         
         if let product = product?.product {
-            for (index, prod) in Cart.sharedInstance.cartDict.petShopList[petShopId]!.productsInCart.enumerate() {
+            for (index, prod) in Cart.sharedInstance.cartDict.petShopList[petShopId]!.productsInCart.enumerated() {
                 if prod.product.isEqual(product) {
                     Cart.sharedInstance.cartDict.petShopList[petShopId]!.productsInCart[index].quantity = newQuantity
                     Cart.sharedInstance.cartDict.petShopList[petShopId]!.updatePrice()
                     
                     if newQuantity == 0 {
-                        Cart.sharedInstance.cartDict.petShopList[petShopId]!.productsInCart.removeAtIndex(index)
+                        Cart.sharedInstance.cartDict.petShopList[petShopId]!.productsInCart.remove(at: index)
                         
                         if Cart.sharedInstance.cartDict.petShopList[petShopId]!.totalQuantity == 0 {
                             print("REMOVEU TUDO")
-                            Cart.sharedInstance.cartDict.petShopList.removeValueForKey(petShopId)
+                            Cart.sharedInstance.cartDict.petShopList.removeValue(forKey: petShopId)
                         }
                     }
                 }
@@ -68,16 +68,16 @@ class PetshopInCart {
         }
         
         if let promotion = promotion?.promotion {
-            for (index, prod) in Cart.sharedInstance.cartDict.petShopList[petShopId]!.promotionsInCart.enumerate() {
+            for (index, prod) in Cart.sharedInstance.cartDict.petShopList[petShopId]!.promotionsInCart.enumerated() {
                 if prod.promotion.isEqual(promotion) {
                     Cart.sharedInstance.cartDict.petShopList[petShopId]!.promotionsInCart[index].quantity = newQuantity
                     Cart.sharedInstance.cartDict.petShopList[petShopId]!.updatePrice()
                     
                     if newQuantity == 0 {
-                        Cart.sharedInstance.cartDict.petShopList[petShopId]!.promotionsInCart.removeAtIndex(index)
+                        Cart.sharedInstance.cartDict.petShopList[petShopId]!.promotionsInCart.remove(at: index)
                         
                         if Cart.sharedInstance.cartDict.petShopList[petShopId]!.totalQuantity == 0 {
-                            Cart.sharedInstance.cartDict.petShopList.removeValueForKey(petShopId)
+                            Cart.sharedInstance.cartDict.petShopList.removeValue(forKey: petShopId)
                         }
                     }
                 }
@@ -114,12 +114,12 @@ class Cart: NSObject {
     
     var cartDict: PetShopDict! = PetShopDict()
     
-    func addToCart(petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int) -> Int {
+    func addToCart(_ petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int) -> Int {
         
-        for (pet, var cartDict) in Cart.sharedInstance.cartDict.petShopList {
+        for (pet, let cartDict) in Cart.sharedInstance.cartDict.petShopList {
             if pet == petShop.objectId {
                 if let product = product {
-                    for (index, var productInCart) in cartDict.productsInCart.enumerate() {
+                    for (index, var productInCart) in cartDict.productsInCart.enumerated() {
                         if product == productInCart.product {
                             productInCart.quantity = productInCart.quantity + quantity
                             
@@ -131,7 +131,7 @@ class Cart: NSObject {
                     return 1
                 }
                 if let promotion = promotion {
-                    for (index, var promotionInCart) in cartDict.promotionsInCart.enumerate() {
+                    for (index, var promotionInCart) in cartDict.promotionsInCart.enumerated() {
                         if promotion == promotionInCart.promotion {
                             promotionInCart.quantity = promotionInCart.quantity + quantity
                             

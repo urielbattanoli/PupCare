@@ -14,11 +14,11 @@ extension Order {
     convenience init(parseObject: PFObject) {
         var data: [String : AnyObject] = [:]
         
-        data["orderId"] = parseObject.objectId
+        data["orderId"] = parseObject.objectId as AnyObject?
         data["petShop"] = PetShop(parseObject: parseObject["petShopId"] as! PFObject)
-        data["date"] = parseObject.createdAt
+        data["date"] = parseObject.createdAt as AnyObject?
         data["price"] = parseObject["price"] as! NSNumber
-        data["trackId"] = (parseObject["trackId"] as! PFObject).objectId
+        data["trackId"] = (parseObject["trackId"] as! PFObject).objectId as AnyObject?
         data["shipment"] = parseObject["shipment"] as! NSNumber
         
         self.init(data: data)

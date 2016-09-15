@@ -16,14 +16,14 @@ extension Promotion {
         
         data["petShop"] = PetShop(parseObject: parseObject["petShopId"] as! PFObject)
         
-        data["objectId"] = parseObject.objectId
-        data["promotionName"] = parseObject["promotionName"] as! String
-        data["image"] = (parseObject["image"] as! PFFile).url
-        data["promotionDescription"] = parseObject["promotionDescription"] as! String
-        data["lastPrice"] = parseObject["lastPrice"] as! Float
-        data["newPrice"] = parseObject["newPrice"] as! Float
-        data["initialDate"] = parseObject["initialDate"] as! NSDate
-        data["finalDate"] = parseObject["finalDate"] as! NSDate
+        data["objectId"] = parseObject.objectId as AnyObject?
+        data["promotionName"] = parseObject["promotionName"] as! String as AnyObject?
+        data["image"] = (parseObject["image"] as! PFFile).url as AnyObject?
+        data["promotionDescription"] = parseObject["promotionDescription"] as! String as AnyObject?
+        data["lastPrice"] = parseObject["lastPrice"] as! Float as AnyObject?
+        data["newPrice"] = parseObject["newPrice"] as! Float as AnyObject?
+        data["initialDate"] = parseObject["initialDate"] as! Date as AnyObject?
+        data["finalDate"] = parseObject["finalDate"] as! Date as AnyObject?
         
         self.init(data: data)
     }

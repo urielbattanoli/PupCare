@@ -11,10 +11,10 @@ import Parse
 
 class PromotionManager: NSObject {
     
-    static func getPromotionsList(latitude: Float, longitude: Float, withinKilometers: Float, response: (promotions: [Promotion]?, error: NSError?) -> ()) {
+    static func getPromotionsList(_ latitude: Float, longitude: Float, withinKilometers: Float, response: @escaping (_ promotions: [Promotion]?, _ error: NSError?) -> ()) {
         
         
-        PFCloud.callFunctionInBackground("getPromotionsList", withParameters: ["lat": latitude,"lng":longitude, "maxDistance":withinKilometers]) { (promotions, error) in
+        PFCloud.callFunction(inBackground: "getPromotionsList", withParameters: ["lat": latitude,"lng":longitude, "maxDistance":withinKilometers]) { (promotions, error) in
             
             var allPromotions: [Promotion] = []
             if let promotions = promotions as? [PFObject] {
@@ -24,17 +24,17 @@ class PromotionManager: NSObject {
                     allPromotions.append(object)
                 }
             }
-            response(promotions: allPromotions, error: error)
+            response(allPromotions, error as NSError?)
         }
     }
     
     
     
-    static func getPromotionDetails(promotion: Promotion, response: (promotionDetails: Promotion?, error: NSError?) -> ()) {
+    static func getPromotionDetails(_ promotion: Promotion, response: @escaping (_ promotionDetails: Promotion?, _ error: NSError?) -> ()) {
         
         let params = ["promoId" : promotion.objectId]
         
-        PFCloud.callFunctionInBackground("getPromotionDetails", withParameters: params) { (details, error) in
+        PFCloud.callFunction(inBackground: "getPromotionDetails", withParameters: params) { (details, error) in
             
             promotion.products.removeAll()
             for product in (details as? [PFObject])! {
@@ -42,7 +42,7 @@ class PromotionManager: NSObject {
                     promotion.products.append(Product(parseObject: petShopProduct))
                 }
             }
-            response(promotionDetails: promotion, error: error)
+            response(promotion, error as NSError?)
         }
     }
 }

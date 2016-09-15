@@ -19,7 +19,7 @@ class UserManager: NSObject {
     
     var user: User?
     
-    func singUpUser(name : String, email: String, password: String, block: (Bool,String, User?)->())  {
+    func singUpUser(_ name : String, email: String, password: String, block: @escaping (Bool,String, User?)->())  {
         
         let user = PFUser()
         
@@ -28,7 +28,7 @@ class UserManager: NSObject {
         user.email = email
         user["name"] = name
         
-        user.signUpInBackgroundWithBlock { (succeeded, error) in
+        user.signUpInBackground { (succeeded, error) in
             if let error = error {
                 if let errorString = error.userInfo["error"] as? String {
                     block(succeeded, errorString, nil)
@@ -43,21 +43,21 @@ class UserManager: NSObject {
     }
     
     
-    func singInUser(username: String, password:String, response:(usuario: User?)->()){
+    func singInUser(_ username: String, password:String, response:@escaping (_ usuario: User?)->()){
         
-        PFUser.logInWithUsernameInBackground(username, password: password) { (user, error) in
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
             if user != nil {
                 self.user = User(parseObject: user!)
-                response(usuario: self.user)
+                response(self.user)
             } else {
-                response(usuario: nil)
+                response(nil)
             }
         }
         
     }
     
-    func logOutUser(block: ()->()) {
-        PFUser.logOutInBackgroundWithBlock { (error) in
+    func logOutUser(_ block: @escaping ()->()) {
+        PFUser.logOutInBackground { (error) in
             if error != nil {
                 
             } else {
@@ -66,11 +66,11 @@ class UserManager: NSObject {
         }
     }
     
-    func singInWithFacebook(block: ()->()){
+    func singInWithFacebook(_ block: @escaping ()->()){
         
         let permissions = ["public_profile","email"]
         
-        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
+        PFFacebookUtils.logInInBackground(withReadPermissions: permissions) {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
                 if user.isNew {
@@ -88,29 +88,29 @@ class UserManager: NSObject {
         }
     }
     
-    func saveAdditionalFacebookInformation(block: ()->()){
-        if FBSDKAccessToken.currentAccessToken() != nil {
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, name, email, picture.type(large)"]).startWithCompletionHandler({ (connection, result, error) in
+    func saveAdditionalFacebookInformation(_ block: @escaping ()->()){
+        if FBSDKAccessToken.current() != nil {
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, name, email, picture.type(large)"]).start(completionHandler: { (connection, result, error) in
                 if error != nil {
                     print("Error: \(error)")
                 }
                 else {
                     print(result)
                     
-                    let pictureObjects = result.valueForKey("picture")
-                    let pictureData = pictureObjects!.valueForKey("data")
-                    let pictureUrl = pictureData!.valueForKey("url") as! String
-                    let dataToPFFile = NSData(contentsOfURL: NSURL(string: pictureUrl)!)
+                    let pictureObjects = result.value(forKey: "picture")
+                    let pictureData = pictureObjects!.value(forKey: "data")
+                    let pictureUrl = pictureData!.value(forKey: "url") as! String
+                    let dataToPFFile = try? Data(contentsOf: URL(string: pictureUrl)!)
                     
                     let userPicture = PFFile(data: dataToPFFile!)
                     
-                    let currentUser = PFUser.currentUser()!
-                    currentUser["name"] = result.valueForKey("name")
-                    currentUser["email"] = result.valueForKey("email")
+                    let currentUser = PFUser.current()!
+                    currentUser["name"] = result.value(forKey: "name")
+                    currentUser["email"] = result.value(forKey: "email")
                     currentUser["image"] = userPicture
                     
                     
-                    currentUser.saveInBackgroundWithBlock({ (true, error) in
+                    currentUser.saveInBackground(block: { (true, error) in
                         self.createUserByCurrentUser()
                         block()
                     })
@@ -120,21 +120,21 @@ class UserManager: NSObject {
     }
     
     func createUserByCurrentUser(){
-        if let pfUser = PFUser.currentUser(){
+        if let pfUser = PFUser.current(){
             self.user = User(parseObject: pfUser)
         }
     }
     
     func getLocationToSearch()->CLLocation? {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
-        if let locationType = defaults.objectForKey("location") as? Int{
+        if let locationType = defaults.object(forKey: "location") as? Int{
             
             // -1 is currentLocation
             // >0 is to get in address user list
             
             if locationType == -1 {
-                if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse){
+                if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
                     let locationManager = CLLocationManager()
                     locationManager.desiredAccuracy = kCLLocationAccuracyBest
                     

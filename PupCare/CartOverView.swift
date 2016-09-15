@@ -29,7 +29,7 @@ class CartOverViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
 //        let totalItensAndPrice: (Int,Double) = Cart.sharedInstance.getTotalItemsAndPrice()
 //        print(totalItensAndPrice)
@@ -44,14 +44,14 @@ class CartOverViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateInfo(totalItensAndPrice: (Int,Double)) {
+    func updateInfo(_ totalItensAndPrice: (Int,Double)) {
         self.ItensCountLabel.text = "\(totalItensAndPrice.0) itens"
         self.TotalPriceLabel.text = "Total: R$ \(totalItensAndPrice.1)"
     }
 
     func removeFromView() {
         
-        self.dismissViewControllerAnimated(true) { 
+        self.dismiss(animated: true) { 
             
         }
     }
