@@ -29,6 +29,9 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.delegate = self
         
+        if UserManager.sharedInstance.user == nil{
+            UserManager.sharedInstance.createUserByCurrentUser()
+        }
         
         if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
             performSegue(withIdentifier: "goToPetShops", sender: nil)

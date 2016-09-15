@@ -42,12 +42,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             UserManager.sharedInstance.createUserByCurrentUser()
         }
         self.user = UserManager.sharedInstance.user
-        
-        AddressManager.sharedInstance.getAddressListFromUser(self.user.userId!) { (addresses) in
-            self.user.addressList = addresses
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .fade)
-        }
-        
+
         self.tableView.delegate = self
     }
     
@@ -228,6 +223,8 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
+        case "logInSegue":
+            segue.destination.childViewControllers[0] as! LoginViewController
         case "goToAddAddress":
             let addressVC = segue.destination as! AddressViewController
             addressVC.delegate = self

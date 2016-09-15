@@ -9,97 +9,163 @@
 import UIKit
 
 class OrderResumeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CardIOPaymentViewControllerDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var numberOfRowSection1 = 4
+    let numberOfSections = 3
+    var numberOfRowSection0 = 3
+    var numberOfRowSection1 = 2
+    var numberOfRowSection2 = 1
     var petShopInCard: PetshopInCart?
+    var addressList: [Address] = []{
+        didSet{
+            self.numberOfRowSection1 += self.addressList.count
+            self.tableView.reloadData()
+        }
+    }
+    var addressSelected: Address?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView()
         CardIOUtilities.preload()
-    
+        
         let products = self.petShopInCard!.productsInCart
         let promotions = self.petShopInCard!.promotionsInCart
-        self.numberOfRowSection1 += products.count+promotions.count
+        self.numberOfRowSection0 += products.count+promotions.count
+        
+        if let user = UserManager.sharedInstance.user {
+            self.addressList = user.addressList
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     //MARK: Tableview data source
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.numberOfSections
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.numberOfRowSection1
+        switch section {
+        case 0:
+            return self.numberOfRowSection0
+        case 1:
+            return self.numberOfRowSection1
+        default:
+            return self.numberOfRowSection2
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch (indexPath as NSIndexPath).row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CustomTableViewCell
-            cell.firstLbl.text = "Resumo do seu pedido"
-            return cell
-            
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "petShopCell") as! PetShopsTableViewCell
-            cell.petShop = self.petShopInCard?.petShop
-            return cell
-            
-        case self.numberOfRowSection1-2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
-            cell.firstLbl.text = String(self.petShopInCard!.totalQuantity)
-            cell.secondLbl.text = NSNumber(value: self.petShopInCard!.totalPrice as Double).numberToPrice()
-            return cell
-            
-        case self.numberOfRowSection1-1:
+        if (indexPath as NSIndexPath).section == 0{
+            switch (indexPath as NSIndexPath).row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CustomTableViewCell
+                cell.firstLbl.text = "Resumo do seu pedido"
+                return cell
+                
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "petShopCell") as! PetShopsTableViewCell
+                cell.petShop = self.petShopInCard?.petShop
+                return cell
+                
+            case self.numberOfRowSection0-1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
+                cell.firstLbl.text = String(self.petShopInCard!.totalQuantity)
+                cell.secondLbl.text = NSNumber(value: self.petShopInCard!.totalPrice as Double).numberToPrice()
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "productCell") as! ProductTableViewCell
+                var index = (indexPath as NSIndexPath).row-2
+                let products = self.petShopInCard!.productsInCart
+                let promotions = self.petShopInCard!.promotionsInCart
+                
+                if index<products.count{
+                    cell.product = products[index].product
+                    cell.lblQuant.text = cell.lblQuant.text!+String(products[index].quantity)
+                }
+                else{
+                    index -= products.count
+                    cell.promotion = promotions[index].promotion
+                    cell.lblQuant.text = cell.lblQuant.text!+String(promotions[index].quantity)
+                    
+                    let total = Float(promotions[index].quantity)*promotions[index].promotion.newPrice
+                    cell.lblTotal.text = cell.lblTotal.text!+NSNumber(value: total as Float).numberToPrice()
+                }
+                return cell
+            }
+        }
+        else if (indexPath as NSIndexPath).section == 1{
+            switch (indexPath as NSIndexPath).row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CustomTableViewCell
+                cell.firstLbl.text = "Escolha o endereço de entrega"
+                return cell
+                
+            case self.numberOfRowSection1-1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! CustomTableViewCell
+                return cell
+                
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! CustomTableViewCell
+                let address = self.addressList[(indexPath as NSIndexPath).row-1]
+                cell.firstLbl.text = address.name.isEmpty ? address.street : "\(address.name)"
+                return cell
+            }
+        }
+        else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "finisheCell") as! CustomTableViewCell
             cell.finisheBt.addTarget(self, action: #selector(OrderResumeViewController.didPressFinisheBt), for: .touchUpInside)
-            return cell
-            
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "productCell") as! ProductTableViewCell
-            //cell.product = product
-            var index = (indexPath as NSIndexPath).row-2
-            let products = self.petShopInCard!.productsInCart
-            let promotions = self.petShopInCard!.promotionsInCart
-            
-            if index<products.count{
-                cell.product = products[index].product
-                cell.lblQuant.text = cell.lblQuant.text!+String(products[index].quantity)
-            }
-            else{
-                index -= products.count
-                cell.promotion = promotions[index].promotion
-                cell.lblQuant.text = cell.lblQuant.text!+String(promotions[index].quantity)
-                
-                let total = Float(promotions[index].quantity)*promotions[index].promotion.newPrice
-                cell.lblTotal.text = cell.lblTotal.text!+NSNumber(value: total as Float).numberToPrice()
-            }
             return cell
         }
     }
     
     //MARK: Tableview delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row < self.numberOfRowSection1-1 && (indexPath as NSIndexPath).row > 0 {
+            let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+            cell.selectAddress()
+            self.addressSelected = self.addressList[(indexPath as NSIndexPath).row-1]
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row < self.numberOfRowSection1-1 && (indexPath as NSIndexPath).row > 0{
+            return indexPath
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row < self.numberOfRowSection1-1 && (indexPath as NSIndexPath).row > 0 {
+            let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+            cell.deselectAddress()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch (indexPath as NSIndexPath).row {
-        case 0:
+        if (indexPath as NSIndexPath).section == 0{
+            switch (indexPath as NSIndexPath).row {
+            case 0:
+                return 45
+                
+            case 1:
+                return 90
+                
+            default:
+                return 60
+            }
+        }
+        else if (indexPath as NSIndexPath).section == 1{
             return 45
-            
-        case 1:
-            return 90
-            
-        case self.numberOfRowSection1-2:
-            return 60
-            
-        case self.numberOfRowSection1-1:
+        }
+        else{
             return 65
-            
-        default:
-            return 60
         }
     }
     
@@ -129,8 +195,21 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     //MARK: Finishe functions
+    func showAlert(){
+        let alert = UIAlertController(title: "Atenção", message: "Por favor selecione o local de entrega", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func didPressFinisheBt(){
-        self.scanCard("" as AnyObject)
+        if self.addressSelected != nil{
+            self.scanCard("" as AnyObject)
+        }
+        else{
+            self.showAlert()
+        }
     }
     
     func validateCardAndCreateOrder(_ cardInfo: [String : AnyObject]){
