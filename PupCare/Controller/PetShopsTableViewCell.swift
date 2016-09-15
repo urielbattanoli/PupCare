@@ -33,7 +33,9 @@ class PetShopsTableViewCell: UITableViewCell {
                 self.petShopAddressLabel.text = petShop.address
                 self.petShopImageView.loadImage(petShop.imageUrl)
                 if let location = UserManager.sharedInstance.getLocationToSearch(){
-                    self.petShopDistanceLabel.text = "\((petShop.location.distance(from: location)/1000).roundToPlaces(2)) km"
+                    var distance = Float(petShop.location.distance(from: location))
+                    distance = distance / 1000
+                    self.petShopDistanceLabel.text = "\(distance.roundToPlaces(2)) km"
                 }
                 self.ranking = Int(petShop.ranking)
             }

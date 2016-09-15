@@ -8,10 +8,11 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
 import CoreLocation
 import Parse
 import AddressBookUI
+import Gloss
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -37,20 +38,20 @@ class AddressManager: NSObject {
     
     static let sharedInstance = AddressManager()
     
-    func getZipInformation(_ zip: String, jsonResponse: (_ json: JSON?, _ error: NSError?) -> ()) {
+    func getZipInformation(_ zip: String, jsonResponse: @escaping (_ json: JSON?, _ error: Error?) -> ()) {
         let urlTo = "https://viacep.com.br/ws/\(zip)/json/unicode/"
-        Alamofire.request(.GET, urlTo).responseJSON { (response) in
-            let json = JSON(data: response.data!)
-            print(json)
-            jsonResponse(json: json, error: nil)
+        
+        Alamofire.request(urlTo).responseJSON { (response) in
+            if let json = response.result.value as? JSON{
+                jsonResponse(json, nil)
+            }
         }
     }
     
-    func saveUserNewAddress(_ address: Address, response: @escaping (Bool, NSError?)->()){
+    func saveUserNewAddress(_ address: Address, response: @escaping (Bool, Error?)->()){
         let addressPFObject = AddressManager.sharedInstance.transformAddressToPFObject(address)
-        
-        addressPFObject.saveInBackground { (success, error) in
-            response(success,error)
+        addressPFObject.saveInBackground { (suc, err) in
+            response(suc, err)
         }
     }
     

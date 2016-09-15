@@ -10,6 +10,7 @@ import UIKit
 
 protocol TransactionProtocol: class {
     func didFinishTransaction(_ message: String)
+    func goToOrderResumeWithOrder(_ petShop: PetshopInCart)
 }
 
 class CartTableViewCell: UITableViewCell {
@@ -168,6 +169,7 @@ class CartTableViewCell: UITableViewCell {
 
         }
         
+        self.transactionDelegate?.goToOrderResumeWithOrder(petShop!)
     }
 }
 

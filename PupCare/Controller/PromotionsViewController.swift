@@ -23,9 +23,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         self.promotionsTableView.delegate = self
         self.promotionsTableView.dataSource = self
         
-        self.promotionsTableView.separatorStyle = .none
-        
-        
+        self.promotionsTableView.separatorStyle = .none        
         if let top = self.parent?.parent as? MainTabViewController {
             self.CartDelegate = top
         }

@@ -72,7 +72,10 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             self.petShopNeighbourhood.text = petShop.neighbourhood
             
             if let location = UserManager.sharedInstance.getLocationToSearch(){
-                self.petShopDistance.text = "\((petShop.location.distance(from: location)/1000).roundToPlaces(2)) km"
+                var distance = Float(petShop.location.distance(from: location))
+                distance = distance / 1000
+                
+                self.petShopDistance.text = "\(distance.roundToPlaces(2)) km"
             }
             
             if petShop.products.count > 0{
@@ -90,7 +93,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  !(self.searchBar.text?.isEmpty)! {
-            return self.filteredProducts.count ?? 0
+            return self.filteredProducts.count 
         }
         else{
             return self.products?.count ?? 0

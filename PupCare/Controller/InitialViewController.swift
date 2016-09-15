@@ -21,7 +21,6 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         let defaults = UserDefaults.standard
-        
         defaults.set(-1, forKey: "location")
         // Do any additional setup after loading the view.
     }

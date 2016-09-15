@@ -17,22 +17,30 @@ extension NSNumber {
         formatter.locale = Locale.current
         formatter.numberStyle = .currency
         
-        return formatter.string(from: NSNumber(self.doubleValue))!
+        return formatter.string(from: NSNumber(value : self.doubleValue))!
+
     }
 }
 
 extension UIImageView {
     func loadImage(_ url: String){
-        self.kf_showIndicatorWhenLoading = true
-        self.kf_setImageWithURL(URL(string: url)!)
+        let urlToKf = URL(string: url)
+        self.kf_indicatorType = .activity
+        self.kf_setImage(with: urlToKf, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+
     }
 }
 
-extension Double {
+extension Float {
     /// Rounds the double to decimal places value
-    func roundToPlaces(_ places:Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return round(self * divisor) / divisor
+
+    mutating func roundToPlaces(_ places:Int) -> Float {
+        let divisor = pow(10.0, Float(places))
+        
+        var mult = self * divisor
+        mult = mult / divisor
+        
+        return roundf(Float(mult))
     }
 }
 

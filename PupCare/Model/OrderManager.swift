@@ -10,7 +10,67 @@ import Foundation
 import UIKit
 import Alamofire
 import Parse
-import SwiftyJSON
+import Gloss
+
+struct CheckIfValidCard : Decodable {
+    let IsValid : Bool!
+    let Message : String!
+    let CardBrand : Int!
+    
+    init?(json: JSON){
+        self.IsValid = "IsValid" <~~ json
+        self.Message = "Message" <~~ json
+        self.CardBrand = "CardBrand" <~~ json
+    }
+}
+
+struct StartTransaction : Decodable {
+    let IsApproved : Bool!
+    let ResultCode : String!
+    let AcquirerTransactionId : String!
+    let Message : String!
+    let PayCodeTransactionId : Int!
+    
+    init?(json: JSON){
+        self.IsApproved = "IsApproved" <~~ json
+        self.ResultCode = "ResultCode" <~~ json
+        self.AcquirerTransactionId = "AcquirerTransactionId" <~~ json
+        self.Message = "Message" <~~ json
+        self.PayCodeTransactionId = "PayCodeTransactionId" <~~ json
+    }
+}
+
+struct ConfirmTransaction : Decodable {
+    let IsConfirmed : Bool!
+    let ResultCode : String!
+    let AcquirerTransactionId : String!
+    let Message : String!
+    let PayCodeTransactionId : Int!
+    
+    init?(json: JSON){
+        self.IsConfirmed = "IsConfirmed" <~~ json
+        self.ResultCode = "ResultCode" <~~ json
+        self.AcquirerTransactionId = "AcquirerTransactionId" <~~ json
+        self.Message = "Message" <~~ json
+        self.PayCodeTransactionId = "PayCodeTransactionId" <~~ json
+    }
+}
+
+struct CancelTransaction {
+    let IsRefunded : Bool!
+    let ResultCode : String!
+    let AcquirerTransactionId : String!
+    let Message : String!
+    let PayCodeTransactionId : Int!
+    
+    init?(json: JSON){
+        self.IsRefunded = "IsRefunded" <~~ json
+        self.ResultCode = "ResultCode" <~~ json
+        self.AcquirerTransactionId = "AcquirerTransactionId" <~~ json
+        self.Message = "Message" <~~ json
+        self.PayCodeTransactionId = "PayCodeTransactionId" <~~ json
+    }
+}
 
 class OrderManager: NSObject {
     
@@ -82,32 +142,27 @@ class OrderManager: NSObject {
     
     
     func getAvailableCardBrands(){
-        print(requestHeaders)
-        Alamofire.request(.GET, GetCardBrandUrl, parameters: nil, headers: requestHeaders)
-            .response { request, response, data, error in
-                print(request)
-                
-                let dataToString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("Available Card Brands")
-                print(dataToString!)
-        }
+//        Alamofire.request(GetCardBrandUrl).responseJSON { (response) in
+//            print(response)
+//            
+//            if let JSON = response.result.value{
+//                
+//            }
+//        }
     }
     
     func checkIfCardIsValid(_ cardNumber : String, callback: @escaping (Int) -> Void) {
         let parameters = ["CardNumber":cardNumber]
         
-        Alamofire.request(.POST, ValidateCardNumberUrl, parameters: parameters, headers: requestHeaders)
-            .response { request, response, data, error in
-                print(request)
-                let dataToJSON = JSON(data: data!)
+        Alamofire.request(self.ValidateCardNumberUrl, method: .post, parameters: parameters).responseJSON { (response) in
+            if let JSON = response.result.value as? JSON{
+                let checkIfValidCard = CheckIfValidCard(json: JSON)!
                 
-                if dataToJSON["IsValid"].bool == true {
-                    
-                    let cardBrand: Int = (dataToJSON["CardBrand"].int)!
-                    callback(cardBrand)
-                    
+                if checkIfValidCard.IsValid == true {
+                    callback(checkIfValidCard.CardBrand)
                 }
                 
+            }
         }
     }
     
@@ -117,63 +172,58 @@ class OrderManager: NSObject {
             
             let parameters : [String:AnyObject] = ["PaymentType":"01" as AnyObject,"CurrencyCode":"986" as AnyObject,"Value":value as AnyObject,"TrackId":trackId.objectId! as AnyObject,"Description":"PupCare Test Transaction" as AnyObject,"CardInfo":cardInfo as AnyObject]
             
-            Alamofire.request(.POST, self.StartTransactionUrl, parameters: parameters, headers: self.requestHeaders)
-                .response { request, response, data, error in
-                    print(request)
-                    
-                    let dataToJSON = JSON(data: data!)
-                    
-                    //Ver se tem estoque
+            Alamofire.request(self.StartTransactionUrl, method: .post, parameters: parameters).responseJSON(completionHandler: { (response) in
+                if let JSON = response.result.value as? JSON{
+                    let startTranscation = StartTransaction(json: JSON)!
                     
                     if let cardBrand = cardInfo["CardBrand"] as? Int{
-                        if dataToJSON["IsApproved"].bool == true {
-                            self.confirmTransaction(trackId.objectId!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
+                        if startTranscation.IsApproved == true {
+                            self.confirmTransaction(trackId.objectId!, acquirerTransactionId: startTranscation.AcquirerTransactionId, cardBrand: cardBrand, callback: { (success, message) in
                                 
                                 callback(message,trackId)
                             })
                         } else {
-                            self.cancelTransaction(trackId.objectId!, acquirerTransactionId: dataToJSON["AcquirerTransactionId"].string!, cardBrand: cardBrand, callback: { (success, message) in
+                            self.cancelTransaction(trackId.objectId!, acquirerTransactionId: startTranscation.AcquirerTransactionId, cardBrand: cardBrand, callback: { (success, message) in
                                 callback(message,trackId)
                             })
                         }
                     }
-            }
+                }
+            })
         }
     }
     
     func confirmTransaction(_ trackId: String, acquirerTransactionId: String, cardBrand: Int, callback: @escaping (Bool,String) -> Void){
         let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId as AnyObject,"PaymentType":"01" as AnyObject,"CardBrand":cardBrand as AnyObject, "TrackId":trackId as AnyObject]
         
-        Alamofire.request(.POST, self.ConfirmTransactionUrl, parameters: parameters, headers: self.requestHeaders)
-            .response { request, response, data, error in
-                print(request)
-                let dataToJSON = JSON(data: data!)
+        Alamofire.request(self.ConfirmTransactionUrl, method: .post, parameters: parameters).responseJSON { (response) in
+            if let JSON = response.result.value as? JSON{
+                let confirmTransaction = ConfirmTransaction(json: JSON)!
                 
-                if dataToJSON["IsConfirmed"].bool == true {
+                if confirmTransaction.IsConfirmed == true{
                     print("Approved")
                 } else {
                     print("Voided")
                 }
-                
-                callback(dataToJSON["IsConfirmed"].bool!,dataToJSON["Message"].string!)
+                callback(confirmTransaction.IsConfirmed ,confirmTransaction.Message)
+            }
         }
     }
     
     func cancelTransaction(_ trackId: String, acquirerTransactionId: String, cardBrand: Int, callback: @escaping (Bool,String) -> ()){
         let parameters : [String:AnyObject] = ["AcquirerTransactionId":acquirerTransactionId as AnyObject,"PaymentType":"01" as AnyObject,"CardBrand":cardBrand as AnyObject, "TrackId":trackId as AnyObject]
         
-        Alamofire.request(.POST, self.CancelTransactionUrl, parameters: parameters, headers: self.requestHeaders)
-            .response { request, response, data, error in
-                print(request)
-                let dataToJSON = JSON(data: data!)
+        Alamofire.request(self.CancelTransactionUrl, method: .post, parameters: parameters).responseJSON { (response) in
+            if let JSON = response.result.value as? JSON{
+                let cancelTransaction = CancelTransaction(json: JSON)!
                 
-                if dataToJSON["IsRefunded"].bool == true {
+                if cancelTransaction.IsRefunded == true{
                     print("Refunded")
                 } else {
                     print("Voided")
                 }
-                
-                callback(dataToJSON["IsRefunded"].bool!,dataToJSON["Message"].string!)
+                callback(cancelTransaction.IsRefunded ,cancelTransaction.Message)
+            }
         }
     }
     
@@ -181,14 +231,9 @@ class OrderManager: NSObject {
         
         let transactionUrl = "\(GetTransactionByTrackIdUrl)\(trackId)"
         
-        Alamofire.request(.GET, transactionUrl, parameters: nil, headers: self.requestHeaders)
-            .response { request, response, data, error in
-                print(request)
-                
-                let dataToString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("Get Transaction")
-                print(dataToString!)
-        }
+        Alamofire.request(transactionUrl).responseString(completionHandler: { (response) in
+            print(response)
+        })
     }
     
     func generateTrackId(_ response:@escaping (PFObject)->()){
@@ -200,7 +245,7 @@ class OrderManager: NSObject {
     }
     
     func getOrderList(_ block: @escaping ([Order])->()) {
-        let params = ["userId" : PFUser.current()!.objectId!]
+        let params = ["userId" : UserManager.sharedInstance.user!.userId!]
         PFCloud.callFunction(inBackground: "getUserOrders", withParameters: params) { (objects, error) in
             var orders = [Order]()
             if let error = error{
@@ -232,6 +277,25 @@ class OrderManager: NSObject {
                         products.append(Product(parseObject: object))
                     }
                     block(products)
+                }
+            }
+        }
+    }
+    
+    func getOrderPromotions(_ order: Order, block: @escaping ([Promotion])->()){
+        let params = ["orderId" : order.orderId]
+        PFCloud.callFunction(inBackground: "getOrderPromotions", withParameters: params) { (objects, error) in
+            var promotions = [Promotion]()
+            if let error = error{
+                print(error)
+                block(promotions)
+            }
+            else{
+                if let objects = objects as? [PFObject]{
+                    for object in objects{
+                        promotions.append(Promotion(parseObject: object))
+                    }
+                    block(promotions)
                 }
             }
         }

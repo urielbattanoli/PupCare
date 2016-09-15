@@ -349,6 +349,15 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(alert, animated: true, completion: nil)
     }
     
+    func goToOrderResumeWithOrder(_ petShop: PetshopInCart){
+        self.performSegue(withIdentifier: "goToOrderResume", sender: petShop)
+    }
     
-    
+    //MARK: Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToOrderResume"{
+            let vc = segue.destination as! OrderResumeViewController
+            vc.petShopInCard = sender as? PetshopInCart
+        }
+    }
 }

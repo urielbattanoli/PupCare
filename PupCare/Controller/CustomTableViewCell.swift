@@ -10,9 +10,12 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var leftLbl: UILabel!
-    @IBOutlet weak var rigthLbl: UILabel!
+    @IBOutlet weak var firstLbl: UILabel!
+    @IBOutlet weak var secondLbl: UILabel!
 
+    @IBOutlet weak var finisheBt: BTNAttributedStyle!
+    @IBOutlet weak var loaderBt: UIActivityIndicatorView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

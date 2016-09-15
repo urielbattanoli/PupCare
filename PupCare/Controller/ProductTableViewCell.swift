@@ -17,17 +17,41 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var lblPrice: UILabel!
     
     @IBOutlet weak var lblQuant: UILabel!
+    @IBOutlet weak var lblTotal: UILabel!
     //MARK: Variables
     var product: Product?{
         didSet{
             if let product = self.product{
-                self.photoImageView.loadImage(product.imageUrl)
-                self.lblName.text = product.name
-                self.lblDescription.text = product.descript
-                self.lblPrice.text = product.price.numberToPrice()
-                if let qntLbl = self.lblQuant{
-                    qntLbl.text = "\(product.stock)"
+                if self.photoImageView != nil{
+                    self.photoImageView.loadImage(product.imageUrl)
                 }
+                if self.lblDescription != nil{
+                    self.lblDescription.text = product.descript
+                }
+                
+                if self.lblTotal != nil{
+                    self.lblTotal.text = self.lblTotal.text!+NSNumber(value: (product.price.doubleValue * product.stock.doubleValue) as Double).numberToPrice()
+                }
+                
+                self.lblName.text = product.name
+                self.lblPrice.text = self.lblPrice.text!+product.price.numberToPrice()
+            }
+        }
+    }
+    
+    var promotion: Promotion?{
+        didSet{
+            if let promotion = self.promotion{
+                
+                if self.photoImageView != nil{
+                    self.photoImageView.loadImage(promotion.promotionImage)
+                }
+                if self.lblDescription != nil{
+                    self.lblDescription.text = promotion.promotionDescription
+                }
+
+                self.lblName.text = promotion.promotionName
+                self.lblPrice.text = self.lblPrice.text!+NSNumber(value: Double(promotion.newPrice) as Double).numberToPrice()
             }
         }
     }
@@ -36,11 +60,10 @@ class ProductTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

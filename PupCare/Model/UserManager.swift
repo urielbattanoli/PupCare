@@ -30,7 +30,7 @@ class UserManager: NSObject {
         
         user.signUpInBackground { (succeeded, error) in
             if let error = error {
-                if let errorString = error.userInfo["error"] as? String {
+                if let errorString = error as? String {
                     block(succeeded, errorString, nil)
                 }
             }
@@ -70,8 +70,7 @@ class UserManager: NSObject {
         
         let permissions = ["public_profile","email"]
         
-        PFFacebookUtils.logInInBackground(withReadPermissions: permissions) {
-            (user: PFUser?, error: NSError?) -> Void in
+        PFFacebookUtils.logInInBackground(withReadPermissions: permissions) { (user, error) in
             if let user = user {
                 if user.isNew {
                     UserManager.sharedInstance.saveAdditionalFacebookInformation({
@@ -85,6 +84,7 @@ class UserManager: NSObject {
             } else {
                 print("Uh oh. The user cancelled the Facebook login.")
             }
+
         }
     }
     
@@ -101,12 +101,21 @@ class UserManager: NSObject {
                     let pictureData = pictureObjects!.value(forKey: "data")
                     let pictureUrl = pictureData!.value(forKey: "url") as! String
                     let dataToPFFile = try? Data(contentsOf: URL(string: pictureUrl)!)
+                    let resultAsDict = result as! NSDictionary
                     
-                    let userPicture = PFFile(data: dataToPFFile!)
+                    let pictureObjects = resultAsDict.value(forKey: "picture") as! NSDictionary
+                    let pictureData = pictureObjects.value(forKey: "data") as! NSDictionary
+                    let pictureUrl = pictureData.value(forKey: "url") as! String
+                    let dataToPFFile = try? Data(contentsOf: URL(string: pictureUrl)!)
                     
                     let currentUser = PFUser.current()!
                     currentUser["name"] = result.value(forKey: "name")
                     currentUser["email"] = result.value(forKey: "email")
+                    let userPicture = PFFile(data: dataToPFFile!)
+
+                    let currentUser = PFUser.current()!
+                    currentUser["name"] = resultAsDict.value(forKey: "name")
+                    currentUser["email"] = resultAsDict.value(forKey: "email")
                     currentUser["image"] = userPicture
                     
                     

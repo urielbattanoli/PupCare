@@ -21,7 +21,6 @@ class PromotionsTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     
     var indexPath: IndexPath?
-    
     var CartDelegate: CartProtocol?
     
     var promotion: Promotion? {
@@ -35,7 +34,13 @@ class PromotionsTableViewCell: UITableViewCell {
                 self.promotionPhoto.loadImage(promotion.promotionImage)
                 
                 self.discountPercentageLabel.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2 / 2 * -1))
-                self.discountPercentageLabel.text = "\(Double(100 - (100 * promotion.newPrice / promotion.lastPrice)).roundToPlaces(0))%"
+                var discountPercentage = 100 * promotion.newPrice
+                discountPercentage = discountPercentage / promotion.lastPrice
+                discountPercentage = 100 - discountPercentage
+                
+                var convertDiscountPercentage = Float(discountPercentage)
+                
+                self.discountPercentageLabel.text = "\(convertDiscountPercentage.roundToPlaces(0))%"
                 self.addToCartButton.addTarget(self, action: #selector(PromotionsTableViewCell.didPressAddToCart), for: .touchUpInside)
                 self.addToCartButton.tag = (indexPath! as NSIndexPath).row
             }

@@ -116,7 +116,8 @@ class Cart: NSObject {
     
     func addToCart(_ petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int) -> Int {
         
-        for (pet, let cartDict) in Cart.sharedInstance.cartDict.petShopList {
+       for (pet, cartDict) in Cart.sharedInstance.cartDict.petShopList {
+
             if pet == petShop.objectId {
                 if let product = product {
                     for (index, var productInCart) in cartDict.productsInCart.enumerated() {
@@ -131,6 +132,7 @@ class Cart: NSObject {
                     return 1
                 }
                 if let promotion = promotion {
+                    
                     for (index, var promotionInCart) in cartDict.promotionsInCart.enumerated() {
                         if promotion == promotionInCart.promotion {
                             promotionInCart.quantity = promotionInCart.quantity + quantity

@@ -8,7 +8,33 @@
 
 import UIKit
 import CoreLocation
-import SwiftyJSON
+import Gloss
+
+struct AddressJson : Decodable{
+ 
+    let cep : String!
+    let logradouro : String!
+    let complemento : String!
+    let bairro : String!
+    let localidade : String!
+    let uf : String!
+    let unidade : String!
+    let ibge : String!
+    let gia : String!
+    
+    init?(json : JSON){
+        self.cep = "cep" <~~ json
+        self.logradouro = "logradouro" <~~ json
+        self.complemento = "complemento" <~~ json
+        self.bairro = "bairro" <~~ json
+        self.localidade = "localidade" <~~ json
+        self.uf = "uf" <~~ json
+        self.unidade = "unidade" <~~ json
+        self.ibge = "ibge" <~~ json
+        self.gia = "gia" <~~ json
+    }
+}
+
 
 @objc protocol AddAddressDelegate{
     @objc optional func addressAdded(_ address: Address)
@@ -98,6 +124,15 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         addressData["neighbourhood"] = json["bairro"].string
         addressData["state"] = json["uf"].string
         addressData["city"] = json["localidade"].string
+        let addressJson = AddressJson(json: json)!
+        
+        var addressData = [String:AnyObject]()
+        
+        addressData["street"] = addressJson.logradouro as AnyObject?
+        addressData["number"] = 0 as AnyObject?
+        addressData["neighbourhood"] = addressJson.bairro as AnyObject?
+        addressData["state"] = addressJson.uf as AnyObject?
+        addressData["city"] = addressJson.localidade as AnyObject?
         addressData["zip"] = self.searchZipTextField.text! as AnyObject?
         addressData["location"] = CLLocation()
         
@@ -147,9 +182,9 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
                 var addressData = addressData
                 
                 if let address = self.address{
-                    addressData["objectId"] = address.addressId
-                    addressData["name"] = address.name
-                    addressData["additionalInfo"] = address.additionalInfo
+                    addressData["objectId"] = address.addressId as AnyObject?
+                    addressData["name"] = address.name as AnyObject?
+                    addressData["additionalInfo"] = address.additionalInfo as AnyObject?
                 }
                 
                 self.address = Address(data: addressData)
@@ -184,17 +219,19 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func searchAddressByZipCode(_ sender: AnyObject) {
         let alert = UIAlertController(title: "Buscar endereço pelo CEP", message: "Digite o cep sem hífen", preferredStyle: .alert)
         alert.addTextField(configurationHandler: configAlertTextView)
-        alert.addAction(UIAlertAction(title: "Done", style: .Default, handler:{ (UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler:{ (UIAlertAction) in
             
             AddressManager.sharedInstance.getZipInformation(self.searchZipTextField.text!, jsonResponse: { (json, error) in
                 
+                let addressJson = AddressJson(json: json!)!
+                
                 self.disabletTextFieldInteraction()
                 
-                self.streetTextView.text = json!["logradouro"].string
-                self.neighbourhoodTextView.text = json!["bairro"].string
+                self.streetTextView.text = addressJson.logradouro //json!["logradouro"].string
+                self.neighbourhoodTextView.text = addressJson.bairro// !["bairro"].string
                 self.zipTextView.text = self.searchZipTextField.text!
-                self.cityTextView.text = json!["localidade"].string
-                self.stateTextView.text = json!["uf"].string
+                self.cityTextView.text = addressJson.localidade// !["localidade"].string
+                self.stateTextView.text = addressJson.uf// json!["uf"].string
                 
                 self.address = Address(data: self.tranformJSONToData(json!))
                 

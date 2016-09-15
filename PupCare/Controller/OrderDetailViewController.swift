@@ -53,22 +53,22 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
         case self.numberOfRowInsection-3:
             //quant
             let cell = tableView.dequeueReusableCell(withIdentifier: "bottomCell") as! CustomTableViewCell
-            cell.leftLbl.text = "Quantidade total de produtos:"
-            cell.rigthLbl.text = "\(self.order!.totalQuantity)"
+            cell.firstLbl.text = "Quantidade total de produtos:"
+            cell.secondLbl.text = "\(self.order!.totalQuantity)"
             return cell
             
         case self.numberOfRowInsection-2:
             //delivery
             let cell = tableView.dequeueReusableCell(withIdentifier: "bottomCell") as! CustomTableViewCell
-            cell.leftLbl.text = "Frete:"
-            cell.rigthLbl.text = self.order?.shipment.numberToPrice()
+            cell.firstLbl.text = "Frete:"
+            cell.secondLbl.text = self.order?.shipment.numberToPrice()
             return cell
             
         case self.numberOfRowInsection-1:
             //price
             let cell = tableView.dequeueReusableCell(withIdentifier: "bottomCell") as! CustomTableViewCell
-            cell.leftLbl.text = "Valor total do pedido:"
-            cell.rigthLbl.text = self.order?.price.numberToPrice()
+            cell.firstLbl.text = "Valor total do pedido:"
+            cell.secondLbl.text = self.order?.price.numberToPrice()
             return cell
             
         default:
@@ -76,6 +76,7 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
             let product = self.order?.products[(indexPath as NSIndexPath).row-1]
             let cell = tableView.dequeueReusableCell(withIdentifier: "productCell") as! ProductTableViewCell
             cell.product = product
+            cell.lblQuant.text = "\(product!.stock) itens comprados"
             
             return cell
         }
