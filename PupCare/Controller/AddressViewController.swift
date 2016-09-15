@@ -11,7 +11,7 @@ import CoreLocation
 import Gloss
 
 struct AddressJson : Decodable{
- 
+    
     let cep : String!
     let logradouro : String!
     let complemento : String!
@@ -119,32 +119,27 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
     fileprivate func tranformJSONToData(_ json : JSON) -> [String:AnyObject]{
         var addressData = [String:AnyObject]()
         
-        addressData["street"] = json["logradouro"].string
-        addressData["number"] = 0 as AnyObject?
-        addressData["neighbourhood"] = json["bairro"].string
-        addressData["state"] = json["uf"].string
-        addressData["city"] = json["localidade"].string
         let addressJson = AddressJson(json: json)!
-        
-        var addressData = [String:AnyObject]()
-        
-        addressData["street"] = addressJson.logradouro as AnyObject?
-        addressData["number"] = 0 as AnyObject?
-        addressData["neighbourhood"] = addressJson.bairro as AnyObject?
-        addressData["state"] = addressJson.uf as AnyObject?
-        addressData["city"] = addressJson.localidade as AnyObject?
-        addressData["zip"] = self.searchZipTextField.text! as AnyObject?
-        addressData["location"] = CLLocation()
-        
-        addressData["objectId"] = "" as AnyObject?
-        addressData["name"] = "" as AnyObject?
-        addressData["additionalInfo"] = "" as AnyObject?
+            
+            addressData["street"] = addressJson.logradouro as AnyObject?
+            addressData["number"] = 0 as AnyObject?
+            addressData["neighbourhood"] = addressJson.bairro as AnyObject?
+            addressData["state"] = addressJson.uf as AnyObject?
+            addressData["city"] = addressJson.localidade as AnyObject?
+            addressData["zip"] = self.searchZipTextField.text! as AnyObject?
+            addressData["location"] = CLLocation()
+            
+            addressData["objectId"] = "" as AnyObject?
+            addressData["name"] = "" as AnyObject?
+            addressData["additionalInfo"] = "" as AnyObject?
+            
         
         if let address = self.address{
             addressData["objectId"] = address.addressId as AnyObject?
             addressData["name"] = address.name as AnyObject?
             addressData["additionalInfo"] = address.additionalInfo as AnyObject?
         }
+        
         
         return addressData
     }

@@ -97,10 +97,6 @@ class UserManager: NSObject {
                 else {
                     print(result)
                     
-                    let pictureObjects = result.value(forKey: "picture")
-                    let pictureData = pictureObjects!.value(forKey: "data")
-                    let pictureUrl = pictureData!.value(forKey: "url") as! String
-                    let dataToPFFile = try? Data(contentsOf: URL(string: pictureUrl)!)
                     let resultAsDict = result as! NSDictionary
                     
                     let pictureObjects = resultAsDict.value(forKey: "picture") as! NSDictionary
@@ -108,9 +104,6 @@ class UserManager: NSObject {
                     let pictureUrl = pictureData.value(forKey: "url") as! String
                     let dataToPFFile = try? Data(contentsOf: URL(string: pictureUrl)!)
                     
-                    let currentUser = PFUser.current()!
-                    currentUser["name"] = result.value(forKey: "name")
-                    currentUser["email"] = result.value(forKey: "email")
                     let userPicture = PFFile(data: dataToPFFile!)
 
                     let currentUser = PFUser.current()!

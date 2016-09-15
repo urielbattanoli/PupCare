@@ -119,17 +119,17 @@ class CartTableViewCell: UITableViewCell {
         
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (cardBrand) in
-                cartao["CardBrand"] = cardBrand
+                cartao["CardBrand"] = cardBrand as AnyObject?
                 
                 OrderManager.sharedInstance.startTransaction(self.price, cardInfo: cartao, callback: { (message, trackId) in
                     
                     var data = [String:AnyObject]()
-                    data["orderId"] = ""
-                    data["date"] = Date()
+                    data["orderId"] = "" as AnyObject?
+                    data["date"] = Date() as AnyObject?
                     data["trackId"] = trackId
-                    data["price"] = self.price
-                    data["shipment"] = 10
-                    data["petShop"] = self.petShop?.objectId
+                    data["price"] = self.price as AnyObject?
+                    data["shipment"] = 10 as AnyObject?
+                    data["petShop"] = self.petShop?.objectId as AnyObject?
 
                     OrderManager.sharedInstance.saveOrder(data, callback: { (orderId) in
                         
@@ -137,8 +137,8 @@ class CartTableViewCell: UITableViewCell {
                             var data = [String:AnyObject]()
                             
                             data["orderId"] = orderId
-                            data["productId"] = product.product.objectId
-                            data["quantity"] = product.quantity
+                            data["productId"] = product.product.objectId as AnyObject?
+                            data["quantity"] = product.quantity as AnyObject?
                             data["price"] = product.product.price
                              
                             OrderManager.sharedInstance.saveProductsFromOrder(data)
@@ -148,9 +148,9 @@ class CartTableViewCell: UITableViewCell {
                             var data = [String:AnyObject]()
                             
                             data["orderId"] = orderId
-                            data["promotionId"] = promotion.promotion.objectId
+                            data["promotionId"] = promotion.promotion.objectId as AnyObject?
                             data["price"] = promotion.promotion.newPrice
-                            
+                             as AnyObject?
                             OrderManager.sharedInstance.savePromotionsFromOrder(data)
                         }
                     })
