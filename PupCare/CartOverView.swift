@@ -49,7 +49,12 @@ class CartOverViewController: UIViewController {
         self.TotalPriceLabel.text = "Total: R$ \(totalItensAndPrice.1)"
     }
 
-    
+    func removeFromView() {
+        
+        self.dismissViewControllerAnimated(true) { 
+            
+        }
+    }
 
     /*
     // MARK: - Navigation

@@ -78,14 +78,14 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
 //        
 //            self.controller.view.removeFromSuperview()
       
-        self.view.addSubview(controller.view)
-        
-        self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 75)
-        
-        UIView.animateWithDuration(0.2, delay: 0, options: .TransitionCurlUp, animations: {
-            self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
-            
-            }, completion: nil)
+//        self.view.addSubview(controller.view)
+//        
+//        self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 75)
+//        
+//        UIView.animateWithDuration(0.2, delay: 0, options: .TransitionCurlUp, animations: {
+//            self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
+//            
+//            }, completion: nil)
 
 //            self.viewController.view.removeFromSuperview()
         
@@ -95,6 +95,8 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
 //                    
 //                    
 //            })
+        
+        (self.controller as! CartOverViewController).removeFromView()
 
         
     }
