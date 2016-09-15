@@ -29,10 +29,6 @@ class ProductTableViewCell: UITableViewCell {
                     self.lblDescription.text = product.descript
                 }
                 
-                if self.lblTotal != nil{
-                    self.lblTotal.text = self.lblTotal.text!+NSNumber(value: (product.price.doubleValue * product.stock.doubleValue) as Double).numberToPrice()
-                }
-                
                 self.lblName.text = product.name
                 self.lblPrice.text = self.lblPrice.text!+product.price.numberToPrice()
             }
