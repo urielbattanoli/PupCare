@@ -243,8 +243,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                             
                             
                             let object = workingCell.petShopInCart!.petShop!.objectId
-                            
-                                Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
+                            Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
                         }
                         
                         // DIMINUIU VALOR NO SLIDER
@@ -299,6 +298,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 finishCell.price = finishCell.price - (Double(beganSliding) * workingCell.price) + (Double(endedSliding) * workingCell.price)
                                 
                                 finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                                
+                                let object = workingCell.petShopInCart!.petShop!.objectId
+                                Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
                             }
                         }
                     }
