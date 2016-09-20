@@ -80,10 +80,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             return (sections[section].productsInCart.count + sections[section].promotionsInCart.count + 2)
         } else {
             if (sections.count == 1) {
-//                self.dismissViewControllerAnimated(true, completion: nil)
-//                self.dismiss(animated: true, completion: {
-//                    self.CartDelegate?.HideCart()
-//                })
+                self.CartDismissDelegate?.DidDismiss(cause: .CartEmpty)
                 return 0
             } else {
                 return 0
@@ -273,7 +270,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: self.endedSliding)
                                     
                                     self.CartTableView.reloadData()
-                                    self.CartDismissDelegate?.DidDismiss(cause: .CartEmpty)
+                                    
                                 } else {
                                     
                                     self.workingCell!.itensCount = 1
