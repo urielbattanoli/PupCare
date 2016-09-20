@@ -47,6 +47,8 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         controller = storyBoard.instantiateViewController(withIdentifier: "CartOverView")
         controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
         
+        
+        
         self.addChildViewController(controller)
     }
     
@@ -96,14 +98,15 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
 //                    
 //            })
         
-        (self.controller as! CartOverViewController).removeFromView()
-
-        
+//        (self.controller as! CartOverViewController).removeFromView()
+//
+//        
     }
     
     func UpdateView(_ totalItensAndPrice:(Int,Double)) {
         (self.controller as! CartOverViewController).updateInfo(totalItensAndPrice)
     }
+    
     
     
     /*
@@ -120,7 +123,10 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
 
 protocol CartProtocol {
     func ShowCart()
-    func HideCart()
     func UpdateView(_ totalItensAndPrice:(Int,Double))
     
+}
+    
+protocol DismissProtocol {
+    func DidDismiss(cause: DismissDelegateOptions)
 }

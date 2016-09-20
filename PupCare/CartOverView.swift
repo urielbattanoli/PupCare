@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartOverViewController: UIViewController {
+class CartOverViewController: UIViewController, DismissProtocol {
 
     @IBOutlet weak var ShowCartButton: UIButton!
     @IBOutlet weak var ItensCountLabel: UILabel!
@@ -21,8 +21,8 @@ class CartOverViewController: UIViewController {
         
         ShowCartButton.layer.cornerRadius = 5
         
-        //999 items
-        //total: R$ 999,99
+        //Promotions ViewController
+        
         
         
 
@@ -51,11 +51,33 @@ class CartOverViewController: UIViewController {
 
     func removeFromView() {
         
-        self.dismiss(animated: true) { 
-            
-        }
+        self.dismiss(animated: true, completion: nil)
+        
+        self.view.frame = CGRect(x: 0, y: self.parent!.view.frame.height + 75, width: self.view.frame.width, height: 75)
     }
 
+    func DidDismiss(cause: DismissDelegateOptions) {
+        switch cause {
+        case .CartEmpty:
+            self.removeFromView()
+            break
+        case .UpdateCart:
+            self.updateInfo(Cart.sharedInstance.getTotalItemsAndPrice())
+            break
+        }
+    }
+    
+    @IBAction func ShowCart(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Cart", bundle: nil)
+        
+        let nvcCart = storyboard.instantiateViewController(withIdentifier: "CartViewController")
+        
+        nvcCart.modalTransitionStyle = .coverVertical
+        let vcCart = nvcCart.childViewControllers[0] as! CartViewController
+        vcCart.CartDismissDelegate = self
+        
+        self.present(nvcCart, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
