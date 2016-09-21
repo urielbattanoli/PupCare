@@ -110,12 +110,14 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 
             case self.numberOfRowSection1-1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! CustomTableViewCell
+                cell.markSelected.isHidden = true
                 return cell
                 
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! CustomTableViewCell
                 let address = self.addressList[(indexPath as NSIndexPath).row-1]
                 cell.firstLbl.text = address.name.isEmpty ? address.street : "\(address.name)"
+                cell.markSelected.isHidden = false
                 return cell
             }
         }
