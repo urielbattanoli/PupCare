@@ -128,5 +128,5 @@ protocol CartProtocol {
 }
     
 protocol DismissProtocol {
-    func DidDismiss(cause: DismissDelegateOptions)
+    func DidDismiss(option: DismissDelegateOptions)
 }

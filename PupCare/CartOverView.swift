@@ -56,8 +56,8 @@ class CartOverViewController: UIViewController, DismissProtocol {
         self.view.frame = CGRect(x: 0, y: self.parent!.view.frame.height + 75, width: self.view.frame.width, height: 75)
     }
 
-    func DidDismiss(cause: DismissDelegateOptions) {
-        switch cause {
+    func DidDismiss(option: DismissDelegateOptions) {
+        switch option {
         case .CartEmpty:
             self.removeFromView()
             break

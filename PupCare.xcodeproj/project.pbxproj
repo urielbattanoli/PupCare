@@ -653,6 +653,7 @@
 				TargetAttributes = {
 					A475E3051D0A9B3A00FB66C3 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 4764BD9395;
 						LastSwiftMigration = 0800;
 					};
 					A475E31C1D0A9B3B00FB66C3 = {
@@ -1282,7 +1283,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4764BD9395;
 				INFOPLIST_FILE = PupCare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1299,7 +1300,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4764BD9395;
 				INFOPLIST_FILE = PupCare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
