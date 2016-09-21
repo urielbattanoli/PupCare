@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Initial View Controller-->
@@ -13,9 +15,9 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <segue destination="pnC-qX-X5v" kind="show" identifier="goToPetShops" id="539-gX-Fsa"/>
@@ -28,19 +30,84 @@
         <!--Main Tab View Controller-->
         <scene sceneID="tsa-Fy-EWU">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="pnC-qX-X5v" customClass="MainTabViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabIdentifier" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pnC-qX-X5v" customClass="MainTabViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="qPL-2x-OZI">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.29411764705882354" green="0.0" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.22539636492729187" green="0.0" blue="0.22868931293487549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCC-ne-ESW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1467" y="480"/>
+        </scene>
+        <!--Cart Over View Controller-->
+        <scene sceneID="kht-dF-Vem">
+            <objects>
+                <viewController storyboardIdentifier="CartOverView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZEe-lP-z8e" customClass="CartOverViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="udF-6c-lvt"/>
+                        <viewControllerLayoutGuide type="bottom" id="1zE-DZ-lI7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vfR-9n-GQ3" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 itens" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XnV-Nu-f1s">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="som-bV-kma"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="1" green="0.67843137249999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: R$ 999,99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oaj-t4-HTB">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="126" id="zZN-Ou-pWL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="1" green="0.67843137249999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezj-lD-LAg">
+                                <color key="backgroundColor" red="1" green="0.67843137249999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="185" id="OAk-4D-exp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Ver seu carrinho">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ShowCart:" destination="ZEe-lP-z8e" eventType="touchUpInside" id="LnQ-me-Nh3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Oaj-t4-HTB" secondAttribute="trailing" constant="15" id="3ET-7a-UCh"/>
+                            <constraint firstAttribute="bottom" secondItem="Oaj-t4-HTB" secondAttribute="bottom" constant="15" id="8Yv-z5-3Mb"/>
+                            <constraint firstAttribute="bottom" secondItem="ezj-lD-LAg" secondAttribute="bottom" constant="15" id="Crv-Sh-eRj"/>
+                            <constraint firstAttribute="trailing" secondItem="XnV-Nu-f1s" secondAttribute="trailing" constant="15" id="Uqv-en-KBO"/>
+                            <constraint firstItem="XnV-Nu-f1s" firstAttribute="top" secondItem="vfR-9n-GQ3" secondAttribute="top" constant="15" id="eie-mJ-kvK"/>
+                            <constraint firstItem="ezj-lD-LAg" firstAttribute="leading" secondItem="vfR-9n-GQ3" secondAttribute="leading" constant="15" id="gwA-vk-bXx"/>
+                            <constraint firstItem="ezj-lD-LAg" firstAttribute="top" secondItem="vfR-9n-GQ3" secondAttribute="top" constant="15" id="yM6-KU-D82"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="75"/>
+                    <connections>
+                        <outlet property="ItensCountLabel" destination="XnV-Nu-f1s" id="361-xw-933"/>
+                        <outlet property="ShowCartButton" destination="ezj-lD-LAg" id="XgH-N3-2NR"/>
+                        <outlet property="TotalPriceLabel" destination="Oaj-t4-HTB" id="E8i-Ix-zZs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xva-10-vbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1467" y="1006.5"/>
         </scene>
     </scenes>
 </document>

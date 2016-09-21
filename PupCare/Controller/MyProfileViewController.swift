@@ -228,6 +228,8 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
+        case "logInSegue":
+            segue.destination.childViewControllers[0] as! LoginViewController
         case "goToAddAddress":
             let addressVC = segue.destination as! AddressViewController
             addressVC.delegate = self

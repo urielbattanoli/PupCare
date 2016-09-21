@@ -18,6 +18,7 @@ extension NSNumber {
         formatter.numberStyle = .currency
         
         return formatter.string(from: NSNumber(value : self.doubleValue))!
+
     }
 }
 
@@ -26,11 +27,13 @@ extension UIImageView {
         let urlToKf = URL(string: url)
         self.kf_indicatorType = .activity
         self.kf_setImage(with: urlToKf, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+
     }
 }
 
 extension Float {
     /// Rounds the double to decimal places value
+
     mutating func roundToPlaces(_ places:Int) -> Float {
         let divisor = pow(10.0, Float(places))
         

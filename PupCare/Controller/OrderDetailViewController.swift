@@ -23,7 +23,7 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
         if self.order?.products.count==0{
             OrderManager.sharedInstance.getOrderProducts(self.order!, block: { (products) in
                 self.order!.products = products
-                self.numberOfRowInsection += products.count 
+                self.numberOfRowInsection += products.count ?? 0
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             })
         }

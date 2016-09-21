@@ -10,12 +10,12 @@ import UIKit
 
 class PromotionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var CartDelegate: CartProtocol?
     
 
     @IBOutlet weak var promotionsTableView: UITableView!
 
     var allPromotions: [Promotion] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +23,17 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         self.promotionsTableView.delegate = self
         self.promotionsTableView.dataSource = self
         
-        self.promotionsTableView.separatorStyle = .none
+        self.promotionsTableView.separatorStyle = .none        
+        if let top = self.parent?.parent as? MainTabViewController {
+            self.CartDelegate = top
+        }
         
         reloadPromotions()
         
         // Do any additional setup after loading the view.
     }
 
+    
     
     
     
@@ -44,6 +48,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         
         cell.indexPath = indexPath
         cell.promotion = self.allPromotions[(indexPath as NSIndexPath).row]
+        cell.CartDelegate = self.CartDelegate
         
         return cell
     }
@@ -85,4 +90,6 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    
+    
 }
