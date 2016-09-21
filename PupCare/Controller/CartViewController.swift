@@ -27,6 +27,12 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
+enum DismissDelegateOptions {
+    case CartEmpty
+    case UpdateCart
+}
+
+
 
 class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TransactionProtocol {
     
@@ -40,6 +46,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     var endedSliding: Int = 0
     var workingCell: CartTableViewCell?
     
+    var CartDelegate: CartProtocol?
+    var CartDismissDelegate: DismissProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +58,14 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         for (_, petShop) in Cart.sharedInstance.cartDict.petShopList {
             sections.append(petShop)
         }
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if let view = storyBoard.instantiateViewController(withIdentifier: "MainTabIdentifier") as? MainTabViewController {
+            
+            self.CartDelegate = view
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,8 +80,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             return (sections[section].productsInCart.count + sections[section].promotionsInCart.count + 2)
         } else {
             if (sections.count == 1) {
-                self.dismiss(animated: true, completion: nil)
-                
+                self.CartDismissDelegate?.DidDismiss(option: .CartEmpty)
                 return 0
             } else {
                 return 0
@@ -231,11 +247,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                             
                             
                             let object = workingCell.petShopInCart!.petShop!.objectId
-                            
-                                Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
+                            Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
                         }
-                        
-                        
+                        self.CartDismissDelegate?.DidDismiss(option: .UpdateCart)
                         // DIMINUIU VALOR NO SLIDER
                     } else if endedSliding < beganSliding {
                         // VALOR MENOR QUE O MINIMO
@@ -250,15 +264,12 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                             }
                             alertRemovedItem({ (shouldRemoveItem) in
                                 if shouldRemoveItem {
-                                    
 //                                 print("REMOVE ITEM FROM CART")
                                     let object = self.workingCell!.petShopInCart!.petShop!.objectId
                                     
                                     Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: self.endedSliding)
                                     
                                     self.CartTableView.reloadData()
-                                    
-                                    
                                     
                                 } else {
                                     
@@ -277,8 +288,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     let object = self.workingCell!.petShopInCart!.petShop!.objectId
                                     
                                     Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: 1)
-                                    
                                 }
+                                self.CartDismissDelegate?.DidDismiss(option: .UpdateCart)
                             })
                             
                             // APENAS DIMINUIU
@@ -290,13 +301,45 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                             if let workingCell = workingCell {
                                 finishCell.price = finishCell.price - (Double(beganSliding) * workingCell.price) + (Double(endedSliding) * workingCell.price)
                                 
+                                
                                 finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                                
+                                let object = workingCell.petShopInCart!.petShop!.objectId
+                                Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
+                                self.CartDismissDelegate?.DidDismiss(option: .UpdateCart)
                             }
                         }
                     }
                 }
             }
         }
+    }
+    
+    func didFinishTransaction(_ message: String) {
+        print(message)
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        switch message {
+        case "Captured":
+            alert.title = "Pagamento Efetuado"
+            alert.message = "Sua compra foi realizada com sucesso, aguarde a entrega."
+            alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .cancel, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+                self.tabBarController?.selectedIndex = 2
+            }))
+            alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+        case "Voided":
+            alert.title = "Falha no Pagamento"
+            alert.message = "Ocorreu algum problema na hora de confirmar o pagamento. Revise seus dados"
+            alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .cancel, handler: { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+        default:
+            break
+        }
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func alertRemovedItem(_ shouldRemoveItem: @escaping (Bool) -> Void) {

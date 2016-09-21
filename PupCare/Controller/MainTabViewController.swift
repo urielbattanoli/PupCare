@@ -9,7 +9,10 @@
 import UIKit
 import Parse
 
-class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
+class MainTabViewController: UITabBarController, UITabBarControllerDelegate, CartProtocol {
+    
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    var controller = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +42,71 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         
         self.viewControllers = [vcPromotions,vcPetShops,vcOrders,vcProfile]
         
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        controller = storyBoard.instantiateViewController(withIdentifier: "CartOverView")
+        controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
+        
+        
+        
+        self.addChildViewController(controller)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func ShowCart() {
+        
+        
+        self.view.addSubview(controller.view)
+        
+        self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 75)
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCurlUp, animations: {
+            self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
+            
+            }, completion: nil)
+        
+    }
+    
+    
+    func HideCart() {
+        
+//        dispatch_async(dispatch_get_main_queue(), {
+//                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        self.controller = storyBoard.instantiateViewControllerWithIdentifier("CartOverView")
+//        
+//            self.controller.view.removeFromSuperview()
+      
+//        self.view.addSubview(controller.view)
+//        
+//        self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 75)
+//        
+//        UIView.animateWithDuration(0.2, delay: 0, options: .TransitionCurlUp, animations: {
+//            self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
+//            
+//            }, completion: nil)
+
+//            self.viewController.view.removeFromSuperview()
+        
+//            UIView.animateWithDuration(0.2, delay: 1, options: .CurveEaseIn, animations: {
+//                self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 75)
+//                }, completion: { (true) in
+//                    
+//                    
+//            })
+        
+//        (self.controller as! CartOverViewController).removeFromView()
+//
+//        
+    }
+    
+    func UpdateView(_ totalItensAndPrice:(Int,Double)) {
+        (self.controller as! CartOverViewController).updateInfo(totalItensAndPrice)
+    }
+    
     
     
     /*
@@ -57,4 +119,14 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
      }
      */
     
+}
+
+protocol CartProtocol {
+    func ShowCart()
+    func UpdateView(_ totalItensAndPrice:(Int,Double))
+    
+}
+    
+protocol DismissProtocol {
+    func DidDismiss(option: DismissDelegateOptions)
 }

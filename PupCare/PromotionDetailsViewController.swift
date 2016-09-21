@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -41,6 +40,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     @IBOutlet weak var newPriceLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var AddToCartButton: UIButton!
+    var CartDelegate: CartProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +62,10 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
      
         self.AddToCartButton.clipsToBounds = true
         self.AddToCartButton.layer.cornerRadius = 5
+        
+        if let top = self.parent?.parent as? MainTabViewController {
+            self.CartDelegate = top
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,6 +172,8 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     @IBAction func AddPromotionToCart(_ sender: AnyObject) {
         
         Cart.sharedInstance.addToCart((self.promotion?.petshop)!, product: nil, promotion: self.promotion, quantity: 1)
+        CartDelegate?.ShowCart()
+        CartDelegate?.UpdateView(Cart.sharedInstance.getTotalItemsAndPrice())
     }
     
     

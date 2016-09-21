@@ -12,14 +12,15 @@ import Parse
 
 class InitialViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet var CartViewResume: UIView!
+    
+    
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let defaults = UserDefaults.standard
-        
         defaults.set(-1, forKey: "location")
         // Do any additional setup after loading the view.
     }
