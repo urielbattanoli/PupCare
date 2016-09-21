@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrderResumeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CardIOPaymentViewControllerDelegate {
+class OrderResumeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CardIOPaymentViewControllerDelegate, AddAddressDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,8 +19,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
     var petShopInCard: PetshopInCart?
     var addressList: [Address] = []{
         didSet{
-            self.numberOfRowSection1 += self.addressList.count
-            self.tableView.reloadData()
+            self.numberOfRowSection1 = self.addressList.count+2
         }
     }
     var addressSelected: Address?
@@ -37,6 +36,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         
         if let user = UserManager.sharedInstance.user {
             self.addressList = user.addressList
+            self.tableView.reloadData()
         }
     }
     
@@ -45,7 +45,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: Tableview data source
+    // MARK: Tableview data source
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.numberOfSections
     }
@@ -126,32 +126,35 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    //MARK: Tableview delegate
+    // MARK: Tableview delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row < self.numberOfRowSection1-1 && (indexPath as NSIndexPath).row > 0 {
+        if indexPath.section == 1 && indexPath.row < self.numberOfRowSection1-1 && indexPath.row > 0 {
             let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
             cell.selectAddress()
-            self.addressSelected = self.addressList[(indexPath as NSIndexPath).row-1]
+            self.addressSelected = self.addressList[indexPath.row-1]
+        }
+        else if indexPath.section == 1 && indexPath.row == self.numberOfRowSection1-1{
+            performSegue(withIdentifier: "goToAddAddress", sender: nil)
         }
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row < self.numberOfRowSection1-1 && (indexPath as NSIndexPath).row > 0{
+        if indexPath.section == 1 && indexPath.row < self.numberOfRowSection1 - 1 && indexPath.row > 0{
             return indexPath
         }
         return nil
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row < self.numberOfRowSection1-1 && (indexPath as NSIndexPath).row > 0 {
+        if indexPath.section == 1 && indexPath.row < self.numberOfRowSection1-1 && indexPath.row > 0 {
             let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
             cell.deselectAddress()
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath as NSIndexPath).section == 0{
-            switch (indexPath as NSIndexPath).row {
+        if indexPath.section == 0{
+            switch indexPath.row {
             case 0:
                 return 45
                 
@@ -162,7 +165,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 return 60
             }
         }
-        else if (indexPath as NSIndexPath).section == 1{
+        else if indexPath.section == 1{
             return 45
         }
         else{
@@ -170,7 +173,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    //MARK: CardIO delegate
+    // MARK: CardIO delegate
     func scanCard(_ sender: AnyObject) {
         let cardIOVC = CardIOPaymentViewController(paymentDelegate: self)
         cardIOVC?.modalPresentationStyle = .formSheet
@@ -195,7 +198,15 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         paymentViewController?.dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Finishe functions
+    // MARK: Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToAddAddress"{
+            let addAddressVC = segue.destination as! AddressViewController
+            addAddressVC.delegate = self
+        }
+    }
+    
+    // MARK: Finishe functions
     func showAlert(){
         let alert = UIAlertController(title: "Atenção", message: "Por favor selecione o local de entrega", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -213,6 +224,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    // MARK: Address delegate
     func validateCardAndCreateOrder(_ cardInfo: [String : AnyObject]){
         var cardInfo = cardInfo
         DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
@@ -230,6 +242,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                     data["price"] = cardInfo["price"]
                     data["shipment"] = 10 as AnyObject?
                     data["petShop"] = petShop.objectId as AnyObject?
+                    data["addressId"] = self.addressSelected!.addressId as AnyObject?
                     
                     OrderManager.sharedInstance.saveOrder(data, callback: { (orderId) in
                         
@@ -287,5 +300,11 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addressAdded(_ address: Address){
+        UserManager.sharedInstance.user?.addressList.append(address)
+        self.addressList = (UserManager.sharedInstance.user?.addressList)!
+        self.tableView.reloadSections(IndexSet(integer: 1), with: .fade)
     }
 }

@@ -17,6 +17,7 @@ class Order: NSObject {
     let trackId: String
     let shipment: NSNumber
     var totalQuantity = 0
+    let addressId: Address
     
     var products: [Product] = []{
         didSet{
@@ -35,5 +36,6 @@ class Order: NSObject {
         self.price = data["price"] as! NSNumber
         self.trackId = data["trackId"] as! String
         self.shipment = data["shipment"] as! NSNumber
+        self.addressId = data["addressId"] as! Address
     }
 }

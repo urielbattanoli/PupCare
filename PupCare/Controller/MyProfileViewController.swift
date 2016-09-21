@@ -9,8 +9,6 @@
 import UIKit
 import Parse
 
-//Mark: Add card protocol
-
 class MyProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddAddressDelegate {
     
     // MARK: Outlets

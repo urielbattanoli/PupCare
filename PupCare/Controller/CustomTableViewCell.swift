@@ -21,11 +21,10 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        if self.markSelected != nil{
-            self.markSelected.layer.cornerRadius = self.markSelected.frame.width/2
-            self.markSelected.layer.borderWidth = 0.5
-            self.markSelected.layer.borderColor = UIColor(red: 145, green: 145, blue: 145).cgColor
-            self.markSelected.backgroundColor = UIColor(red: 245, green: 245, blue: 245)
+        if let markSelected = self.markSelected{
+            markSelected.layer.borderWidth = 0.5
+            markSelected.layer.borderColor = UIColor(red: 145, green: 145, blue: 145).cgColor
+            markSelected.backgroundColor = UIColor(red: 245, green: 245, blue: 245)
         }
     }
     
@@ -35,14 +34,14 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     func selectAddress() {
-        if self.markSelected != nil {
-            self.markSelected.backgroundColor = UIColor(red: 115, green: 40, blue: 115)
+        if let markSelected = self.markSelected{
+            markSelected.backgroundColor = UIColor(red: 115, green: 40, blue: 115)
         }
     }
     
     func deselectAddress() {
-        if self.markSelected != nil {
-            self.markSelected.backgroundColor = UIColor(red: 245, green: 245, blue: 245)
+        if let markSelected = self.markSelected{
+            markSelected.backgroundColor = UIColor(red: 245, green: 245, blue: 245)
         }
     }
 }

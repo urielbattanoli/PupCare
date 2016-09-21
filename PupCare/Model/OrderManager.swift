@@ -109,6 +109,7 @@ class OrderManager: NSObject {
         orderAsPfObject["price"] = order["price"]
         orderAsPfObject["petShopId"] = PFObject(withoutDataWithClassName: "PetShop", objectId: order["petShop"] as? String)
         orderAsPfObject["shipment"] = order["shipment"]
+        orderAsPfObject["addressId"] = PFObject(withoutDataWithClassName: "Address", objectId: order["addressId"] as? String)
         
         
         orderAsPfObject.saveInBackground { (success, error) in
