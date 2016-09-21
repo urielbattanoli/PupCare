@@ -110,6 +110,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
                 addressCell.imageAddress.image = UIImage(named: "moreBt")
                 return addressCell
             }
+            addressCell.imageAddress = nil
             addressCell.address = self.user.addressList[(indexPath as NSIndexPath).row-3]
             return addressCell
             

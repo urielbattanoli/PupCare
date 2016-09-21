@@ -134,12 +134,13 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
             self.addressSelected = self.addressList[indexPath.row-1]
         }
         else if indexPath.section == 1 && indexPath.row == self.numberOfRowSection1-1{
+            self.addressSelected = nil
             performSegue(withIdentifier: "goToAddAddress", sender: nil)
         }
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.section == 1 && indexPath.row < self.numberOfRowSection1 - 1 && indexPath.row > 0{
+        if indexPath.section == 1 && indexPath.row < self.numberOfRowSection1 && indexPath.row > 0{
             return indexPath
         }
         return nil

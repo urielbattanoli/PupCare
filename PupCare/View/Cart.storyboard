@@ -10,6 +10,7 @@
         <!--Carrinho-->
         <scene sceneID="LWn-Fb-wmr">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gd9-5w-Tlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Pya-gw-ci0" customClass="CartViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5h7-Mt-JnM"/>
@@ -354,13 +355,13 @@
                         <segue destination="8IY-Vd-0BO" kind="show" identifier="goToOrderResume" id="H48-dp-1po"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gd9-5w-Tlb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="888" y="57"/>
         </scene>
         <!--Finalizar compra-->
         <scene sceneID="M2e-ZN-tqq">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Qf-Vz-NFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Finalizar compra" id="8IY-Vd-0BO" customClass="OrderResumeViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z1D-Ha-f85"/>
@@ -744,21 +745,21 @@
                         <segue destination="Lyi-Oh-Lhf" kind="show" identifier="goToAddAddress" id="jPE-3p-S8I"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Qf-Vz-NFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1617" y="57"/>
         </scene>
         <!--Address-->
         <scene sceneID="4Uk-fj-eAi">
             <objects>
-                <viewControllerPlaceholder storyboardName="Address" id="Lyi-Oh-Lhf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzE-Hp-0C9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Address" id="Lyi-Oh-Lhf" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="2271" y="112"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FMm-hP-cUv">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xej-hk-Hj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Y3-eN-6Xp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="5wj-gf-Gkn">
@@ -775,7 +776,6 @@
                         <segue destination="Pya-gw-ci0" kind="relationship" relationship="rootViewController" id="Tow-MC-wgv"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xej-hk-Hj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="76" y="57"/>
         </scene>
