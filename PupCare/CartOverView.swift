@@ -46,7 +46,7 @@ class CartOverViewController: UIViewController, DismissProtocol {
     
     func updateInfo(_ totalItensAndPrice: (Int,Double)) {
         self.ItensCountLabel.text = "\(totalItensAndPrice.0) itens"
-        self.TotalPriceLabel.text = "Total: R$ \(totalItensAndPrice.1)"
+        self.TotalPriceLabel.text = "Total: \(NSNumber(value: totalItensAndPrice.1).numberToPrice())"
     }
 
     func removeFromView() {
