@@ -84,7 +84,7 @@ class UserManager: NSObject {
             } else {
                 print("Uh oh. The user cancelled the Facebook login.")
             }
-
+            
         }
     }
     
@@ -97,18 +97,18 @@ class UserManager: NSObject {
                 else {
                     print(result)
                     
-                    let resultAsDict = result as! NSDictionary
+                    let resultAsDict = result as! [String:AnyObject]
                     
-                    let pictureObjects = resultAsDict.value(forKey: "picture") as! NSDictionary
-                    let pictureData = pictureObjects.value(forKey: "data") as! NSDictionary
-                    let pictureUrl = pictureData.value(forKey: "url") as! String
+                    let pictureObjects = resultAsDict["picture"] as! [String:AnyObject]
+                    let pictureData = pictureObjects["data"] as! [String:AnyObject]
+                    let pictureUrl = pictureData["url"] as! String
                     let dataToPFFile = try? Data(contentsOf: URL(string: pictureUrl)!)
                     
                     let userPicture = PFFile(data: dataToPFFile!)
-
+                    
                     let currentUser = PFUser.current()!
-                    currentUser["name"] = resultAsDict.value(forKey: "name")
-                    currentUser["email"] = resultAsDict.value(forKey: "email")
+                    currentUser["name"] = resultAsDict["name"]
+                    currentUser["email"] = resultAsDict["email"]
                     currentUser["image"] = userPicture
                     
                     
@@ -124,6 +124,9 @@ class UserManager: NSObject {
     func createUserByCurrentUser(){
         if let pfUser = PFUser.current(){
             self.user = User(parseObject: pfUser)
+            AddressManager.sharedInstance.getAddressListFromUser(pfUser.objectId!) { (addresses) in
+                self.user?.addressList = addresses
+            }
         }
     }
     

@@ -9,8 +9,6 @@
 import UIKit
 import Parse
 
-//Mark: Add card protocol
-
 class MyProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddAddressDelegate {
     
     // MARK: Outlets
@@ -42,12 +40,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             UserManager.sharedInstance.createUserByCurrentUser()
         }
         self.user = UserManager.sharedInstance.user
-        
-        AddressManager.sharedInstance.getAddressListFromUser(self.user.userId!) { (addresses) in
-            self.user.addressList = addresses
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .fade)
-        }
-        
+
         self.tableView.delegate = self
     }
     
@@ -117,6 +110,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
                 addressCell.imageAddress.image = UIImage(named: "moreBt")
                 return addressCell
             }
+            addressCell.imageAddress = nil
             addressCell.address = self.user.addressList[(indexPath as NSIndexPath).row-3]
             return addressCell
             

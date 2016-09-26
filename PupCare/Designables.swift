@@ -91,3 +91,11 @@ import UIKit
         
     }
 }
+
+@IBDesignable class VIEWAtrributedStyle: UIView {
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet{
+            layer.cornerRadius = cornerRadius
+        }
+    }
+}
