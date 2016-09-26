@@ -9,7 +9,7 @@
 import UIKit
 
 class OrderResumeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CardIOPaymentViewControllerDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var numberOfRowSection1 = 4
@@ -20,12 +20,12 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         
         self.tableView.tableFooterView = UIView()
         CardIOUtilities.preload()
-    
+        
         let products = self.petShopInCard!.productsInCart
         let promotions = self.petShopInCard!.promotionsInCart
         self.numberOfRowSection1 += products.count+promotions.count
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -130,7 +130,19 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
     
     //MARK: Finishe functions
     func didPressFinisheBt(){
-        self.scanCard("" as AnyObject)
+        //        self.scanCard("" as AnyObject)
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alert.title = "Desativado"
+        alert.message = "Obrigado por testar o aplicativo!"
+        alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.tabBarController?.selectedIndex = 2
+        }))
+        alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     func validateCardAndCreateOrder(_ cardInfo: [String : AnyObject]){
