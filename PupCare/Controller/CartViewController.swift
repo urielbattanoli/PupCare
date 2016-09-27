@@ -55,6 +55,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.CartTableView.delegate = self
         self.CartTableView.dataSource = self
         
+        
+        
         for (_, petShop) in Cart.sharedInstance.cartDict.petShopList {
             sections.append(petShop)
         }
@@ -152,6 +154,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.price = Double(productInCart.product.price)
                 cell.beganPrice = Double(productInCart.product.price)
                 
+                
             } else {
                 
                 let productsCount: Int = section.productsInCart.count
@@ -169,6 +172,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.beganPrice = self.beganPrice + (Double(beganSliding) * cell.price)
             cell.ProductQuantitySlider.tag = (indexPath as NSIndexPath).section + 100
+            cell.ProductQuantitySlider.configureSlider(minValue: 1, maxValue: 10, thumbImage: "oval", insideRetangle: "insideRetangle", outsideRetangle: "outsideRetangle")
             
             cell.tagTeste = (indexPath as NSIndexPath).section
             cell.petShopInCart = section
