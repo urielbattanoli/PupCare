@@ -215,7 +215,7 @@
 {
     _autoAdjustTrackColor = YES;
     _valueRange = self.maximumValue - self.minimumValue;
-    _popUpViewAlwaysOn = NO;
+    _popUpViewAlwaysOn = YES;
 
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -227,12 +227,12 @@
     self.popUpView = [[ASValuePopUpView alloc] initWithFrame:CGRectZero];
     self.popUpViewColor = [UIColor colorWithHue:0.8333333334 saturation:0.65 brightness:0.45 alpha:1];
 
-    self.popUpView.alpha = 0.0;
+    self.popUpView.alpha = 0.9;
     self.popUpView.delegate = self;
     [self addSubview:self.popUpView];
 
     self.textColor = [UIColor whiteColor];
-    self.font = [UIFont boldSystemFontOfSize:22.0f];
+    self.font = [UIFont boldSystemFontOfSize:16.0f];
 }
 
 // ensure animation restarts if app is closed then becomes active again
@@ -380,7 +380,7 @@
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     BOOL begin = [super beginTrackingWithTouch:touch withEvent:event];
-    if (begin && !self.popUpViewAlwaysOn) [self _showPopUpViewAnimated:YES];
+    if (begin && !self.popUpViewAlwaysOn) [self _showPopUpViewAnimated:FALSE];
     return begin;
 }
 
