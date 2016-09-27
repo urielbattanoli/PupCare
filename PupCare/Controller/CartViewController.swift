@@ -172,7 +172,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.beganPrice = self.beganPrice + (Double(beganSliding) * cell.price)
             cell.ProductQuantitySlider.tag = (indexPath as NSIndexPath).section + 100
-            cell.ProductQuantitySlider.configureSlider(minValue: 1, maxValue: 10, thumbImage: "oval", insideRetangle: "insideRetangle", outsideRetangle: "outsideRetangle")
+            cell.ProductQuantitySlider.configureSlider(minValue: 0, maxValue: 10, thumbImage: "oval", insideRetangle: "insideRetangle", outsideRetangle: "outsideRetangle")
             
             cell.tagTeste = (indexPath as NSIndexPath).section
             cell.petShopInCart = section
