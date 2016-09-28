@@ -101,3 +101,21 @@ extension UIViewController {
     }
 }
 
+extension UISlider {
+    func configureSlider (minValue: Float, maxValue: Float, thumbImage: String, insideRetangle: String, outsideRetangle: String) {
+        let image = UIImage(named: insideRetangle)
+        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4)
+        
+        image?.resizableImage(withCapInsets: myInsets)
+        
+        self.setMinimumTrackImage(image, for: UIControlState())
+        self.setMaximumTrackImage(UIImage(named: outsideRetangle), for: UIControlState())
+        self.setThumbImage(UIImage(named: thumbImage), for: UIControlState())
+        self.setThumbImage(UIImage(named: thumbImage), for: UIControlState.highlighted)
+        
+        self.maximumValue = maxValue
+        self.minimumValue = minValue
+        
+        self.value = 1
+    }
+}
