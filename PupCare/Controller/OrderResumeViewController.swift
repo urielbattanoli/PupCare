@@ -8,14 +8,15 @@
 
 import UIKit
 
-class OrderResumeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CardIOPaymentViewControllerDelegate, AddAddressDelegate {
+class OrderResumeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddAddressDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let numberOfSections = 3
+    let numberOfSections = 4
     var numberOfRowSection0 = 3
-    var numberOfRowSection1 = 2
-    var numberOfRowSection2 = 1
+    var numberOfRowSection1 = 3
+    var numberOfRowSection2 = 3
+    var numberOfRowSection3 = 1
     var petShopInCard: PetshopInCart?
     var addressList: [Address] = []{
         didSet{
@@ -23,12 +24,15 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     var addressSelected: Address?
+    var paymentMethod: Int?
+    var indexPathOfSection1Selected: IndexPath?
+    var indexPathOfSection2Selected: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView()
-        CardIOUtilities.preload()
+        //        CardIOUtilities.preload()
         
         let products = self.petShopInCard!.productsInCart
         let promotions = self.petShopInCard!.promotionsInCart
@@ -56,8 +60,10 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
             return self.numberOfRowSection0
         case 1:
             return self.numberOfRowSection1
-        default:
+        case 2 :
             return self.numberOfRowSection2
+        default:
+            return self.numberOfRowSection3
         }
     }
     
@@ -108,6 +114,12 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.firstLbl.text = "Escolha o endereço de entrega"
                 return cell
                 
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! CustomTableViewCell
+                cell.firstLbl.text = "Retira na pet shop"
+                cell.markSelected.isHidden = false
+                return cell
+                
             case self.numberOfRowSection1-1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! CustomTableViewCell
                 cell.markSelected.isHidden = true
@@ -121,38 +133,83 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 return cell
             }
         }
+        else if indexPath.section == 2{
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! CustomTableViewCell
+                cell.firstLbl.text = "Escolha a forma de pagamento"
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! CustomTableViewCell
+                cell.firstLbl.text = "Dinheiro"
+                cell.markSelected.isHidden = false
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! CustomTableViewCell
+                cell.firstLbl.text = "Cartão"
+                cell.markSelected.isHidden = false
+                return cell
+            }
+        }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "finisheCell") as! CustomTableViewCell
-            cell.finisheBt.addTarget(self, action: #selector(OrderResumeViewController.didPressFinisheBt), for: .touchUpInside)
+            cell.finisheBt.addTarget(self, action: #selector(OrderResumeViewController.didPressFinishBt), for: .touchUpInside)
             return cell
         }
     }
     
     // MARK: Tableview delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && indexPath.row < self.numberOfRowSection1-1 && indexPath.row > 0 {
-            let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
-            cell.selectAddress()
-            self.addressSelected = self.addressList[indexPath.row-1]
+        if indexPath.section == 1 {
+            if indexPath.row < self.numberOfRowSection1-1 && indexPath.row > 0 {
+                
+                let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+                cell.selectAddress()
+                if indexPath.row == 1{
+                    self.addressSelected = self.petShopInCard!.petShop!.address
+                }
+                else{
+                    self.addressSelected = self.addressList[indexPath.row-1]
+                }
+            }
+            else if  indexPath.row == self.numberOfRowSection1-1{
+                self.addressSelected = nil
+                self.indexPathOfSection1Selected = nil
+                performSegue(withIdentifier: "goToAddAddress", sender: nil)
+            }
         }
-        else if indexPath.section == 1 && indexPath.row == self.numberOfRowSection1-1{
-            self.addressSelected = nil
-            performSegue(withIdentifier: "goToAddAddress", sender: nil)
+        else if indexPath.section == 2{
+            if indexPath.row < self.numberOfRowSection2 && indexPath.row > 0 {
+                
+                let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+                cell.selectAddress()
+                self.paymentMethod = indexPath.row
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.section == 1 && indexPath.row < self.numberOfRowSection1 && indexPath.row > 0{
+        if (indexPath.section == 1 && indexPath.row < self.numberOfRowSection1 && indexPath.row > 0) || (indexPath.section == 2 && indexPath.row < self.numberOfRowSection2 && indexPath.row > 0){
+            if indexPath.section == 1 {
+                if self.indexPathOfSection1Selected != nil{
+                    self.deselectRowAt(tableView: tableView, indexPath: self.indexPathOfSection1Selected!)
+                }
+                self.indexPathOfSection1Selected = indexPath
+            }
+            else {
+                if self.indexPathOfSection2Selected != nil{
+                    self.deselectRowAt(tableView: tableView, indexPath: self.indexPathOfSection2Selected!)
+                }
+                self.indexPathOfSection2Selected = indexPath
+            }
             return indexPath
         }
         return nil
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && indexPath.row < self.numberOfRowSection1-1 && indexPath.row > 0 {
-            let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
-            cell.deselectAddress()
-        }
+    func deselectRowAt(tableView: UITableView, indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+        cell.deselectAddress()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -168,7 +225,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 return 60
             }
         }
-        else if indexPath.section == 1{
+        else if indexPath.section == 1 || indexPath.section == 2{
             return 45
         }
         else{
@@ -177,29 +234,29 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     // MARK: CardIO delegate
-    func scanCard(_ sender: AnyObject) {
-        let cardIOVC = CardIOPaymentViewController(paymentDelegate: self)
-        cardIOVC?.modalPresentationStyle = .formSheet
-        present(cardIOVC!, animated: true, completion: nil)
-    }
-    
-    func userDidCancel(_ paymentViewController: CardIOPaymentViewController!) {
-        paymentViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    func userDidProvide(_ cardInfo: CardIOCreditCardInfo!, in paymentViewController: CardIOPaymentViewController!) {
-        if let info = cardInfo {
-            var data = [String : AnyObject]()
-            data["CardHolderName"] = info.cardholderName as AnyObject?
-            data["CardNumber"] = info.cardNumber as AnyObject?
-            data["CVV"] = info.cvv as AnyObject?
-            data["ExpirationYear"] = info.expiryYear as AnyObject?
-            data["ExpirationMonth"] = info.expiryMonth as AnyObject?
-            
-            self.validateCardAndCreateOrder(data)
-        }
-        paymentViewController?.dismiss(animated: true, completion: nil)
-    }
+    //    func scanCard(_ sender: AnyObject) {
+    //        let cardIOVC = CardIOPaymentViewController(paymentDelegate: self)
+    //        cardIOVC?.modalPresentationStyle = .formSheet
+    //        present(cardIOVC!, animated: true, completion: nil)
+    //    }
+    //
+    //    func userDidCancel(_ paymentViewController: CardIOPaymentViewController!) {
+    //        paymentViewController?.dismiss(animated: true, completion: nil)
+    //    }
+    //
+    //    func userDidProvide(_ cardInfo: CardIOCreditCardInfo!, in paymentViewController: CardIOPaymentViewController!) {
+    //        if let info = cardInfo {
+    //            var data = [String : AnyObject]()
+    //            data["CardHolderName"] = info.cardholderName as AnyObject?
+    //            data["CardNumber"] = info.cardNumber as AnyObject?
+    //            data["CVV"] = info.cvv as AnyObject?
+    //            data["ExpirationYear"] = info.expiryYear as AnyObject?
+    //            data["ExpirationMonth"] = info.expiryMonth as AnyObject?
+    //
+    //            self.validateCardAndCreateOrder(data)
+    //        }
+    //        paymentViewController?.dismiss(animated: true, completion: nil)
+    //    }
     
     // MARK: Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -209,22 +266,96 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    // MARK: Finishe functions
-    func showAlert(){
-        let alert = UIAlertController(title: "Atenção", message: "Por favor selecione o local de entrega", preferredStyle: .alert)
+    // MARK: Finish functions
+    func showAlertWhenAddressOrPayMetIsNil() -> Bool{
+        let alert = UIAlertController(title: "Atenção", message: "", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(cancel)
         
-        self.present(alert, animated: true, completion: nil)
+        if self.addressSelected == nil{
+            alert.message = "Por favor selecione o local de entrega"
+            self.present(alert, animated: true, completion: nil)
+            return true
+        }
+        if self.paymentMethod == nil{
+            alert.message = "Por favor selecione o método de pagamento"
+            self.present(alert, animated: true, completion: nil)
+            return true
+        }
+        return false
     }
     
-    func didPressFinisheBt(){
-        if self.addressSelected != nil{
-            self.scanCard("" as AnyObject)
+    func didPressFinishBt(){
+        if self.showAlertWhenAddressOrPayMetIsNil() {
+            return
+        }
+        //        self.scanCard("" as AnyObject)
+        self.createOrderGenerateTrackId()
+    }
+    
+    func createOrderGenerateTrackId() {
+        OrderManager.sharedInstance.generateTrackId { (trackId) in
+            self.createOrder(trackId)
+        }
+    }
+    
+    func createOrder(_ trackId: AnyObject){
+        let petShop = self.petShopInCard?.petShop!
+        var order = [String:AnyObject]()
+        order["orderId"] = "" as AnyObject?
+        order["date"] = Date() as AnyObject?
+        order["trackId"] = trackId
+        order["price"] = self.petShopInCard!.totalPrice as AnyObject?
+        order["shipment"] = 10 as AnyObject?
+        order["petShop"] =  petShop?.objectId as AnyObject?
+        order["addressId"] = self.addressSelected!.addressId as AnyObject?
+        
+        OrderManager.sharedInstance.saveOrder(order, callback: { (orderId) in
+            
+            for product in (Cart.sharedInstance.cartDict.petShopList[(petShop?.objectId)!]?.productsInCart)! {
+                var data = [String:AnyObject]()
+                
+                data["orderId"] = orderId
+                data["productId"] = product.product.objectId as AnyObject?
+                data["quantity"] = product.quantity as AnyObject?
+                data["price"] = product.product.price
+                
+                OrderManager.sharedInstance.saveProductsFromOrder(data)
+            }
+            
+            for promotion in (Cart.sharedInstance.cartDict.petShopList[(petShop?.objectId)!]?.promotionsInCart)! {
+                var data = [String:AnyObject]()
+                
+                data["orderId"] = orderId
+                data["promotionId"] = promotion.promotion.objectId as AnyObject?
+                data["price"] = promotion.promotion.newPrice as AnyObject?
+                
+                OrderManager.sharedInstance.savePromotionsFromOrder(data)
+            }
+        })
+        
+        let receiveAtHome = petShop?.address == self.addressSelected!
+        self.showAlertWhenOrderFinished(receiveAtHome)
+    }
+    
+    func showAlertWhenOrderFinished(_ receiveAtHome: Bool) {
+        let alert = UIAlertController(title: "Pedido realizado com sucesso", message: "", preferredStyle: .alert)
+        if receiveAtHome{
+            alert.message = "Seu pedido está sendo separado, dentro de 30 minutos estará pronto."
         }
         else{
-            self.showAlert()
+            alert.message = "Seu pedido está sendo separado, aguarde a entrega."
         }
+        
+        alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.tabBarController?.selectedIndex = 2
+        }))
+        alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: Address delegate
@@ -236,47 +367,13 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 OrderManager.sharedInstance.startTransaction(cardInfo["price"] as! Double, cardInfo: cardInfo, callback: { (message, trackId) in
                     
-                    let petShop = cardInfo["petShop"] as! PetShop
-                    
-                    var data = [String:AnyObject]()
-                    data["orderId"] = "" as AnyObject?
-                    data["date"] = Date() as AnyObject?
-                    data["trackId"] = trackId
-                    data["price"] = cardInfo["price"]
-                    data["shipment"] = 10 as AnyObject?
-                    data["petShop"] = petShop.objectId as AnyObject?
-                    data["addressId"] = self.addressSelected!.addressId as AnyObject?
-                    
-                    OrderManager.sharedInstance.saveOrder(data, callback: { (orderId) in
-                        
-                        for product in (Cart.sharedInstance.cartDict.petShopList[petShop.objectId]?.productsInCart)! {
-                            var data = [String:AnyObject]()
-                            
-                            data["orderId"] = orderId
-                            data["productId"] = product.product.objectId as AnyObject?
-                            data["quantity"] = product.quantity as AnyObject?
-                            data["price"] = product.product.price
-                            
-                            OrderManager.sharedInstance.saveProductsFromOrder(data)
-                        }
-                        
-                        for promotion in (Cart.sharedInstance.cartDict.petShopList[petShop.objectId]?.promotionsInCart)! {
-                            var data = [String:AnyObject]()
-                            
-                            data["orderId"] = orderId
-                            data["promotionId"] = promotion.promotion.objectId as AnyObject?
-                            data["price"] = promotion.promotion.newPrice as AnyObject?
-                            
-                            OrderManager.sharedInstance.savePromotionsFromOrder(data)
-                        }
-                    })
+                    self.createOrder(trackId)
                     
                     self.didFinishTransaction(message)
                 })
             }
         }
     }
-    
     
     func didFinishTransaction(_ message: String) {
         print(message)
