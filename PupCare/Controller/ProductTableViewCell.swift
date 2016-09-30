@@ -30,7 +30,7 @@ class ProductTableViewCell: UITableViewCell {
                 }
                 
                 self.lblName.text = product.name
-                self.lblPrice.text = self.lblPrice.text!+product.price.numberToPrice()
+                self.lblPrice.text = "Valor unitário: "+product.price.numberToPrice()
             }
         }
     }

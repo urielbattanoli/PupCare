@@ -93,16 +93,16 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 if index<products.count{
                     cell.product = products[index].product
-                    cell.lblQuant.text = cell.lblQuant.text!+String(products[index].quantity)
-                    cell.lblTotal.text = cell.lblTotal.text!+NSNumber(value: (products[index].product.price.doubleValue * Double(products[index].quantity)) as Double).numberToPrice()
+                    cell.lblQuant.text = "Quantidade: "+String(products[index].quantity)
+                    cell.lblTotal.text = "Total: "+NSNumber(value: (products[index].product.price.doubleValue * Double(products[index].quantity)) as Double).numberToPrice()
                 }
                 else{
                     index -= products.count
                     cell.promotion = promotions[index].promotion
-                    cell.lblQuant.text = cell.lblQuant.text!+String(promotions[index].quantity)
+                    cell.lblQuant.text = "Quantidade: "+String(promotions[index].quantity)
                     
                     let total = Float(promotions[index].quantity)*promotions[index].promotion.newPrice
-                    cell.lblTotal.text = cell.lblTotal.text!+NSNumber(value: total as Float).numberToPrice()
+                    cell.lblTotal.text = "Total: "+NSNumber(value: total as Float).numberToPrice()
                 }
                 return cell
             }
