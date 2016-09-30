@@ -47,7 +47,7 @@ class ProductTableViewCell: UITableViewCell {
                 }
 
                 self.lblName.text = promotion.promotionName
-                self.lblPrice.text = self.lblPrice.text!+NSNumber(value: Double(promotion.newPrice) as Double).numberToPrice()
+                self.lblPrice.text = "Valor unitário: "+NSNumber(value: Double(promotion.newPrice) as Double).numberToPrice()
             }
         }
     }
