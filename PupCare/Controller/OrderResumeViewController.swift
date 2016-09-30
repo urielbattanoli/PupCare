@@ -20,7 +20,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
     var petShopInCard: PetshopInCart?
     var addressList: [Address] = []{
         didSet{
-            self.numberOfRowSection1 = self.addressList.count+2
+            self.numberOfRowSection1 = self.addressList.count+3
         }
     }
     var addressSelected: Address?
