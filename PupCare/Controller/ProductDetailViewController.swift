@@ -33,6 +33,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         self.carousel.delegate = self
         self.carousel.dataSource = self
         self.carousel.type = .rotary
+        carousel.bounces = false
         
         self.carousel.isUserInteractionEnabled = false
         
@@ -141,7 +142,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     }
     
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-        if option == .spacing{
+        if option == .spacing {
             return value * 1.1
         }
         return value
