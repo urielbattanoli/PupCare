@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2FFB26B9F34E6BD67BC9084A /* Pods_PupCareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */; };
-		39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AC64BA1D2C32E400477F05 /* Login.Storyboard */; };
+		39AC64BB1D2C32E400477F05 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AC64BA1D2C32E400477F05 /* Login.storyboard */; };
 		569E4878009CE5DDF43F544E /* Pods_PupCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7C8DEFE036402F3B6C16A /* Pods_PupCare.framework */; };
 		7117600B1D3FDDD8002452CA /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7117600A1D3FDDD8002452CA /* iCarousel.m */; };
 		711760101D3FED08002452CA /* PromotionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7117600F1D3FED08002452CA /* PromotionDetailsViewController.swift */; };
@@ -113,7 +113,7 @@
 
 /* Begin PBXFileReference section */
 		0493F2875AEB302E7CCF3B2B /* Pods-PupCare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.release.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.release.xcconfig"; sourceTree = "<group>"; };
-		39AC64BA1D2C32E400477F05 /* Login.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.Storyboard; path = View/Login.Storyboard; sourceTree = "<group>"; };
+		39AC64BA1D2C32E400477F05 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = View/Login.storyboard; sourceTree = "<group>"; };
 		3AB0AC7D08F3CCBE82BDDF13 /* Pods-PupCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PupCare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PupCare/Pods-PupCare.debug.xcconfig"; sourceTree = "<group>"; };
 		711760091D3FDDD8002452CA /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		7117600A1D3FDDD8002452CA /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -499,7 +499,7 @@
 				A42751A21D47E87500B083C6 /* Card.storyboard */,
 				A475E3411D14905200FB66C3 /* Cart.storyboard */,
 				A475E3151D0A9B3A00FB66C3 /* LaunchScreen.storyboard */,
-				39AC64BA1D2C32E400477F05 /* Login.Storyboard */,
+				39AC64BA1D2C32E400477F05 /* Login.storyboard */,
 				A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */,
 				A475E3431D14906500FB66C3 /* Orders.storyboard */,
 				A475E33D1D148FEB00FB66C3 /* Petshops.storyboard */,
@@ -705,7 +705,7 @@
 				A42751A31D47E87500B083C6 /* Card.storyboard in Resources */,
 				A4869DC91D2595090076EC37 /* Products.storyboard in Resources */,
 				A475E33E1D148FEB00FB66C3 /* Petshops.storyboard in Resources */,
-				39AC64BB1D2C32E400477F05 /* Login.Storyboard in Resources */,
+				39AC64BB1D2C32E400477F05 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
