@@ -127,7 +127,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! CustomTableViewCell
-                let address = self.addressList[(indexPath as NSIndexPath).row-1]
+                let address = self.addressList[(indexPath as NSIndexPath).row-2]
                 cell.firstLbl.text = address.name.isEmpty ? address.street : "\(address.name)"
                 cell.markSelected.isHidden = false
                 return cell
@@ -169,7 +169,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                     self.addressSelected = self.petShopInCard!.petShop!.address
                 }
                 else{
-                    self.addressSelected = self.addressList[indexPath.row-1]
+                    self.addressSelected = self.addressList[indexPath.row-2]
                 }
             }
             else if  indexPath.row == self.numberOfRowSection1-1{
