@@ -33,6 +33,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         self.carousel.delegate = self
         self.carousel.dataSource = self
         self.carousel.type = .rotary
+        carousel.bounces = false
         
         self.carousel.isUserInteractionEnabled = false
         
@@ -41,31 +42,31 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
             self.lblDescription.text = product.descript
         }
         
-        configureSlider()
+        sliderQnt.configureSlider(minValue: 1, maxValue: 10, thumbImage: "oval", insideRetangle: "insideRetangle", outsideRetangle: "outsideRetangle")
         
         if let top = self.parent?.parent as? MainTabViewController {
             self.CartDelegate = top
         }
     }
     
-    func configureSlider() {
-        
-        let image = UIImage(named:"insideRetangle")
-        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4)
-        
-        image?.resizableImage(withCapInsets: myInsets)
-        
-        sliderQnt.setMinimumTrackImage(image, for: UIControlState())
-        sliderQnt.setMaximumTrackImage(UIImage(named:"outsideRetangle"), for: UIControlState())
-        sliderQnt.setThumbImage(UIImage(named: "oval"), for: UIControlState())
-        sliderQnt.setThumbImage(UIImage(named: "oval"), for: UIControlState.highlighted)
-        
-        sliderQnt.maximumValue = 10
-        sliderQnt.minimumValue = 0
-        
-        sliderQnt.value = 1
-        
-    }
+//    func configureSlider(slider: UISlider) {
+//        
+//        let image = UIImage(named:"insideRetangle")
+//        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4)
+//        
+//        image?.resizableImage(withCapInsets: myInsets)
+//        
+//        slider.setMinimumTrackImage(image, for: UIControlState())
+//        slider.setMaximumTrackImage(UIImage(named:"outsideRetangle"), for: UIControlState())
+//        slider.setThumbImage(UIImage(named: "oval"), for: UIControlState())
+//        slider.setThumbImage(UIImage(named: "oval"), for: UIControlState.highlighted)
+//        
+//        slider.maximumValue = 10
+//        slider.minimumValue = 1
+//        
+//        slider.value = 1
+//        
+//    }
     
     
     @IBAction func SliderValueChanged(_ sender: UISlider) {
@@ -141,7 +142,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     }
     
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-        if option == .spacing{
+        if option == .spacing {
             return value * 1.1
         }
         return value

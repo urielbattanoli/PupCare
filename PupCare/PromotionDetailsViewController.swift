@@ -51,6 +51,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         carousel.delegate = self
         carousel.dataSource = self
         carousel.type = .linear
+        carousel.bounces = false
         carousel.clipsToBounds = true
         
         self.view.clipsToBounds = true
@@ -155,13 +156,14 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
         
         switch option {
         case .wrap:
-            if self.promotion!.photos.count > 1 {
+            if self.promotion!.photos.count > 2 {
                 return 1.0
             } else {
                 return 0
             }
         case .spacing:
             return value * 1.1
+    
         default:
             return value
         }
