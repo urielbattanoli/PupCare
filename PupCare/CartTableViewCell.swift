@@ -9,7 +9,6 @@
 import UIKit
 
 protocol TransactionProtocol: class {
-    func didFinishTransaction(_ message: String)
     func goToOrderResumeWithOrder(_ petShop: PetshopInCart)
 }
 

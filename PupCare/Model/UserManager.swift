@@ -61,6 +61,7 @@ class UserManager: NSObject {
             if error != nil {
                 
             } else {
+                UserManager.sharedInstance.user = nil
                 block()
             }
         }

@@ -10,7 +10,6 @@ pod 'FBSDKShareKit', '~> 4.11.0'
 pod 'ParseFacebookUtilsV4', '~> 1.11.1'
 pod 'Kingfisher', '~> 3.0'
 pod 'Alamofire', '~> 4.0'
-pod 'CardIO'
 pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'swift_3.0'
 end
 
@@ -22,7 +21,6 @@ target 'PupCareTests' do
     pod 'ParseFacebookUtilsV4', '~> 1.11.1'
     pod 'Kingfisher', '~> 3.0'
     pod 'Alamofire', '~> 4.0'
-    pod 'CardIO'
     pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'swift_3.0'
 end
 
