@@ -67,12 +67,12 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         
         if let petShop = self.petShop{
             self.petShopName.text = petShop.name
-            self.petShopAdress.text = petShop.address
+            self.petShopAdress.text = petShop.address.street
             self.petShopImage.loadImage(petShop.imageUrl)
-            self.petShopNeighbourhood.text = petShop.neighbourhood
+            self.petShopNeighbourhood.text = petShop.address.neighbourhood
             
             if let location = UserManager.sharedInstance.getLocationToSearch(){
-                var distance = Float(petShop.location.distance(from: location))
+                var distance = Float(petShop.address.location.distance(from: location))
                 distance = distance / 1000
                 
                 self.petShopDistance.text = "\(distance.roundToPlaces(2)) km"
