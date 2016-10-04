@@ -41,6 +41,8 @@
 		7A7036F41D429EF3005FAB68 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F31D429EF3005FAB68 /* Address.swift */; };
 		7A7036F81D42A0CA005FAB68 /* AddressParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */; };
 		7A7036FA1D4641D4005FAB68 /* AddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F91D4641D4005FAB68 /* AddressManager.swift */; };
+		7A7A09EE1DA2D392009EF6B7 /* Login+Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7A09ED1DA2D392009EF6B7 /* Login+Profile.storyboard */; };
+		7A7A09F01DA2D3D4009EF6B7 /* Login+ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A09EF1DA2D3D4009EF6B7 /* Login+ProfileViewController.swift */; };
 		7A9E9B8A1D36CE9700AC978C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E9B891D36CE9700AC978C /* SignUpViewController.swift */; };
 		7ACDCC0E1D63435B003F299B /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACDCC0D1D63435B003F299B /* OrderManager.swift */; };
 		A400B4751D34311100051363 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A400B4741D34311100051363 /* Profile.storyboard */; };
@@ -148,6 +150,8 @@
 		7A7036F31D429EF3005FAB68 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = Model/Address.swift; sourceTree = "<group>"; };
 		7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParseExtension.swift; sourceTree = "<group>"; };
 		7A7036F91D4641D4005FAB68 /* AddressManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressManager.swift; path = Model/AddressManager.swift; sourceTree = "<group>"; };
+		7A7A09ED1DA2D392009EF6B7 /* Login+Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Login+Profile.storyboard"; path = "View/Login+Profile.storyboard"; sourceTree = "<group>"; };
+		7A7A09EF1DA2D3D4009EF6B7 /* Login+ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Login+ProfileViewController.swift"; path = "Controller/Login+ProfileViewController.swift"; sourceTree = "<group>"; };
 		7A9E9B891D36CE9700AC978C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controller/SignUpViewController.swift; sourceTree = "<group>"; };
 		7ACDCC0D1D63435B003F299B /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderManager.swift; path = Model/OrderManager.swift; sourceTree = "<group>"; };
 		7F9E4A91966F041ECADF5C95 /* Pods_PupCareTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PupCareTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -500,6 +504,7 @@
 				A475E3411D14905200FB66C3 /* Cart.storyboard */,
 				A475E3151D0A9B3A00FB66C3 /* LaunchScreen.storyboard */,
 				39AC64BA1D2C32E400477F05 /* Login.storyboard */,
+				7A7A09ED1DA2D392009EF6B7 /* Login+Profile.storyboard */,
 				A475E30D1D0A9B3A00FB66C3 /* Main.storyboard */,
 				A475E3431D14906500FB66C3 /* Orders.storyboard */,
 				A475E33D1D148FEB00FB66C3 /* Petshops.storyboard */,
@@ -521,6 +526,7 @@
 				A424966D1D79DCCB00D5327F /* Cells */,
 				A475E3471D18535000FB66C3 /* InitialViewController.swift */,
 				7A7036EE1D413072005FAB68 /* Login */,
+				7A7A09EF1DA2D3D4009EF6B7 /* Login+ProfileViewController.swift */,
 				A475E3511D18569B00FB66C3 /* MainTabViewController.swift */,
 				7A7036F01D41308C005FAB68 /* Order */,
 				7A7036ED1D41306A005FAB68 /* PetShop */,
@@ -653,7 +659,7 @@
 				TargetAttributes = {
 					A475E3051D0A9B3A00FB66C3 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 4764BD9395;
+						DevelopmentTeam = 5CB58H6L4R;
 						LastSwiftMigration = 0800;
 					};
 					A475E31C1D0A9B3B00FB66C3 = {
@@ -695,6 +701,7 @@
 			files = (
 				7A11BEBD1D6201F600134ED8 /* Address.storyboard in Resources */,
 				7A0050411D383556003B89C3 /* Main.storyboard in Resources */,
+				7A7A09EE1DA2D392009EF6B7 /* Login+Profile.storyboard in Resources */,
 				A475E3171D0A9B3A00FB66C3 /* LaunchScreen.storyboard in Resources */,
 				A475E3141D0A9B3A00FB66C3 /* Assets.xcassets in Resources */,
 				A475E3401D14902400FB66C3 /* Promotions.storyboard in Resources */,
@@ -1098,6 +1105,7 @@
 				A42751A61D47E8BC00B083C6 /* AddCardViewController.swift in Sources */,
 				7A7036FA1D4641D4005FAB68 /* AddressManager.swift in Sources */,
 				71D722C81D47EE4800035392 /* Config.swift in Sources */,
+				7A7A09F01DA2D3D4009EF6B7 /* Login+ProfileViewController.swift in Sources */,
 				A4CAA52A1D5E5C090053EDEA /* OrderParseExtension.swift in Sources */,
 				71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */,
 				7A7036F41D429EF3005FAB68 /* Address.swift in Sources */,
@@ -1283,7 +1291,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4764BD9395;
+				DEVELOPMENT_TEAM = 5CB58H6L4R;
 				INFOPLIST_FILE = PupCare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1300,7 +1308,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4764BD9395;
+				DEVELOPMENT_TEAM = 5CB58H6L4R;
 				INFOPLIST_FILE = PupCare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

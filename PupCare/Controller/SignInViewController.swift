@@ -17,6 +17,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
         // Do any additional setup after loading the view.
     }
     
@@ -36,15 +37,11 @@ class SignInViewController: UIViewController {
         if verifyFields() {
             UserManager.sharedInstance.singInUser(username!, password: password!) { (usuario) in
                 if usuario != nil {
-                    let vcProfile : UIViewController! = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()
-                    vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
-                    let profile = vcProfile.childViewControllers[0] as! MyProfileViewController
+                    let vcLoginProfile : Login_ProfileViewController = self.tabBarController?.viewControllers![3] as! Login_ProfileViewController
+                    vcLoginProfile.updateView()
+                    
+                    let profile = vcLoginProfile.profileViewController.childViewControllers[0] as! MyProfileViewController
                     profile.user = usuario!
-                    
-                    var viewControllers = self.tabBarController?.viewControllers ?? []
-                    viewControllers[3] = vcProfile
-                    
-                    self.tabBarController?.setViewControllers(viewControllers, animated: false)
                 } else {
                     self.setAlertBody("user nil")
                 }

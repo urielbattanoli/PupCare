@@ -33,14 +33,10 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         vcOrders.tabBarItem = UITabBarItem(title: "Pedidos", image: UIImage(named: "orderIcon"), selectedImage: UIImage(named: "orderIconPressed"))
         
         //Profile ViewController
-        var vcProfile = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
+        let vcLoginProfile = UIStoryboard(name: "Login+Profile", bundle: nil).instantiateInitialViewController()!
+        vcLoginProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: UIImage(named: "userIconPressed"))
         
-        if PFUser.current() != nil{
-            vcProfile = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()!
-        }
-        vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: UIImage(named: "userIconPressed"))
-        
-        self.viewControllers = [vcPromotions,vcPetShops,vcOrders,vcProfile]
+        self.viewControllers = [vcPromotions,vcPetShops,vcOrders,vcLoginProfile]
         
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)

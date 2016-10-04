@@ -210,20 +210,15 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     
     func didPressLogOut() {
         UserManager.sharedInstance.logOutUser {
-            let vcProfile : UIViewController! = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
-            vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
-            
-            var viewControllers = self.tabBarController?.viewControllers ?? []
-            viewControllers[3] = vcProfile
-            
-            self.tabBarController?.setViewControllers(viewControllers, animated: false)
+            let vcLoginProfile : Login_ProfileViewController = self.tabBarController?.viewControllers![3] as! Login_ProfileViewController
+            vcLoginProfile.updateView()
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
-        case "logInSegue":
-            segue.destination.childViewControllers[0] as! LoginViewController
+//        case "logInSegue":
+//            segue.destination.childViewControllers[0] as! LoginViewController
         case "goToAddAddress":
             let addressVC = segue.destination as! AddressViewController
             addressVC.delegate = self

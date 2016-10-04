@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2333a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sSH-9v-m9q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2333a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uQP-E4-poI">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -8,23 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="hHJ-Qg-gKX">
-            <objects>
-                <navigationController id="sSH-9v-m9q" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tjc-Ma-wFh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="uQP-E4-poI" kind="relationship" relationship="rootViewController" id="Atm-BD-yw6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1hq-ZL-cY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-376" y="796"/>
-        </scene>
         <!--Login View Controller-->
         <scene sceneID="TNW-MV-hqO">
             <objects>
@@ -38,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="cat-and-dog-pics" translatesAutoresizingMaskIntoConstraints="NO" id="u3t-69-178">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="0.20283661912751677" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="u3t-69-178" secondAttribute="height" multiplier="375:326" id="Gv0-jU-vb4"/>
                                 </constraints>
@@ -101,7 +84,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mxN-gP-aHq" firstAttribute="centerX" secondItem="kjj-pQ-4j2" secondAttribute="centerX" id="0D6-R1-Xby"/>
                             <constraint firstItem="tTl-2G-NkY" firstAttribute="leading" secondItem="kjj-pQ-4j2" secondAttribute="leading" constant="50" id="1bI-jU-vmA"/>
@@ -264,10 +247,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="ORS-xH-1hj"/>
-                                <exclude reference="g65-Ye-FWu"/>
                                 <exclude reference="0IO-4f-uRk"/>
                                 <exclude reference="4lY-EZ-u1C"/>
+                                <exclude reference="ORS-xH-1hj"/>
+                                <exclude reference="g65-Ye-FWu"/>
                             </mask>
                         </variation>
                     </view>
@@ -279,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKL-Rv-KId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1196" y="415"/>
+            <point key="canvasLocation" x="1210" y="428"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="bpF-8c-CP0">
@@ -454,18 +437,18 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="VQn-Q3-hE6"/>
+                                <exclude reference="mft-PL-DON"/>
+                                <exclude reference="7hz-jx-xkj"/>
+                                <exclude reference="VpG-SN-Fag"/>
                                 <exclude reference="CZz-yX-plr"/>
                                 <exclude reference="TeT-p6-VbN"/>
                                 <exclude reference="oEV-hb-Ue3"/>
-                                <exclude reference="7hz-jx-xkj"/>
-                                <exclude reference="VpG-SN-Fag"/>
-                                <exclude reference="VQn-Q3-hE6"/>
-                                <exclude reference="mft-PL-DON"/>
-                                <exclude reference="bwT-YP-lsw"/>
-                                <exclude reference="rJ4-v1-hFq"/>
                                 <exclude reference="BUF-CX-ynq"/>
                                 <exclude reference="OzW-tS-O9A"/>
                                 <exclude reference="b8c-x6-XJb"/>
+                                <exclude reference="bwT-YP-lsw"/>
+                                <exclude reference="rJ4-v1-hFq"/>
                             </mask>
                         </variation>
                     </view>
