@@ -30,10 +30,10 @@ class PetShopsTableViewCell: UITableViewCell {
         didSet{
             if let petShop = self.petShop{
                 self.petShopNameLabel.text = petShop.name
-                self.petShopAddressLabel.text = petShop.address
+                self.petShopAddressLabel.text = petShop.address.street
                 self.petShopImageView.loadImage(petShop.imageUrl)
                 if let location = UserManager.sharedInstance.getLocationToSearch(){
-                    var distance = Float(petShop.location.distance(from: location))
+                    var distance = Float(petShop.address.location.distance(from: location))
                     distance = distance / 1000
                     self.petShopDistanceLabel.text = "\(distance.roundToPlaces(2)) km"
                 }

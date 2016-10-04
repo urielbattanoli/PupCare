@@ -57,6 +57,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.CartTableView.delegate = self
         self.CartTableView.dataSource = self
         
+        
+        
         for (_, petShop) in Cart.sharedInstance.cartDict.petShopList {
             sections.append(petShop)
         }
@@ -105,7 +107,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.PetShopPhotoImageView.loadImage(petShop!.imageUrl)
             cell.PetShopPhotoImageView.layer.masksToBounds = true
             cell.PetShopPhotoImageView.layer.cornerRadius = 10
-            cell.PetShopAddressLabel.text = petShop!.address
+            cell.PetShopAddressLabel.text = petShop!.address.street
             cell.PetShopNameLabel.text = petShop!.name
             cell.tagTeste = (indexPath as NSIndexPath).section
             
@@ -154,6 +156,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.price = Double(productInCart.product.price)
                 cell.beganPrice = Double(productInCart.product.price)
                 
+                
             } else {
                 
                 let productsCount: Int = section.productsInCart.count
@@ -171,6 +174,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.beganPrice = self.beganPrice + (Double(beganSliding) * cell.price)
             cell.ProductQuantitySlider.tag = (indexPath as NSIndexPath).section + 100
+            cell.ProductQuantitySlider.configureSlider(minValue: 0, maxValue: 10, thumbImage: "oval", insideRetangle: "insideRetangle", outsideRetangle: "outsideRetangle")
             
             cell.tagTeste = (indexPath as NSIndexPath).section
             cell.petShopInCart = section
@@ -317,33 +321,14 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func didFinishTransaction(_ message: String) {
-        print(message)
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        switch message {
-        case "Captured":
-            alert.title = "Pagamento Efetuado"
-            alert.message = "Sua compra foi realizada com sucesso, aguarde a entrega."
-            alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .cancel, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-                self.tabBarController?.selectedIndex = 2
-            }))
-            alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-            }))
-        case "Voided":
-            alert.title = "Falha no Pagamento"
-            alert.message = "Ocorreu algum problema na hora de confirmar o pagamento. Revise seus dados"
-            alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .cancel, handler: { (action) in
-                self.dismiss(animated: true, completion: nil)
-            }))
-        default:
-            break
-        }
+    func showAlertWhenUserIsNil(){
+        let alert = UIAlertController(title: "Você não está logado", message: "Para poder finalizar sua compra, primeiro você deve efetuar login em 'Minha conta'", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancel)
         
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     func alertRemovedItem(_ shouldRemoveItem: @escaping (Bool) -> Void) {
         let alert = UIAlertController(title: "Carrinho", message: "Deseja remover este item do carrinho?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Continuar", style: .default , handler: { action in
@@ -360,6 +345,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func goToOrderResumeWithOrder(_ petShop: PetshopInCart){
+        if UserManager.sharedInstance.user == nil{
+            self.showAlertWhenUserIsNil()
+            return
+        }
         self.performSegue(withIdentifier: "goToOrderResume", sender: petShop)
     }
     

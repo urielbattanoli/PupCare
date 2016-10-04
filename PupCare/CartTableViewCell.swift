@@ -9,7 +9,6 @@
 import UIKit
 
 protocol TransactionProtocol: class {
-    func didFinishTransaction(_ message: String)
     func goToOrderResumeWithOrder(_ petShop: PetshopInCart)
 }
 
@@ -56,6 +55,7 @@ class CartTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+     
         
     }
     

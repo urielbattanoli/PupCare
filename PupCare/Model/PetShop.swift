@@ -14,27 +14,15 @@ class PetShop: NSObject {
     var objectId: String = ""
     var name: String = ""
     var imageUrl: String = ""
-    var location = CLLocation()
-    var address: String = ""
-    var neighbourhood: String = ""
+    var address: Address
     var products: [Product] = []
     var ranking: Float = 0
-    
-    static let sharedInstance = PetShop()
-    var allPetShops: [PetShop] = []
     
     init(data: [String: AnyObject]) {
         self.objectId = data["objectId"] as! String
         self.name = data["name"] as! String
         self.imageUrl = data["photo"] as! String
-        self.location = data["location"] as! CLLocation
-        self.address = data["address"] as! String
-        self.neighbourhood = data["neighbourhood"] as! String
+        self.address = data["address"] as! Address
         self.ranking = data["rating"] as! Float
     }
-    
-    override init () {
-        
-    }
-    
 }
