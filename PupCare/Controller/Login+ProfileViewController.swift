@@ -22,7 +22,7 @@ class Login_ProfileViewController: UIViewController {
     lazy var profileViewController : UIViewController = {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         
-        var viewController = storyboard.instantiateViewController()!
+        var viewController = storyboard.instantiateInitialViewController()!
         
         return viewController
     }()
