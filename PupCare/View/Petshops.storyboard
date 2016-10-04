@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G4d-vM-CpQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1104" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G4d-vM-CpQ">
     <dependencies>
-        <development version="7000" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Pet Shops-->
@@ -15,25 +16,23 @@
                         <viewControllerLayoutGuide type="bottom" id="0Yf-cr-gsv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lqb-hA-YAJ">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="240" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Zd-C8-zIJ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="240" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Zd-C8-zIJ">
+                                <frame key="frameInset" width="600" height="536"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PetShopCell" id="sbS-cO-ctE" customClass="PetShopsTableViewCell" customModule="PupCare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbS-cO-ctE" id="7uU-n7-Fk9">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
+                                            <frame key="frameInset" width="600" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H3-mu-efp">
-                                                    <rect key="frame" x="10" y="10" width="580" height="230"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PetShopDoBom" translatesAutoresizingMaskIntoConstraints="NO" id="Hrf-yq-YN9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="580" height="160"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="160" id="6IX-NC-89h"/>
                                                                 <constraint firstAttribute="height" constant="160" id="NWy-XK-ils"/>
@@ -47,57 +46,43 @@
                                                             </variation>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXB-ol-xEg">
-                                                            <rect key="frame" x="0.0" y="160" width="580" height="70"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlI-sg-RdC">
-                                                                    <rect key="frame" x="10" y="10" width="165" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="165" id="b5z-0f-c37"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucE-tY-IyB">
-                                                                    <rect key="frame" x="425" y="10" width="145" height="14"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="145" id="A3u-cI-oNF"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-3g-Jwh">
-                                                                    <rect key="frame" x="10" y="48" width="92" height="12"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-3g-Jwh">
+                                                                    <frame key="frameInset" minX="10" minY="48" width="82" height="11"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="HuP-kd-ri3">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
-                                                                        </imageView>
-                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="rME-rK-LoO">
-                                                                            <rect key="frame" x="20" y="0.0" width="12" height="12"/>
-                                                                        </imageView>
-                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="aAZ-39-AJZ">
-                                                                            <rect key="frame" x="40" y="0.0" width="12" height="12"/>
-                                                                        </imageView>
-                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="z8D-Gp-sFV">
-                                                                            <rect key="frame" x="60" y="0.0" width="12" height="12"/>
-                                                                        </imageView>
-                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="bXb-ds-TZf">
-                                                                            <rect key="frame" x="80" y="0.0" width="12" height="12"/>
-                                                                        </imageView>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="HuP-kd-ri3"/>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="rME-rK-LoO"/>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="aAZ-39-AJZ"/>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="z8D-Gp-sFV"/>
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.0" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pet footprint" translatesAutoresizingMaskIntoConstraints="NO" id="bXb-ds-TZf"/>
                                                                     </subviews>
                                                                 </stackView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-ep-JCh">
-                                                                    <rect key="frame" x="475" y="46" width="95" height="14"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="95" id="uq3-qU-4CS"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="GFd-ep-JCh" secondAttribute="trailing" constant="10" id="8wd-T6-p09"/>
                                                                 <constraint firstAttribute="bottom" secondItem="iaV-3g-Jwh" secondAttribute="bottom" constant="10" id="LqH-MQ-ZvX"/>
@@ -111,7 +96,7 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="zXB-ol-xEg" secondAttribute="trailing" id="3rt-w9-QFa"/>
                                                         <constraint firstAttribute="trailing" secondItem="Hrf-yq-YN9" secondAttribute="trailing" id="VQk-Gm-Dhm"/>
@@ -154,7 +139,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0Yf-cr-gsv" firstAttribute="top" secondItem="6Zd-C8-zIJ" secondAttribute="bottom" id="1N7-5U-ef2"/>
                             <constraint firstItem="0Yf-cr-gsv" firstAttribute="top" secondItem="6Zd-C8-zIJ" secondAttribute="bottom" id="ARO-5l-PPG"/>
@@ -176,6 +161,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pet Shops" id="Zyr-rH-FXw"/>
                     <connections>
+                        <outlet property="TableViewConstraint" destination="1N7-5U-ef2" id="Dve-nc-WUO"/>
                         <outlet property="petShopsTableView" destination="6Zd-C8-zIJ" id="mUA-2e-KxT"/>
                         <segue destination="OiA-xe-TCP" kind="show" identifier="Products" id="0Uf-cl-EIw"/>
                     </connections>
@@ -200,8 +186,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="PoK-H7-Zl9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.29411764705882354" green="0.0" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.97530043125152588" green="0.97527122497558594" blue="0.9752877950668335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.22539636492729187" green="0.0" blue="0.22868931293487549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -214,7 +200,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Pet footprint" width="12" height="12"/>
+        <image name="Pet footprint" width="10" height="11"/>
         <image name="PetShopDoBom" width="564" height="329"/>
     </resources>
 </document>
