@@ -6,7 +6,6 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - CardIO (5.3.2)
   - FBSDKCoreKit (4.11.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.11.0):
@@ -26,7 +25,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
-  - CardIO
   - FBSDKCoreKit (~> 4.11.0)
   - FBSDKLoginKit (~> 4.11.0)
   - FBSDKShareKit (~> 4.11.0)
@@ -48,7 +46,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  CardIO: 92c45caef0d986c4a303a7afba0c9b76ff2b1f6e
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
@@ -57,6 +54,6 @@ SPEC CHECKSUMS:
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
 
-PODFILE CHECKSUM: 9bac8f6affb9b7e12a1a16d3fda433d795e511f5
+PODFILE CHECKSUM: 609ddb4b523076b74bb7d771f8b5ae2907e2428c
 
 COCOAPODS: 1.0.1
