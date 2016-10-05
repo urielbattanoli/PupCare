@@ -71,38 +71,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         
     }
     
-    
-    func HideCart() {
-        
-//        dispatch_async(dispatch_get_main_queue(), {
-//                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        self.controller = storyBoard.instantiateViewControllerWithIdentifier("CartOverView")
-//        
-//            self.controller.view.removeFromSuperview()
-      
-//        self.view.addSubview(controller.view)
-//        
-//        self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 75)
-//        
-//        UIView.animateWithDuration(0.2, delay: 0, options: .TransitionCurlUp, animations: {
-//            self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
-//            
-//            }, completion: nil)
 
-//            self.viewController.view.removeFromSuperview()
-        
-//            UIView.animateWithDuration(0.2, delay: 1, options: .CurveEaseIn, animations: {
-//                self.controller.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: 75)
-//                }, completion: { (true) in
-//                    
-//                    
-//            })
-        
-//        (self.controller as! CartOverViewController).removeFromView()
-//
-//        
-    }
-    
     func UpdateView(_ totalItensAndPrice:(Int,Double)) {
         (self.controller as! CartOverViewController).updateInfo(totalItensAndPrice)
     }
@@ -128,5 +97,5 @@ protocol CartProtocol {
 }
     
 protocol DismissProtocol {
-    func DidDismiss(option: DismissDelegateOptions)
+    func DidDismiss()
 }
