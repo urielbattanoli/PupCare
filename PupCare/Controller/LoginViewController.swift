@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func signUpWithFacebook(_ sender: AnyObject) {
         UserManager.sharedInstance.singInWithFacebook {
-            if let containerControler = self.tabBarController?.viewControllers![3], let navController = containerControler.childViewControllers[0] as? UINavigationController, let vcLoginProfile = navController.childViewControllers[0] as? Login_ProfileViewController  {
+            if let vcLoginProfile = self.tabBarController?.viewControllers![3].childViewControllers[0].childViewControllers[0] as? Login_ProfileViewController  {
                 vcLoginProfile.updateView()
             }
         }
