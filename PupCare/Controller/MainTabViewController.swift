@@ -13,17 +13,19 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
     
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
     var controller = UIViewController()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.delegate = self
         self.tabBar.tintColor = UIColor.white
         
-        //Promotions ViewController
-        let vcPromotions = UIStoryboard(name: "Promotions", bundle: nil).instantiateInitialViewController()!
-        vcPromotions.tabBarItem = UITabBarItem(title: "Promoções", image: UIImage(named: "promotionIcon"), selectedImage: UIImage(named: "promotionIconPressed"))
         
+        
+        //Promotions ViewController
+        let vcPromotions = UIStoryboard(name: "Promotions", bundle: nil).instantiateInitialViewController()! 
+        vcPromotions.tabBarItem = UITabBarItem(title: "Promoções", image: UIImage(named: "promotionIcon"), selectedImage: UIImage(named: "promotionIconPressed"))
+    
         //PetShops ViewController
         let vcPetShops = UIStoryboard(name: "Petshops", bundle: nil).instantiateInitialViewController()!
         vcPetShops.tabBarItem = UITabBarItem(title: "Pet Shops", image: UIImage(named: "petShopIcon"), selectedImage: UIImage(named: "petShopIconPressed"))
@@ -46,8 +48,6 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         controller = storyBoard.instantiateViewController(withIdentifier: "CartOverView")
         controller.view.frame = CGRect(x: 0, y: self.view.frame.height - (self.tabBar.frame.height + 75), width: self.view.frame.width, height: 75)
-        
-        
         
         self.addChildViewController(controller)
     }

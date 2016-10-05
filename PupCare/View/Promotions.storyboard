@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eGH-64-Dyd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1104" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eGH-64-Dyd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -48,7 +48,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="255"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CSl-LB-kve" id="fmy-5X-NnH">
-                                            <frame key="frameInset" width="375" height="254"/>
+                                            <frame key="frameInset" width="375" height="255"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsG-hn-qAu">
@@ -132,6 +132,9 @@
                                                             <state key="normal" title="Adicionar produto ao carrinho">
                                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="AddToCartButton:" destination="YdW-Cw-eBS" eventType="touchUpInside" id="HRZ-DV-iir"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -194,31 +197,20 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="3Lk-Tk-EXU" firstAttribute="top" secondItem="tA8-Tm-iqX" secondAttribute="bottom" id="3pk-3b-R5O"/>
-                            <constraint firstItem="tA8-Tm-iqX" firstAttribute="leading" secondItem="M3p-Ow-q66" secondAttribute="leadingMargin" constant="-20" id="Cl9-od-5VB"/>
-                            <constraint firstItem="tA8-Tm-iqX" firstAttribute="top" secondItem="ylQ-76-MY2" secondAttribute="bottom" id="DYt-j4-KPE"/>
                             <constraint firstItem="3Lk-Tk-EXU" firstAttribute="top" secondItem="FCi-xL-wz6" secondAttribute="bottom" id="Hgz-K4-U8Z"/>
-                            <constraint firstAttribute="trailing" secondItem="tA8-Tm-iqX" secondAttribute="trailing" id="IKw-p8-mqM"/>
-                            <constraint firstItem="3Lk-Tk-EXU" firstAttribute="top" secondItem="tA8-Tm-iqX" secondAttribute="bottom" id="JDL-Ky-bNS"/>
                             <constraint firstAttribute="trailing" secondItem="FCi-xL-wz6" secondAttribute="trailing" id="Lw6-Ou-1IB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tA8-Tm-iqX" secondAttribute="trailing" constant="-20" id="eEO-mY-jRB"/>
-                            <constraint firstItem="tA8-Tm-iqX" firstAttribute="leading" secondItem="M3p-Ow-q66" secondAttribute="leading" id="hNd-Sg-nGl"/>
-                            <constraint firstItem="tA8-Tm-iqX" firstAttribute="top" secondItem="M3p-Ow-q66" secondAttribute="topMargin" id="tRI-ce-uss"/>
+                            <constraint firstAttribute="trailing" secondItem="tA8-Tm-iqX" secondAttribute="trailing" id="NXv-hT-SUL"/>
+                            <constraint firstItem="tA8-Tm-iqX" firstAttribute="leading" secondItem="M3p-Ow-q66" secondAttribute="leading" id="Vgj-f7-KiS"/>
+                            <constraint firstItem="tA8-Tm-iqX" firstAttribute="top" secondItem="ylQ-76-MY2" secondAttribute="bottom" id="WjT-iQ-hMC"/>
                             <constraint firstItem="FCi-xL-wz6" firstAttribute="leading" secondItem="M3p-Ow-q66" secondAttribute="leading" id="xle-xe-cxo"/>
+                            <constraint firstItem="3Lk-Tk-EXU" firstAttribute="top" secondItem="tA8-Tm-iqX" secondAttribute="bottom" id="zRW-IN-y6Y"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Cl9-od-5VB"/>
-                                <exclude reference="eEO-mY-jRB"/>
-                                <exclude reference="tRI-ce-uss"/>
-                                <exclude reference="3pk-3b-R5O"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Promoções" id="qjO-0H-tp3">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="bpg-2b-Exw"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="TableViewConstraint" destination="zRW-IN-y6Y" id="J9g-43-Br9"/>
                         <outlet property="promotionsTableView" destination="tA8-Tm-iqX" id="yxE-2C-aoZ"/>
                         <segue destination="sdt-Jl-Yfj" kind="show" identifier="PromotionDetails" id="FD0-xC-vwP"/>
                     </connections>
@@ -354,7 +346,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eGH-64-Dyd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="2T4-Nx-Up0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="2T4-Nx-Up0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

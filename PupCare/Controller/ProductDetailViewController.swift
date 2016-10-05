@@ -16,7 +16,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var sliderQnt: UISlider!
-    
+    @IBOutlet weak var TableViewConstraint: NSLayoutConstraint!
     
     // Mark: Variables
     var product: Product?
@@ -49,25 +49,27 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         }
     }
     
-//    func configureSlider(slider: UISlider) {
-//        
-//        let image = UIImage(named:"insideRetangle")
-//        let myInsets : UIEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4)
-//        
-//        image?.resizableImage(withCapInsets: myInsets)
-//        
-//        slider.setMinimumTrackImage(image, for: UIControlState())
-//        slider.setMaximumTrackImage(UIImage(named:"outsideRetangle"), for: UIControlState())
-//        slider.setThumbImage(UIImage(named: "oval"), for: UIControlState())
-//        slider.setThumbImage(UIImage(named: "oval"), for: UIControlState.highlighted)
-//        
-//        slider.maximumValue = 10
-//        slider.minimumValue = 1
-//        
-//        slider.value = 1
-//        
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        checkCart()
+    }
     
+    //MARK: Adjust Constraints
+    func checkCart() {
+        if Cart.sharedInstance.cartDict.petShopList.count > 0 { //.getTotalItemsAndPrice().0 > 0 {
+            adjustConstraintsForCart()
+        } else {
+            adjustConstraintsToHideCart()
+        }
+    }
+    
+    func adjustConstraintsForCart() {
+        self.TableViewConstraint.constant = 75
+    }
+    
+    func adjustConstraintsToHideCart() {
+        self.TableViewConstraint.constant = 0
+    }
+
     
     @IBAction func SliderValueChanged(_ sender: UISlider) {
         
@@ -75,37 +77,6 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         
         sender.value = rounded
     }
-    
-//    
-//    func addTextToImage(image: UIImage, text: String) -> UIImage {
-//        let w = image.size.width
-//        let h = image.size.height
-//        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.None.rawValue)
-//        var colorSpace: CGColorSpaceRef = CGColorSpaceCreateDeviceRGB()!;
-//        
-//        var context: CGContextRef = CGBitmapContextCreate(nil, Int(w), Int(h), 8, 4*Int(w), colorSpace, CGImageAlphaInfo.NoneSkipFirst.rawValue)!
-//        
-//        CGContextDrawImage(context, CGRectMake(0, 0, w, h), image.CGImage)
-//        
-//        let font = UIFont.systemFontOfSize(0.0)
-//        let fontName = font.fontName as NSString
-//        let cgFont = CGFontCreateWithFontName(fontName);
-//        
-//        let copiedFont = CGFontCreateCopyWithVariations(cgFont, nil)
-//        
-//        CGContextSetFont(context, copiedFont)
-//        CGContextSetTextDrawingMode(context, .Fill)
-//        CGContextSetRGBFillColor(context, 255, 255, 255, 1)
-//        CGContextSetTextPosition(context, 3, 8)
-//        
-//        let imgCombined:CGImageRef = CGBitmapContextCreateImage(context)!
-//        
-//        let image = UIImage(CGImage: imgCombined)
-//        
-//        return image
-//        
-//        
-//    }
     
     
     // Mark: iCarousel
@@ -153,6 +124,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         
         self.CartDelegate?.ShowCart()
         self.CartDelegate?.UpdateView(Cart.sharedInstance.getTotalItemsAndPrice())
+        checkCart()
     }
     
     
