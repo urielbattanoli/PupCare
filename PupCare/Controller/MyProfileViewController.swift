@@ -35,7 +35,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 94, green: 23, blue: 96)
         if UserManager.sharedInstance.user == nil{
             UserManager.sharedInstance.createUserByCurrentUser()
         }
