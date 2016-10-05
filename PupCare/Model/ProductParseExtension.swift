@@ -14,13 +14,13 @@ extension Product{
     convenience init(parseObject: PFObject) {
         var data = [String : AnyObject]()
         
-        //PetShop_Product
+        //PetShop_Product || Order_Product
         data["price"] = parseObject["price"] as! NSNumber
         
-        if let stock = parseObject["stockCount"] as? NSNumber{
+        if let stock = parseObject["stockCount"] as? NSNumber{//petshop_product
             data["stock"] = stock
         }
-        else if let quantity = parseObject["quantity"] as? NSNumber{
+        else if let quantity = parseObject["quantity"] as? NSNumber{//order_product
             data["stock"] = quantity
         }
         

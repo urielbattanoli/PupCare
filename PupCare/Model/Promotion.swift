@@ -21,6 +21,7 @@ class Promotion: NSObject {
     var initialDate: Date = Date()
     var finalDate: Date = Date()
     var photos: [String] = []
+    var stock: NSNumber = 0
     
     init(data: [String: AnyObject]) {
         
@@ -33,10 +34,6 @@ class Promotion: NSObject {
         self.newPrice = data["newPrice"] as! Float
         self.initialDate = data["initialDate"] as! Date
         self.finalDate = data["finalDate"] as! Date
-        
-    }
-    
-    override init() {
-        
+        self.stock = data["stock"] as! NSNumber
     }
 }

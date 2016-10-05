@@ -14,16 +14,28 @@ extension Promotion {
         
         var data = [String: AnyObject]()
         
-        data["petShop"] = PetShop(parseObject: parseObject["petShopId"] as! PFObject)
         
-        data["objectId"] = parseObject.objectId as AnyObject?
-        data["promotionName"] = parseObject["promotionName"] as! String as AnyObject?
-        data["image"] = (parseObject["image"] as! PFFile).url as AnyObject?
-        data["promotionDescription"] = parseObject["promotionDescription"] as! String as AnyObject?
-        data["lastPrice"] = parseObject["lastPrice"] as! Float as AnyObject?
-        data["newPrice"] = parseObject["newPrice"] as! Float as AnyObject?
-        data["initialDate"] = parseObject["initialDate"] as! Date as AnyObject?
-        data["finalDate"] = parseObject["finalDate"] as! Date as AnyObject?
+        var promotion: PFObject = parseObject
+        
+        if let promotionId = parseObject["promotionId"] as? PFObject{
+            promotion = promotionId
+            
+            data["stock"] = parseObject["quantity"] as! NSNumber
+        }
+        else{
+            data["stock"] = 0 as AnyObject?
+        }
+        
+        data["petShop"] = PetShop(parseObject: promotion["petShopId"] as! PFObject)
+        
+        data["objectId"] = promotion.objectId as AnyObject?
+        data["promotionName"] = promotion["promotionName"] as! String as AnyObject?
+        data["image"] = (promotion["image"] as! PFFile).url as AnyObject?
+        data["promotionDescription"] = promotion["promotionDescription"] as! String as AnyObject?
+        data["lastPrice"] = promotion["lastPrice"] as! Float as AnyObject?
+        data["newPrice"] = promotion["newPrice"] as! Float as AnyObject?
+        data["initialDate"] = promotion["initialDate"] as! Date as AnyObject?
+        data["finalDate"] = promotion["finalDate"] as! Date as AnyObject?
         
         self.init(data: data)
     }

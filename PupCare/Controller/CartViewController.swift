@@ -33,8 +33,12 @@ enum DismissDelegateOptions {
 }
 
 
+protocol FinishOrderProtocol {
+    func goToOrders()
+    func removeItemFromCart(petshop: PetshopInCart)
+}
 
-class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TransactionProtocol {
+class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TransactionProtocol, FinishOrderProtocol {
     
     @IBOutlet weak var CartTableView: UITableView!
     
@@ -355,6 +359,27 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "goToOrderResume"{
             let vc = segue.destination as! OrderResumeViewController
             vc.petShopInCard = sender as? PetshopInCart
+            vc.finishDelegate = self
         }
+    }
+    
+    //MARK: Finishe order delegate
+    func goToOrders() {
+        if let tabbar = self.presentingViewController as? UITabBarController {
+            tabbar.selectedIndex = 2
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func removeItemFromCart(petshop: PetshopInCart){
+        for i in 0..<self.sections.count{
+            if petshop.petShop == self.sections[i].petShop{
+                self.sections.remove(at: i)
+                self.CartTableView.reloadData()
+            }
+        }
+        
+        Cart.sharedInstance.cartDict.petShopList.removeValue(forKey: petshop.petShop!.objectId)
+        self.CartDismissDelegate?.DidDismiss(option: .UpdateCart)
     }
 }

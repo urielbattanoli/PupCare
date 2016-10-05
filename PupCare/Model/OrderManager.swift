@@ -110,7 +110,7 @@ class OrderManager: NSObject {
         orderAsPfObject["petShopId"] = PFObject(withoutDataWithClassName: "PetShop", objectId: order["petShop"] as? String)
         orderAsPfObject["shipment"] = order["shipment"]
         orderAsPfObject["addressId"] = PFObject(withoutDataWithClassName: "Address", objectId: order["addressId"] as? String)
-        
+        orderAsPfObject["paymentMethod"] = order["paymentMethod"]
         
         orderAsPfObject.saveInBackground { (success, error) in
             callback(orderAsPfObject)
@@ -133,6 +133,7 @@ class OrderManager: NSObject {
         let orderPromotionAsPfObject = PFObject(className: "Order_Promotion")
         orderPromotionAsPfObject["orderId"] = data["orderId"] as! PFObject
         orderPromotionAsPfObject["promotionId"] = PFObject(withoutDataWithClassName: "Promotion", objectId: data["promotionId"] as? String)
+        orderPromotionAsPfObject["quantity"] = data["quantity"]
         orderPromotionAsPfObject["price"] = data["price"]
         
         orderPromotionAsPfObject.saveInBackground { (success, error) in
