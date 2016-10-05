@@ -104,8 +104,6 @@ class AddressManager: NSObject {
                 let pmDict = pm.addressDictionary
                 
                 var addressDict = [String:AnyObject]()
-                let cityState = (pmDict!["FormattedAddressLines"] as! [String])[2]
-                let city = cityState.substring(from: cityState.startIndex).substring(to: cityState.characters.index(cityState.endIndex, offsetBy: -5))
                 
                 addressDict["objectId"] = "" as AnyObject?
                 addressDict["name"] = "" as AnyObject?
@@ -114,7 +112,7 @@ class AddressManager: NSObject {
                 addressDict["additionalInfo"] = "" as AnyObject?
                 addressDict["neighbourhood"] = pmDict!["SubLocality"] as AnyObject?
                 addressDict["state"] = pmDict!["State"] as AnyObject?
-                addressDict["city"] = city as AnyObject?
+                addressDict["city"] = pmDict!["City"] as AnyObject?
                 addressDict["zip"] = "\(pmDict!["ZIP"]!)\(pmDict!["PostCodeExtension"]!)" as AnyObject?
                 addressDict["location"] = CLLocation(latitude: latitude, longitude: longitude)
                 
