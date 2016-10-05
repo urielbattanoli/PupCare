@@ -9,8 +9,14 @@
 import UIKit
 import Parse
 
+protocol ChangeContainerNavBarColor {
+    func changeNavBarColor(controllerName: String)
+}
+
 class Login_ProfileViewController: UIViewController {
 
+    var delegate : ChangeContainerNavBarColor?
+    
     lazy var loginViewController : UIViewController = {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         
@@ -37,18 +43,17 @@ class Login_ProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func applyConstraintsToRootViewController(){
-        
-    }
-    
+
     func updateView(){
         if PFUser.current() != nil {
             self.removeViewControllerAsChildViewController(viewController: loginViewController)
             self.addViewControllerAsChildViewController(viewController: profileViewController)
+            delegate?.changeNavBarColor(controllerName: "Profile")
+            
         } else {
 //            self.removeViewControllerAsChildViewController(viewController: profileViewController)
             self.addViewControllerAsChildViewController(viewController: loginViewController)
+            delegate?.changeNavBarColor(controllerName: "Login")
         }
     }
     
@@ -81,7 +86,6 @@ class Login_ProfileViewController: UIViewController {
         // Notify Child View Controller
         viewController.removeFromParentViewController()
     }
-    
 
     /*
     // MARK: - Navigation

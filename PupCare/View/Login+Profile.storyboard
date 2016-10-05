@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Profile Container View Controller-->
         <scene sceneID="Nba-mP-LXa">
             <objects>
-                <viewController id="Jw4-vi-9xH" sceneMemberID="viewController">
+                <viewController id="Jw4-vi-9xH" customClass="ProfileContainerViewController" customModule="PupCare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kyN-nE-PWg"/>
                         <viewControllerLayoutGuide type="bottom" id="3lU-kl-FmD"/>
@@ -22,7 +22,7 @@
                                 <frame key="frameInset"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
-                                    <segue destination="wg1-nK-Sg6" kind="embed" id="evo-1Q-IGo"/>
+                                    <segue destination="wg1-nK-Sg6" kind="embed" identifier="embedSegue" id="evo-1Q-IGo"/>
                                 </connections>
                             </containerView>
                         </subviews>

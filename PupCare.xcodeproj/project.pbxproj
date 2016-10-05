@@ -37,6 +37,7 @@
 		7A11BEBF1D62024800134ED8 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11BEBE1D62024800134ED8 /* AddressViewController.swift */; };
 		7A37C7B21D37DB6300FBE13F /* Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37C7B11D37DB6300FBE13F /* Designables.swift */; };
 		7A37C7B41D38261D00FBE13F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37C7B31D38261D00FBE13F /* LoginViewController.swift */; };
+		7A4409E91DA5882200F98BAC /* ProfileContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4409E81DA5882200F98BAC /* ProfileContainerViewController.swift */; };
 		7A7036EB1D40117E005FAB68 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036EA1D40117E005FAB68 /* SignInViewController.swift */; };
 		7A7036F41D429EF3005FAB68 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F31D429EF3005FAB68 /* Address.swift */; };
 		7A7036F81D42A0CA005FAB68 /* AddressParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */; };
@@ -146,6 +147,7 @@
 		7A11BEBE1D62024800134ED8 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddressViewController.swift; path = Controller/AddressViewController.swift; sourceTree = "<group>"; };
 		7A37C7B11D37DB6300FBE13F /* Designables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Designables.swift; sourceTree = "<group>"; };
 		7A37C7B31D38261D00FBE13F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controller/LoginViewController.swift; sourceTree = "<group>"; };
+		7A4409E81DA5882200F98BAC /* ProfileContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileContainerViewController.swift; path = Controller/ProfileContainerViewController.swift; sourceTree = "<group>"; };
 		7A7036EA1D40117E005FAB68 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Controller/SignInViewController.swift; sourceTree = "<group>"; };
 		7A7036F31D429EF3005FAB68 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = Model/Address.swift; sourceTree = "<group>"; };
 		7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParseExtension.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				A43C9E931D3682EB00D6D0D8 /* MyProfileDetailTableViewCell.swift */,
 				A43C9E8F1D3513E100D6D0D8 /* MyProfileTableViewCell.swift */,
 				A400B4761D34324300051363 /* MyProfileViewController.swift */,
+				7A4409E81DA5882200F98BAC /* ProfileContainerViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1110,6 +1113,7 @@
 				71C1B44A1D2ECEE700CDDA20 /* PromotionsTableViewCell.swift in Sources */,
 				7A7036F41D429EF3005FAB68 /* Address.swift in Sources */,
 				A43C9E901D3513E100D6D0D8 /* MyProfileTableViewCell.swift in Sources */,
+				7A4409E91DA5882200F98BAC /* ProfileContainerViewController.swift in Sources */,
 				A4869DCF1D259DB60076EC37 /* Product.swift in Sources */,
 				7118ED3E1D4BD901000CCB1E /* Cart.swift in Sources */,
 				A45B7E401D5E5D5C004EDC50 /* OrderTableViewCell.swift in Sources */,

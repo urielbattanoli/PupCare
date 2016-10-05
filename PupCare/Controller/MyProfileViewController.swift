@@ -35,12 +35,10 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 94, green: 23, blue: 96)
         if UserManager.sharedInstance.user == nil{
             UserManager.sharedInstance.createUserByCurrentUser()
         }
         self.user = UserManager.sharedInstance.user
-
         self.tableView.delegate = self
     }
     
@@ -210,8 +208,9 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     
     func didPressLogOut() {
         UserManager.sharedInstance.logOutUser {
-            let vcLoginProfile : Login_ProfileViewController = self.tabBarController?.viewControllers![3] as! Login_ProfileViewController
-            vcLoginProfile.updateView()
+            if let vcLoginProfile = self.tabBarController?.viewControllers![3].childViewControllers[0].childViewControllers[0] as? Login_ProfileViewController  {
+                vcLoginProfile.updateView()
+            }
         }
     }
     

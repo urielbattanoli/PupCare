@@ -40,11 +40,11 @@ class SignInViewController: UIViewController {
         if verifyFields() {
             UserManager.sharedInstance.singInUser(username!, password: password!) { (usuario) in
                 if usuario != nil {
-                    let vcLoginProfile : Login_ProfileViewController = self.tabBarController?.viewControllers![3] as! Login_ProfileViewController
-                    vcLoginProfile.updateView()
-                    
-                    let profile = vcLoginProfile.profileViewController.childViewControllers[0] as! MyProfileViewController
-                    profile.user = usuario!
+                    if let vcLoginProfile = self.tabBarController?.viewControllers![3].childViewControllers[0].childViewControllers[0] as? Login_ProfileViewController  {
+                        self.dismiss(animated: false, completion: nil)
+                        let profile = vcLoginProfile.profileViewController.childViewControllers[0] as! MyProfileViewController
+                        profile.user = usuario!
+                    }
                 } else {
                     self.setAlertBody("user nil")
                 }
