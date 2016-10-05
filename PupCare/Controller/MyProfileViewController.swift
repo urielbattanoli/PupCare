@@ -40,8 +40,6 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             UserManager.sharedInstance.createUserByCurrentUser()
         }
         self.user = UserManager.sharedInstance.user
-
-        self.tableView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,10 +105,11 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             let addressCell = tableView.dequeueReusableCell(withIdentifier: "cellAddress") as! MyProfileAddressTableViewCell
             if (indexPath as NSIndexPath).row == self.numberOfRowSection1-2{
                 addressCell.setCorner()
+                addressCell.lblAddress.text = "Adicionar novo endereço"
                 addressCell.imageAddress.image = UIImage(named: "moreBt")
                 return addressCell
             }
-            addressCell.imageAddress = nil
+            addressCell.imageAddress.image = nil
             addressCell.address = self.user.addressList[(indexPath as NSIndexPath).row-3]
             return addressCell
             

@@ -20,22 +20,11 @@ class CartOverViewController: UIViewController, DismissProtocol {
         super.viewDidLoad()
         
         ShowCartButton.layer.cornerRadius = 5
-        
-        //Promotions ViewController
-        
-        
-        
 
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-//        let totalItensAndPrice: (Int,Double) = Cart.sharedInstance.getTotalItemsAndPrice()
-//        print(totalItensAndPrice)
-//        
-//        self.ItensCountLabel.text = "\(totalItensAndPrice.0) itens"
-//        self.TotalPriceLabel.text = "Total: R$ \(totalItensAndPrice.1)"
         
     }
 
@@ -56,14 +45,17 @@ class CartOverViewController: UIViewController, DismissProtocol {
         self.view.frame = CGRect(x: 0, y: self.parent!.view.frame.height + 75, width: self.view.frame.width, height: 75)
     }
 
-    func DidDismiss(option: DismissDelegateOptions) {
-        switch option {
-        case .CartEmpty:
-            self.removeFromView()
-            break
-        case .UpdateCart:
-            self.updateInfo(Cart.sharedInstance.getTotalItemsAndPrice())
-            break
+    func DidDismiss(_ removeView: Bool) {
+        
+        let itensPrice = Cart.sharedInstance.getTotalItemsAndPrice()
+        
+        if itensPrice.0 == 0 {
+            if removeView{
+                self.removeFromView()
+            }
+        }
+        else {
+            self.updateInfo(itensPrice)
         }
     }
     

@@ -13,6 +13,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
     var CartDelegate: CartProtocol?
     
 
+    @IBOutlet weak var TableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var promotionsTableView: UITableView!
 
     var allPromotions: [Promotion] = []
@@ -33,9 +34,35 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        checkCart()
+    }
     
     
     
+    //MARK: Adjust Constraints
+    func checkCart() {
+        if Cart.sharedInstance.cartDict.petShopList.count > 0 { //.getTotalItemsAndPrice().0 > 0 {
+            adjustConstraintsForCart()
+        } else {
+            adjustConstraintsToHideCart()
+        }
+    }
+    
+    func adjustConstraintsForCart() {
+        self.TableViewConstraint.constant = 75
+        UIView.animate(withDuration: 0.5) { 
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    func adjustConstraintsToHideCart() {
+        self.TableViewConstraint.constant = 0
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -73,6 +100,12 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         performSegue(withIdentifier: "PromotionDetails", sender: self.allPromotions[(indexPath as NSIndexPath).row])
         tableView.deselectRow(at: indexPath, animated: false)
     }
+    
+    
+    @IBAction func AddToCartButton(_ sender: AnyObject) {
+        adjustConstraintsForCart()
+    }
+    
     
     /*
     // MARK: - Navigation

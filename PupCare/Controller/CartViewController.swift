@@ -27,12 +27,6 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-enum DismissDelegateOptions {
-    case CartEmpty
-    case UpdateCart
-}
-
-
 protocol FinishOrderProtocol {
     func goToOrders()
     func removeItemFromCart(petshop: PetshopInCart)
@@ -56,14 +50,12 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.CartTableView.tableFooterView = UIView()
+        
         self.CartTableView.delegate = self
         self.CartTableView.dataSource = self
         
-        
-        
-        for (_, petShop) in Cart.sharedInstance.cartDict.petShopList {
-            sections.append(petShop)
-        }
+        updateSections()
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -79,14 +71,20 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    func updateSections() {
+        self.sections = []
+        for (_, petShop) in Cart.sharedInstance.cartDict.petShopList {
+            sections.append(petShop)
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let itensCount = sections[section].productsInCart.count + sections[section].promotionsInCart.count + 2
-        if (itensCount > 2) {
-            return (sections[section].productsInCart.count + sections[section].promotionsInCart.count + 2)
+        let itensCount = sections[section].productsInCart.count + sections[section].promotionsInCart.count
+        if (itensCount > 0) {
+            return (itensCount + 2)
         } else {
-            if (sections.count == 1) {
-                self.CartDismissDelegate?.DidDismiss(option: .CartEmpty)
+            if (sections.count < 1) {
+                self.CartDismissDelegate?.DidDismiss(true)
                 return 0
             } else {
                 return 0
@@ -121,7 +119,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             let thisSection = sections[(indexPath as NSIndexPath).section]
             cell.FinishOrderButton.layer.cornerRadius = 5
             cell.FinishOrderButton.layer.masksToBounds = true
-            cell.FinishOrderPriceLabel.text = "\(thisSection.totalPrice)"
+            cell.FinishOrderPriceLabel.text = NSNumber(value: thisSection.totalPrice).numberToPrice()
             cell.beganPrice = thisSection.totalPrice
             cell.price = thisSection.totalPrice
             
@@ -151,7 +149,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let productInCart = section.productsInCart[(indexPath as NSIndexPath).row - 1]
                 cell.productInCart = productInCart
                 cell.ProductPhotoImageView.loadImage(productInCart.product.imageUrl)
-                cell.ProductValueLabel.text = "\(Double(productInCart.product.price) * Double(productInCart.quantity))"
+                cell.ProductValueLabel.text = NSNumber(value: Double(productInCart.product.price) * Double(productInCart.quantity)).numberToPrice()
                 cell.ProductQuantitySlider.value = Float(productInCart.quantity)
                 cell.ProductQuantity.text = "\(productInCart.quantity)"
                 cell.ProductNameLabel.text = productInCart.product.name
@@ -164,7 +162,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let productsCount: Int = section.productsInCart.count
                 let promotionInCart = section.promotionsInCart[(indexPath as NSIndexPath).row - 1 - productsCount]
                 cell.ProductNameLabel.text = promotionInCart.promotion.promotionName
-                cell.ProductValueLabel.text = "\(Double(promotionInCart.promotion.newPrice) * Double(promotionInCart.quantity))"
+                cell.ProductValueLabel.text = NSNumber(value: Double(promotionInCart.promotion.newPrice) * Double(promotionInCart.quantity)).numberToPrice()
                 cell.ProductQuantitySlider.value = Float(promotionInCart.quantity)
                 cell.ProductQuantity.text = "\(promotionInCart.quantity)"
                 cell.ProductPhotoImageView.loadImage(promotionInCart.promotion.promotionImage)
@@ -251,13 +249,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                         if let workingCell = workingCell {
                             finishCell.price = finishCell.price - (Double(beganSliding) * workingCell.price) + (Double(endedSliding) * workingCell.price)
-                            finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                            finishCell.FinishOrderPriceLabel.text = NSNumber(value: finishCell.price).numberToPrice()
                             
                             
                             let object = workingCell.petShopInCart!.petShop!.objectId
                             Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
                         }
-                        self.CartDismissDelegate?.DidDismiss(option: .UpdateCart)
+                        self.CartDismissDelegate?.DidDismiss(true)
                         // DIMINUIU VALOR NO SLIDER
                     } else if endedSliding < beganSliding {
                         // VALOR MENOR QUE O MINIMO
@@ -265,7 +263,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                             
                             if finishCell.itensCount > 0 {
                                 finishCell.price = finishCell.price - (Double(beganSliding) * workingCell!.price)
-                                finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                                finishCell.FinishOrderPriceLabel.text = NSNumber(value: finishCell.price).numberToPrice()
                                 
                                 finishCell.itensCount = finishCell.itensCount - (beganSliding - endedSliding)
                                 finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
@@ -286,7 +284,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     self.workingCell!.ProductValueLabel.text = "\(self.workingCell!.beganPrice)"
                                     
                                     finishCell.price = finishCell.price + self.workingCell!.price
-                                    finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                                    finishCell.FinishOrderPriceLabel.text = NSNumber(value: finishCell.price).numberToPrice()
                                     
                                     finishCell.itensCount = finishCell.itensCount + 1
                                     finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
@@ -297,7 +295,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     
                                     Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: 1)
                                 }
-                                self.CartDismissDelegate?.DidDismiss(option: .UpdateCart)
+                                self.CartDismissDelegate?.DidDismiss(true)
                             })
                             
                             // APENAS DIMINUIU
@@ -310,11 +308,11 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 finishCell.price = finishCell.price - (Double(beganSliding) * workingCell.price) + (Double(endedSliding) * workingCell.price)
                                 
                                 
-                                finishCell.FinishOrderPriceLabel.text = "\(finishCell.price)"
+                                finishCell.FinishOrderPriceLabel.text = NSNumber(value: finishCell.price).numberToPrice()
                                 
                                 let object = workingCell.petShopInCart!.petShop!.objectId
                                 Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
-                                self.CartDismissDelegate?.DidDismiss(option: .UpdateCart)
+                                self.CartDismissDelegate?.DidDismiss(true)
                             }
                         }
                     }
@@ -380,6 +378,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         Cart.sharedInstance.cartDict.petShopList.removeValue(forKey: petshop.petShop!.objectId)
-        self.CartDismissDelegate?.DidDismiss(option: .UpdateCart)
+        self.CartDismissDelegate?.DidDismiss(false)
     }
 }

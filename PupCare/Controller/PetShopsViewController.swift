@@ -11,6 +11,7 @@ import UIKit
 class PetShopsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var petShopsTableView: UITableView!
+    @IBOutlet weak var TableViewConstraint: NSLayoutConstraint!
     
     var allPetShops: [PetShop] = []
     
@@ -53,6 +54,36 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
 //        self.petShopsTableView.contentOffset = CGPointMake(0, self.petShopsTableView.tableHeaderView!.frame.size.height)//self.searchController.searchBar.frame.size.height)
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        checkCart()
+    }
+    
+    //MARK: Adjust Constraints
+    func checkCart() {
+        if Cart.sharedInstance.cartDict.petShopList.count > 0 { //.getTotalItemsAndPrice().0 > 0 {
+            adjustConstraintsForCart()
+        } else {
+            adjustConstraintsToHideCart()
+        }
+    }
+    
+    func adjustConstraintsForCart() {
+        self.TableViewConstraint.constant = 75
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    func adjustConstraintsToHideCart() {
+        self.TableViewConstraint.constant = 0
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     
     func filterPetShopsForSearchText(_ searchText: String, scope: String = "All") {
         filteredPetShops = allPetShops.filter { petShop in

@@ -19,6 +19,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var petShopDistance: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var TableViewConstraint: NSLayoutConstraint!
     
     // MARK: Variables
     var petShop: PetShop?
@@ -88,6 +89,27 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
                 })
             }
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        checkCart()
+    }
+    
+    
+    //MARK: Adjust Constraints
+    func checkCart() {
+        if Cart.sharedInstance.cartDict.petShopList.count > 0 { //.getTotalItemsAndPrice().0 > 0 {
+            adjustConstraintsForCart()
+        } else {
+            adjustConstraintsToHideCart()
+        }
+    }
+    
+    func adjustConstraintsForCart() {
+        self.TableViewConstraint.constant = 75
+    }
+    
+    func adjustConstraintsToHideCart() {
+        self.TableViewConstraint.constant = 0
     }
     
     // MARK: Table view data source
