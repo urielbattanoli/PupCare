@@ -17,6 +17,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var sliderQnt: UISlider!
     @IBOutlet weak var TableViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lblPrice: UILabel!
     
     // Mark: Variables
     var product: Product?
@@ -28,7 +29,7 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
         
         self.title = "Detalhes do produto"
         
-        
+        self.lblPrice.text = "Valor: " + product!.price.numberToPrice()
         
         self.carousel.delegate = self
         self.carousel.dataSource = self
@@ -74,8 +75,11 @@ class ProductDetailViewController: UIViewController, iCarouselDataSource, iCarou
     @IBAction func SliderValueChanged(_ sender: UISlider) {
         
         let rounded = round(sender.value)
-        
         sender.value = rounded
+        
+        let price: NSNumber = NSNumber(value: (Float(product!.price) * rounded))
+        
+        self.lblPrice.text = "Valor: " + price.numberToPrice()
     }
     
     

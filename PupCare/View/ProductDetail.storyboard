@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1104" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uYQ-Cz-XyU">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uYQ-Cz-XyU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -19,11 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xc3-61-EQI">
-                                <frame key="frameInset" minY="20" width="600" height="580"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xc3-61-EQI">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ração Bravo Premium" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6UP-3d-Wmu">
-                                        <rect key="frame" x="188" y="265" width="225" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ração Bravo Premium" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6UP-3d-Wmu">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="BHo-aA-HjJ"/>
                                         </constraints>
@@ -31,8 +29,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7f-t2-EnE">
-                                        <rect key="frame" x="188" y="295" width="225" height="98"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7f-t2-EnE">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="OBz-Ni-hZi"/>
                                             <constraint firstAttribute="height" constant="100" id="aUV-LM-P94"/>
@@ -50,8 +47,7 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yj2-6X-6CT" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="187" y="498" width="225" height="45"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yj2-6X-6CT" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
                                         <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="LiX-m0-0nR"/>
@@ -82,19 +78,17 @@
                                             <action selector="AddToCartButton:" destination="uYQ-Cz-XyU" eventType="touchUpInside" id="4ds-9y-TcC"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Wq-d9-mWu" customClass="iCarousel">
-                                        <rect key="frame" x="0.0" y="15" width="600" height="225"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Wq-d9-mWu" customClass="iCarousel">
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="225" id="x5b-mJ-tlP"/>
                                         </constraints>
                                     </view>
-                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="dx2-yx-M2a" customClass="ASValueTrackingSlider">
-                                        <rect key="frame" x="186" y="453" width="229" height="31"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="dx2-yx-M2a" customClass="ASValueTrackingSlider">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="TkM-k0-kS4"/>
                                             <constraint firstAttribute="width" constant="225" id="WJe-39-Ao1"/>
-                                            <constraint firstAttribute="height" constant="30" id="z0n-rd-8rJ"/>
+                                            <constraint firstAttribute="height" constant="35" id="z0n-rd-8rJ"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -105,6 +99,15 @@
                                             <action selector="SliderValueChanged:" destination="uYQ-Cz-XyU" eventType="valueChanged" id="Ik6-Fa-jBM"/>
                                         </connections>
                                     </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor: R$ 999,99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3w-MY-Ao8">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="257-82-zuC"/>
+                                            <constraint firstAttribute="width" constant="225" id="qft-Jt-UiX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="0NP-lN-a4r"/>
@@ -113,6 +116,7 @@
                                     <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="ATv-iF-eoW"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="Eed-Pm-0VU"/>
                                     <constraint firstItem="yj2-6X-6CT" firstAttribute="top" secondItem="dx2-yx-M2a" secondAttribute="bottom" constant="10" id="M0D-sy-stS"/>
+                                    <constraint firstItem="t3w-MY-Ao8" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="OAa-aX-n4j"/>
                                     <constraint firstItem="dx2-yx-M2a" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="Tlh-4g-ZJh"/>
                                     <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="X0Y-6T-anP"/>
                                     <constraint firstItem="6UP-3d-Wmu" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="bDZ-hs-jB1"/>
@@ -125,6 +129,7 @@
                                     <constraint firstItem="dx2-yx-M2a" firstAttribute="top" secondItem="J7f-t2-EnE" secondAttribute="bottom" constant="60" id="jX0-Jn-upG"/>
                                     <constraint firstAttribute="height" constant="580" id="jlv-c0-5o0"/>
                                     <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="kDC-at-Nir"/>
+                                    <constraint firstItem="dx2-yx-M2a" firstAttribute="top" secondItem="t3w-MY-Ao8" secondAttribute="bottom" constant="35" id="kOP-mi-U2q"/>
                                     <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="kmP-Gf-lgl"/>
                                     <constraint firstItem="9Wq-d9-mWu" firstAttribute="top" secondItem="Xc3-61-EQI" secondAttribute="top" constant="15" id="lK5-xn-06R"/>
                                     <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="nWb-hO-4xv"/>
@@ -164,12 +169,13 @@
                         <outlet property="carousel" destination="9Wq-d9-mWu" id="fFn-4X-yQ4"/>
                         <outlet property="lblDescription" destination="J7f-t2-EnE" id="Wlw-HX-J0q"/>
                         <outlet property="lblName" destination="6UP-3d-Wmu" id="Mrn-bY-rKL"/>
+                        <outlet property="lblPrice" destination="t3w-MY-Ao8" id="A4b-K8-hrO"/>
                         <outlet property="sliderQnt" destination="dx2-yx-M2a" id="4av-pm-EGL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OWc-1z-ZJM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="511" y="540"/>
+            <point key="canvasLocation" x="509.60000000000002" y="539.28035982008998"/>
         </scene>
     </scenes>
 </document>
