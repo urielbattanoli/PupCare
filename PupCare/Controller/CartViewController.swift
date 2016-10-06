@@ -370,9 +370,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func removeItemFromCart(petshop: PetshopInCart){
-        for i in 0..<self.sections.count{
-            if petshop.petShop == self.sections[i].petShop{
-                self.sections.remove(at: i)
+        for (index,section) in self.sections.enumerated(){
+            if petshop.petShop == section.petShop{
+                self.sections.remove(at: index)
                 self.CartTableView.reloadData()
             }
         }
