@@ -152,12 +152,16 @@ class UserManager: NSObject {
                     return nil
                 }
                 
-            }
-            else if locationType>0{
+            } else if locationType > 0 {
                 if let user = self.user{
                     let address = user.addressList[locationType-1]
                     return address.location
                 }
+            } else if locationType == 0 {
+                if let cep = defaults.object(forKey: "CEP") as? Int {
+                    
+                }
+            
             }
         }
         return nil
