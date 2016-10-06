@@ -97,5 +97,5 @@ protocol CartProtocol {
 }
     
 protocol DismissProtocol {
-    func DidDismiss()
+    func DidDismiss(_ removeView: Bool)
 }

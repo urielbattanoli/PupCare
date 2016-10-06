@@ -119,3 +119,7 @@ extension UISlider {
         self.value = 1
     }
 }
+
+extension Notification.Name {
+    static let whenDidFinishOrder = Notification.Name("NEWORDERFINISHED")
+}

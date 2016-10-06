@@ -27,8 +27,12 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
+protocol FinishOrderProtocol {
+    func goToOrders()
+    func removeItemFromCart(petshop: PetshopInCart)
+}
 
-class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TransactionProtocol {
+class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TransactionProtocol, FinishOrderProtocol {
     
     @IBOutlet weak var CartTableView: UITableView!
     
@@ -80,7 +84,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             return (itensCount + 2)
         } else {
             if (sections.count < 1) {
-                self.CartDismissDelegate?.DidDismiss()
+                self.CartDismissDelegate?.DidDismiss(true)
                 return 0
             } else {
                 return 0
@@ -251,7 +255,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                             let object = workingCell.petShopInCart!.petShop!.objectId
                             Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
                         }
-                        self.CartDismissDelegate?.DidDismiss()
+                        self.CartDismissDelegate?.DidDismiss(true)
                         // DIMINUIU VALOR NO SLIDER
                     } else if endedSliding < beganSliding {
                         // VALOR MENOR QUE O MINIMO
@@ -291,7 +295,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     
                                     Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(self.workingCell!.productInCart, promotion: self.workingCell!.promotionInCart, petShopId: object, newQuantity: 1)
                                 }
-                                self.CartDismissDelegate?.DidDismiss()
+                                self.CartDismissDelegate?.DidDismiss(true)
                             })
                             
                             // APENAS DIMINUIU
@@ -308,7 +312,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 
                                 let object = workingCell.petShopInCart!.petShop!.objectId
                                 Cart.sharedInstance.cartDict.petShopList[object]?.updateQuantity(workingCell.productInCart, promotion: workingCell.promotionInCart, petShopId: object, newQuantity: endedSliding)
-                                self.CartDismissDelegate?.DidDismiss()
+                                self.CartDismissDelegate?.DidDismiss(true)
                             }
                         }
                     }
@@ -353,6 +357,27 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "goToOrderResume"{
             let vc = segue.destination as! OrderResumeViewController
             vc.petShopInCard = sender as? PetshopInCart
+            vc.finishDelegate = self
         }
+    }
+    
+    //MARK: Finishe order delegate
+    func goToOrders() {
+        if let tabbar = self.presentingViewController as? UITabBarController {
+            tabbar.selectedIndex = 2
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func removeItemFromCart(petshop: PetshopInCart){
+        for (index,section) in self.sections.enumerated(){
+            if petshop.petShop == section.petShop{
+                self.sections.remove(at: index)
+                self.CartTableView.reloadData()
+            }
+        }
+        
+        Cart.sharedInstance.cartDict.petShopList.removeValue(forKey: petshop.petShop!.objectId)
+        self.CartDismissDelegate?.DidDismiss(false)
     }
 }

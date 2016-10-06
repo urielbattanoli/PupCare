@@ -124,12 +124,14 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellProduct", for: indexPath) as! ProductTableViewCell
-        
+        let product: Product!
         if !(self.searchBar.text?.isEmpty)! {
-            cell.product = self.filteredProducts[(indexPath as NSIndexPath).row]
+            product = self.filteredProducts[(indexPath as NSIndexPath).row]
         } else {
-            cell.product = self.products![(indexPath as NSIndexPath).row]
+            product = self.products![(indexPath as NSIndexPath).row]
         }
+        cell.product = product
+        cell.lblPrice.text = product.price.numberToPrice()
         
         return cell
     }

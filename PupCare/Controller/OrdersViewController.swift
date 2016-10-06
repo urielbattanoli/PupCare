@@ -24,6 +24,16 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(OrdersViewController.reloadOrderTableView), name: .whenDidFinishOrder, object: nil)
+        self.loadUsersOrder()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func loadUsersOrder(){
         if UserManager.sharedInstance.user != nil{
             OrderManager.sharedInstance.getOrderList { (orders) in
                 self.orders = orders
@@ -31,9 +41,8 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func reloadOrderTableView(){
+        self.loadUsersOrder()
     }
     
     //MARK: TableView data source

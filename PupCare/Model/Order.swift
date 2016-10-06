@@ -18,6 +18,7 @@ class Order: NSObject {
     let shipment: NSNumber
     var totalQuantity = 0
     let addressId: Address
+    let paymentMethod: NSNumber
     
     var products: [Product] = []{
         didSet{
@@ -25,7 +26,16 @@ class Order: NSObject {
             for product in products{
                 totalQuantity += product.stock.intValue
             }
-            self.totalQuantity = totalQuantity
+            self.totalQuantity += totalQuantity
+        }
+    }
+    var promotions: [Promotion] = []{
+        didSet{
+            var totalQuantity = 0
+            for promotions in self.promotions{
+                totalQuantity += promotions.stock.intValue
+            }
+            self.totalQuantity += totalQuantity
         }
     }
     
@@ -37,5 +47,6 @@ class Order: NSObject {
         self.trackId = data["trackId"] as! String
         self.shipment = data["shipment"] as! NSNumber
         self.addressId = data["addressId"] as! Address
+        self.paymentMethod = data["paymentMethod"] as! NSNumber
     }
 }
