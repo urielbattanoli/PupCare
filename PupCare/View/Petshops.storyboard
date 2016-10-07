@@ -161,6 +161,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pet Shops" id="Zyr-rH-FXw"/>
                     <connections>
+                        <outlet property="TableViewConstraint" destination="1N7-5U-ef2" id="Dve-nc-WUO"/>
                         <outlet property="petShopsTableView" destination="6Zd-C8-zIJ" id="mUA-2e-KxT"/>
                         <segue destination="OiA-xe-TCP" kind="show" identifier="Products" id="0Uf-cl-EIw"/>
                     </connections>

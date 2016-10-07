@@ -199,6 +199,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ctl-PO-dlb"/>
                     <connections>
+                        <outlet property="TableViewConstraint" destination="5qO-mw-aox" id="uyo-zs-Jxd"/>
                         <outlet property="petShopAdress" destination="tIL-Sa-D8Y" id="TTt-6y-yWI"/>
                         <outlet property="petShopDistance" destination="PIg-iY-iaw" id="zSH-Ut-6fN"/>
                         <outlet property="petShopImage" destination="yi1-i7-jfJ" id="yQn-sq-Ukf"/>

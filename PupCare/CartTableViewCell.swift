@@ -70,20 +70,14 @@ class CartTableViewCell: UITableViewCell {
         
         sender.value = rounded
         
-        self.ProductQuantity.text = "\(rounded)"
+        self.ProductQuantity.text = "\(Int(rounded))"
         
         if productInCart != nil {
-            self.ProductValueLabel.text = "\(Float(productInCart!.product.price) * rounded)"
+            self.ProductValueLabel.text = NSNumber(value: Double(productInCart!.product.price) * Double(rounded)).numberToPrice()
             self.productInCart?.quantity = Int(rounded)
-            
-            if let object = petShopInCart!.productsInCart.index(where: {$0.product == productInCart?.product}) {
-                
-                print(object)
-            }
-            
         }
         if promotionInCart != nil {
-            self.ProductValueLabel.text = "\(Float(promotionInCart!.promotion.newPrice) * rounded)"
+            self.ProductValueLabel.text = NSNumber(value: Double(promotionInCart!.promotion.newPrice) * Double(rounded)).numberToPrice()
             self.promotionInCart?.quantity = Int(rounded)
         }
     }

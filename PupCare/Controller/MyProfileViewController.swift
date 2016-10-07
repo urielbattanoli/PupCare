@@ -35,11 +35,11 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if UserManager.sharedInstance.user == nil{
             UserManager.sharedInstance.createUserByCurrentUser()
         }
         self.user = UserManager.sharedInstance.user
-        self.tableView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -105,10 +105,11 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
             let addressCell = tableView.dequeueReusableCell(withIdentifier: "cellAddress") as! MyProfileAddressTableViewCell
             if (indexPath as NSIndexPath).row == self.numberOfRowSection1-2{
                 addressCell.setCorner()
+                addressCell.lblAddress.text = "Adicionar novo endereço"
                 addressCell.imageAddress.image = UIImage(named: "moreBt")
                 return addressCell
             }
-            addressCell.imageAddress = nil
+            addressCell.imageAddress.image = nil
             addressCell.address = self.user.addressList[(indexPath as NSIndexPath).row-3]
             return addressCell
             
@@ -208,16 +209,20 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     
     func didPressLogOut() {
         UserManager.sharedInstance.logOutUser {
-            if let vcLoginProfile = self.tabBarController?.viewControllers![3].childViewControllers[0].childViewControllers[0] as? Login_ProfileViewController  {
-                vcLoginProfile.updateView()
-            }
+            let vcProfile : UIViewController! = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
+            vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
+            
+            var viewControllers = self.tabBarController?.viewControllers ?? []
+            viewControllers[3] = vcProfile
+            
+            self.tabBarController?.setViewControllers(viewControllers, animated: false)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
-//        case "logInSegue":
-//            segue.destination.childViewControllers[0] as! LoginViewController
+        case "logInSegue":
+            segue.destination.childViewControllers[0] as! LoginViewController
         case "goToAddAddress":
             let addressVC = segue.destination as! AddressViewController
             addressVC.delegate = self

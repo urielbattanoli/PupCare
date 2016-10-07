@@ -20,15 +20,19 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         self.tableView.tableFooterView = UIView()
         
-        if self.order?.products.count==0{
+        if (self.order?.products.count)! + (self.order?.promotions.count)! == 0{
+            self.order?.totalQuantity = 0
             OrderManager.sharedInstance.getOrderProducts(self.order!, block: { (products) in
-                self.order!.products = products
-                self.numberOfRowInsection += products.count ?? 0
-                self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                OrderManager.sharedInstance.getOrderPromotions(self.order!, block: { (promotions) in
+                    self.order!.promotions = promotions
+                    self.order!.products = products
+                    self.numberOfRowInsection += products.count + promotions.count
+                    self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                })
             })
         }
         else{
-            self.numberOfRowInsection += self.order?.products.count ?? 0
+            self.numberOfRowInsection += (self.order?.products.count)! + (self.order?.promotions.count)!
         }
     }
     
@@ -72,12 +76,23 @@ class OrderDetailViewController: UIViewController, UITableViewDataSource, UITabl
             return cell
             
         default:
-            //product list
-            let product = self.order?.products[(indexPath as NSIndexPath).row-1]
             let cell = tableView.dequeueReusableCell(withIdentifier: "productCell") as! ProductTableViewCell
-            cell.product = product
-            cell.lblQuant.text = "\(product!.stock) itens comprados"
+            var index = indexPath.row-1
             
+            //product list
+            if index<(self.order?.products.count)!{
+                let product = (self.order?.products[index])!
+                cell.product = product
+                cell.lblPrice.text = product.price.numberToPrice()
+                cell.lblQuant.text = "\(product.stock) itens comprados"
+            }
+            else{
+                index -= (self.order?.products.count)!
+                let promotion = (self.order?.promotions[index])!
+                cell.promotion = promotion
+                cell.lblQuant.text = "\(promotion.stock) itens comprados"
+                cell.lblPrice.text = NSNumber(value: promotion.newPrice).numberToPrice()
+            }
             return cell
         }
     }

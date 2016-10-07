@@ -19,6 +19,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var petShopDistance: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var TableViewConstraint: NSLayoutConstraint!
     
     // MARK: Variables
     var petShop: PetShop?
@@ -89,6 +90,27 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        checkCart()
+    }
+    
+    
+    //MARK: Adjust Constraints
+    func checkCart() {
+        if Cart.sharedInstance.cartDict.petShopList.count > 0 { //.getTotalItemsAndPrice().0 > 0 {
+            adjustConstraintsForCart()
+        } else {
+            adjustConstraintsToHideCart()
+        }
+    }
+    
+    func adjustConstraintsForCart() {
+        self.TableViewConstraint.constant = 75
+    }
+    
+    func adjustConstraintsToHideCart() {
+        self.TableViewConstraint.constant = 0
+    }
     
     // MARK: Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,12 +124,14 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellProduct", for: indexPath) as! ProductTableViewCell
-        
+        let product: Product!
         if !(self.searchBar.text?.isEmpty)! {
-            cell.product = self.filteredProducts[(indexPath as NSIndexPath).row]
+            product = self.filteredProducts[(indexPath as NSIndexPath).row]
         } else {
-            cell.product = self.products![(indexPath as NSIndexPath).row]
+            product = self.products![(indexPath as NSIndexPath).row]
         }
+        cell.product = product
+        cell.lblPrice.text = product.price.numberToPrice()
         
         return cell
     }

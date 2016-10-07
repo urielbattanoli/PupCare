@@ -9,7 +9,7 @@
 import UIKit
 
 class CartOverViewController: UIViewController, DismissProtocol {
-
+    
     @IBOutlet weak var ShowCartButton: UIButton!
     @IBOutlet weak var ItensCountLabel: UILabel!
     @IBOutlet weak var TotalPriceLabel: UILabel!
@@ -21,24 +21,13 @@ class CartOverViewController: UIViewController, DismissProtocol {
         
         ShowCartButton.layer.cornerRadius = 5
         
-        //Promotions ViewController
-        
-        
-        
-
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-//        let totalItensAndPrice: (Int,Double) = Cart.sharedInstance.getTotalItemsAndPrice()
-//        print(totalItensAndPrice)
-//        
-//        self.ItensCountLabel.text = "\(totalItensAndPrice.0) itens"
-//        self.TotalPriceLabel.text = "Total: R$ \(totalItensAndPrice.1)"
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,22 +37,24 @@ class CartOverViewController: UIViewController, DismissProtocol {
         self.ItensCountLabel.text = "\(totalItensAndPrice.0) itens"
         self.TotalPriceLabel.text = "Total: \(NSNumber(value: totalItensAndPrice.1).numberToPrice())"
     }
-
-    func removeFromView() {
+    
+    func removeFromView(_ removeView: Bool) {
         
-        self.dismiss(animated: true, completion: nil)
-        
+        if removeView{
+            self.dismiss(animated: true, completion: nil)
+        }
         self.view.frame = CGRect(x: 0, y: self.parent!.view.frame.height + 75, width: self.view.frame.width, height: 75)
     }
-
-    func DidDismiss(option: DismissDelegateOptions) {
-        switch option {
-        case .CartEmpty:
-            self.removeFromView()
-            break
-        case .UpdateCart:
-            self.updateInfo(Cart.sharedInstance.getTotalItemsAndPrice())
-            break
+    
+    func DidDismiss(_ removeView: Bool) {
+        
+        let itensPrice = Cart.sharedInstance.getTotalItemsAndPrice()
+        
+        if itensPrice.0 == 0 {
+            self.removeFromView(removeView)
+        }
+        else {
+            self.updateInfo(itensPrice)
         }
     }
     
@@ -79,13 +70,13 @@ class CartOverViewController: UIViewController, DismissProtocol {
         self.present(nvcCart, animated: true, completion: nil)
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
