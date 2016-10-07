@@ -44,18 +44,17 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate {
     
     func alertRequestLocation() {
         
-        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse) {
             performSegue(withIdentifier: "goToPetShops", sender: nil)
             
+        } else if ((defaults.object(forKey: "location") as? Int) != nil) && ((defaults.object(forKey: "geopoint") as? String) != nil) {
+            performSegue(withIdentifier: "goToPetShops", sender: nil)
         } else if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.denied {
             
             let alert2 = UIAlertController(title: "Informe-nos sua Localização", message: "PupCare funciona com base na sua localização. Para ativar a localização você deve ir até as configurações, ou adicionar um CEP.", preferredStyle: UIAlertControllerStyle.alert)
-            
             alert2.addAction(UIAlertAction(title: "Buscar pelo seu CEP", style: .default , handler: { action in
                 self.requestCEP()
-                
             }))
-            
             self.present(alert2, animated: true, completion: nil)
             
         } else {
@@ -63,21 +62,14 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate {
             let alert = UIAlertController(title: "Informe-nos sua Localização", message: "PupCare funciona com base na sua localização. Ative-a para serem mostradas todas as pet shops próximas à você.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ativar e buscar pelo GPS", style: .default , handler: { action in
                 print("Ativou")
-                
                 if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.denied {
-                    
-                    
                 } else {
                     self.ativou()
                 }
-                
             }))
-            
             alert.addAction(UIAlertAction(title: "Buscar pelo seu CEP", style: .default , handler: { action in
                 self.requestCEP()
-                
             }))
-            
             self.present(alert, animated: true, completion: nil)
         }
         
@@ -93,10 +85,38 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .default , handler: { action in
             let textField = alert.textFields?.first
             
-//            AddressManager.sharedInstance.getZipInformation(textField!.text!, jsonResponse: { (json, error) in
-                self.defaults.set(0, forKey: "location")
-                self.defaults.set(textField!.text!, forKey: "gps")
-//            })
+
+            self.defaults.set(0, forKey: "location")
+            AddressManager.sharedInstance.getZipInformation(textField!.text!, jsonResponse: { (json, error) in
+            
+                print("ENDEREÇO")
+                print(json)
+                
+                let addressJson = AddressJson(json: json!)!
+                
+                var addressDict = [String:AnyObject]()
+                
+                addressDict["objectId"] = "" as AnyObject?
+                addressDict["name"] = "" as AnyObject?
+                addressDict["street"] = addressJson.logradouro as AnyObject?
+                addressDict["number"] = 0 as AnyObject?
+                addressDict["additionalInfo"] = "" as AnyObject?
+                addressDict["neighbourhood"] = addressJson.bairro as AnyObject?
+                addressDict["state"] = addressJson.uf as AnyObject?
+                addressDict["city"] = addressJson.localidade as AnyObject?
+                addressDict["zip"] = addressJson.cep as AnyObject?
+                addressDict["location"] = CLLocation()
+                
+                
+               let address = Address(data: addressDict)
+                
+                
+                AddressManager.sharedInstance.transformAddressToGeoPoint(address, response: { (geopoint) in
+                    self.defaults.set("\(geopoint.latitude)%\(geopoint.longitude)", forKey: "geopoint")
+                })
+            })
+            
+
             
             
             self.performSegue(withIdentifier: "goToPetShops", sender: nil)
