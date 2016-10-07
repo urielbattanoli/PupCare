@@ -21,6 +21,7 @@ extension Order {
         data["trackId"] = (parseObject["trackId"] as! PFObject).objectId as AnyObject?
         data["shipment"] = parseObject["shipment"] as! NSNumber
         data["addressId"] = Address(parseObject: parseObject["addressId"] as! PFObject)
+        data["paymentMethod"] = parseObject["paymentMethod"] as! NSNumber
         
         self.init(data: data)
     }

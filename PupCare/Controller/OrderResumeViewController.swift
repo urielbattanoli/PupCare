@@ -17,6 +17,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
     var numberOfRowSection1 = 3
     var numberOfRowSection2 = 3
     var numberOfRowSection3 = 1
+    var finishDelegate: FinishOrderProtocol?
     var petShopInCard: PetshopInCart?
     var addressList: [Address] = []{
         didSet{
@@ -152,9 +153,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
             }
         }
         else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "finisheCell") as! CustomTableViewCell
-            cell.finisheBt.addTarget(self, action: #selector(OrderResumeViewController.didPressFinishBt), for: .touchUpInside)
-            return cell
+            return tableView.dequeueReusableCell(withIdentifier: "finisheCell") as! CustomTableViewCell
         }
     }
     
@@ -186,24 +185,38 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 self.paymentMethod = indexPath.row
             }
         }
+        else {
+            self.didPressFinishBt(indexPath: indexPath)
+        }
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if (indexPath.section == 1 && indexPath.row < self.numberOfRowSection1 && indexPath.row > 0) || (indexPath.section == 2 && indexPath.row < self.numberOfRowSection2 && indexPath.row > 0){
-            if indexPath.section == 1 {
+        switch indexPath.section {
+        case 1:
+            if indexPath.row < self.numberOfRowSection1 && indexPath.row > 0{
                 if self.indexPathOfSection1Selected != nil{
                     self.deselectRowAt(tableView: tableView, indexPath: self.indexPathOfSection1Selected!)
                 }
                 self.indexPathOfSection1Selected = indexPath
+                return indexPath
             }
-            else {
+            
+        case 2:
+            if indexPath.row < self.numberOfRowSection2 && indexPath.row > 0 {
                 if self.indexPathOfSection2Selected != nil{
                     self.deselectRowAt(tableView: tableView, indexPath: self.indexPathOfSection2Selected!)
                 }
                 self.indexPathOfSection2Selected = indexPath
+                return indexPath
             }
+            
+        case 3:
             return indexPath
+            
+        default:
+            return nil
         }
+        
         return nil
     }
     
@@ -285,10 +298,17 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         return false
     }
     
-    func didPressFinishBt(){
+    func didPressFinishBt(indexPath: IndexPath){
+        let cell = self.tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+        cell.isUserInteractionEnabled = false
+        
         if self.showAlertWhenAddressOrPayMetIsNil() {
+            cell.isUserInteractionEnabled = true
             return
         }
+        
+        cell.loaderBt.startAnimating()
+        
         //        self.scanCard("" as AnyObject)
         self.createOrderGenerateTrackId()
     }
@@ -309,6 +329,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         order["shipment"] = 10 as AnyObject?
         order["petShop"] =  petShop?.objectId as AnyObject?
         order["addressId"] = self.addressSelected!.addressId as AnyObject?
+        order["paymentMethod"] = self.paymentMethod as AnyObject?
         
         OrderManager.sharedInstance.saveOrder(order, callback: { (orderId) in
             
@@ -329,13 +350,17 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 data["orderId"] = orderId
                 data["promotionId"] = promotion.promotion.objectId as AnyObject?
                 data["price"] = promotion.promotion.newPrice as AnyObject?
+                data["quantity"] = promotion.quantity as AnyObject?
                 
                 OrderManager.sharedInstance.savePromotionsFromOrder(data)
             }
+            
+            let receiveAtHome = petShop?.address == self.addressSelected!
+            self.showAlertWhenOrderFinished(receiveAtHome)
+            self.finishDelegate?.removeItemFromCart(petshop: self.petShopInCard!)
+            
+            NotificationCenter.default.post(name: .whenDidFinishOrder, object: nil)
         })
-        
-        let receiveAtHome = petShop?.address == self.addressSelected!
-        self.showAlertWhenOrderFinished(receiveAtHome)
     }
     
     func showAlertWhenOrderFinished(_ receiveAtHome: Bool) {
@@ -349,10 +374,11 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         
         alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .cancel, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
-            self.tabBarController?.selectedIndex = 2
+            self.finishDelegate?.goToOrders()
         }))
         alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .default, handler: { (action) in
             alert.dismiss(animated: true, completion: nil)
+            self.navigationController!.popViewController(animated: true)
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -384,10 +410,11 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
             alert.message = "Sua compra foi realizada com sucesso, aguarde a entrega."
             alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .cancel, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
-                self.tabBarController?.selectedIndex = 2
+                self.finishDelegate?.goToOrders()
             }))
             alert.addAction(UIAlertAction(title: "Voltar ao Carrinho", style: .default, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)
+                self.navigationController!.popViewController(animated: true)
             }))
         case "Voided":
             alert.title = "Falha no Pagamento"
