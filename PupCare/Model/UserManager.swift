@@ -134,7 +134,7 @@ class UserManager: NSObject {
     func getLocationToSearch()->CLLocation? {
         let defaults = UserDefaults.standard
         
-        if let locationType = defaults.object(forKey: "location") as? Int{
+        if let locationType = defaults.object(forKey: "location") as? Int {
             
             // -1 is currentLocation
             // >0 is to get in address user list
@@ -152,12 +152,20 @@ class UserManager: NSObject {
                     return nil
                 }
                 
-            }
-            else if locationType>0{
+            } else if locationType > 0 {
                 if let user = self.user{
                     let address = user.addressList[locationType-1]
                     return address.location
                 }
+            } else if locationType == 0 {
+                
+                if let location = defaults.object(forKey: "geopoint") as? String {
+                    let locationArr = location.components(separatedBy: "%")
+                    let clLocation: CLLocation = CLLocation(latitude: Double(locationArr[0])!, longitude: Double(locationArr[1])!)
+                    
+                    return clLocation
+                }
+            
             }
         }
         return nil
