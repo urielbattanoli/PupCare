@@ -18,6 +18,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 94, green: 23, blue: 96)
         // Do any additional setup after loading the view.
     }
 
@@ -44,10 +48,11 @@ class SignUpViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileAfterSignUpSegue" {
-            let profileVC = segue.destination.childViewControllers[0] as! MyProfileViewController
-            
-            profileVC.user = (sender as? User)!
-            
+            if let containerControler = self.tabBarController?.viewControllers![3], let navController = containerControler.childViewControllers[0] as? UINavigationController, let vcLoginProfile = navController.childViewControllers[0] as? Login_ProfileViewController  {
+                vcLoginProfile.updateView()
+                let profile = vcLoginProfile.profileViewController.childViewControllers[0] as! MyProfileViewController
+                profile.user = (sender as? User)
+            }
         }
     }
     

@@ -17,6 +17,10 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 94, green: 23, blue: 96)
         // Do any additional setup after loading the view.
     }
     
@@ -36,15 +40,11 @@ class SignInViewController: UIViewController {
         if verifyFields() {
             UserManager.sharedInstance.singInUser(username!, password: password!) { (usuario) in
                 if usuario != nil {
-                    let vcProfile : UIViewController! = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()
-                    vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
-                    let profile = vcProfile.childViewControllers[0] as! MyProfileViewController
-                    profile.user = usuario!
-                    
-                    var viewControllers = self.tabBarController?.viewControllers ?? []
-                    viewControllers[3] = vcProfile
-                    
-                    self.tabBarController?.setViewControllers(viewControllers, animated: false)
+                    if let vcLoginProfile = self.tabBarController?.viewControllers![3].childViewControllers[0].childViewControllers[0] as? Login_ProfileViewController  {
+                        self.dismiss(animated: false, completion: nil)
+                        let profile = vcLoginProfile.profileViewController.childViewControllers[0] as! MyProfileViewController
+                        profile.user = usuario!
+                    }
                 } else {
                     self.setAlertBody("user nil")
                 }

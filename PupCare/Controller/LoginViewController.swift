@@ -13,12 +13,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
         UIApplication.shared.statusBarStyle = .default
     }
     
@@ -42,13 +43,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func signUpWithFacebook(_ sender: AnyObject) {
         UserManager.sharedInstance.singInWithFacebook {
-            let vcProfile : UIViewController! = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController()
-            vcProfile.tabBarItem = UITabBarItem(title: "Minha Conta", image: UIImage(named: "userIcon"), selectedImage: nil)
-            
-            var viewControllers = self.tabBarController?.viewControllers ?? []
-            viewControllers[3] = vcProfile
-            
-            self.tabBarController?.setViewControllers(viewControllers, animated: false)
+            if let vcLoginProfile = self.tabBarController?.viewControllers![3].childViewControllers[0].childViewControllers[0] as? Login_ProfileViewController  {
+                vcLoginProfile.updateView()
+            }
         }
     }
 }
