@@ -73,13 +73,13 @@ class AddressManager: NSObject {
         return addressAsPFObject
     }
     
-    func transformAddressToGeoPoint(_ address: Address, response:@escaping (_ geoPoint: CLLocationCoordinate2D)->()){
+    func transformAddressToGeoPoint(_ address: Address, response:@escaping (_ geoPoint: CLLocationCoordinate2D?)->()){
         let addressString = "\(address.street), \(address.number) \(address.city)"
         print(addressString)
         CLGeocoder().geocodeAddressString(addressString, completionHandler: { (placemarks, error) in
             if error != nil {
                 print(error)
-                return
+                response(nil)
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
@@ -87,7 +87,7 @@ class AddressManager: NSObject {
                 let coordinate = location?.coordinate
                 print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
                 
-                response((location?.coordinate)!)
+                response(location?.coordinate)
             }
         })
     }

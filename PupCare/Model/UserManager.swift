@@ -161,7 +161,9 @@ class UserManager: NSObject {
                 
                 if let location = defaults.object(forKey: "geopoint") as? String {
                     let locationArr = location.components(separatedBy: "%")
-                    let clLocation: CLLocation = CLLocation(latitude: Double(locationArr[0])!, longitude: Double(locationArr[1])!)
+                    let latitude:CLLocationDegrees = CLLocationDegrees(locationArr[0])!
+                    let longitude:CLLocationDegrees = CLLocationDegrees(locationArr[1])!
+                    let clLocation: CLLocation = CLLocation(latitude: latitude, longitude: longitude)
                     
                     return clLocation
                 }
