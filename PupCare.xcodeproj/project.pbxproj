@@ -38,6 +38,24 @@
 		7A37C7B21D37DB6300FBE13F /* Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37C7B11D37DB6300FBE13F /* Designables.swift */; };
 		7A37C7B41D38261D00FBE13F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37C7B31D38261D00FBE13F /* LoginViewController.swift */; };
 		7A4409E91DA5882200F98BAC /* ProfileContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4409E81DA5882200F98BAC /* ProfileContainerViewController.swift */; };
+		7A6B3F711DB00DC800D29628 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E981D3688EA00D6D0D8 /* UserManager.swift */; };
+		7A6B3F721DB00DF700D29628 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D722C71D47EE4800035392 /* Config.swift */; };
+		7A6B3F731DB00DF700D29628 /* Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A37C7B11D37DB6300FBE13F /* Designables.swift */; };
+		7A6B3F741DB00DF700D29628 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40B341E1D30270F00BCC240 /* Extensions.swift */; };
+		7A6B3F751DB00DF700D29628 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49877141D4F7CFC00DD4F02 /* MonthYearPickerView.swift */; };
+		7A6B3F761DB00DF700D29628 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F31D429EF3005FAB68 /* Address.swift */; };
+		7A6B3F771DB00DF700D29628 /* AddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F91D4641D4005FAB68 /* AddressManager.swift */; };
+		7A6B3F781DB00DF700D29628 /* AddressParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */; };
+		7A6B3F791DB00DF700D29628 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420BBB41D46890E004F4C1B /* Card.swift */; };
+		7A6B3F7A1DB00DF700D29628 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7118ED3D1D4BD901000CCB1E /* Cart.swift */; };
+		7A6B3F7B1DB00DF700D29628 /* PetShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED9C101D26D42000DA14DA /* PetShop.swift */; };
+		7A6B3F7C1DB00DF700D29628 /* PetShopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4451D2EB91300CDDA20 /* PetShopManager.swift */; };
+		7A6B3F7D1DB00DF700D29628 /* PetShopParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717247711D2C1BC600BD694D /* PetShopParseExtension.swift */; };
+		7A6B3F7E1DB00DF700D29628 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4431D2EB8A300CDDA20 /* Promotion.swift */; };
+		7A6B3F7F1DB00DF700D29628 /* PromotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B44B1D30062000CDDA20 /* PromotionManager.swift */; };
+		7A6B3F801DB00DF700D29628 /* PromotionParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1B4471D2EC08000CDDA20 /* PromotionParseExtension.swift */; };
+		7A6B3F811DB00DF700D29628 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E961D36860100D6D0D8 /* User.swift */; };
+		7A6B3F821DB00DF700D29628 /* UserParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C9E9A1D3688FA00D6D0D8 /* UserParseExtension.swift */; };
 		7A7036EB1D40117E005FAB68 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036EA1D40117E005FAB68 /* SignInViewController.swift */; };
 		7A7036F41D429EF3005FAB68 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F31D429EF3005FAB68 /* Address.swift */; };
 		7A7036F81D42A0CA005FAB68 /* AddressParseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7036F71D42A0CA005FAB68 /* AddressParseExtension.swift */; };
@@ -1142,14 +1160,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A6B3F811DB00DF700D29628 /* User.swift in Sources */,
+				7A6B3F771DB00DF700D29628 /* AddressManager.swift in Sources */,
+				7A6B3F791DB00DF700D29628 /* Card.swift in Sources */,
+				7A6B3F7A1DB00DF700D29628 /* Cart.swift in Sources */,
+				7A6B3F7F1DB00DF700D29628 /* PromotionManager.swift in Sources */,
+				7A6B3F751DB00DF700D29628 /* MonthYearPickerView.swift in Sources */,
 				A4631C2E1D78BE6600365439 /* OrderManager.swift in Sources */,
+				7A6B3F801DB00DF700D29628 /* PromotionParseExtension.swift in Sources */,
 				7A04ECB01D356BCA00270189 /* CloudCodeTests.swift in Sources */,
 				A4631C301D78BF7D00365439 /* OrderParseExtension.swift in Sources */,
 				A4FF271B1D7EEA9600FFCE8B /* ProductParseExtension.swift in Sources */,
+				7A6B3F721DB00DF700D29628 /* Config.swift in Sources */,
+				7A6B3F7C1DB00DF700D29628 /* PetShopManager.swift in Sources */,
 				A4FF271A1D7EEA9300FFCE8B /* ProductManager.swift in Sources */,
 				A4631C2F1D78BF7A00365439 /* Order.swift in Sources */,
+				7A6B3F781DB00DF700D29628 /* AddressParseExtension.swift in Sources */,
+				7A6B3F7D1DB00DF700D29628 /* PetShopParseExtension.swift in Sources */,
+				7A6B3F821DB00DF700D29628 /* UserParseExtension.swift in Sources */,
 				A475E3221D0A9B3B00FB66C3 /* PupCareTests.swift in Sources */,
+				7A6B3F761DB00DF700D29628 /* Address.swift in Sources */,
+				7A6B3F741DB00DF700D29628 /* Extensions.swift in Sources */,
+				7A6B3F7B1DB00DF700D29628 /* PetShop.swift in Sources */,
+				7A6B3F7E1DB00DF700D29628 /* Promotion.swift in Sources */,
 				715100771D341129003A6817 /* ParseManager.swift in Sources */,
+				7A6B3F731DB00DF700D29628 /* Designables.swift in Sources */,
+				7A6B3F711DB00DC800D29628 /* UserManager.swift in Sources */,
 				A4FF27191D7EEA9000FFCE8B /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

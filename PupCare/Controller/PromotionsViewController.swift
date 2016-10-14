@@ -85,7 +85,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func reloadPromotions() {
-        PromotionManager.getPromotionsList(10, longitude: 10, withinKilometers: 100000000) { (promotions, error) in
+        PromotionManager.sharedInstance.getPromotionsList(10, longitude: 10, withinKilometers: 100000000) { (promotions, error) in
             if error == nil {
                 print(promotions!)
                 self.allPromotions = promotions!

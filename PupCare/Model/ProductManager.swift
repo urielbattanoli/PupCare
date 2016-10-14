@@ -11,7 +11,9 @@ import Parse
 
 class ProductManager: NSObject {
     
-    static func getProductList(_ petShopId: String, block: @escaping ([Product])->()) {
+    static let sharedInstance = ProductManager()
+    
+    func getProductList(_ petShopId: String, block: @escaping ([Product])->()) {
         let params = ["petShopId" : petShopId]
         print(petShopId)
         PFCloud.callFunction(inBackground: "getProductList", withParameters: params) { (objects, error) in

@@ -11,7 +11,9 @@ import Parse
 
 class PromotionManager: NSObject {
     
-    static func getPromotionsList(_ latitude: Float, longitude: Float, withinKilometers: Float, response: @escaping (_ promotions: [Promotion]?, _ error: NSError?) -> ()) {
+    static let sharedInstance = PromotionManager()
+    
+    func getPromotionsList(_ latitude: Float, longitude: Float, withinKilometers: Float, response: @escaping (_ promotions: [Promotion]?, _ error: NSError?) -> ()) {
         
         
         PFCloud.callFunction(inBackground: "getPromotionsList", withParameters: ["lat": latitude,"lng":longitude, "maxDistance":withinKilometers]) { (promotions, error) in
@@ -30,7 +32,7 @@ class PromotionManager: NSObject {
     
     
     
-    static func getPromotionDetails(_ promotion: Promotion, response: @escaping (_ promotionDetails: Promotion?, _ error: NSError?) -> ()) {
+    func getPromotionDetails(_ promotion: Promotion, response: @escaping (_ promotionDetails: Promotion?, _ error: NSError?) -> ()) {
         
         let params = ["promoId" : promotion.objectId]
         
