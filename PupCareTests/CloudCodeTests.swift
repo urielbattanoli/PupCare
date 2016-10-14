@@ -18,8 +18,6 @@ class CloudCodeTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        ParseManager.InitParse()
-        
     }
     
     override func tearDown() {
@@ -30,7 +28,7 @@ class CloudCodeTests: XCTestCase {
     func testPromotionsQuery(){
         let expectation: XCTestExpectation = self.expectation(description: "Promotions query completed with no errors")
         
-        PromotionManager.getPromotionsList(10, longitude: 10, withinKilometers: 10) { (promotions, error) in
+        PromotionManager.sharedInstance.getPromotionsList(10, longitude: 10, withinKilometers: 10) { (promotions, error) in
             XCTAssertNotNil(promotions)
             expectation.fulfill()
         }
@@ -43,10 +41,10 @@ class CloudCodeTests: XCTestCase {
         
         var promotion : Promotion?
         
-        PromotionManager.getPromotionsList(10, longitude: 10, withinKilometers: 10) { (promotions, error) in
+        PromotionManager.sharedInstance.getPromotionsList(10, longitude: 10, withinKilometers: 10) { (promotions, error) in
             promotion = promotions![0]
             
-            PromotionManager.getPromotionDetails((promotion?.objectId)!, response: { (promotionDetails, error) in
+            PromotionManager.sharedInstance.getPromotionDetails((promotion)!, response: { (promotionDetails, error) in
                 XCTAssertNotNil(promotionDetails)
                 expectation.fulfill()
             })
@@ -56,15 +54,16 @@ class CloudCodeTests: XCTestCase {
     }
 
     func testProductQuery(){
+        //ERROR - NEEDS FIX
         let expectation : XCTestExpectation = self.expectation(description: "Product query completed with no errors")
         
         var petshop : PetShop?
         
-        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
+        PetShopManager.sharedInstance.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
             XCTAssertNotNil(petshops)
             petshop = petshops![0]
             
-            ProductManager.getProductList((petshop?.objectId)!) { (products) in
+            ProductManager.sharedInstance.getProductList((petshop?.objectId)!) { (products) in
                 XCTAssertNotNil(products)
                 expectation.fulfill()
             }
@@ -76,7 +75,7 @@ class CloudCodeTests: XCTestCase {
     func testNearbyPetShopQuery(){
         let expectation : XCTestExpectation = self.expectation(description: "PetShop query completed with no errors")
         
-        PetShopManager.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
+        PetShopManager.sharedInstance.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
             XCTAssertNotNil(petshops)
             expectation.fulfill()
         }
@@ -85,6 +84,7 @@ class CloudCodeTests: XCTestCase {
     }
     
     func testOrderQuery(){
+        //ERROR - NEEDS FIX
         let expectation : XCTestExpectation = self.expectation(description: "Order query completed with no errors")
         OrderManager.sharedInstance.getOrderList { (orders) in
             XCTAssertNotNil(orders)
@@ -115,9 +115,9 @@ class CloudCodeTests: XCTestCase {
             trackExpectation.fulfill()
         }
         
-        OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"]) { (result) in
+        OrderManager.sharedInstance.checkIfCardIsValid(cartao["CardNumber"] as! String) { (result) in
             XCTAssertNotNil(result)
-            cartao["CardBrand"] = result
+            cartao["CardBrand"] = result as AnyObject?
             cardExpectation.fulfill()
         }
         

@@ -83,7 +83,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
                 self.products = petShop.products
             }
             else{
-                ProductManager.getProductList(petShop.objectId, block: { (products) in
+                ProductManager.sharedInstance.getProductList(petShop.objectId, block: { (products) in
                     petShop.products = products
                     self.products = products
                 })
@@ -195,7 +195,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func reloadProducts() {
-        ProductManager.getProductList((petShop?.objectId)!) { (products) in
+        ProductManager.sharedInstance.getProductList((petShop?.objectId)!) { (products) in
             self.products = products
             self.refreshControl?.endRefreshing()
         }

@@ -96,7 +96,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
             return true
         }
         
-        PromotionManager.getPromotionDetails(promotion!, response: { (promotionDetails, error) in
+        PromotionManager.sharedInstance.getPromotionDetails(promotion!, response: { (promotionDetails, error) in
             for product in promotionDetails!.products  {
                 if !self.promotion!.photos.contains(product.imageUrl) {
                     self.promotion!.photos.append(product.imageUrl)
@@ -109,7 +109,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     }
     
     fileprivate func loadPromotion() {
-        PromotionManager.getPromotionDetails(promotion!) { (promotionDetails, error) in
+        PromotionManager.sharedInstance.getPromotionDetails(promotion!) { (promotionDetails, error) in
             if error == nil {
                 self.promotion = promotionDetails as Promotion!
                 self.reloadDetails()

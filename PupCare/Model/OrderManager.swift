@@ -142,17 +142,6 @@ class OrderManager: NSObject {
         
     }
     
-    
-    func getAvailableCardBrands(){
-//        Alamofire.request(GetCardBrandUrl).responseJSON { (response) in
-//            print(response)
-//            
-//            if let JSON = response.result.value{
-//                
-//            }
-//        }
-    }
-    
     func checkIfCardIsValid(_ cardNumber : String, callback: @escaping (Int) -> Void) {
         let parameters = ["CardNumber":cardNumber]
         
