@@ -139,10 +139,7 @@ class AddressManager: NSObject {
     
     func removeAddressFromParse(_ address: Address){
         let pfAddress = self.transformAddressToPFObject(address)
-        pfAddress.deleteInBackground { (success, error) in
-            if !success{
-                print(error)
-            }
-        }
+        pfAddress.remove(forKey: "userId")
+        pfAddress.saveInBackground()
     }
 }
