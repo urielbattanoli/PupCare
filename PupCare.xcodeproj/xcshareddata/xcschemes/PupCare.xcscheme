@@ -29,26 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A475E31C1D0A9B3B00FB66C3"
-               BuildableName = "PupCareTests.xctest"
-               BlueprintName = "PupCareTests"
-               ReferencedContainer = "container:PupCare.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A475E3271D0A9B3B00FB66C3"
-               BuildableName = "PupCareUITests.xctest"
-               BlueprintName = "PupCareUITests"
-               ReferencedContainer = "container:PupCare.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
