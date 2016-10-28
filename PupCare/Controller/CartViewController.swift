@@ -145,6 +145,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.ProductQuantitySlider.configureSlider(minValue: 0, maxValue: 10, thumbImage: "oval", insideRetangle: "insideRetangle", outsideRetangle: "outsideRetangle")
             
+            
             if (indexPath as NSIndexPath).row <= section.productsInCart.count {
                 
                 let productInCart = section.productsInCart[(indexPath as NSIndexPath).row - 1]
@@ -152,8 +153,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.ProductPhotoImageView.loadImage(productInCart.product.imageUrl)
                 cell.ProductValueLabel.text = NSNumber(value: Double(productInCart.product.price) * Double(productInCart.quantity)).numberToPrice()
                 cell.ProductQuantitySlider.value = Float(productInCart.quantity)
-                cell.ProductQuantity.text = "\(productInCart.quantity)"
+//                cell.ProductQuantity.text = "\(productInCart.quantity)"
                 cell.ProductNameLabel.text = productInCart.product.name
+                cell.ProductDescriptionLabel.text = productInCart.product.descript
                 cell.price = Double(productInCart.product.price)
                 cell.beganPrice = Double(productInCart.product.price)
                 
@@ -163,9 +165,10 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let productsCount: Int = section.productsInCart.count
                 let promotionInCart = section.promotionsInCart[(indexPath as NSIndexPath).row - 1 - productsCount]
                 cell.ProductNameLabel.text = promotionInCart.promotion.promotionName
+                cell.ProductDescriptionLabel.text = promotionInCart.promotion.promotionDescription
                 cell.ProductValueLabel.text = NSNumber(value: Double(promotionInCart.promotion.newPrice) * Double(promotionInCart.quantity)).numberToPrice()
                 cell.ProductQuantitySlider.value = Float(promotionInCart.quantity)
-                cell.ProductQuantity.text = "\(promotionInCart.quantity)"
+//                cell.ProductQuantity.text = "\(promotionInCart.quantity)"
                 cell.ProductPhotoImageView.loadImage(promotionInCart.promotion.promotionImage)
                 cell.price = Double(promotionInCart.promotion.newPrice)
                 cell.beganPrice = Double(promotionInCart.promotion.newPrice)
@@ -280,7 +283,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 } else {
                                     
                                     self.workingCell!.itensCount = 1
-                                    self.workingCell!.ProductQuantity.text = "\(self.workingCell!.itensCount)"
+//                                    self.workingCell!.ProductQuantity.text = "\(self.workingCell!.itensCount)"
                                     self.workingCell!.ProductValueLabel.text = "\(self.workingCell!.beganPrice)"
                                     
                                     finishCell.price = finishCell.price + self.workingCell!.price
