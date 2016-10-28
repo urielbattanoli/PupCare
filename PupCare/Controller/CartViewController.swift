@@ -143,6 +143,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell = tableView.dequeueReusableCell(withIdentifier: "CartProduct", for: indexPath) as! CartTableViewCell
             let section = sections[(indexPath as NSIndexPath).section]
             
+            cell.ProductQuantitySlider.configureSlider(minValue: 0, maxValue: 10, thumbImage: "oval", insideRetangle: "insideRetangle", outsideRetangle: "outsideRetangle")
             
             if (indexPath as NSIndexPath).row <= section.productsInCart.count {
                 
@@ -174,7 +175,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.beganPrice = self.beganPrice + (Double(beganSliding) * cell.price)
             cell.ProductQuantitySlider.tag = (indexPath as NSIndexPath).section + 100
-            cell.ProductQuantitySlider.configureSlider(minValue: 0, maxValue: 10, thumbImage: "oval", insideRetangle: "insideRetangle", outsideRetangle: "outsideRetangle")
             
             cell.tagTeste = (indexPath as NSIndexPath).section
             cell.petShopInCart = section
