@@ -232,7 +232,7 @@
     [self addSubview:self.popUpView];
 
     self.textColor = [UIColor whiteColor];
-    self.font = [UIFont boldSystemFontOfSize:16.0f];
+    self.font = [UIFont boldSystemFontOfSize:14.0f];
 }
 
 // ensure animation restarts if app is closed then becomes active again

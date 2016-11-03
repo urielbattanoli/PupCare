@@ -42,7 +42,8 @@ class CartTableViewCell: UITableViewCell {
     @IBOutlet weak var ProductNameLabel: UILabel!
     @IBOutlet weak var ProductPhotoImageView: UIImageView!
     @IBOutlet weak var ProductQuantitySlider: UISlider!
-    @IBOutlet weak var ProductQuantity: UILabel!
+//    @IBOutlet weak var ProductQuantity: UILabel!
+    @IBOutlet weak var ProductDescriptionLabel: UILabel!
     
     
     // PetShop Details
@@ -70,7 +71,7 @@ class CartTableViewCell: UITableViewCell {
         
         sender.value = rounded
         
-        self.ProductQuantity.text = "\(Int(rounded))"
+//        self.ProductQuantity.text = "\(Int(rounded))"
         
         if productInCart != nil {
             self.ProductValueLabel.text = NSNumber(value: Double(productInCart!.product.price) * Double(rounded)).numberToPrice()
