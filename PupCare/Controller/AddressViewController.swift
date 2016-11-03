@@ -231,10 +231,10 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
                 self.address = Address(data: self.tranformJSONToData(json!))
                 
                 AddressManager.sharedInstance.transformAddressToGeoPoint(self.address!, response: { (geoPoint) in
-                    let lat = geoPoint.latitude
-                    let lng = geoPoint.longitude
+                    let lat = geoPoint?.latitude
+                    let lng = geoPoint?.longitude
                     
-                    self.address!.location = CLLocation(latitude: lat, longitude: lng)
+                    self.address!.location = CLLocation(latitude: lat!, longitude: lng!)
                 })
                 
             })

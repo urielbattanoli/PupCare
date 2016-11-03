@@ -10,13 +10,16 @@ import UIKit
 import CoreLocation
 import Parse
 
-class InitialViewController: UIViewController, CLLocationManagerDelegate {
+class InitialViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     @IBOutlet var CartViewResume: UIView!
     
     
     let locationManager = CLLocationManager()
     let defaults = UserDefaults.standard
+    
+    var validCep = false
+    var alertCEP = UIAlertController(title: "Digite seu CEP", message: "Por favor, insira o CEP desejado", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,62 +75,85 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate {
             }))
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
     
+    
+    
     func requestCEP() {
-        let alert = UIAlertController(title: "Digite seu CEP", message: "Por favor, insira o CEP desejado.", preferredStyle: .alert)
         
-        alert.addTextField { (textField) in
+        alertCEP.addTextField { (textField) in
             textField.placeholder = "CEP"
+            textField.delegate = self
+            textField.keyboardType = .numberPad
         }
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default , handler: { action in
-            let textField = alert.textFields?.first
+        alertCEP.addAction(UIAlertAction(title: "OK", style: .default , handler: { action in
+            let textField = self.alertCEP.textFields?.first
             
-
+            
             self.defaults.set(0, forKey: "location")
             AddressManager.sharedInstance.getZipInformation(textField!.text!, jsonResponse: { (json, error) in
-            
+                
                 print("ENDEREÇO")
                 print(json)
                 
-                let addressJson = AddressJson(json: json!)!
+                if let erro = json?["erro"] {
+                    print(erro)
+                    self.alertCEP = UIAlertController(title: "Digite seu CEP", message: "Por favor, insira o seu CEP corretamente para que possamos buscar petshops próximas.", preferredStyle: .alert)
+                    self.requestCEP()
+                    
+                } else {
+                    
+                    let addressJson = AddressJson(json: json!)!
+                    
+                    var addressDict = [String:AnyObject]()
+                    
+                    addressDict["objectId"] = "" as AnyObject?
+                    addressDict["name"] = "" as AnyObject?
+                    addressDict["street"] = addressJson.logradouro as AnyObject?
+                    addressDict["number"] = 0 as AnyObject?
+                    addressDict["additionalInfo"] = "" as AnyObject?
+                    addressDict["neighbourhood"] = addressJson.bairro as AnyObject?
+                    addressDict["state"] = addressJson.uf as AnyObject?
+                    addressDict["city"] = addressJson.localidade as AnyObject?
+                    addressDict["zip"] = addressJson.cep as AnyObject?
+                    addressDict["location"] = CLLocation()
+                    
+                    let address = Address(data: addressDict)
+                    
+                    AddressManager.sharedInstance.transformAddressToGeoPoint(address, response: { (geopoint) in
+                        print(geopoint)
+                        self.defaults.set("\(geopoint!.latitude)%\(geopoint!.longitude)", forKey: "geopoint")
+                    })
+                    self.performSegue(withIdentifier: "goToPetShops", sender: nil)
+                }
                 
-                var addressDict = [String:AnyObject]()
-                
-                addressDict["objectId"] = "" as AnyObject?
-                addressDict["name"] = "" as AnyObject?
-                addressDict["street"] = addressJson.logradouro as AnyObject?
-                addressDict["number"] = 0 as AnyObject?
-                addressDict["additionalInfo"] = "" as AnyObject?
-                addressDict["neighbourhood"] = addressJson.bairro as AnyObject?
-                addressDict["state"] = addressJson.uf as AnyObject?
-                addressDict["city"] = addressJson.localidade as AnyObject?
-                addressDict["zip"] = addressJson.cep as AnyObject?
-                addressDict["location"] = CLLocation()
-                
-                
-               let address = Address(data: addressDict)
-                
-                
-                AddressManager.sharedInstance.transformAddressToGeoPoint(address, response: { (geopoint) in
-                    self.defaults.set("\(geopoint.latitude)%\(geopoint.longitude)", forKey: "geopoint")
-                })
             })
-            
-
-            
-            
-            self.performSegue(withIdentifier: "goToPetShops", sender: nil)
         }))
         
-        self.present(alert, animated: true, completion: nil)
+        alertCEP.actions.last?.isEnabled = false
+        
+        self.present(alertCEP, animated: true, completion: nil)
     }
     
     
     func ativou() {
         self.locationManager.requestWhenInUseAuthorization()
+    }
+    
+    // MARK: Text Field Delegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        
+        let newLength = text.utf16.count + string.utf16.count - range.length
+        if newLength == 8 {
+            alertCEP.actions.last?.isEnabled = true
+        } else {
+            alertCEP.actions.last?.isEnabled = false
+        }
+        
+        return newLength < 9
     }
     
     // MARK: LocationManager delegate
