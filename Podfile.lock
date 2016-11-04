@@ -12,7 +12,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.11.0):
     - FBSDKCoreKit
-  - Gloss (0.7.4)
+  - Gloss (1.1.0)
   - Kingfisher (3.0.1)
   - Parse (1.14.2):
     - Bolts/Tasks (~> 1.8)
@@ -28,20 +28,10 @@ DEPENDENCIES:
   - FBSDKCoreKit (~> 4.11.0)
   - FBSDKLoginKit (~> 4.11.0)
   - FBSDKShareKit (~> 4.11.0)
-  - Gloss (from `https://github.com/hkellaway/Gloss.git`, branch `swift_3.0`)
+  - Gloss (~> 1.1)
   - Kingfisher (~> 3.0)
   - Parse (~> 1.13)
   - ParseFacebookUtilsV4 (~> 1.11.1)
-
-EXTERNAL SOURCES:
-  Gloss:
-    :branch: swift_3.0
-    :git: https://github.com/hkellaway/Gloss.git
-
-CHECKOUT OPTIONS:
-  Gloss:
-    :commit: 145c78888ccca678bf146b5b0b58882016a4d9aa
-    :git: https://github.com/hkellaway/Gloss.git
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
@@ -49,11 +39,11 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
   FBSDKLoginKit: bade9fc78277764149ccc5bfaadbf13c83175c6a
   FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
-  Gloss: d86009ef4d12c221d889c4e3f9e1eb547ee6251d
+  Gloss: a8340c124ff69c5d1c12e06c252373f4a16d2958
   Kingfisher: d5a491b45ea453d90a31bd2c0831d5243e73a73f
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
 
-PODFILE CHECKSUM: 609ddb4b523076b74bb7d771f8b5ae2907e2428c
+PODFILE CHECKSUM: 290c7e4308a848c293f2eda86afb87eb9e1804ed
 
 COCOAPODS: 1.0.1

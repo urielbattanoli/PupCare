@@ -10,7 +10,7 @@ pod 'FBSDKShareKit', '~> 4.11.0'
 pod 'ParseFacebookUtilsV4', '~> 1.11.1'
 pod 'Kingfisher', '~> 3.0'
 pod 'Alamofire', '~> 4.0'
-pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'swift_3.0'
+pod 'Gloss', '~> 1.1'
 end
 
 target 'PupCareTests' do
@@ -21,7 +21,7 @@ target 'PupCareTests' do
     pod 'ParseFacebookUtilsV4', '~> 1.11.1'
     pod 'Kingfisher', '~> 3.0'
     pod 'Alamofire', '~> 4.0'
-    pod 'Gloss', :git => 'https://github.com/hkellaway/Gloss.git', :branch => 'swift_3.0'
+    pod 'Gloss', '~> 1.1'
 end
 
 post_install do |installer|
