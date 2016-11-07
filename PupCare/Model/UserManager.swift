@@ -96,7 +96,6 @@ class UserManager: NSObject {
                     print("Error: \(error)")
                 }
                 else {
-                    print(result)
                     
                     let resultAsDict = result as! [String:AnyObject]
                     

@@ -33,4 +33,32 @@ class PupCareUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func testLogin(){
+        
+        let app = XCUIApplication()
+        app.tabBars.buttons["Minha Conta"].tap()
+        app.buttons["Entrar com sua conta"].tap()
+        
+        let app = XCUIApplication()
+        let kKey = app.keys["k"]
+        kKey.tap()
+        
+        let digiteSeuEMailTextField = app.textFields["Digite seu e-mail"]
+        digiteSeuEMailTextField.typeText("k")
+        
+        let eKey = app.keys["e"]
+        eKey.tap()
+        digiteSeuEMailTextField.typeText("e")
+        kKey.tap()
+        digiteSeuEMailTextField.typeText("k")
+        eKey.tap()
+        digiteSeuEMailTextField.typeText("e")
+        app.keys["@"].tap()
+        digiteSeuEMailTextField.typeText("@")
+        
+       
+        
+        
+    }
+    
 }
