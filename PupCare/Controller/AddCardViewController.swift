@@ -89,7 +89,7 @@ class AddCardViewController: UIViewController {
             newCard = Card(data: data as [String : AnyObject])
         }
         self.delegate?.cardDidAdded?(newCard)
-        self.navigationController?.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: Functions

@@ -279,7 +279,7 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
             AddressManager.sharedInstance.saveUserNewAddress(self.address!, response: { (success, error) in
                 if success {
                     self.delegate?.addressAdded?(self.address!)
-                    self.navigationController?.popViewController(animated: true)
+                    let _ = self.navigationController?.popViewController(animated: true)
                 }
             })
         }

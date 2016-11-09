@@ -34,8 +34,6 @@ class PupCareUITests: XCTestCase {
     }
     
     func testLogin(){
-        
-        
         let app = XCUIApplication()
         app.tabBars.buttons["Minha Conta"].tap()
         app.buttons["Entrar com sua conta"].tap()
