@@ -198,7 +198,8 @@ class AddressViewController: UIViewController, CLLocationManagerDelegate {
         let alert = UIAlertController(title: "Serviço de localização desativado", message: "Por favor, ative o serviço de localização nos ajustes do seu aparelho", preferredStyle: .alert)
         
         let settingsBt = UIAlertAction(title: "Ir aos Ajustes", style: .default, handler: { (action) in
-            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+//            UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
         })
         
         let cancelBt = UIAlertAction(title: "Cancelar", style: .cancel, handler: { (action) in

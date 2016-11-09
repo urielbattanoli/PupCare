@@ -33,4 +33,68 @@ class PupCareUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func testLogin(){
+        
+        
+        let app = XCUIApplication()
+        app.tabBars.buttons["Minha Conta"].tap()
+        app.buttons["Entrar com sua conta"].tap()
+        
+        let digiteSeuEMailTextField = app.textFields["Digite seu e-mail"]
+        digiteSeuEMailTextField.tap()
+    
+        digiteSeuEMailTextField.typeText("k")
+        digiteSeuEMailTextField.typeText("e")
+        digiteSeuEMailTextField.typeText("k")
+        digiteSeuEMailTextField.typeText("e")
+        digiteSeuEMailTextField.typeText("@")
+        digiteSeuEMailTextField.typeText("g")
+        digiteSeuEMailTextField.typeText("m")
+        digiteSeuEMailTextField.typeText("a")
+        digiteSeuEMailTextField.typeText("i")
+        digiteSeuEMailTextField.typeText("l")
+        digiteSeuEMailTextField.typeText(".")
+        digiteSeuEMailTextField.typeText("c")
+        digiteSeuEMailTextField.typeText("o")
+        digiteSeuEMailTextField.typeText("m")
+        
+
+        let digiteSuaSenhaSecureTextField = app.secureTextFields["Digite sua senha"]
+        digiteSuaSenhaSecureTextField.tap()
+        digiteSuaSenhaSecureTextField.typeText("q")
+        digiteSuaSenhaSecureTextField.typeText("w")
+        digiteSuaSenhaSecureTextField.typeText("e")
+        digiteSuaSenhaSecureTextField.typeText("r")
+        digiteSuaSenhaSecureTextField.typeText("t")
+        digiteSuaSenhaSecureTextField.typeText("y")
+        app.buttons["Fazer login"].tap()
+        app.tabBars.buttons["Minha Conta"].tap()
+        
+        let tablesQuery = app.tables
+        tablesQuery.children(matching: .cell).element(boundBy: 1).children(matching: .textField).element.tap()
+        tablesQuery.children(matching: .cell).element(boundBy: 3).children(matching: .textField).element.tap()
+        
+        
+    }
+    
+    func testAddProductToCart(){
+        
+        let app = XCUIApplication()
+        
+        app.tabBars.buttons["Pet Shops"].tap()
+        
+        let cell = app.tables.cells
+        
+        cell.element(boundBy: 0).tap()
+        
+        app.tables.staticTexts["Ração Crocante"].tap()
+        app.sliders["0%"].press(forDuration: 2.5);
+        
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.tap()
+        app.sliders["0%"].swipeRight()
+        
+        
+        app.buttons["Adicionar ao carrinho"].tap()
+    }
+    
 }

@@ -88,12 +88,12 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
     }
     
     
-    fileprivate func reloadPhotos() -> Bool {
+    fileprivate func reloadPhotos() {
         
         self.carousel.reloadData()
         if self.promotion?.photos.count > 0 {
             self.carousel.reloadData()
-            return true
+//            return true
         }
         
         PromotionManager.sharedInstance.getPromotionDetails(promotion!, response: { (promotionDetails, error) in
@@ -105,7 +105,7 @@ class PromotionDetailsViewController: UIViewController, iCarouselDataSource, iCa
             self.carousel.reloadData()
         })
         
-        return true
+//        return true
     }
     
     fileprivate func loadPromotion() {
