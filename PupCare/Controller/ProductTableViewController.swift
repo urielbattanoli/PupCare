@@ -142,7 +142,13 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToDetail", sender: self.products![(indexPath as NSIndexPath).row])
+        var product: Product!
+        if !(self.searchBar.text?.isEmpty)! {
+            product = self.filteredProducts[(indexPath as NSIndexPath).row]
+        } else {
+            product = self.products![(indexPath as NSIndexPath).row]
+        }
+        performSegue(withIdentifier: "goToDetail", sender: product)
         
         tableView.deselectRow(at: indexPath, animated: false)
     }

@@ -25,8 +25,8 @@ extension NSNumber {
 extension UIImageView {
     func loadImage(_ url: String){
         let urlToKf = URL(string: url)
-        self.kf_indicatorType = .activity
-        self.kf_setImage(with: urlToKf, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+        self.kf.indicatorType = .activity
+        self.kf.setImage(with: urlToKf, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
 
     }
 }
