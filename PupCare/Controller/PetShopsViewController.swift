@@ -113,13 +113,13 @@ class PetShopsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         cell.petShopNameLabel.text = petShop.name
-        cell.petShopAddressLabel.text = petShop.address.street
+        cell.petShopAddressLabel.text = "\(petShop.address.street) - \(petShop.address.number)"
         cell.ranking = Int(petShop.ranking)
         cell.petShopImageView.loadImage(petShop.imageUrl)
         if let location = UserManager.sharedInstance.getLocationToSearch(){
             var distance = Float(petShop.address.location.distance(from: location))
             distance = distance / 1000
-            cell.petShopDistanceLabel.text = "\(distance.roundToPlaces(2)) km"
+            cell.petShopDistanceLabel.text = "Distância: \(distance.roundToPlaces(2)) km"
         }
         return cell
     }
