@@ -36,9 +36,9 @@ class UserManager: NSObject {
             }
             print("objId \(user.objectId)")
             
-            self.user = User(parseObject: user)
+            UserManager.sharedInstance.user = User(parseObject: user)
             
-            block(succeeded,"",self.user)
+            block(succeeded,"",UserManager.sharedInstance.user)
         }
     }
     
@@ -47,8 +47,8 @@ class UserManager: NSObject {
         
         PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
             if user != nil {
-                self.user = User(parseObject: user!)
-                response(self.user)
+                UserManager.sharedInstance.user = User(parseObject: user!)
+                response(UserManager.sharedInstance.user)
             } else {
                 response(nil)
             }
@@ -73,6 +73,7 @@ class UserManager: NSObject {
         
         PFFacebookUtils.logInInBackground(withReadPermissions: permissions) { (user, error) in
             if let user = user {
+                UserManager.sharedInstance.user = User(parseObject: user)
                 if user.isNew {
                     UserManager.sharedInstance.saveAdditionalFacebookInformation({
                         self.createUserByCurrentUser()
@@ -123,9 +124,9 @@ class UserManager: NSObject {
     
     func createUserByCurrentUser(){
         if let pfUser = PFUser.current(){
-            self.user = User(parseObject: pfUser)
+            UserManager.sharedInstance.user = User(parseObject: pfUser)
             AddressManager.sharedInstance.getAddressListFromUser(pfUser.objectId!) { (addresses) in
-                self.user?.addressList = addresses
+                UserManager.sharedInstance.user?.addressList = addresses
             }
         }
     }
@@ -152,7 +153,7 @@ class UserManager: NSObject {
                 }
                 
             } else if locationType > 0 {
-                if let user = self.user{
+                if let user = UserManager.sharedInstance.user{
                     let address = user.addressList[locationType-1]
                     return address.location
                 }

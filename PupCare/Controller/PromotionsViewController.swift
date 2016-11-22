@@ -15,6 +15,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
 
     @IBOutlet weak var TableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var promotionsTableView: UITableView!
+    @IBOutlet weak var backgroundWhitoutPromotionsView: UIView!
 
     var allPromotions: [Promotion] = []
     
@@ -89,7 +90,13 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
             if error == nil {
                 print(promotions!)
                 self.allPromotions = promotions!
-
+                
+                if promotions?.count == 0 {
+                    self.backgroundWhitoutPromotionsView.isHidden = false
+                }
+                else{
+                    self.backgroundWhitoutPromotionsView.isHidden = true
+                }
                 
                 self.promotionsTableView.reloadData()
             }
@@ -106,6 +113,11 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
         adjustConstraintsForCart()
     }
     
+    @IBAction func didPressGoToPetShops(_ sender: Any) {
+        if let tabbar = self.tabBarController {
+            tabbar.selectedIndex = 1
+        }
+    }
     
     /*
     // MARK: - Navigation

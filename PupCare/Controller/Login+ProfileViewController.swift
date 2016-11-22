@@ -45,7 +45,7 @@ class Login_ProfileViewController: UIViewController {
     }
 
     func updateView(){
-        if PFUser.current() != nil {
+        if UserManager.sharedInstance.user != nil {
             self.removeViewControllerAsChildViewController(viewController: loginViewController)
             self.addViewControllerAsChildViewController(viewController: profileViewController)
             delegate?.changeNavBarColor(controllerName: "Profile")

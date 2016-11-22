@@ -18,7 +18,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate, Car
         super.viewDidLoad()
         
         self.delegate = self
-        self.tabBar.tintColor = UIColor.white
+        self.tabBar.tintColor = UIColor(red: 115, green: 40, blue: 115)
         
         
         
