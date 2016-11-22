@@ -28,6 +28,12 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
         self.loadUsersOrder()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.loadUsersOrder()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

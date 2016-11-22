@@ -37,7 +37,6 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate, UIText
         if UserManager.sharedInstance.user == nil{
             UserManager.sharedInstance.createUserByCurrentUser()
         }
-        
     }
     
     override func didReceiveMemoryWarning() {

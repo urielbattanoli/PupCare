@@ -326,7 +326,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         order["date"] = Date() as AnyObject?
         order["trackId"] = trackId
         order["price"] = self.petShopInCard!.totalPrice as AnyObject?
-        order["shipment"] = 10 as AnyObject?
+        order["shipment"] = 0 as AnyObject?
         order["petShop"] =  petShop?.objectId as AnyObject?
         order["addressId"] = self.addressSelected!.addressId as AnyObject?
         order["paymentMethod"] = self.paymentMethod as AnyObject?
@@ -366,10 +366,10 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
     func showAlertWhenOrderFinished(_ receiveAtHome: Bool) {
         let alert = UIAlertController(title: "Pedido realizado com sucesso", message: "", preferredStyle: .alert)
         if receiveAtHome{
-            alert.message = "Seu pedido está sendo separado, dentro de 30 minutos estará pronto."
+            alert.message = "Seu pedido está sendo separado, dentro de 30 minutos estará à sua espera."
         }
         else{
-            alert.message = "Seu pedido está sendo separado, aguarde a entrega."
+            alert.message = "Seu pedido está sendo separado, dentro de 60 minutos sairá para entrega."
         }
         
         alert.addAction(UIAlertAction(title: "Ir para Meus Pedidos", style: .cancel, handler: { (action) in

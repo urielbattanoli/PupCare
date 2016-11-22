@@ -68,7 +68,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
         
         if let petShop = self.petShop{
             self.petShopName.text = petShop.name
-            self.petShopAdress.text = petShop.address.street
+            self.petShopAdress.text = "\(petShop.address.street) - \(petShop.address.number)"
             self.petShopImage.loadImage(petShop.imageUrl)
             self.petShopNeighbourhood.text = petShop.address.neighbourhood
             
@@ -76,7 +76,7 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
                 var distance = Float(petShop.address.location.distance(from: location))
                 distance = distance / 1000
                 
-                self.petShopDistance.text = "\(distance.roundToPlaces(2)) km"
+                self.petShopDistance.text = "Distância: \(distance.roundToPlaces(2)) km"
             }
             
             if petShop.products.count > 0{
@@ -142,7 +142,13 @@ class ProductTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToDetail", sender: self.products![(indexPath as NSIndexPath).row])
+        var product: Product!
+        if !(self.searchBar.text?.isEmpty)! {
+            product = self.filteredProducts[(indexPath as NSIndexPath).row]
+        } else {
+            product = self.products![(indexPath as NSIndexPath).row]
+        }
+        performSegue(withIdentifier: "goToDetail", sender: product)
         
         tableView.deselectRow(at: indexPath, animated: false)
     }

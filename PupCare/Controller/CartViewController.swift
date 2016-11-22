@@ -193,6 +193,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(CartViewController.tableViewTap))
             gestureRecognizer.cancelsTouchesInView = false
+            gestureRecognizer.maximumNumberOfTouches = 1
+//            gestureRecognizer.cancelsTouchesInView = true
+            
             cell.ProductQuantitySlider.addGestureRecognizer(gestureRecognizer)
             
             break
@@ -211,19 +214,23 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableViewTap (_ tapGesture: UIPanGestureRecognizer) {
         
         let point: CGPoint = tapGesture.location(in: self.CartTableView)
+        
         let indexPath = self.CartTableView.indexPathForRow(at: point)
-        if indexPath == nil {
+        
+        if indexPath == nil || (self.CartTableView.cellForRow(at: indexPath!) as! CartTableViewCell).price == 0 || (indexPath!.row + 1 >= self.CartTableView.numberOfRows(inSection: indexPath!.section)) {
             print("TAPPED OUTSIDE CELL")
         } else {
             
             let cell = self.CartTableView.cellForRow(at: indexPath!)
             if let cell = cell as? CartTableViewCell {
-                //                print("TAPPED CELL\(cell.price)")
+//                                print("TAPPED CELL\(cell.price)")
                 self.workingCell = cell
                 
             }
         }
     }
+    
+    
     
     
     @IBAction func backButton(_ sender: AnyObject) {
@@ -317,6 +324,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                             finishCell.FinishOrderQuantityLabel.text = "\(finishCell.itensCount)"
                             
                             if let workingCell = workingCell {
+                                
                                 finishCell.price = finishCell.price - (Double(beganSliding) * workingCell.price) + (Double(endedSliding) * workingCell.price)
                                 
                                 
