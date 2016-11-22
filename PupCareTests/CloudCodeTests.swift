@@ -14,6 +14,13 @@ class CloudCodeTests: XCTestCase {
     
     fileprivate let expectationTime : TimeInterval = 10.0
     
+    let lat : Float = -30.05880806288295
+    let lng : Float = -51.17172300221069
+    let distance : Float = 10
+    
+    let username = "anderson@gmail.com"
+    let password = "qwerty"
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -28,7 +35,7 @@ class CloudCodeTests: XCTestCase {
     func testPromotionsQuery(){
         let expectation: XCTestExpectation = self.expectation(description: "Promotions query completed with no errors")
         
-        PromotionManager.sharedInstance.getPromotionsList(10, longitude: 10, withinKilometers: 10) { (promotions, error) in
+        PromotionManager.sharedInstance.getPromotionsList(lat, longitude: lng, withinKilometers: distance) { (promotions, error) in
             XCTAssertNotNil(promotions)
             expectation.fulfill()
         }
@@ -41,41 +48,42 @@ class CloudCodeTests: XCTestCase {
         
         var promotion : Promotion?
         
-        PromotionManager.sharedInstance.getPromotionsList(10, longitude: 10, withinKilometers: 10) { (promotions, error) in
-            promotion = promotions![0]
-            
-            PromotionManager.sharedInstance.getPromotionDetails((promotion)!, response: { (promotionDetails, error) in
-                XCTAssertNotNil(promotionDetails)
+        PromotionManager.sharedInstance.getPromotionsList(lat, longitude: lng, withinKilometers: distance) { (promotions, error) in
+            if let promotion = promotions![0] {
+                PromotionManager.sharedInstance.getPromotionDetails((promotion)!, response: { (promotionDetails, error) in
+                    XCTAssertNotNil(promotionDetails)
+                    expectation.fulfill()
+                })
+            } else {
                 expectation.fulfill()
-            })
+            }
         }
         
         waitForExpectations(timeout: expectationTime, handler: nil)
     }
 
-//    func testProductQuery(){
-//        //ERROR - NEEDS FIX
-//        let expectation : XCTestExpectation = self.expectation(description: "Product query completed with no errors")
-//        
-//        var petshop : PetShop?
-//        
-//        PetShopManager.sharedInstance.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
-//            XCTAssertNotNil(petshops)
-//            petshop = petshops![0]
-//            
-//            ProductManager.sharedInstance.getProductList((petshop?.objectId)!) { (products) in
-//                XCTAssertNotNil(products)
-//                expectation.fulfill()
-//            }
-//        }
-//        
-//        waitForExpectations(timeout: expectationTime, handler: nil)
-//    }
+    func testProductQuery(){
+        let expectation : XCTestExpectation = self.expectation(description: "Product query completed with no errors")
+        
+        var petshop : PetShop?
+        
+        PetShopManager.sharedInstance.getNearPetShops(lat, longitude: lng, withinKilometers: distance) { (petshops, error) in
+            XCTAssertNotNil(petshops)
+            petshop = petshops![0]
+            
+            ProductManager.sharedInstance.getProductList((petshop?.objectId)!) { (products) in
+                XCTAssertNotNil(products)
+                expectation.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: expectationTime, handler: nil)
+    }
     
     func testNearbyPetShopQuery(){
         let expectation : XCTestExpectation = self.expectation(description: "PetShop query completed with no errors")
         
-        PetShopManager.sharedInstance.getNearPetShops(10, longitude: 10, withinKilometers: 10) { (petshops, error) in
+        PetShopManager.sharedInstance.getNearPetShops(lat, longitude: lng, withinKilometers: distance) { (petshops, error) in
             XCTAssertNotNil(petshops)
             expectation.fulfill()
         }
@@ -83,25 +91,27 @@ class CloudCodeTests: XCTestCase {
         waitForExpectations(timeout: expectationTime, handler: nil)
     }
     
-//    func testOrderQuery(){
-//        //ERROR - NEEDS FIX
-//        let expectation : XCTestExpectation = self.expectation(description: "Order query completed with no errors")
-//        OrderManager.sharedInstance.getOrderList { (orders) in
-//            XCTAssertNotNil(orders)
-//            
-//            OrderManager.sharedInstance.getOrderProducts(orders[0], block: { (products) in
-//                XCTAssertNotNil(products)
-//                expectation.fulfill()
-//            })
-//        }
-//        waitForExpectations(timeout: expectationTime, handler: nil)
-//    }
-//    
+    func testOrderQuery(){
+        let expectation : XCTestExpectation = self.expectation(description: "Order query completed with no errors")
+        
+        UserManager.sharedInstance.singInUser(username, password: password) { (_) in
+            OrderManager.sharedInstance.getOrderList { (orders) in
+                XCTAssertNotNil(orders)
+                OrderManager.sharedInstance.getOrderProducts(orders[0], block: { (products) in
+                    XCTAssertNotNil(products)
+                    UserManager.sharedInstance.logOutUser({
+                        expectation.fulfill()
+                    })
+                })
+            }
+        }
+        waitForExpectations(timeout: expectationTime, handler: nil)
+    }
+//
 //    func testTransactionsFlow(){
 //        let transactionExpectation : XCTestExpectation = expectation(description: "Transaction flow completed with no errors")
 //        let cardExpectation : XCTestExpectation = expectation(description: "CardNumber completed with no errors")
 //        let trackExpectation : XCTestExpectation = expectation(description: "TrackGen completed with no errors")
-//        
 //        
 //        var cartao: [String: AnyObject] = [:]
 //        cartao["CardHolderName"] = "Rebecca Sommers" as AnyObject?
@@ -125,9 +135,7 @@ class CloudCodeTests: XCTestCase {
 //            XCTAssertEqual(message, "Confirmed")
 //            transactionExpectation.fulfill()
 //        }
-//        
-//        
-//        
+
 //        waitForExpectations(timeout: expectationTime, handler: nil)
 //    }
 
