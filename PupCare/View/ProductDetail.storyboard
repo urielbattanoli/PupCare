@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +24,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xc3-61-EQI">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ração Bravo Premium" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6UP-3d-Wmu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ração Bravo Premium" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6UP-3d-Wmu">
                                         <rect key="frame" x="75" y="265" width="225" height="19.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="BHo-aA-HjJ"/>
@@ -34,13 +33,12 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7f-t2-EnE">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7f-t2-EnE">
                                         <rect key="frame" x="75" y="294.5" width="225" height="98"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="OBz-Ni-hZi"/>
                                             <constraint firstAttribute="height" constant="100" id="aUV-LM-P94"/>
                                             <constraint firstAttribute="height" constant="100" id="dWx-kg-7On"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="225" id="kmW-YA-9rM"/>
                                         </constraints>
                                         <string key="text">Pacote de ração para cães adultos de grande porte. Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson, Lorem Ypson.</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
@@ -120,49 +118,21 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="0NP-lN-a4r"/>
                                     <constraint firstItem="dx2-yx-M2a" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="4jn-oe-GoL"/>
                                     <constraint firstAttribute="trailing" secondItem="9Wq-d9-mWu" secondAttribute="trailing" id="AAG-2O-tJI"/>
-                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="ATv-iF-eoW"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="Eed-Pm-0VU"/>
-                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="top" secondItem="dx2-yx-M2a" secondAttribute="bottom" constant="10" id="M0D-sy-stS"/>
                                     <constraint firstItem="t3w-MY-Ao8" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="OAa-aX-n4j"/>
-                                    <constraint firstItem="dx2-yx-M2a" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="Tlh-4g-ZJh"/>
                                     <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="X0Y-6T-anP"/>
                                     <constraint firstItem="6UP-3d-Wmu" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="bDZ-hs-jB1"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="dhe-4H-aGc"/>
-                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="fZ7-xz-bXJ"/>
+                                    <constraint firstItem="t3w-MY-Ao8" firstAttribute="top" secondItem="J7f-t2-EnE" secondAttribute="bottom" constant="5" id="eZ2-GU-ZAh"/>
                                     <constraint firstItem="yj2-6X-6CT" firstAttribute="top" secondItem="dx2-yx-M2a" secondAttribute="bottom" constant="15" id="gev-bD-MqX"/>
-                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="hwG-Jd-85W"/>
                                     <constraint firstItem="J7f-t2-EnE" firstAttribute="top" secondItem="6UP-3d-Wmu" secondAttribute="bottom" constant="10" id="jO1-0M-5YW"/>
-                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="48" id="jQT-Bf-bY3"/>
-                                    <constraint firstItem="dx2-yx-M2a" firstAttribute="top" secondItem="J7f-t2-EnE" secondAttribute="bottom" constant="60" id="jX0-Jn-upG"/>
-                                    <constraint firstAttribute="height" constant="580" id="jlv-c0-5o0"/>
-                                    <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="kDC-at-Nir"/>
                                     <constraint firstItem="dx2-yx-M2a" firstAttribute="top" secondItem="t3w-MY-Ao8" secondAttribute="bottom" constant="35" id="kOP-mi-U2q"/>
-                                    <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="kmP-Gf-lgl"/>
                                     <constraint firstItem="9Wq-d9-mWu" firstAttribute="top" secondItem="Xc3-61-EQI" secondAttribute="top" constant="15" id="lK5-xn-06R"/>
                                     <constraint firstItem="yj2-6X-6CT" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="nWb-hO-4xv"/>
                                     <constraint firstItem="6UP-3d-Wmu" firstAttribute="top" secondItem="9Wq-d9-mWu" secondAttribute="bottom" constant="25" id="vMd-LJ-MbR"/>
                                     <constraint firstItem="9Wq-d9-mWu" firstAttribute="leading" secondItem="Xc3-61-EQI" secondAttribute="leading" id="vzH-kP-t5E"/>
                                     <constraint firstItem="J7f-t2-EnE" firstAttribute="centerX" secondItem="6UP-3d-Wmu" secondAttribute="centerX" id="x3c-ab-gnC"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="jlv-c0-5o0"/>
-                                        <exclude reference="Tlh-4g-ZJh"/>
-                                        <exclude reference="0NP-lN-a4r"/>
-                                        <exclude reference="ATv-iF-eoW"/>
-                                        <exclude reference="Eed-Pm-0VU"/>
-                                        <exclude reference="M0D-sy-stS"/>
-                                        <exclude reference="dhe-4H-aGc"/>
-                                        <exclude reference="fZ7-xz-bXJ"/>
-                                        <exclude reference="hwG-Jd-85W"/>
-                                        <exclude reference="jQT-Bf-bY3"/>
-                                        <exclude reference="kDC-at-Nir"/>
-                                        <exclude reference="kmP-Gf-lgl"/>
-                                    </mask>
-                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
