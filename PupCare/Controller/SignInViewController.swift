@@ -46,7 +46,7 @@ class SignInViewController: UIViewController {
                         profile.user = usuario!
                     }
                 } else {
-                    self.setAlertBody("user nil")
+                    let _ = self.setAlertBody("user nil")
                 }
             }
         }

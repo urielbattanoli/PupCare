@@ -94,7 +94,7 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate, UIText
             AddressManager.sharedInstance.getZipInformation(textField!.text!, jsonResponse: { (json, error) in
                 
                 print("ENDEREÇO")
-                print(json)
+                //print(json)
                 
                 if let erro = json?["erro"] {
                     print(erro)
@@ -121,7 +121,7 @@ class InitialViewController: UIViewController, CLLocationManagerDelegate, UIText
                     let address = Address(data: addressDict)
                     
                     AddressManager.sharedInstance.transformAddressToGeoPoint(address, response: { (geopoint) in
-                        print(geopoint)
+                        //print(geopoint)
                         self.defaults.set("\(geopoint!.latitude)%\(geopoint!.longitude)", forKey: "geopoint")
                     })
                     self.performSegue(withIdentifier: "goToPetShops", sender: nil)

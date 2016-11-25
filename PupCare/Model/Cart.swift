@@ -113,7 +113,7 @@ class Cart: NSObject {
     
     var cartDict: PetShopDict! = PetShopDict()
     
-    func addToCart(_ petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int) -> Int {
+    func addToCart(_ petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int){
         
        for (pet, cartDict) in Cart.sharedInstance.cartDict.petShopList {
 
@@ -125,12 +125,10 @@ class Cart: NSObject {
                             
                             Cart.sharedInstance.cartDict.petShopList[pet]?.productsInCart[index] = productInCart
                             Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
-                            return 1
                         }
                     }
                     Cart.sharedInstance.cartDict.petShopList[pet]?.productsInCart.append(ProductInCart(product: product, quantity: quantity))
                     Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
-                    return 1
                 }
                 if let promotion = promotion {
                     
@@ -140,12 +138,10 @@ class Cart: NSObject {
                             
                             Cart.sharedInstance.cartDict.petShopList[pet]?.promotionsInCart[index] = promotionInCart
                             Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
-                            return 1
                         }
                     }
                     Cart.sharedInstance.cartDict.petShopList[pet]?.promotionsInCart.append(PromotionInCart(promotion: promotion, quantity: quantity))
                     Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
-                    return 1
                 }
             }
         }
@@ -169,7 +165,6 @@ class Cart: NSObject {
             Cart.sharedInstance.cartDict.petShopList[petShop.objectId] = newPetShop
             Cart.sharedInstance.cartDict.petShopList[petShop.objectId]?.updatePrice()
         }
-        return 0
     }
     
     func getTotalItemsAndPrice() -> (Int,Double) {
