@@ -12,6 +12,7 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundViewWhenWithoutOrders: UIView!
     
     //MARK: Variables
     var orders: [Order] = []{
@@ -43,7 +44,14 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
         if UserManager.sharedInstance.user != nil{
             OrderManager.sharedInstance.getOrderList { (orders) in
                 self.orders = orders
+                self.backgroundViewWhenWithoutOrders.isHidden = orders.count != 0
             }
+        }
+    }
+    
+    @IBAction func didPressGoToPetShops(_ sender: Any) {
+        if let tabbar = self.tabBarController {
+            tabbar.selectedIndex = 1
         }
     }
     

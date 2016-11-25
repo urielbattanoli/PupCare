@@ -61,19 +61,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 itens" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XnV-Nu-f1s">
-                                <rect key="frame" x="511" y="15" width="74" height="19.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="74" id="som-bV-kma"/>
-                                </constraints>
+                                <rect key="frame" x="516.5" y="15" width="68.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: R$ 999,99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oaj-t4-HTB">
-                                <rect key="frame" x="459" y="40.5" width="126" height="19.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="126" id="zZN-Ou-pWL"/>
-                                </constraints>
+                                <rect key="frame" x="465.5" y="40.5" width="119.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -95,12 +89,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69879928691275173" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Oaj-t4-HTB" secondAttribute="trailing" constant="15" id="3ET-7a-UCh"/>
+                            <constraint firstAttribute="trailing" secondItem="Oaj-t4-HTB" secondAttribute="trailing" constant="10" id="3ET-7a-UCh"/>
                             <constraint firstAttribute="bottom" secondItem="Oaj-t4-HTB" secondAttribute="bottom" constant="15" id="8Yv-z5-3Mb"/>
                             <constraint firstAttribute="bottom" secondItem="ezj-lD-LAg" secondAttribute="bottom" constant="15" id="Crv-Sh-eRj"/>
-                            <constraint firstAttribute="trailing" secondItem="XnV-Nu-f1s" secondAttribute="trailing" constant="15" id="Uqv-en-KBO"/>
+                            <constraint firstAttribute="trailing" secondItem="XnV-Nu-f1s" secondAttribute="trailing" constant="10" id="Uqv-en-KBO"/>
+                            <constraint firstItem="Oaj-t4-HTB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ezj-lD-LAg" secondAttribute="trailing" constant="35" id="dQW-4w-kC4"/>
                             <constraint firstItem="XnV-Nu-f1s" firstAttribute="top" secondItem="vfR-9n-GQ3" secondAttribute="top" constant="15" id="eie-mJ-kvK"/>
-                            <constraint firstItem="ezj-lD-LAg" firstAttribute="leading" secondItem="vfR-9n-GQ3" secondAttribute="leading" constant="15" id="gwA-vk-bXx"/>
+                            <constraint firstItem="ezj-lD-LAg" firstAttribute="leading" secondItem="vfR-9n-GQ3" secondAttribute="leading" constant="10" id="gwA-vk-bXx"/>
                             <constraint firstItem="ezj-lD-LAg" firstAttribute="top" secondItem="vfR-9n-GQ3" secondAttribute="top" constant="15" id="yM6-KU-D82"/>
                         </constraints>
                     </view>

@@ -12,6 +12,7 @@ class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var firstLbl: UILabel!
     @IBOutlet weak var secondLbl: UILabel!
+    @IBOutlet weak var thirdLbl: UILabel!
     
     @IBOutlet weak var finisheBt: BTNAttributedStyle!
     @IBOutlet weak var loaderBt: UIActivityIndicatorView!

@@ -51,6 +51,7 @@ class AddressManager: NSObject {
     func saveUserNewAddress(_ address: Address, response: @escaping (Bool, Error?)->()){
         let addressPFObject = AddressManager.sharedInstance.transformAddressToPFObject(address)
         addressPFObject.saveInBackground { (suc, err) in
+            address.addressId = addressPFObject.objectId!
             response(suc, err)
         }
     }
@@ -138,9 +139,10 @@ class AddressManager: NSObject {
     }
     
     func removeAddressFromParse(_ address: Address){
-        let pfAddress = self.transformAddressToPFObject(address)
-        pfAddress.deleteInBackground { (success, error) in
-            if !success{
+        let param = ["addressId" : address.addressId]
+        
+        PFCloud.callFunction(inBackground: "deleteAddress", withParameters: param) { (success, error) in
+            if let error = error {
                 print(error)
             }
         }

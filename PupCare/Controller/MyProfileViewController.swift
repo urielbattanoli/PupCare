@@ -42,6 +42,16 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         self.user = UserManager.sharedInstance.user
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        AddressManager.sharedInstance.getAddressListFromUser(self.user.userId!) { (addresses) in
+            if addresses.count > self.user.addressList.count {
+                self.user.addressList = addresses
+                UserManager.sharedInstance.user?.addressList = addresses
+            }
+        }
+        self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

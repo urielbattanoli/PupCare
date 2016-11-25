@@ -91,12 +91,7 @@ class PromotionsViewController: UIViewController, UITableViewDelegate, UITableVi
                 print(promotions!)
                 self.allPromotions = promotions!
                 
-                if promotions?.count == 0 {
-                    self.backgroundWhitoutPromotionsView.isHidden = false
-                }
-                else{
-                    self.backgroundWhitoutPromotionsView.isHidden = true
-                }
+                self.backgroundWhitoutPromotionsView.isHidden = promotions!.count != 0
                 
                 self.promotionsTableView.reloadData()
             }

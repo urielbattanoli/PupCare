@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2333a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uQP-E4-poI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uQP-E4-poI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,12 +24,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="cat-and-dog-pics" translatesAutoresizingMaskIntoConstraints="NO" id="u3t-69-178">
+                                <rect key="frame" x="-64" y="269" width="503" height="437"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="0.20283661912751677" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="u3t-69-178" secondAttribute="height" multiplier="375:326" id="Gv0-jU-vb4"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3H-Cw-gyR" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="50" y="142" width="275" height="45"/>
                                 <color key="backgroundColor" red="0.37039604783058167" green="0.089844450354576111" blue="0.37512409687042236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="R1e-Lv-dkf"/>
@@ -44,6 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTl-2G-NkY" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="50" y="262" width="275" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="3jT-dF-yAI"/>
@@ -61,6 +67,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9N-J9-eKl" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="50" y="202" width="275" height="45"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="O9w-4a-6e5"/>
@@ -78,6 +85,7 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="PupCareLogo" translatesAutoresizingMaskIntoConstraints="NO" id="mxN-gP-aHq">
+                                <rect key="frame" x="145" y="26" width="85" height="98"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="2e2-Wr-Cp8"/>
                                     <constraint firstAttribute="height" constant="98" id="fLS-Nt-yid"/>
@@ -107,9 +115,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="26e-gF-Rzw"/>
                                 <exclude reference="KaK-pc-KjC"/>
                                 <exclude reference="PDS-2W-63q"/>
-                                <exclude reference="26e-gF-Rzw"/>
                                 <exclude reference="Utm-zO-LU0"/>
                             </mask>
                         </variation>
@@ -135,12 +143,15 @@
                         <viewControllerLayoutGuide type="top" id="ibe-lE-HP1"/>
                         <viewControllerLayoutGuide type="bottom" id="qZz-bM-mjV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="I5W-Dh-eIV">
+                    <view key="view" contentMode="scaleToFill" id="I5W-Dh-eIV" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="PupCareWt" translatesAutoresizingMaskIntoConstraints="NO" id="P6n-PW-2d8"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="PupCareWt" translatesAutoresizingMaskIntoConstraints="NO" id="P6n-PW-2d8">
+                                <rect key="frame" x="122.5" y="28" width="130" height="115"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-Be-Pin" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="116.5" y="316" width="142" height="45"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="Esqueceu sua senha?">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -152,6 +163,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5a6-CS-BSK" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="163" width="355" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="355" id="Zmo-GD-bHL"/>
                                     <constraint firstAttribute="height" constant="40" id="l4i-E5-3am"/>
@@ -170,7 +182,7 @@
                                         <color key="value" red="0.76021528244018555" green="0.76019251346588135" blue="0.76020538806915283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.49609583616256714" green="0.49608099460601807" blue="0.4960893988609314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
@@ -180,6 +192,7 @@
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7C-dx-AH9" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="213" width="355" height="40"/>
                                 <color key="textColor" red="0.23420003056526184" green="0.66735291481018066" blue="0.97718930244445801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -194,11 +207,12 @@
                                         <color key="value" red="0.76021528244018555" green="0.76019251346588135" blue="0.76020538806915283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.49609583616256714" green="0.49608099460601807" blue="0.4960893988609314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nm-XQ-7RZ" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="50" y="263" width="275" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Nak-Yx-opK"/>
@@ -229,7 +243,7 @@
                             <constraint firstItem="P6n-PW-2d8" firstAttribute="centerX" secondItem="I5W-Dh-eIV" secondAttribute="centerX" id="0r8-aa-PjZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4nm-XQ-7RZ" secondAttribute="trailing" constant="50" id="4lY-EZ-u1C"/>
                             <constraint firstAttribute="trailing" secondItem="4nm-XQ-7RZ" secondAttribute="trailing" constant="50" id="5Jk-HN-zNq"/>
-                            <constraint firstItem="5a6-CS-BSK" firstAttribute="top" secondItem="P6n-PW-2d8" secondAttribute="bottom" constant="30" id="AcT-Zu-Obc"/>
+                            <constraint firstItem="5a6-CS-BSK" firstAttribute="top" secondItem="P6n-PW-2d8" secondAttribute="bottom" constant="20" id="AcT-Zu-Obc"/>
                             <constraint firstItem="N7C-dx-AH9" firstAttribute="height" secondItem="5a6-CS-BSK" secondAttribute="height" id="BLZ-zg-jUR"/>
                             <constraint firstItem="4nm-XQ-7RZ" firstAttribute="top" secondItem="N7C-dx-AH9" secondAttribute="bottom" constant="10" id="ByF-Rc-czi"/>
                             <constraint firstItem="BVC-Be-Pin" firstAttribute="height" secondItem="4nm-XQ-7RZ" secondAttribute="height" id="Fof-Pg-T3l"/>
@@ -247,10 +261,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="0IO-4f-uRk"/>
-                                <exclude reference="4lY-EZ-u1C"/>
                                 <exclude reference="ORS-xH-1hj"/>
                                 <exclude reference="g65-Ye-FWu"/>
+                                <exclude reference="0IO-4f-uRk"/>
+                                <exclude reference="4lY-EZ-u1C"/>
                             </mask>
                         </variation>
                     </view>
@@ -272,11 +286,12 @@
                         <viewControllerLayoutGuide type="top" id="t45-OX-XtD"/>
                         <viewControllerLayoutGuide type="bottom" id="5h9-f2-oTV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fgz-4q-M9o">
+                    <view key="view" contentMode="scaleToFill" id="fgz-4q-M9o" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome Completo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ojT-Xp-Hq0" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="10" y="121" width="355" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="355" id="A66-YZ-8uK"/>
                                     <constraint firstAttribute="height" constant="40" id="x4t-Cr-lQ5"/>
@@ -295,7 +310,7 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.49609583616256714" green="0.49608099460601807" blue="0.4960893988609314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
@@ -305,6 +320,7 @@
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1R2-Di-UDP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="11" y="221" width="355" height="40"/>
                                 <color key="textColor" red="0.23420003056526184" green="0.66735291481018066" blue="0.97718930244445801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -319,11 +335,12 @@
                                         <color key="value" red="0.76021528244018555" green="0.76019251346588135" blue="0.76020538806915283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.49609583616256714" green="0.49608099460601807" blue="0.4960893988609314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha novamente" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbh-sd-WNE" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="11" y="271" width="355" height="40"/>
                                 <color key="textColor" red="0.23420003056526184" green="0.66735291481018066" blue="0.97718930244445801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -338,11 +355,12 @@
                                         <color key="value" red="0.76021528244018555" green="0.76019251346588135" blue="0.76020538806915283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.49609583616256714" green="0.49608099460601807" blue="0.4960893988609314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EbY-1e-GLP" customClass="TXTAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="11" y="171" width="355" height="40"/>
                                 <color key="textColor" red="0.23420003056526184" green="0.66735291481018066" blue="0.97718930244445801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -357,15 +375,12 @@
                                         <color key="value" red="0.76021528244018555" green="0.76019251346588135" blue="0.76020538806915283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.49609583616256714" green="0.49608099460601807" blue="0.4960893988609314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="PupCareWt" translatesAutoresizingMaskIntoConstraints="NO" id="zFh-Sv-rPi" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="HMC-jZ-vXf"/>
-                                    <constraint firstAttribute="height" constant="97" id="eNX-sh-aaG"/>
-                                </constraints>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="PupCareWtHorizontal" translatesAutoresizingMaskIntoConstraints="NO" id="zFh-Sv-rPi" customClass="IMGAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="82.5" y="31" width="210" height="60"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="0.0"/>
@@ -373,6 +388,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onn-fw-d2O" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
+                                <rect key="frame" x="50" y="321" width="275" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.72549019607843135" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="JDN-Wy-MVd"/>
@@ -412,7 +428,7 @@
                             <constraint firstItem="EbY-1e-GLP" firstAttribute="width" secondItem="ojT-Xp-Hq0" secondAttribute="width" id="G5f-te-AuT"/>
                             <constraint firstAttribute="trailing" secondItem="onn-fw-d2O" secondAttribute="trailing" constant="50" id="LUG-9I-yDi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="onn-fw-d2O" secondAttribute="trailing" constant="50" id="OzW-tS-O9A"/>
-                            <constraint firstItem="zFh-Sv-rPi" firstAttribute="centerX" secondItem="fgz-4q-M9o" secondAttribute="centerX" constant="-1" id="Qmh-yt-4v6"/>
+                            <constraint firstItem="zFh-Sv-rPi" firstAttribute="centerX" secondItem="fgz-4q-M9o" secondAttribute="centerX" id="Qmh-yt-4v6"/>
                             <constraint firstItem="ojT-Xp-Hq0" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leadingMargin" constant="10" id="TeT-p6-VbN"/>
                             <constraint firstItem="1R2-Di-UDP" firstAttribute="top" secondItem="EbY-1e-GLP" secondAttribute="bottom" constant="10" id="Tyn-g0-vRg"/>
                             <constraint firstItem="1R2-Di-UDP" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leading" constant="10" id="VQn-Q3-hE6"/>
@@ -428,7 +444,7 @@
                             <constraint firstItem="qbh-sd-WNE" firstAttribute="width" secondItem="1R2-Di-UDP" secondAttribute="width" id="ja8-4a-TCa"/>
                             <constraint firstAttribute="trailing" secondItem="1R2-Di-UDP" secondAttribute="trailing" constant="10" id="mft-PL-DON"/>
                             <constraint firstItem="1R2-Di-UDP" firstAttribute="width" secondItem="EbY-1e-GLP" secondAttribute="width" id="nI1-wZ-ZWA"/>
-                            <constraint firstItem="ojT-Xp-Hq0" firstAttribute="top" secondItem="zFh-Sv-rPi" secondAttribute="bottom" constant="15" id="nOM-Bt-OV7"/>
+                            <constraint firstItem="ojT-Xp-Hq0" firstAttribute="top" secondItem="zFh-Sv-rPi" secondAttribute="bottom" constant="30" id="nOM-Bt-OV7"/>
                             <constraint firstItem="ojT-Xp-Hq0" firstAttribute="centerX" secondItem="zFh-Sv-rPi" secondAttribute="centerX" constant="0.5" id="oEV-hb-Ue3"/>
                             <constraint firstItem="onn-fw-d2O" firstAttribute="leading" secondItem="fgz-4q-M9o" secondAttribute="leading" constant="50" id="oT0-q1-aLP"/>
                             <constraint firstItem="onn-fw-d2O" firstAttribute="top" secondItem="qbh-sd-WNE" secondAttribute="bottom" constant="10" id="qbK-FP-YMR"/>
@@ -437,18 +453,18 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="VQn-Q3-hE6"/>
-                                <exclude reference="mft-PL-DON"/>
-                                <exclude reference="7hz-jx-xkj"/>
-                                <exclude reference="VpG-SN-Fag"/>
                                 <exclude reference="CZz-yX-plr"/>
                                 <exclude reference="TeT-p6-VbN"/>
                                 <exclude reference="oEV-hb-Ue3"/>
+                                <exclude reference="7hz-jx-xkj"/>
+                                <exclude reference="VpG-SN-Fag"/>
+                                <exclude reference="VQn-Q3-hE6"/>
+                                <exclude reference="mft-PL-DON"/>
+                                <exclude reference="bwT-YP-lsw"/>
+                                <exclude reference="rJ4-v1-hFq"/>
                                 <exclude reference="BUF-CX-ynq"/>
                                 <exclude reference="OzW-tS-O9A"/>
                                 <exclude reference="b8c-x6-XJb"/>
-                                <exclude reference="bwT-YP-lsw"/>
-                                <exclude reference="rJ4-v1-hFq"/>
                             </mask>
                         </variation>
                     </view>
@@ -475,11 +491,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="PupCareLogo" width="115" height="126"/>
-        <image name="PupCareWt" width="124" height="135"/>
+        <image name="PupCareLogo" width="130" height="115"/>
+        <image name="PupCareWt" width="130" height="115"/>
+        <image name="PupCareWtHorizontal" width="210" height="60"/>
         <image name="cat-and-dog-pics" width="375" height="326"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bE8-pn-eR8"/>
+        <segue reference="Hu9-ij-AGM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -52,7 +52,7 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yj2-6X-6CT" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                        <rect key="frame" x="75" y="502.5" width="225" height="45"/>
+                                        <rect key="frame" x="75" y="512.5" width="225" height="45"/>
                                         <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="LiX-m0-0nR"/>
@@ -91,7 +91,7 @@
                                         </constraints>
                                     </view>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="dx2-yx-M2a" customClass="ASValueTrackingSlider">
-                                        <rect key="frame" x="73" y="452.5" width="229" height="36"/>
+                                        <rect key="frame" x="73" y="462.5" width="229" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="TkM-k0-kS4"/>
                                             <constraint firstAttribute="width" constant="225" id="WJe-39-Ao1"/>
@@ -107,13 +107,13 @@
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor: R$ 999,99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3w-MY-Ao8">
-                                        <rect key="frame" x="75" y="397.5" width="225" height="20"/>
+                                        <rect key="frame" x="75" y="407.5" width="225" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="257-82-zuC"/>
                                             <constraint firstAttribute="width" constant="225" id="qft-Jt-UiX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.45098039220000002" green="0.15686274510000001" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -123,7 +123,7 @@
                                     <constraint firstItem="t3w-MY-Ao8" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="OAa-aX-n4j"/>
                                     <constraint firstAttribute="bottom" secondItem="yj2-6X-6CT" secondAttribute="bottom" constant="28" id="X0Y-6T-anP"/>
                                     <constraint firstItem="6UP-3d-Wmu" firstAttribute="centerX" secondItem="Xc3-61-EQI" secondAttribute="centerX" id="bDZ-hs-jB1"/>
-                                    <constraint firstItem="t3w-MY-Ao8" firstAttribute="top" secondItem="J7f-t2-EnE" secondAttribute="bottom" constant="5" id="eZ2-GU-ZAh"/>
+                                    <constraint firstItem="t3w-MY-Ao8" firstAttribute="top" secondItem="J7f-t2-EnE" secondAttribute="bottom" constant="15" id="eZ2-GU-ZAh"/>
                                     <constraint firstItem="yj2-6X-6CT" firstAttribute="top" secondItem="dx2-yx-M2a" secondAttribute="bottom" constant="15" id="gev-bD-MqX"/>
                                     <constraint firstItem="J7f-t2-EnE" firstAttribute="top" secondItem="6UP-3d-Wmu" secondAttribute="bottom" constant="10" id="jO1-0M-5YW"/>
                                     <constraint firstItem="dx2-yx-M2a" firstAttribute="top" secondItem="t3w-MY-Ao8" secondAttribute="bottom" constant="35" id="kOP-mi-U2q"/>
