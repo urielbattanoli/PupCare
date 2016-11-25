@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController {
         case "email":
             alert.message = "Por favor, insira um e-mail válido"
         case "name":
-            alert.message = "Por Favor, insira um e-mail válido"
+            alert.message = "Por favor, insira um e-mail válido"
         default:
             return true
         }

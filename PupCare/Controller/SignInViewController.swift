@@ -69,9 +69,9 @@ class SignInViewController: UIViewController {
         
         switch field {
         case "password":
-            alert.message = "Por favor, isira a senha correta."
+            alert.message = "Por favor, insira a senha correta."
         case "username":
-            alert.message = "Por Favor, insira um e-mail cadastrado."
+            alert.message = "Por favor, insira um e-mail cadastrado."
         case "user nil":
             alert.message = "Usuário não cadastrado"
         default:

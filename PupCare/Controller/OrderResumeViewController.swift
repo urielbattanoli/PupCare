@@ -50,6 +50,11 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Functions
+    func calculeDelivery()-> Double {
+        return 0
+    }
+    
     // MARK: Tableview data source
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.numberOfSections
@@ -83,8 +88,12 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 
             case self.numberOfRowSection0-1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
+                let delivery = self.calculeDelivery()
+                
                 cell.firstLbl.text = String(self.petShopInCard!.totalQuantity)
-                cell.secondLbl.text = NSNumber(value: self.petShopInCard!.totalPrice as Double).numberToPrice()
+                cell.secondLbl.text = NSNumber(value: delivery).numberToPrice()
+                cell.thirdLbl.text = NSNumber(value: (self.petShopInCard!.totalPrice as Double)+delivery).numberToPrice()
+                
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "productCell") as! ProductTableViewCell
@@ -235,7 +244,7 @@ class OrderResumeViewController: UIViewController, UITableViewDataSource, UITabl
                 return 90
                 
             default:
-                return 60
+                return 90
             }
         }
         else if indexPath.section == 1 || indexPath.section == 2{

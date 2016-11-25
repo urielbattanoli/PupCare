@@ -343,8 +343,16 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func showAlertWhenUserIsNil(){
         let alert = UIAlertController(title: "Você não está logado", message: "Para poder finalizar sua compra, primeiro você deve efetuar login em 'Minha conta'", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let goToLogIn = UIAlertAction(title: "Fazer Login", style: .default) { (action) in
+            if let tabbar = self.presentingViewController as? UITabBarController {
+                tabbar.selectedIndex = 3
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+        
         alert.addAction(cancel)
+        alert.addAction(goToLogIn)
         
         self.present(alert, animated: true, completion: nil)
     }

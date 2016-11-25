@@ -51,6 +51,7 @@ class AddressManager: NSObject {
     func saveUserNewAddress(_ address: Address, response: @escaping (Bool, Error?)->()){
         let addressPFObject = AddressManager.sharedInstance.transformAddressToPFObject(address)
         addressPFObject.saveInBackground { (suc, err) in
+            address.addressId = addressPFObject.objectId!
             response(suc, err)
         }
     }
@@ -78,7 +79,7 @@ class AddressManager: NSObject {
         print(addressString)
         CLGeocoder().geocodeAddressString(addressString, completionHandler: { (placemarks, error) in
             if error != nil {
-                //print(error)
+                print(error)
                 response(nil)
             }
             if placemarks?.count > 0 {
@@ -96,7 +97,7 @@ class AddressManager: NSObject {
         let location = CLLocation(latitude: latitude, longitude: longitude)
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
-                //print(error)
+                print(error)
                 return
             }
             else if placemarks?.count > 0 {
@@ -138,10 +139,11 @@ class AddressManager: NSObject {
     }
     
     func removeAddressFromParse(_ address: Address){
-        let pfAddress = self.transformAddressToPFObject(address)
-        pfAddress.deleteInBackground { (success, error) in
-            if !success{
-                //print(error)
+        let param = ["addressId" : address.addressId]
+        
+        PFCloud.callFunction(inBackground: "deleteAddress", withParameters: param) { (success, error) in
+            if let error = error {
+                print(error)
             }
         }
     }
