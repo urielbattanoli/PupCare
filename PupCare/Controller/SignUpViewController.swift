@@ -15,13 +15,13 @@ class SignUpViewController: UIViewController {
     @IBOutlet var password: UITextField!
     @IBOutlet var passwordConfirmation: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 94, green: 23, blue: 96)
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
@@ -33,8 +33,6 @@ class SignUpViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
-    
-    
     
     @IBAction func didPressSignUp(_ sender: AnyObject) {
         if verifyFields() {

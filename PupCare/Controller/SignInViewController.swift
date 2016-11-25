@@ -21,6 +21,7 @@ class SignInViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 94, green: 23, blue: 96)
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
