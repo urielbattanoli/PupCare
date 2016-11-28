@@ -82,7 +82,7 @@ class PetshopInCart {
                 }
             }
         }
-     
+        
         
         
     }
@@ -113,10 +113,10 @@ class Cart: NSObject {
     
     var cartDict: PetShopDict! = PetShopDict()
     
-    func addToCart(_ petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int){
+    func addToCart(_ petShop: PetShop, product: Product?, promotion: Promotion?, quantity: Int) -> Int {
         
-       for (pet, cartDict) in Cart.sharedInstance.cartDict.petShopList {
-
+        for (pet, cartDict) in Cart.sharedInstance.cartDict.petShopList {
+            
             if pet == petShop.objectId {
                 if let product = product {
                     for (index, var productInCart) in cartDict.productsInCart.enumerated() {
@@ -125,10 +125,12 @@ class Cart: NSObject {
                             
                             Cart.sharedInstance.cartDict.petShopList[pet]?.productsInCart[index] = productInCart
                             Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
+                            return 1
                         }
                     }
                     Cart.sharedInstance.cartDict.petShopList[pet]?.productsInCart.append(ProductInCart(product: product, quantity: quantity))
                     Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
+                    return 1
                 }
                 if let promotion = promotion {
                     
@@ -138,10 +140,12 @@ class Cart: NSObject {
                             
                             Cart.sharedInstance.cartDict.petShopList[pet]?.promotionsInCart[index] = promotionInCart
                             Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
+                            return 1
                         }
                     }
                     Cart.sharedInstance.cartDict.petShopList[pet]?.promotionsInCart.append(PromotionInCart(promotion: promotion, quantity: quantity))
                     Cart.sharedInstance.cartDict.petShopList[pet]?.updatePrice()
+                    return 1
                 }
             }
         }
@@ -161,10 +165,11 @@ class Cart: NSObject {
             let newPetShop = PetshopInCart()
             newPetShop.petShop = petShop
             newPetShop.addProduct(product, quantity: quantity)
-        
+            
             Cart.sharedInstance.cartDict.petShopList[petShop.objectId] = newPetShop
             Cart.sharedInstance.cartDict.petShopList[petShop.objectId]?.updatePrice()
         }
+        return 0
     }
     
     func getTotalItemsAndPrice() -> (Int,Double) {
