@@ -24,7 +24,7 @@ class ProfileContainerViewController: UIViewController, ChangeContainerNavBarCol
     func changeNavBarColor(controllerName: String) {
         switch controllerName {
         case "Profile":
-            self.navigationController?.navigationBar.barTintColor = UIColor(red: 57, green: 0, blue: 58)
+            self.navigationController?.navigationBar.barTintColor = UIColor(red: 77, green: 38, blue: 77)
         case "Login":
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             self.navigationController?.navigationBar.shadowImage = UIImage()

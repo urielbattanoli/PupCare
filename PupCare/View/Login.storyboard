@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uQP-E4-poI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uQP-E4-poI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,15 +24,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="cat-and-dog-pics" translatesAutoresizingMaskIntoConstraints="NO" id="u3t-69-178">
-                                <rect key="frame" x="-64" y="269" width="503" height="437"/>
+                                <rect key="frame" x="0.0" y="380" width="375" height="326"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="0.20283661912751677" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="u3t-69-178" secondAttribute="height" multiplier="375:326" id="Gv0-jU-vb4"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3H-Cw-gyR" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="50" y="142" width="275" height="45"/>
-                                <color key="backgroundColor" red="0.37039604783058167" green="0.089844450354576111" blue="0.37512409687042236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="50" y="253" width="275" height="45"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="R1e-Lv-dkf"/>
                                 </constraints>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTl-2G-NkY" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="50" y="262" width="275" height="45"/>
+                                <rect key="frame" x="50" y="373" width="275" height="45"/>
                                 <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="3jT-dF-yAI"/>
@@ -67,7 +67,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9N-J9-eKl" customClass="BTNAttributedStyle" customModule="PupCare" customModuleProvider="target">
-                                <rect key="frame" x="50" y="202" width="275" height="45"/>
+                                <rect key="frame" x="50" y="313" width="275" height="45"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="O9w-4a-6e5"/>
@@ -85,7 +85,7 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="PupCareLogo" translatesAutoresizingMaskIntoConstraints="NO" id="mxN-gP-aHq">
-                                <rect key="frame" x="145" y="26" width="85" height="98"/>
+                                <rect key="frame" x="122.5" y="26" width="130" height="209"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -233,7 +233,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.37039604783058167" green="0.089844450354576111" blue="0.37512409687042236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.30196078430000001" green="0.14901960780000001" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4nm-XQ-7RZ" firstAttribute="leading" secondItem="I5W-Dh-eIV" secondAttribute="leadingMargin" constant="50" id="0IO-4f-uRk"/>
                             <constraint firstItem="P6n-PW-2d8" firstAttribute="centerX" secondItem="I5W-Dh-eIV" secondAttribute="centerX" id="0r8-aa-PjZ"/>
@@ -412,7 +412,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.37039604783058167" green="0.089844450354576111" blue="0.37512409687042236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.30196078430000001" green="0.14901960780000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zFh-Sv-rPi" firstAttribute="top" secondItem="t45-OX-XtD" secondAttribute="bottom" constant="11" id="1e4-jd-Ajt"/>
                             <constraint firstItem="EbY-1e-GLP" firstAttribute="height" secondItem="ojT-Xp-Hq0" secondAttribute="height" id="5gT-rf-d35"/>
