@@ -27,8 +27,9 @@ class PupCareUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-
-    func testAddAddress(){
+    
+    func testAll() {
+        //TEST LOGIN
         let app = XCUIApplication()
         app.tabBars.buttons["Minha Conta"].tap()
         app.buttons["Entrar com sua conta"].tap()
@@ -36,148 +37,69 @@ class PupCareUITests: XCTestCase {
         let digiteSeuEMailTextField = app.textFields["Digite seu e-mail"]
         digiteSeuEMailTextField.tap()
         
-        digiteSeuEMailTextField.typeText("k")
-        digiteSeuEMailTextField.typeText("e")
-        digiteSeuEMailTextField.typeText("k")
-        digiteSeuEMailTextField.typeText("e")
-        digiteSeuEMailTextField.typeText("@")
-        digiteSeuEMailTextField.typeText("g")
-        digiteSeuEMailTextField.typeText("m")
-        digiteSeuEMailTextField.typeText("a")
-        digiteSeuEMailTextField.typeText("i")
-        digiteSeuEMailTextField.typeText("l")
-        digiteSeuEMailTextField.typeText(".")
-        digiteSeuEMailTextField.typeText("c")
-        digiteSeuEMailTextField.typeText("o")
-        digiteSeuEMailTextField.typeText("m")
-        
+        digiteSeuEMailTextField.typeText("teste@teste.com")
         
         let digiteSuaSenhaSecureTextField = app.secureTextFields["Digite sua senha"]
         digiteSuaSenhaSecureTextField.tap()
-        digiteSuaSenhaSecureTextField.typeText("q")
-        digiteSuaSenhaSecureTextField.typeText("w")
-        digiteSuaSenhaSecureTextField.typeText("e")
-        digiteSuaSenhaSecureTextField.typeText("r")
-        digiteSuaSenhaSecureTextField.typeText("t")
-        digiteSuaSenhaSecureTextField.typeText("y")
+        digiteSuaSenhaSecureTextField.typeText("123456")
+        
         app.buttons["Fazer login"].tap()
+        
+        //TEST ADD PRODUCT
+        app.tabBars.buttons["Pet Shops"].tap()
+        
+        app.tables.cells.element(boundBy: 0).tap()
+        
+        app.tables.cells.element(boundBy: 0).tap()
+        
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element
+        element.swipeUp()
+        
+        app.sliders["0%"].swipeRight()
+        
+        app.buttons["Adicionar ao carrinho"].tap()
+        
+        app.buttons["Ver seu carrinho"].tap()
+        
+        app.tables.buttons["Finalizar compra para esta Pet Shop"].tap()
+        
+        let tablesQuery = XCUIApplication().tables
+        tablesQuery.staticTexts["Retira na pet shop"].tap()
+        tablesQuery.staticTexts["Cartão"].tap()
+        tablesQuery.staticTexts["Dinheiro"].tap()
+        
+        //BACK TO MAIN SCREEN
+        app.navigationBars["Finalizar compra"].buttons["Voltar"].tap()
+        app.navigationBars["Carrinho"].buttons["Fechar"].tap()
+        
+        //TEST ORDER
+        app.tabBars.buttons["Pedidos"].tap()
+        app.tables.buttons["Ver detalhes do pedido"].tap()
+        
+        //TEST ADD ADDRESS
         app.tabBars.buttons["Minha Conta"].tap()
         
-        let tablesQuery = app.tables
-        tablesQuery.children(matching: .cell).element(boundBy: 1).children(matching: .textField).element.tap()
-        tablesQuery.staticTexts["Adicionar novo endereço"].tap()
+        app.tables.children(matching: .cell).element(boundBy: 1).children(matching: .textField).element.tap()
+        app.tables.staticTexts["Adicionar novo endereço"].tap()
         
-        app.buttons["Buscar pelo GPS"].tap()
+        app.buttons["Buscar pelo CEP"].tap()
+        
+        let buscarEndereOPeloCepAlert = app.alerts["Buscar endereço pelo CEP"]
+        let ex90008890TextField = buscarEndereOPeloCepAlert.collectionViews.textFields["Ex: 90008890"]
+        ex90008890TextField.typeText("90680430")
+        buscarEndereOPeloCepAlert.buttons["Done"].tap()
         
         let nMeroTextField = app.textFields["Número"]
         nMeroTextField.tap()
-        nMeroTextField.typeText("7")
-        nMeroTextField.typeText("5")
-        nMeroTextField.typeText("9")
-
-        let dUmNomeAoEndereOExMinhaCasaTextField = app.textFields["Dê um nome ao endereço (Ex: \"minha casa\")"]
-        dUmNomeAoEndereOExMinhaCasaTextField.tap()
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText("M")
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText("i")
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText("n")
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText("h")
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText("a")
+        nMeroTextField.typeText("229")
         
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText(" ")
-
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText("C")
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText("a")
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText("s")
-        dUmNomeAoEndereOExMinhaCasaTextField.typeText("a")
-
-        XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element.tap()
+        app.buttons["Cadastrar Endereço"].tap()
         
-        XCUIApplication().buttons["Cadastrar Endereço"].tap()
+        //TEST REMOVE ADDRESS
+        app.tables.staticTexts["Rua Graciano Azambuja"].swipeLeft()
+        app.tables.buttons["Remover"].tap()
         
-        let minhaCasaStaticText = app.tables.staticTexts["Minha Casa"]
-        minhaCasaStaticText.swipeLeft()
-        
-        app.tables.children(matching: .cell).element(boundBy: 3).children(matching: .textField).element.tap()
+        //TEST LOGOUT
+        app.tables.children(matching: .cell).element(boundBy: 6).children(matching: .textField).element.tap()
     }
-    
-    func testLogin(){
-        let app = XCUIApplication()
-        app.tabBars.buttons["Minha Conta"].tap()
-        app.buttons["Entrar com sua conta"].tap()
-        
-        let digiteSeuEMailTextField = app.textFields["Digite seu e-mail"]
-        digiteSeuEMailTextField.tap()
-    
-        digiteSeuEMailTextField.typeText("a")
-        digiteSeuEMailTextField.typeText("n")
-        digiteSeuEMailTextField.typeText("d")
-        digiteSeuEMailTextField.typeText("e")
-        digiteSeuEMailTextField.typeText("r")
-        digiteSeuEMailTextField.typeText("s")
-        digiteSeuEMailTextField.typeText("o")
-        digiteSeuEMailTextField.typeText("n")
-        digiteSeuEMailTextField.typeText("@")
-        digiteSeuEMailTextField.typeText("g")
-        digiteSeuEMailTextField.typeText("m")
-        digiteSeuEMailTextField.typeText("a")
-        digiteSeuEMailTextField.typeText("i")
-        digiteSeuEMailTextField.typeText("l")
-        digiteSeuEMailTextField.typeText(".")
-        digiteSeuEMailTextField.typeText("c")
-        digiteSeuEMailTextField.typeText("o")
-        digiteSeuEMailTextField.typeText("m")
-        
-
-        let digiteSuaSenhaSecureTextField = app.secureTextFields["Digite sua senha"]
-        digiteSuaSenhaSecureTextField.tap()
-        digiteSuaSenhaSecureTextField.typeText("q")
-        digiteSuaSenhaSecureTextField.typeText("w")
-        digiteSuaSenhaSecureTextField.typeText("e")
-        digiteSuaSenhaSecureTextField.typeText("r")
-        digiteSuaSenhaSecureTextField.typeText("t")
-        digiteSuaSenhaSecureTextField.typeText("y")
-        app.buttons["Fazer login"].tap()
-        app.tabBars.buttons["Minha Conta"].tap()
-    }
-    
-    func testFinishTransaction(){
-        
-        let app = XCUIApplication()
-        let tablesQuery = app.tables
-        
-        tablesQuery.cells.containing(.staticText, identifier:"20.0%").buttons["Adicionar produto ao carrinho"].tap()
-        app.buttons["Ver seu carrinho"].tap()
-        tablesQuery.buttons["Finalizar compra para esta Pet Shop"].tap()
-        
-        tablesQuery.staticTexts["Escolha a forma de pagamento"].swipeUp()
-        
-        tablesQuery.cells.containing(.staticText, identifier:"Código: PJDnZQj9mm").buttons["Ver detalhes do pedido"].tap()
-        
-        tablesQuery.buttons["Fazer pagamento e finalizar compra"].tap()
-        app.alerts["Pedido realizado com sucesso"].buttons["Ir para Meus Pedidos"].tap()
-        tablesQuery.cells.containing(.staticText, identifier:"Código: PJDnZQj9mm").buttons["Ver detalhes do pedido"].tap()
-        tablesQuery.staticTexts["Coleira Italiana para cachorros de pequeno porte com 20% de desconto!"].tap()
-        
-    }
-    
-    func testAddProductToCart(){
-        
-        let app = XCUIApplication()
-        
-        app.tabBars.buttons["Pet Shops"].tap()
-        
-        let cell = app.tables.cells
-        
-        cell.element(boundBy: 0).tap()
-        
-        app.tables.staticTexts["Ração Crocante"].tap()
-        app.sliders["0%"].press(forDuration: 2.5);
-        
-        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.tap()
-        app.sliders["0%"].swipeRight()
-        
-        
-        app.buttons["Adicionar ao carrinho"].tap()
-    }
-    
 }
