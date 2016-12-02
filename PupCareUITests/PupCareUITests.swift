@@ -9,7 +9,7 @@
 import XCTest
 
 class PupCareUITests: XCTestCase {
-        
+    
     override func setUp() {
         super.setUp()
         
@@ -19,7 +19,7 @@ class PupCareUITests: XCTestCase {
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
+        
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
@@ -28,8 +28,8 @@ class PupCareUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testAll() {
-        //TEST LOGIN
+    
+    func testAddProduct() {
         let app = XCUIApplication()
         app.tabBars.buttons["Minha Conta"].tap()
         app.buttons["Entrar com sua conta"].tap()
@@ -45,7 +45,6 @@ class PupCareUITests: XCTestCase {
         
         app.buttons["Fazer login"].tap()
         
-        //TEST ADD PRODUCT
         app.tabBars.buttons["Pet Shops"].tap()
         
         app.tables.cells.element(boundBy: 0).tap()
@@ -72,11 +71,49 @@ class PupCareUITests: XCTestCase {
         app.navigationBars["Finalizar compra"].buttons["Voltar"].tap()
         app.navigationBars["Carrinho"].buttons["Fechar"].tap()
         
-        //TEST ORDER
+        app.tabBars.buttons["Minha Conta"].tap()
+        app.tables.children(matching: .cell).element(boundBy: 3).children(matching: .textField).element.tap()
+    }
+    
+    func testOrder() {
+        let app = XCUIApplication()
+        app.tabBars.buttons["Minha Conta"].tap()
+        app.buttons["Entrar com sua conta"].tap()
+        
+        let digiteSeuEMailTextField = app.textFields["Digite seu e-mail"]
+        digiteSeuEMailTextField.tap()
+        
+        digiteSeuEMailTextField.typeText("teste@teste.com")
+        
+        let digiteSuaSenhaSecureTextField = app.secureTextFields["Digite sua senha"]
+        digiteSuaSenhaSecureTextField.tap()
+        digiteSuaSenhaSecureTextField.typeText("123456")
+        
+        app.buttons["Fazer login"].tap()
+        
         app.tabBars.buttons["Pedidos"].tap()
         app.tables.buttons["Ver detalhes do pedido"].tap()
         
-        //TEST ADD ADDRESS
+        app.tabBars.buttons["Minha Conta"].tap()
+        app.tables.children(matching: .cell).element(boundBy: 3).children(matching: .textField).element.tap()
+    }
+    
+    func testAddAddress() {
+        let app = XCUIApplication()
+        app.tabBars.buttons["Minha Conta"].tap()
+        app.buttons["Entrar com sua conta"].tap()
+        
+        let digiteSeuEMailTextField = app.textFields["Digite seu e-mail"]
+        digiteSeuEMailTextField.tap()
+        
+        digiteSeuEMailTextField.typeText("teste@teste.com")
+        
+        let digiteSuaSenhaSecureTextField = app.secureTextFields["Digite sua senha"]
+        digiteSuaSenhaSecureTextField.tap()
+        digiteSuaSenhaSecureTextField.typeText("123456")
+        
+        app.buttons["Fazer login"].tap()
+        
         app.tabBars.buttons["Minha Conta"].tap()
         
         app.tables.children(matching: .cell).element(boundBy: 1).children(matching: .textField).element.tap()
@@ -99,7 +136,6 @@ class PupCareUITests: XCTestCase {
         app.tables.staticTexts["Rua Graciano Azambuja"].swipeLeft()
         app.tables.buttons["Remover"].tap()
         
-        //TEST LOGOUT
         app.tables.children(matching: .cell).element(boundBy: 6).children(matching: .textField).element.tap()
     }
 }
